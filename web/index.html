@@ -50,12 +50,20 @@
     <div class="intro-body">
         <div class="container">
             <div class="row">
-                <div class="col-sm-6 col-sm-offset-1">
+                <div class="col-sm-12">
+                    <section class="sliding-text-wrapper">
+                        <div class="stationary-text-top">在这里你会获得</div>
+                        <div class="sliding-text">
+                            <span> 一流水准的顾问和导师团队</span>
+                            <span> 与前辈们即时交流的机会</span>
+                            <span> 价位合理的定制服务</span>
+                            <span> 百所海外名校的录取“内幕”</span>
+                        </div>
+                        <div class="row row-gap-huge"></div>
+                        <div class="row row-gap-medium">
+                            <div class="stationary-text-bottom">加入Dream Guide社区</div>
+                        </div></section>
                 </div>
-                <div class="col-sm-3 col-sm-offset-1">
-                    <br/>
-                    <br/>
-
                     <!--<form class="form-signin">-->
                         <!--<p class="form-signin-heading">登陆Dream Guide账户</p>-->
                         <!--<label for="inputEmail" class="sr-only">登陆邮箱</label>-->
@@ -77,7 +85,6 @@
                             <!--<button type="button" class="btn btn-default">找回密码</button>-->
                         <!--</div>-->
                     <!--</form>-->
-                </div>
             </div>
         </div>
     </div>
@@ -86,34 +93,37 @@
 <section id="content" class="content-section text-center">
     <div class="container">
         <div class="row">
-            <div class="col-sm-6 col-sm-offset-1">
+            <div class="col-sm-6">
                 <div class="col-sm-12">
                     <p></p>
                     <br>
-                    <h2> Dream Guide 平台特色</h2>
+                    <h2>Dream Guide 特色</h2>
 
                     <p>他们来自于世界顶级名校，他们的专业横跨理工，文商，艺术。
                         他们曾经和你一样，经历了TOFEL、GRE、选校、文书，走过了你正在走的路。
                         他们来自于世界500强名企，他们涉足金融，政府，传播，IT，制造，快销等主流行业。
                         他们拥有你即将要面临的脱颖而出，自主创业，夹缝求生的人生历练！</p>
 
-                    <h3>一对一平台，会成为你实现梦想的导师。</h3>
+                    <h3>一对一平台, 会成为你实现梦想的导师。</h3>
                 </div>
             </div>
-            <div class="col-sm-3 col-sm-offset-1">
+            <div class="col-sm-5">
                 <br/>
+                <div id="map1">
+                </div>
                 <br/>
             </div>
         </div>
     </div>
 </section>
 
-<section id="service" class="service-section">
+<section class="map-section">
     <div class="container">
+        <div class="col-xs-8 col-xs-offset-2">
+        </div>
     </div>
 </section>
-
-<div class="content-blank-white"></div>
+<hr class="hr-gradient" />
 <footer class="content-section content-footer">
         <div class="container">
             <div class="row hidden-xs hidden-sm">
@@ -199,6 +209,174 @@
 <script src="../node_modules/angular/angular.min.js"></script>
 <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 <script src="js/main/dreamguide.js"></script>
+<script src="http://code.highcharts.com/maps/highmaps.js"></script>
+<script src="http://code.highcharts.com/maps/modules/data.js"></script>
+<script src="http://code.highcharts.com/mapdata/custom/world.js"></script>
+<!--<script src="js/main/d3.js"></script>-->
+<!--<script src="js/main/topojson.min.js"></script>-->
+<!--<script src="js/main/dataMaps.all.js"></script>-->
+<!--<script src="js/main/dataMaps.js"></script>-->
 
+<script>
+//    var colors = d3.scale.category10();;
+//    var map = new Datamap({
+//        scope: 'world',
+//        element: document.getElementById('map1'),
+//        projection: 'orthographic',
+//        fills: {
+//            defaultFill: "#909090",
+//            gt50: colors(Math.random() * 20),
+//            eq50: colors(Math.random() * 20),
+//            lt25: colors(Math.random() * 10),
+//            gt75: colors(Math.random() * 5),
+//            lt50: colors(Math.random() * 20),
+//            eq0: colors(Math.random()),
+//            pink: '#0fa0fa',
+//            gt500: colors(Math.random())
+//        },
+//        projectionConfig: {
+//            rotation: [40,-30]
+//        },
+//        data: {
+//            'USA': {fillKey: 'lt50' },
+//            'FRA': {fillKey: 'lt25' },
+//            'CAN': {fillKey: 'gt50' },
+//            'GTM': {fillKey: 'gt500'},
+//            'HND': {fillKey: 'eq50' },
+//            'BLZ': {fillKey: 'pink' },
+//            'GBR': {fillKey: 'eq0'}
+//        },
+//        responsive: true
+//    });
+//    map.graticule();
+
+
+//    map.arc([{
+//        origin: {
+//            latitude: 61,
+//            longitude: -149
+//        },
+//        destination: {
+//            latitude: -22,
+//            longitude: -43
+//        }
+//    }], {
+//        greatArc: true,
+//        animationSpeed: 2000
+//    });
+
+//var map = new Datamap({
+//    element: document.getElementById('map1'),
+//    responsive: true
+//});
+//window.addEventListener('resize', function(event){
+//    map.resize();
+//    map.graticule();
+//});
+
+$(function () {
+    console.log("!!");
+    Highcharts.data({
+        googleSpreadsheetKey: '0AoIaUO7wH1HwdFJHaFI4eUJDYlVna3k5TlpuXzZubHc',
+        // custom handler when the spreadsheet is parsed
+        parsed: function (columns) {
+
+            // Read the columns into the data array
+            var data = [];
+            $.each(columns[0], function (i, code) {
+                data.push({
+                    code: code.toUpperCase(),
+                    value: parseFloat(columns[2][i]),
+                    name: columns[1][i]
+                });
+            });
+            // Initiate the chart
+            $('#map1').highcharts('Map', {
+                chart : {
+                    borderWidth : 1
+                },
+
+                colors: ['rgba(19,64,117,0.05)', 'rgba(19,64,117,0.2)', 'rgba(19,64,117,0.4)',
+                    'rgba(19,64,117,0.5)', 'rgba(19,64,117,0.6)', 'rgba(19,64,117,0.8)', 'rgba(19,64,117,1)'],
+
+                title : {
+                    text : '海外顾问分布'
+                },
+
+                mapNavigation: {
+                    enabled: true
+                },
+
+                legend: {
+                    title: {
+                        text: 'km²',
+                        style: {
+                            color: (Highcharts.theme && Highcharts.theme.textColor) || 'black'
+                        }
+                    },
+                    align: 'left',
+                    verticalAlign: 'bottom',
+                    floating: true,
+                    layout: 'vertical',
+                    valueDecimals: 0,
+                    backgroundColor: (Highcharts.theme && Highcharts.theme.legendBackgroundColor) || 'rgba(255, 255, 255, 0.85)',
+                    symbolRadius: 0,
+                    symbolHeight: 14
+                },
+
+                colorAxis: {
+                    dataClasses: [{
+                        to: 3
+                    }, {
+                        from: 3,
+                        to: 10
+                    }, {
+                        from: 10,
+                        to: 30
+                    }, {
+                        from: 30,
+                        to: 100
+                    }, {
+                        from: 100,
+                        to: 300
+                    }, {
+                        from: 300,
+                        to: 1000
+                    }, {
+                        from: 1000
+                    }]
+                },
+                credits: {
+                    enabled: false
+                },
+                series : [{
+                    data : data,
+                    mapData: Highcharts.maps['custom/world'],
+                    joinBy: ['iso-a2', 'code'],
+                    animation: true,
+                    name: 'Population density',
+                    states: {
+                        hover: {
+                            color: '#BADA55'
+                        }
+                    },
+                    tooltip: {
+                        valueSuffix: '/km²'
+                    }
+                }]
+            });
+        },
+        error: function () {
+            $('#container').html('<div class="loading">' +
+            '<i class="icon-frown icon-large"></i> ' +
+            'Error loading data from Google Spreadsheets' +
+            '</div>');
+        }
+    });
+});
+
+
+
+</script>
 </body>
 </html>
