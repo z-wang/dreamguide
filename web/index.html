@@ -2,7 +2,7 @@
 <html>
 <head lang="en">
     <meta charset="UTF-8">
-    <title></title>
+    <title>Dream Guide社区</title>
     <!-- created by Zihan Wang, template reference: bootstrap, start bootstrap. font reference: font-awesome. Photos downloaded from google have all been re-edited. -->
     <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap-theme.min.css">
@@ -30,17 +30,19 @@
             </a></div>
         <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
             <ul class="nav navbar-nav">
-                <li class="hidden active"><a href="#page-top"></a></li>
-                <li><a class="page-scroll" href="#about">项目介绍</a></li>
-                <li><a class="page-scroll" href="#people">一对一平台</a></li>
-                <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">登陆/注册<span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">用户登陆</a></li>
-                        <li><a href="#">用户注册</a></li>
-                        <li><a href="#">导师注册</a></li>
-                    </ul>
-                </li>
+                <li class="hidden active"><a href="#page-top">项目介绍</a></li>
+                <li><a class="page-scroll" href="#about">一对一平台</a></li>
+                <li><a class="page-scroll" href="#people">成为导师</a></li>
+                <li><a class="page-scroll" href="template/login.html">登录/注册</a></li>
+                <!--<li class="dropdown">-->
+                    <!--<a class="dropdown-toggle" data-toggle="dropdown" href="#">登陆/注册<span class="caret"></span></a>-->
+                    <!--<ul class="dropdown-menu">-->
+                        <!--<li><a href="#">用户登陆</a></li>-->
+                        <!--<li><a href="#">用户注册</a></li>-->
+                        <!--<li><a href="#">导师注册</a></li>-->
+                    <!--</ul>-->
+                <!--</li>-->
+
                 <li><a class="page-scroll" href="#contact">联系我们</a></li>
             </ul>
         </div>
@@ -107,7 +109,7 @@
                     <h3>一对一平台, 会成为你实现梦想的导师。</h3>
                 </div>
             </div>
-            <div class="col-sm-5">
+            <div class="col-sm-6">
                 <br/>
                 <div id="map1">
                 </div>
@@ -354,14 +356,14 @@ $(function () {
                     mapData: Highcharts.maps['custom/world'],
                     joinBy: ['iso-a2', 'code'],
                     animation: true,
-                    name: 'Population density',
+                    name: '导师人数',
                     states: {
                         hover: {
                             color: '#BADA55'
                         }
                     },
                     tooltip: {
-                        valueSuffix: '/km²'
+                        valueSuffix: '人'
                     }
                 }]
             });
