@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html ng-app="dgApp">
+<head lang="zh">
+    <meta charset="UTF-8">
+    <title>Dream Guide社区</title>
+    <!-- created by Zihan Wang, template reference: angular, bootstrap, start bootstrap. font reference: font-awesome. Photos downloaded from google have all been re-edited. -->
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="../node_modules/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/main/dreamguide.css">
+    <link href="http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet"
+          type="text/css"/>
+    <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css"/>
+    <!--[if lt IE 9]>
+    <!--<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>-->
+    <!--<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>-->
+    <![endif]-->
+
+</head>
+<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+<nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse"><i
+                    class="fa fa-bars"></i></button>
+            <a class="navbar-brand page-scroll" href="#page-top"><i class="fa fa-university"></i><span
+                    class="light"> Start</span> Your Dream
+            </a></div>
+        <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
+            <ul class="nav navbar-nav">
+                <li class="hidden active"><a href="#page-top">项目介绍</a></li>
+                <li><a class="page-scroll" href="#about">一对一平台</a></li>
+                <li><a class="page-scroll" href="#people">成为导师</a></li>
+                <li><a class="page-scroll" href="#login">登录/注册</a></li>
+                <!--<li class="dropdown">-->
+                    <!--<a class="dropdown-toggle" data-toggle="dropdown" href="#">登陆/注册<span class="caret"></span></a>-->
+                    <!--<ul class="dropdown-menu">-->
+                        <!--<li><a href="#">用户登陆</a></li>-->
+                        <!--<li><a href="#">用户注册</a></li>-->
+                        <!--<li><a href="#">导师注册</a></li>-->
+                    <!--</ul>-->
+                <!--</li>-->
+
+                <li><a class="page-scroll" href="#content-footer">联系我们</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div>
+    <div ui-view></div>
+</div>
+
+<!--<hr class="hr-gradient" />-->
+<div class="content-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-3">
+
+                    <h4>关于我们</h4>
+                    <p class="caption">
+                        <a href="/nanodegree">项目信息</a>
+                        <br>
+                        <a href="/georgia-tech">Dream Guide理念</a>
+                        <br>
+                        <a href="/organizations">一对一服务平台</a>
+                        <br>
+                        <a href="/veterans">全球合作伙伴</a>
+                        <br>
+                        <a href="/faq">帮助 &amp; 常见问题</a>
+                    </p>
+
+                </div>
+                <div class="col-xs-3">
+
+                    <h4>Dream 社区</h4>
+                    <p class="caption">
+                        <a href="http://blog.udacity.com">导师博客推荐</a>
+                        <br>
+                        <a href="/press">新闻 &amp; 媒体</a>
+                        <br>
+                        <a href="/catalog-api">开发者 API</a>
+                    </p>
+
+                </div>
+                <div class="col-xs-3">
+
+                    <h4>Dream Guide</h4>
+                    <p class="caption">
+                        <a href="/us">关于</a>
+                        <br>
+                        <a href="/jobs">职位招聘</a>
+                        <br>
+                        <a href="/contact">联系 &amp; 反馈</a>
+                        <br>
+                        <a href="/legal/tos">隐私政策</a>
+                    </p>
+
+                </div>
+                <div class="col-xs-3">
+                    <h4>社交和移动平台</h4>
+                    <a href="#"><div class="fa fa-weixin fa-2x"></div></a>
+                    <a href="#"><div class="fa fa-weibo fa-2x"></div></a>
+
+                    <br />
+                    <div class="row">
+                        <br />
+                        <div class="col-xs-12">
+                            <div class="text-center-xs">
+                                <a href="https://itunes.apple.com/us/app/id819700933?mt=8">
+                                    <img alt="Apple store" class="img-initial mobile-button" src="//lh6.ggpht.com/5mY-J8xINNmZ4x_6mbNYmhDWFT_qzG4q4QA2jPzRfiqRjUticf5u0eEEATtX04gbr_KrDSx8SDDBpGRHAWU=s150#w=300&amp;h=88" srcset="//lh6.ggpht.com/5mY-J8xINNmZ4x_6mbNYmhDWFT_qzG4q4QA2jPzRfiqRjUticf5u0eEEATtX04gbr_KrDSx8SDDBpGRHAWU=s300#w=300&amp;h=88 2x">
+                                </a>
+                                <p></p>
+                                <a href="https://play.google.com/store/apps/details?id=com.udacity.android">
+                                    <img alt="Google Play" class="mobile-button" src="//lh5.ggpht.com/Zb2s5Ho_mzDPnb9dBDIqQPpwFrxz1e902ksTnir8Cs_KdrYLvN_TLVK1pmKGbMPgolJ2wIlY23yI9OODDss=s150#w=300&amp;h=88" srcset="//lh5.ggpht.com/Zb2s5Ho_mzDPnb9dBDIqQPpwFrxz1e902ksTnir8Cs_KdrYLvN_TLVK1pmKGbMPgolJ2wIlY23yI9OODDss=s300#w=300&amp;h=88 2x">
+                                </a>
+                            </div>
+                        </div>
+                        <br />
+                    </div>
+                    <div class="row row-gap-small">
+                        <div class="col-xs-12 text-muted" style="font-size: 14px">
+                            <br />
+                            版权所有 © 2005 – 2014, Dream Guide。
+                            <br />
+                            保留所有权利, 京ICP备15013505号。
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+</div>
+<div class="content-blank-white"></div>
+
+<script src="../node_modules/jquery/dist/jquery.min.js"></script>
+<script src="../node_modules/angular/angular.min.js"></script>
+<script src="../node_modules/angular-ui-router/release/angular-ui-router.min.js"></script>
+<script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="js/main/dreamguide.js"></script>
+<script src="js/main/boot.js"></script>
+<script src="js/controller/login.js"></script>
+<script src="http://code.highcharts.com/maps/highmaps.js"></script>
+<script src="http://code.highcharts.com/maps/modules/data.js"></script>
+<script src="http://code.highcharts.com/mapdata/custom/world.js"></script>
+
+</body>
+</html>
