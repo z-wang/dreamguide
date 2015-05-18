@@ -82,30 +82,53 @@
                                 <div class="row onboarding-form-group">
                                     <div class="col-sm-12 col-xs-12">
                                         <div data-ng-class="{'has-error': contactInfoErrors.setsEmail}">
-                                            <label for="email">Email</label>
+                                            <label for="email">手机号注册</label>
                                             <div style="clear:both"></div>
-                                            <input type="email" class="form-control pull-left ng-pristine ng-valid ng-valid-email" id="email" placeholder="email" data-ng-model="email">
+                                            <input type="email" class="form-control pull-left ng-pristine ng-valid ng-valid-email" id="email" placeholder="+86" data-ng-model="email">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row onboarding-form-group">
                                     <div class="col-sm-12 col-xs-12">
                                         <div data-ng-class="{'has-error': contactInfoErrors.setsPassword}">
-                                            <label for="password">Password</label>
+                                            <label for="password">昵称</label>
                                             <div style="clear:both"></div>
-                                            <input type="password" class="form-control pull-left ng-pristine ng-valid" id="password" placeholder="password" data-ng-model="password">
+                                            <input type="password" class="form-control pull-left ng-pristine ng-valid" id="password" placeholder="" data-ng-model="password">
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div class="row onboarding-form-group">
                                     <div class="col-sm-12 col-xs-12">
-                                        <a href="#!/request-password-reset"><small>Forgot your password?</small></a>
+                                        <div data-ng-class="{'has-error': contactInfoErrors.setsPassword}">
+                                            <label for="password">真实姓名</label>
+                                            <div style="clear:both"></div>
+                                            <input type="password" class="form-control pull-left ng-pristine ng-valid" id="password" placeholder="姓 名" data-ng-model="password">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row onboarding-form-group">
+                                    <div class="col-sm-12 col-xs-12">
+                                        <div data-ng-class="{'has-error': contactInfoErrors.setsPassword}">
+                                            <label for="password">密码</label>
+                                            <div style="clear:both"></div>
+                                            <input type="password" class="form-control pull-left ng-pristine ng-valid" id="password" placeholder="请输入密码" data-ng-model="password">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row onboarding-form-group">
+                                    <div class="col-sm-12 col-xs-12">
+                                        <div data-ng-class="{'has-error': contactInfoErrors.setsPassword}">
+                                            <label for="password">确认密码</label>
+                                            <div style="clear:both"></div>
+                                            <input type="password" class="form-control pull-left ng-pristine ng-valid" id="password" placeholder="请再次输入密码" data-ng-model="password">
+                                        </div>
                                     </div>
                                 </div>
 
                                 <div class="row row-gap-medium">
                                     <div class="col-sm-5 col-xs-12">
-                                        <button type="submit" class="btn btn-block btn-primary" data-ng-disabled="buttonDisabled">Sign In</button>
+                                        <button type="submit" class="btn btn-block btn-primary" data-ng-disabled="buttonDisabled">注册账户</button>
                                     </div>
                                 </div>
                             </form>
