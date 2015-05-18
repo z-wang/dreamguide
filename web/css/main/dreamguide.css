@@ -384,17 +384,19 @@ hr.hr-gradient {
     background-repeat: no-repeat;
 }
 
-.map-section{
-    padding-top: 10px;
-    padding-bottom: 20px;
-    background-color: #D0D0D0;
+.one2one-section{
+    padding-top: 75px;
+    padding-bottom: 75px;
+    color: #307699;
+    font-size: 14px;
+    background-color: #dcdcdc;
 }
 
-.map-section #map1{
-    /*height: 500px;*/
-    /*width: 1000px;*/
-    position: center;
+.icon-large {
+    width: 75px;
+    font-size: 75px;
 }
+
 /* Custom Button Styles */
 
 .btn-dark {

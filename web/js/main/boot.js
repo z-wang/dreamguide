@@ -93,8 +93,8 @@ myapp.controller("indexCtrl", function($scope) {
                     borderWidth : 1
                 },
 
-                colors: ['rgba(19,64,117,0.05)', 'rgba(19,64,117,0.2)', 'rgba(19,64,117,0.4)',
-                    'rgba(19,64,117,0.5)', 'rgba(19,64,117,0.6)', 'rgba(19,64,117,0.8)', 'rgba(19,64,117,1)'],
+                colors: ['rgba(192,192,192,0.05)', 'rgba(192,192,192,0.2)', 'rgba(192,192,192,0.4)',
+                    'rgba(192,192,192,0.5)', 'rgba(192,192,192,0.6)', 'rgba(192,192,192,0.8)', 'rgba(192,192,192,1)'],
 
                 title : {
                     text : '海外顾问分布'
@@ -123,24 +123,24 @@ myapp.controller("indexCtrl", function($scope) {
 
                 colorAxis: {
                     dataClasses: [{
-                        to: 3
+                        to: 5
                     }, {
-                        from: 3,
+                        from: 5,
                         to: 10
                     }, {
                         from: 10,
-                        to: 30
+                        to: 25
                     }, {
-                        from: 30,
+                        from: 25,
+                        to: 50
+                    }, {
+                        from: 50,
                         to: 100
                     }, {
                         from: 100,
-                        to: 300
+                        to: 200
                     }, {
-                        from: 300,
-                        to: 1000
-                    }, {
-                        from: 1000
+                        from: 200
                     }]
                 },
                 credits: {
