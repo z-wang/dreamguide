@@ -40,6 +40,7 @@ myapp.config(function($stateProvider, $urlRouterProvider){
             url: "/route2",
             templateUrl: "route2.html"
         })
+
         .state('route2.list', {
             url: "/list",
             templateUrl: "route2.list.html",
@@ -63,6 +64,7 @@ myapp.controller("indexCtrl", function($scope) {
     },function(){
         $(".navbar-fixed-top").removeClass("top-nav-collapse");
     });
+
     $('.people-overlay').hover(
         function(){
             $(this).find('.people-inner').slideDown(250); //.fadeIn(250)
