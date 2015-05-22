@@ -24,10 +24,24 @@ myapp.config(function($stateProvider, $urlRouterProvider){
             controller: "loginCtrl"
         })
 
-        .state('route1', {
-            url: "/route1",
-            templateUrl: "route1.html"
+        .state('about', {
+            url: "/about",
+            templateUrl: "partial/footer/about.html",
+            controller: "aboutCtrl"
         })
+
+        .state('register', {
+            url: "/register",
+            templateUrl: "partial/register.html",
+            controller: "registerCtrl"
+        })
+
+        .state('one2one', {
+            url: "/one2one",
+            templateUrl: "partial/one2one.html",
+            controller: "one2oneCtrl"
+        })
+
         .state('route1.list', {
             url: "/list",
             templateUrl: "route1.list.html",
@@ -74,7 +88,18 @@ myapp.controller("indexCtrl", function($scope) {
         }
     );
 
-    console.log("!!");
+    $('#contactus').click(function(){
+        $('html,body').animate({
+                scrollTop: $("#content-footer").offset().top},
+            'slow');
+    });
+
+    //// Closes the Responsive Menu on Menu Item Click
+    //$('.navbar-collapse ul li a').click(function() {
+    //    $('.navbar-toggle:visible').click();
+    //});
+
+    console.log("load project");
     Highcharts.data({
         googleSpreadsheetKey: '0AoIaUO7wH1HwdFJHaFI4eUJDYlVna3k5TlpuXzZubHc',
         // custom handler when the spreadsheet is parsed
