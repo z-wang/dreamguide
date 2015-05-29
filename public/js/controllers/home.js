@@ -1,71 +1,18 @@
 /**
- * Created by zihanwang on 5/17/15.
+ * Created by zihanwang on 5/27/15.
  */
-var myapp = angular.module('dgApp', ["dgApp.controllers", "ui.router"]);
-
-myapp.config(function($stateProvider, $urlRouterProvider){
-    // For any unmatched url, send to /index
-    $urlRouterProvider.otherwise("/index");
-
-    $stateProvider
-        .state('index', {
-            url:"/index",
-            templateUrl: "partial/index.html",
-            controller:"indexCtrl"
-//                    template: '<div ui-view></div>',
-//                    data: {
-//                        css: 'styles/custom-state1-override.css'
-//                    }
-        })
-
-        .state('login',{
-            url:"/login",
-            templateUrl: "partial/login.html",
-            controller: "loginCtrl"
-        })
-
-        .state('about', {
-            url: "/about",
-            templateUrl: "partial/footer/about.html",
-            controller: "aboutCtrl"
-        })
-
-        .state('register', {
-            url: "/register",
-            templateUrl: "partial/register.html",
-            controller: "registerCtrl"
-        })
-
-        .state('one2one', {
-            url: "/one2one",
-            templateUrl: "partial/one2one.html",
-            controller: "one2oneCtrl"
-        })
-
-        .state('route1.list', {
-            url: "/list",
-            templateUrl: "route1.list.html",
-            controller: function($scope){
-                $scope.items = ["A", "List", "Of", "Items"];
-            }
-        })
-
-        .state('route2', {
-            url: "/route2",
-            templateUrl: "route2.html"
-        })
-
-        .state('route2.list', {
-            url: "/list",
-            templateUrl: "route2.list.html",
-            controller: function($scope){
-                $scope.things = ["A", "Set", "Of", "Things"];
-            }
-        })
-});
-
-myapp.controller("indexCtrl", function($scope) {
-    $(window).scroll(function() {
+define([
+    './module',
+    'jquery',
+    'map',
+    //'highcharts',
+    'highmaps',
+    'map-world',
+    'map-data'
+], function (controllers) {
+    //'use strict';
+    controllers.controller('indexCtrl', [function ($scope) {
+        $(window).scroll(function() {
         if ($(".navbar").offset().top > 50) {
             $(".navbar-fixed-top").addClass("top-nav-collapse");
         } else {
@@ -94,12 +41,81 @@ myapp.controller("indexCtrl", function($scope) {
             'slow');
     });
 
+    //$.getJSON('http://www.highcharts.com/samples/data/jsonp.php?filename=world-population-density.json&callback=?', function (data) {
+    //    // Add lower case codes to the data set for inclusion in the tooltip.pointFormat
+    //    $.each(data, function () {
+    //        this.flag = this.code.replace('UK', 'GB').toLowerCase();
+    //    });
+    //
+    //    // Initiate the chart
+    //    $('#map1').highcharts('Map', {
+    //        title: {
+    //            text: '海外顾问分布'
+    //        },
+    //        legend: {
+    //            title: {
+    //                text: '顾问分布指数',
+    //                style: {
+    //                    color: (Highcharts.theme && Highcharts.theme.textColor) || 'black'
+    //                }
+    //            }
+    //        },
+    //
+    //        credits: {
+    //            enabled: false
+    //        },
+    //        mapNavigation: {
+    //            enabled: true,
+    //            buttonOptions: {
+    //                verticalAlign: 'bottom'
+    //            }
+    //        },
+    //
+    //        tooltip: {
+    //            backgroundColor: 'none',
+    //            borderWidth: 0,
+    //            shadow: false,
+    //            useHTML: true,
+    //            padding: 0,
+    //            pointFormat: '<span class="f32"><span class="flag {point.flag}"></span></span>'
+    //            + ' {point.name}: <b>{point.value}</b>/km²',
+    //            positioner: function () {
+    //                return { x: 0, y: 250 };
+    //            }
+    //        },
+    //
+    //        colorAxis: {
+    //            min: 1,
+    //            max: 1000,
+    //            type: 'logarithmic'
+    //        },
+    //
+    //        series : [{
+    //            data : data,
+    //            mapData: Highcharts.maps['map-world'],
+    //            joinBy: ['iso-a2', 'code'],
+    //            name: 'Population density',
+    //            states: {
+    //                hover: {
+    //                    color: '#BADA55'
+    //                }
+    //            }
+    //        }]
+    //    });
+    //});
+
+
+
+
+
+
+
+
     //// Closes the Responsive Menu on Menu Item Click
     //$('.navbar-collapse ul li a').click(function() {
     //    $('.navbar-toggle:visible').click();
     //});
 
-    console.log("load project");
     Highcharts.data({
         googleSpreadsheetKey: '0AoIaUO7wH1HwdFJHaFI4eUJDYlVna3k5TlpuXzZubHc',
         // custom handler when the spreadsheet is parsed
@@ -198,4 +214,6 @@ myapp.controller("indexCtrl", function($scope) {
             '</div>');
         }
     });
+
+    }]);
 });

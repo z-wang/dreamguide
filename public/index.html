@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html ng-app="dgApp">
+<html>
+<!--<html>// ng-app="myApp">-->
 <head lang="zh">
     <meta charset="UTF-8">
     <title>Dream Guide社区</title>
@@ -14,7 +15,7 @@
     <!--[if lt IE 9]>
     <!--<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>-->
     <!--<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>-->
-    <![endif]-->
+    <!--<![endif]&ndash;&gt;-->
 
 </head>
 <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
@@ -31,14 +32,14 @@
                 <li class="hidden active"><a href="#about">项目介绍</a></li>
                 <li><a class="page-scroll" href="#one2one">一对一平台</a></li>
                 <li><a class="page-scroll" href="#register">成为导师</a></li>
-                <li><a class="page-scroll" href="#login">登录/注册</a></li>
+                <li><a class="page-scroll" href="#/login">登录/注册</a></li>
                 <li><a class="page-scroll" id="contactus" href="">联系我们</a></li>
             </ul>
         </div>
     </div>
 </nav>
 <div>
-    <div ui-view></div>
+    <div data-ng-view></div>
 </div>
 
 <div class="content-footer" id="content-footer">
@@ -48,7 +49,7 @@
 
                     <h4>关于我们</h4>
                     <p class="caption">
-                        <a href="#about({ very:'Parent'})">项目信息</a>
+                        <a href="#about">项目信息</a>
                         <br>
                         <a href="/georgia-tech">Dream Guide理念</a>
                         <br>
@@ -64,7 +65,7 @@
 
                     <h4>Dream 社区</h4>
                     <p class="caption">
-                        <a href="http://blog.udacity.com">导师博客推荐</a>
+                        <a href="">导师博客推荐</a>
                         <br>
                         <a href="/press">新闻 &amp; 媒体</a>
                         <br>
@@ -115,26 +116,14 @@
                             保留所有权利, 京ICP备15013505号。
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
 </div>
 <div class="content-blank-white"></div>
-
-<script src="../node_modules/jquery/dist/jquery.min.js"></script>
-<script src="../node_modules/angular/angular.min.js"></script>
-<script src="../node_modules/angular-ui-router/release/angular-ui-router.min.js"></script>
-<script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-<script src="js/main/dreamguide.js"></script>
-<script src="js/main/boot.js"></script>
-<script src="js/controller/about.js"></script>
-<script src="js/controller/register.js"></script>
-<script src="js/controller/one2one.js"></script>
-<script src="js/controller/login.js"></script>
-<script src="http://code.highcharts.com/maps/highmaps.js"></script>
-<script src="http://code.highcharts.com/maps/modules/data.js"></script>
-<script src="http://code.highcharts.com/mapdata/custom/world.js"></script>
+<!--<script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>-->
+<!--<script src="js/main/dreamguide.js"></script>-->
+<script src="../node_modules/requirejs/require.js" data-main="js/main.js"></script>
 
 </body>
 </html>

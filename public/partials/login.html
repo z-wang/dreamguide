@@ -4,7 +4,7 @@
             <div class="col-lg-5 col-sm-5 col-xs-12 col-lg-offset-1 col-sm-offset-1" >
                 <div class="row row-gap-medium ng-scope">
                     <!-- ngView:  -->
-                    <div data-ng-view="" class="ng-scope">
+                    <div>
                         <div class="form-box ng-scope" style="padding:0 35px 35px 35px; border-right: 1px solid #E0E0E0;  margin-right: 2%;">
                             <div data-ng-show="showTopBox" class="row form-box ng-hide" style="padding:25px 0 25px 0; border-width:0 0 1px 0">
                                 <div class="col-xs-12">
@@ -61,9 +61,9 @@
             <div class="col-lg-6 col-sm-6 col-xs-12">
                 <div class="row row-gap-medium ng-scope">
                     <!-- ngView:  -->
-                    <div data-ng-view="" class="ng-scope">
+                    <div>
                         <div class="form-box ng-scope" style="padding:0 35px 35px 35px; ">
-                            <div data-ng-show="showTopBox" class="row form-box ng-hide" style="padding:25px 0 25px 0; border-width:0 0 1px 0">
+                            <div class="row form-box ng-hide" style="padding:25px 0 25px 0; border-width:0 0 1px 0">
                                 <div class="col-xs-12">
                                     <span>You will need a Udacity account to continue</span>
                                 </div>
@@ -73,7 +73,7 @@
                             <form class="form-horizontal ng-pristine ng-valid" role="form" data-ng-submit="signInEmail()">
                                 <div class="row ng-hide" data-ng-show="fieldErrors || errorMessage">
                                     <div class="col-xs-12 alert alert-danger">
-                                        <p data-ng-bind-html="errorMessage" class="ng-binding"></p>
+                                        <!--<p data-ng-bind-html="errorMessage" class="ng-binding"></p>-->
                                         <ul>
                                             <!-- ngRepeat: (field, error) in fieldErrors -->
                                         </ul>
@@ -81,7 +81,8 @@
                                 </div>
                                 <div class="row onboarding-form-group">
                                     <div>
-                                        <div data-ng-class="{'has-error': contactInfoErrors.setsEmail}">
+                                        <div>
+                                            <!--data-ng-class="{'has-error': contactInfoErrors.setsEmail}">-->
                                             <div class="col-sm-8 col-xs-8">
                                             <label for="email">手机号注册</label>
                                                 </div>
@@ -97,7 +98,8 @@
                                 </div>
                                 <div class="row onboarding-form-group">
                                     <div class="col-sm-12 col-xs-12">
-                                        <div data-ng-class="{'has-error': contactInfoErrors.setsEmail}">
+                                        <div>
+                                                <!--data-ng-class="{'has-error': contactInfoErrors.setsEmail}">-->
                                             <label for="email">手机验证码</label>
                                             <div style="clear:both"></div>
                                             <input type="email" class="form-control pull-left ng-pristine ng-valid ng-valid-email" id="email" placeholder="请输入接收到的验证码" data-ng-model="email">
@@ -106,20 +108,11 @@
                                 </div>
                                 <div class="row onboarding-form-group">
                                     <div class="col-sm-12 col-xs-12">
-                                        <div data-ng-class="{'has-error': contactInfoErrors.setsPassword}">
+                                        <div>
+                                                <!--data-ng-class="{'has-error': contactInfoErrors.setsPassword}">-->
                                             <label for="password">密码</label>
                                             <div style="clear:both"></div>
                                             <input type="password" class="form-control pull-left ng-pristine ng-valid" id="password" placeholder="请输入密码" data-ng-model="password">
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="row onboarding-form-group">
-                                    <div class="col-sm-12 col-xs-12">
-                                        <div data-ng-class="{'has-error': contactInfoErrors.setsPassword}">
-                                            <label for="password">确认密码</label>
-                                            <div style="clear:both"></div>
-                                            <input type="password" class="form-control pull-left ng-pristine ng-valid" id="password" placeholder="请再次输入密码" data-ng-model="password">
                                         </div>
                                     </div>
                                 </div>
