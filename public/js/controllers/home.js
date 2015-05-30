@@ -4,11 +4,9 @@
 define([
     './module',
     'jquery',
-    'map',
-    //'highcharts',
     'highmaps',
-    'map-world',
-    'map-data'
+    'custom-world',
+    'custom-data'
 ], function (controllers) {
     //'use strict';
     controllers.controller('indexCtrl', [function ($scope) {
