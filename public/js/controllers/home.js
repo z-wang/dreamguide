@@ -9,7 +9,7 @@ define([
     'custom-data'
 ], function (controllers) {
     //'use strict';
-    controllers.controller('indexCtrl', [function ($scope) {
+    controllers.controller('indexCtrl', ['$scope', function ($scope) {
         $(window).scroll(function() {
         if ($(".navbar").offset().top > 50) {
             $(".navbar-fixed-top").addClass("top-nav-collapse");

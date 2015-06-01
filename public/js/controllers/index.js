@@ -7,5 +7,6 @@
 define([
     './home',
     './one2oneController',
-    './loginController'
+    './loginController',
+    './registerController'
 ], function () {});

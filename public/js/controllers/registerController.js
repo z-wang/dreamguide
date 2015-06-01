@@ -1,19 +1,17 @@
 /**
- * Created by zihanwang on 5/27/15.
+ * Created by zihanwang on 5/31/15.
  */
 define([
     './module',
     'jquery'
 ], function (controllers) {
     //'use strict';
-    controllers.controller('loginCtrl', ['$scope', function ($scope) {
-        console.log('login');
+    controllers.controller('registerCtrl', ['$scope', function ($scope) {
+        console.log('register');
         $(window).scrollTop(0);
         $(window).unbind("scroll");
         $('.navbar').unbind('mouseenter mouseleave');
         $(".navbar-fixed-top").addClass("top-nav-collapse");
-        //$scope.firstName = "John";
-        //$scope.lastName = "Doe";
-        //console.log($scope);
+
     }]);
 });

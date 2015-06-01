@@ -5,6 +5,8 @@
 define([
     'angular',
     'angular-route',
+    'ui-select',
+    'angular-sanitize',
     './controllers/index',
     './directives/index',
     './filters/index',
@@ -13,6 +15,8 @@ define([
     'use strict';
 
     return angular.module('app', [
+        'ui.select',
+        'ngSanitize',
         'app.controllers',
         'app.directives',
         'app.filters',
