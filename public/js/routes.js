@@ -4,7 +4,28 @@
  */
 
 define(['./app'], function (app) {
-    'use strict';
+    //'use strict';
+    //return app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider){
+    //
+    //    $urlRouterProvider
+    //        .otherwise("/index");
+    //
+    //    $stateProvider.state('index',{
+    //        url: '/index',
+    //        templateUrl: 'partials/index.html',
+    //        controller:'indexCtrl'
+    //    })
+    //    .state('login',{
+    //        url: '/login',
+    //        templateUrl: 'partials/login.html',
+    //        controller: 'MyCtrl2'
+    //    })
+    //    .state('view2',{
+    //        url: '/view2',
+    //        templateUrl: 'partials/partial2.html',
+    //        controller: 'MyCtrl2'
+    //    });
+    //}]);
     return app.config(['$routeProvider', function ($routeProvider) {
         $routeProvider.when('/index', {
             templateUrl: 'partials/index.html',
@@ -28,7 +49,8 @@ define(['./app'], function (app) {
 
         $routeProvider.when('/one2one', {
             templateUrl: 'partials/one2one.html',
-            controller: 'one2oneCtrl'
+            controller: 'one2oneCtrl',
+            css: 'lib/angular-ui/select.css'
         });
 
         $routeProvider.otherwise({

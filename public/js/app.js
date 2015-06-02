@@ -5,6 +5,8 @@
 define([
     'angular',
     'angular-route',
+    'route-style',
+    //'ui-router',
     'ui-select',
     'angular-sanitize',
     './controllers/index',
@@ -12,7 +14,7 @@ define([
     './filters/index',
     './services/index'
 ], function (angular) {
-    'use strict';
+    //'use strict';
 
     return angular.module('app', [
         'ui.select',
@@ -21,6 +23,8 @@ define([
         'app.directives',
         'app.filters',
         'app.services',
-        'ngRoute'
+        'ngRoute',
+        'routeStyles'
+        //'ui.router'
     ]);
 });
