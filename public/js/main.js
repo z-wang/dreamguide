@@ -4,7 +4,8 @@
  * or 3rd party libraries
  */
 require.config({
-    base_url: '.',
+    base_url: 'public',
+    waitSeconds: 200,
     paths: {
         'angular' : '../lib/angular/angular.min',
         'angular-route' : '../lib/angular/angular-route.min',
