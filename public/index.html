@@ -3,6 +3,7 @@
     <meta charset="UTF-8">
     <title>Dream Guide社区</title>
     <!-- created by Zihan Wang, template reference: angular, bootstrap, start bootstrap. font reference: font-awesome. Photos downloaded from google have all been re-edited. -->
+    <link rel="stylesheet" href="css/main/dreamguide.css">
     <link rel="stylesheet" href="css/bootstrap/bootstrap.css">
     <!--<link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap-theme.min.css">-->
     <link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css">
@@ -10,7 +11,6 @@
     <link rel="stylesheet" href="css/google/fonts/Lora.css">
     <link rel="stylesheet" href="css/angular/angularUI/select2.css">
     <!--<link rel="stylesheet" href="lib/angular-ui/select.min.css">-->
-    <link rel="stylesheet" href="css/main/dreamguide.css">
     <script src="lib/requirejs/requirejs.js" data-main="js/main.js"></script>
     <!--[if lt IE 9]>
     <!--<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>-->
@@ -120,10 +120,29 @@
             </div>
         </div>
 </div>
-<div class="content-blank-white"></div>
+<div id="loading" class="content-blank-white"></div>
 <script>// <![CDATA[
-document.addEventListener("DOMContentLoaded", function(event) {
-    console.log('ready');
+//document.addEventListener("DOMContentLoaded", function(event) {
+//    console.log('ready');
+//});
+function onReady(callback) {
+    var intervalID = window.setInterval(checkReady, 13000);
+
+    function checkReady() {
+        if (document.getElementsByTagName('body')[0] !== undefined) {
+            window.clearInterval(intervalID);
+            callback.call(this);
+        }
+    }
+}
+
+function show(id, value) {
+    document.getElementById(id).style.display = value ? 'block' : 'none';
+}
+
+onReady(function () {
+    show('content-footer', true);
+    show('loading', false);
 });
 </script>
 <!--<script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>-->
