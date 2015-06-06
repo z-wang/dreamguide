@@ -11,7 +11,6 @@
     <link rel="stylesheet" href="css/google/fonts/Lora.css">
     <link rel="stylesheet" href="css/angular/angularUI/select2.css">
     <!--<link rel="stylesheet" href="lib/angular-ui/select.min.css">-->
-    <script src="lib/requirejs/requirejs.js" data-main="js/main.js"></script>
     <!--[if lt IE 9]>
     <!--<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>-->
     <!--<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>-->
@@ -122,31 +121,34 @@
 </div>
 <div id="loading" class="content-blank-white"></div>
 <script>// <![CDATA[
+
+function show(id, value) {
+    document.getElementById(id).style.display = value ? 'block' : 'none';
+}
+
 //document.addEventListener("DOMContentLoaded", function(event) {
-//    console.log('ready');
+//    show('loading', false);
 //});
+
 function onReady(callback) {
-    var intervalID = window.setInterval(checkReady, 13000);
+    var intervalID = window.setInterval(checkReady, 1000);
 
     function checkReady() {
-        if (document.getElementsByTagName('body')[0] !== undefined) {
+        if (document.getElementById('index') != undefined && document.getElementById('index') != null) {
             window.clearInterval(intervalID);
             callback.call(this);
         }
     }
 }
 
-function show(id, value) {
-    document.getElementById(id).style.display = value ? 'block' : 'none';
-}
-
 onReady(function () {
-    show('content-footer', true);
+    //show('content-footer', true);
     show('loading', false);
 });
 </script>
 <!--<script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>-->
 <!--<script src="js/main/dreamguide.js"></script>-->
+<script src="lib/requirejs/requirejs.js" data-main="js/main.js"></script>
 
 
 </body>
