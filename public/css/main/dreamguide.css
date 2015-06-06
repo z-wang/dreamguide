@@ -73,7 +73,7 @@ a:focus {
     width: 100vw;
     height: 100vh;
     background-color: rgba(0, 0, 0, 1);
-    background-image: url("https://www.fb.entrepreneurweb.com/sites/fb.entrepreneurweb.com/modules/fb_remax/images/loading_transparent.gif");
+    background-image: url("../../image/loading_transparent.gif");
     background-repeat: no-repeat;
     background-position: center;
 }
