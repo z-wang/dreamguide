@@ -102,32 +102,58 @@ define([
     //    });
     //});
 
-
-
-
-
-
-
-
-    //// Closes the Responsive Menu on Menu Item Click
-    //$('.navbar-collapse ul li a').click(function() {
-    //    $('.navbar-toggle:visible').click();
-    //});
-
-    Highcharts.data({
-        googleSpreadsheetKey: '0AoIaUO7wH1HwdFJHaFI4eUJDYlVna3k5TlpuXzZubHc',
+    //Highcharts.data({
+        //googleSpreadsheetKey: '0AoIaUO7wH1HwdFJHaFI4eUJDYlVna3k5TlpuXzZubHc',
         // custom handler when the spreadsheet is parsed
-        parsed: function (columns) {
+        //parsed: function (columns) {
 
             // Read the columns into the data array
-            var data = [];
-            $.each(columns[0], function (i, code) {
-                data.push({
-                    code: code.toUpperCase(),
-                    value: parseFloat(columns[2][i]),
-                    name: columns[1][i]
-                });
-            });
+            //var data = [];
+            //$.each(columns[0], function (i, code) {
+            //    data.push({
+            //        code: code.toUpperCase(),
+            //        value: parseFloat(columns[2][i]),
+            //        name: columns[1][i]
+            //    });
+            //});
+            //console.log(data);
+            var data = [
+                {
+                    code: 'CA',
+                    name: 'Canada',
+                    value : 109
+                },
+                {
+                    code: 'CN',
+                    name : 'China',
+                    value : 95
+                },
+                {
+                    code: 'NZ',
+                    name: 'New Zealand',
+                    value: 44
+                },
+                {
+                    code: 'ES',
+                    name: 'Spain',
+                    value: 21
+                },
+                {
+                    code: 'SE',
+                    name: 'Sweden',
+                    value: 11
+                },
+                {
+                    code: 'UK',
+                    name: 'United Kingdom',
+                    value : 192
+                },
+                {
+                    code: 'US',
+                    name: 'United States',
+                    value: '234'
+                }
+            ];
             // Initiate the chart
             $('#map1').highcharts('Map', {
                 chart : {
@@ -203,15 +229,15 @@ define([
                     }
                 }]
             });
-        },
-        error: function () {
-            console.log("error");
-            $('#container').html('<div class="loading">' +
-            '<i class="icon-frown icon-large"></i> ' +
-            'Error loading data from Google Spreadsheets' +
-            '</div>');
-        }
-    });
+        //},
+        //error: function () {
+        //    console.log("error");
+        //    $('#container').html('<div class="loading">' +
+        //    '<i class="icon-frown icon-large"></i> ' +
+        //    'Error loading data from Google Spreadsheets' +
+        //    '</div>');
+        //}
+    //});
 
     }]);
 });

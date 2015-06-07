@@ -42,5 +42,19 @@ define([
         $('.navbar').unbind('mouseenter mouseleave');
         $(".navbar-fixed-top").addClass("top-nav-collapse");
 
+        $scope.model = {
+            tutors:[
+                {image:1, name: '导师1', school: 'Columbia', job: 'goldman sachs'},
+                {image:2, name: '导师2', school: 'UIUC', job:'at school'},
+                {image:3, name: '导师3', school: 'MIT', job:'Google'},
+                {image:4, name: '导师4', school: 'NYU', job:'UN'},
+                {image:5, name: '导师5', school: 'USC', job:'at school'},
+                {image:1, name: '导师6', school: 'Columbia', job: 'goldman sachs'},
+                {image:2, name: '导师7', school: 'UIUC', job:'at school'},
+                {image:3, name: '导师8', school: 'MIT', job:'Google'},
+                {image:4, name: '导师9', school: 'NYU', job:'UN'},
+                {image:5, name: '导师10', school: 'USC', job:'at school'}
+            ]
+        };
     }]);
 });
