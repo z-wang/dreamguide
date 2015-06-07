@@ -1,2 +1,2 @@
-# dreamguide1
+# dreamguide project
 contributor: zihan wang, jing zhang
