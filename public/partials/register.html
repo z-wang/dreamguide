@@ -32,7 +32,7 @@
                                             <!--<div data-ng-class="{'has-error': contactInfoErrors.setsEmail}">-->
                                             <label for="email">显示姓名</label>
                                             <div style="clear:both"></div>
-                                            <input type="text" class="form-control pull-left ng-pristine ng-valid" placeholder="显示姓名将在社区中显示" data-ng-model="show_name">
+                                            <input type="text" class="form-control pull-left ng-pristine ng-valid" placeholder="将在社区中显示" data-ng-model="show_name">
                                         </div>
                                     </div>
                                 </div>
@@ -41,8 +41,14 @@
                                         <!--<div data-ng-class="{'has-error': contactInfoErrors.setsPassword}">-->
                                         <div>
                                             <label for="password">性别</label>
-                                            <div style="clear:both"></div>
-                                            <input type="text" class="form-control pull-left ng-pristine ng-valid" placeholder="性别" data-ng-model="real_name">
+                                            <label class="radio-inline">
+                                                <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> 男
+                                            </label>
+                                            <label class="radio-inline">
+                                                <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> 女
+                                            </label>
+                                            <!--<div style="clear:both"></div>-->
+                                            <!--<input type="text" class="form-control pull-left ng-pristine ng-valid" placeholder="性别" data-ng-model="real_name">-->
                                         </div>
                                     </div>
                                 </div>
