@@ -3,12 +3,9 @@
     <head>
         <meta charset="utf-8">
 
-        <!--<link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css" >-->
         <link rel="stylesheet" href="/styles/main/dreamguide.css">
         <link rel="stylesheet" href="/styles/bootstrap/bootstrap.min.css">
         <!--<link rel="stylesheet" href="/lib/bootstrap/css/bootstrap-responsive.min.css" >-->
-        <!--<link rel="stylesheet" href="/styles/sticky-footer.css"/>-->
-        <!--<link rel="stylesheet" href="/styles/app.css"/>-->
         <link rel="stylesheet" href="/styles/font-awesome/css/font-awesome.min.css">
         <link rel="stylesheet" href="/styles/google/fonts/Montserrat.css">
         <link rel="stylesheet" href="/styles/google/fonts/Lora.css">
@@ -124,37 +121,33 @@
             </div>
         </div>
     </div>
-    <!--<div id="loading" class="content-blank-white"></div>-->
-    <script>// <![CDATA[
-    //
-    //function show(id, value) {
-    //    document.getElementById(id).style.display = value ? 'block' : 'none';
-    //}
-    //
-    ////document.addEventListener("DOMContentLoaded", function(event) {
-    ////    show('loading', false);
-    ////});
-    //
-    //function onReady(callback) {
-    //    var intervalID = window.setInterval(checkReady, 1000);
-    //
-    //    function checkReady() {
-    //        if (document.getElementById('index') != undefined && document.getElementById('index') != null) {
-    //            window.clearInterval(intervalID);
-    //            callback.call(this);
-    //        }
-    //    }
-    //}
-    //
-    //onReady(function () {
-    //    //show('content-footer', true);
+    <div id="loading" class="content-blank-white"></div>
+    <script>
+    function show(id, value) {
+        document.getElementById(id).style.display = value ? 'block' : 'none';
+    }
+
+    //document.addEventListener("DOMContentLoaded", function(event) {
     //    show('loading', false);
     //});
-    </script>
-    <!--<script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>-->
-    <!--<script src="js/main/dreamguide.js"></script>-->
 
-        <script type="text/javascript" src="/bower_components/requirejs/require.js" data-main="/scripts/bootstrap.js"></script>
+    function onReady(callback) {
+        var intervalID = window.setInterval(checkReady, 1000);
+
+        function checkReady() {
+            if (document.getElementById('index') != undefined && document.getElementById('index') != null) {
+                window.clearInterval(intervalID);
+                callback.call(this);
+            }
+        }
+    }
+
+    onReady(function () {
+        //show('content-footer', true);
+        show('loading', false);
+    });
+    </script>
+    <script type="text/javascript" src="/bower_components/requirejs/require.js" data-main="/scripts/bootstrap.js"></script>
 
     </body>
 </html>
