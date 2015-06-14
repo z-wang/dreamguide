@@ -1,0 +1,230 @@
+<div class="content-section" id="index">
+    <div class="container">
+        <div class="row col-xs-12">
+            <div class="panel panel-default">
+                <!--<div class="panel-heading">-->
+                    <!--<h3 class="panel-title">Dream Guide导师注册申请</h3>-->
+                <!--</div>-->
+
+                <div class="panel-body">
+                    <h2 style="margin: 0 0 10px;">导师资格申请表</h2>
+                    <div class="alert alert-warning alert-dismissible" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <strong></strong> 我们将对所有个人信息进行保密 ( <a>隐私政策</a> ) ，为了维护平台正常使用，保障各方权益，请填写真实信息。
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">个人信息</h3>
+                        </div>
+                        <div class="panel-body">
+                            <form class="" role="form" data-ng-submit="signInEmail()">
+                                <!--<div class="row ng-hide" data-ng-show="fieldErrors || errorMessage">-->
+                                <!--<div class="col-xs-12 alert alert-danger">-->
+                                <!--<p data-ng-bind-html="errorMessage" class="ng-binding"></p>-->
+                                <!--<ul>-->
+                                <!--&lt;!&ndash; ngRepeat: (field, error) in fieldErrors &ndash;&gt;-->
+                                <!--</ul>-->
+                                <!--</div>-->
+                                <!--</div>-->
+                                <div class="row">
+                                    <div class="col-sm-6 col-xs-6">
+                                        <div>
+                                            <!--<div data-ng-class="{'has-error': contactInfoErrors.setsEmail}">-->
+                                            <label for="email">显示姓名</label>
+                                            <div style="clear:both"></div>
+                                            <input type="text" class="form-control pull-left ng-pristine ng-valid" placeholder="将在社区中显示" data-ng-model="show_name">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-6 col-xs-6">
+                                        <!--<div data-ng-class="{'has-error': contactInfoErrors.setsPassword}">-->
+                                        <div>
+                                            <label for="password">性别</label>
+                                            <label class="radio-inline">
+                                                <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> 男
+                                            </label>
+                                            <label class="radio-inline">
+                                                <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> 女
+                                            </label>
+                                            <!--<div style="clear:both"></div>-->
+                                            <!--<input type="text" class="form-control pull-left ng-pristine ng-valid" placeholder="性别" data-ng-model="real_name">-->
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-6 col-xs-6">
+                                        <!--<div data-ng-class="{'has-error': contactInfoErrors.setsPassword}">-->
+                                        <div>
+                                            <label for="password">真实姓名</label>
+                                            <div style="clear:both"></div>
+                                            <input type="text" class="form-control pull-left ng-pristine ng-valid" placeholder="请填写真实姓名" data-ng-model="real_name">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-6 col-xs-6">
+                                        <div>
+                                            <!--<div data-ng-class="{'has-error': contactInfoErrors.setsEmail}">-->
+                                            <label for="email">电子邮箱</label>
+                                            <div style="clear:both"></div>
+                                            <input type="text" class="form-control pull-left ng-pristine ng-valid ng-valid-email" id="email" placeholder="邮箱将作为登陆账户" data-ng-model="email">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-6 col-xs-6">
+                                        <!--<div data-ng-class="{'has-error': contactInfoErrors.setsPassword}">-->
+                                        <div>
+                                            <label for="password">密码</label>
+                                            <div style="clear:both"></div>
+                                            <input type="text" class="form-control pull-left ng-pristine ng-valid" id="password" placeholder="登陆密码" data-ng-model="password">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-6 col-xs-6">
+                                        <div>
+                                            <!--<div data-ng-class="{'has-error': contactInfoErrors.setsEmail}">-->
+                                            <label for="email">微信号/QQ号</label>
+                                            <div style="clear:both"></div>
+                                            <input type="text" class="form-control pull-left ng-pristine ng-valid" placeholder="填写微信/QQ号码，便于联系沟通" data-ng-model="wechat">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-6 col-xs-6">
+                                        <!--<div data-ng-class="{'has-error': contactInfoErrors.setsPassword}">-->
+                                        <div>
+                                            <label for="password">常用电话(海外)</label>
+                                            <div style="clear:both"></div>
+                                            <input type="text" class="form-control pull-left ng-pristine ng-valid" placeholder="请填写常用电话" data-ng-model='cellphone'>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-6 col-xs-6">
+                                        <!--<div data-ng-class="{'has-error': contactInfoErrors.setsPassword}">-->
+                                        <div>
+                                            <label for="password">SKYPE号码</label>
+                                            <div style="clear:both"></div>
+                                            <input type="text" class="form-control pull-left ng-pristine ng-valid" placeholder="请填写Skype号码" data-ng-model='skype'>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-6 col-xs-6">
+                                        <!--<div data-ng-class="{'has-error': contactInfoErrors.setsPassword}">-->
+                                        <div>
+                                            <label for="password">支付宝账号</label>
+                                            <div style="clear:both"></div>
+                                            <input type="text" class="form-control pull-left ng-pristine ng-valid" placeholder="支付宝账号便于交付" data-ng-model="real_name">
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">专业和工作背景</h3>
+                        </div>
+                        <div class="panel-body">
+                            <form class="" role="form" data-ng-submit="signInEmail2()">
+                                <!--<div class="row ng-hide" data-ng-show="fieldErrors || errorMessage">-->
+                                <!--<div class="col-xs-12 alert alert-danger">-->
+                                <!--<p data-ng-bind-html="errorMessage" class="ng-binding"></p>-->
+                                <!--<ul>-->
+                                <!--&lt;!&ndash; ngRepeat: (field, error) in fieldErrors &ndash;&gt;-->
+                                <!--</ul>-->
+                                <!--</div>-->
+                                <!--</div>-->
+                                <div class="row">
+                                    <div class="col-sm-6 col-xs-6">
+                                        <div>
+                                            <!--<div data-ng-class="{'has-error': contactInfoErrors.setsEmail}">-->
+                                            <label for="email">LinkedIn/领英 链接</label>
+                                            <div style="clear:both"></div>
+                                            <input type="text" class="form-control pull-left ng-pristine ng-valid" placeholder="example: https://www.linkedin.com/in/abc " data-ng-model="linkedin">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-6 col-xs-6">
+                                        <!--<div data-ng-class="{'has-error': contactInfoErrors.setsPassword}">-->
+                                        <div>
+                                            <label for="password">留学国家</label>
+                                            <div style="clear:both"></div>
+                                            <input type="text" class="form-control pull-left ng-pristine ng-valid" placeholder="留学国家" data-ng-model="real_name">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-6 col-xs-6">
+                                        <div>
+                                            <!--<div data-ng-class="{'has-error': contactInfoErrors.setsEmail}">-->
+                                            <label for="email">在读/毕业院校</label>
+                                            <div style="clear:both"></div>
+                                            <input type="text" class="form-control pull-left ng-pristine ng-valid ng-valid-email" placeholder="留学所去学校" data-ng-model="email">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-6 col-xs-6">
+                                        <!--<div data-ng-class="{'has-error': contactInfoErrors.setsPassword}">-->
+                                        <div>
+                                            <label for="password">专业</label>
+                                            <div style="clear:both"></div>
+                                            <input type="text" class="form-control pull-left ng-pristine ng-valid" placeholder="请选择学习专业" data-ng-model="password">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-6 col-xs-6">
+                                        <div>
+                                            <!--<div data-ng-class="{'has-error': contactInfoErrors.setsEmail}">-->
+                                            <label for="email">学校邮箱</label>
+                                            <div style="clear:both"></div>
+                                            <input type="text" class="form-control pull-left ng-pristine ng-valid" placeholder="填写邮箱有助于验证导师信息" data-ng-model="wechat">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-6 col-xs-6">
+                                        <!--<div data-ng-class="{'has-error': contactInfoErrors.setsPassword}">-->
+                                        <div>
+                                            <label for="password">现工作单位及地区</label>
+                                            <div style="clear:both"></div>
+                                            <input type="text" class="form-control pull-left ng-pristine ng-valid" placeholder="" data-ng-model='skype'>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-6 col-xs-6">
+                                        <!--<div data-ng-class="{'has-error': contactInfoErrors.setsPassword}">-->
+                                        <div>
+                                            <label for="password">个人简介</label>
+                                            <div style="clear:both"></div>
+                                            <textarea type="text" class="form-control pull-left ng-pristine ng-valid" placeholder="请用少于100字介绍自己的学习工作状况" data-ng-model='cellphone'></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-primary">
+                        提交申请
+                    </button>
+                    <button type="button" class="btn btn-default">
+                        重置申请
+                    </button>
+                </div>
+            </div>
+
+
+
+
+        </div>
+    </div>
+</div>
