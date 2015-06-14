@@ -1,0 +1,34 @@
+{
+  "name": "dreamguide",
+  "version": "0.1",
+  "homepage": "https://github.com/z-wang/dreamguide",
+  "authors": [
+    "Zihan Wang <wangzhkevin@gmail.com>"
+  ],
+  "description": "Dreamguide, use angular JS",
+  //  "main": "index.html",
+  "main": "./dist/dreamguide.js",
+  "keywords": [
+    "Lazy",
+    "Loading",
+    "AngularJS"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.2.0",
+    "angular-route": "~1.2.14",
+    "jquery": "~2.1.0",
+    "requirejs": "~2.1.11"
+  },
+  "devDependencies": {
+    "angular-mocks": "~1.2.0"
+  }
+}
