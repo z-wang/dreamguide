@@ -78,7 +78,7 @@ define(['app', 'jquery','highmaps',
             // Initiate the chart
             $('#map1').highcharts('Map', {
                 chart : {
-                    borderWidth : 1
+                    borderWidth : 0
                 },
 
                 colors: ['rgba(192,192,192,0.05)', 'rgba(192,192,192,0.2)', 'rgba(192,192,192,0.4)',
@@ -89,12 +89,12 @@ define(['app', 'jquery','highmaps',
                 },
 
                 mapNavigation: {
-                    enabled: true
+                    enabled: false
                 },
 
                 legend: {
                     title: {
-                        text: 'km²',
+                        text: '人数',
                         style: {
                             color: (Highcharts.theme && Highcharts.theme.textColor) || 'black'
                         }
@@ -114,21 +114,15 @@ define(['app', 'jquery','highmaps',
                         to: 5
                     }, {
                         from: 5,
-                        to: 10
+                        to: 20
                     }, {
-                        from: 10,
-                        to: 25
-                    }, {
-                        from: 25,
+                        from: 20,
                         to: 50
                     }, {
                         from: 50,
                         to: 100
                     }, {
-                        from: 100,
-                        to: 200
-                    }, {
-                        from: 200
+                        from: 100
                     }]
                 },
                 credits: {
