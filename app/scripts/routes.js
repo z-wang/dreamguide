@@ -22,6 +22,12 @@ define([], function()
             //        'controllers/ContactViewController'
             //    ]
             //},
+            '/register_info':{
+                templateUrl: '/partials/tutor_info.html',
+                dependencies: [
+                    'controllers/RegisterController'
+                ]
+            },
             '/register': {
                 templateUrl: '/partials/register.html',
                 dependencies: [
