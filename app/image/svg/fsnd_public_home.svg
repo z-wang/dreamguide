@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 17.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 120 120" enable-background="new 0 0 120 120" xml:space="preserve">
+<g opacity="0.25">
+	<g>
+		<path fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="
+			M93,79h18c1.657,0,3-1.343,3-3V60c0-1.657-1.343-3-3-3c1.657,0,3-1.343,3-3V39c0-1.657-1.343-3-3-3c1.657,0,3-1.343,3-3V18
+			c0-1.657-1.343-3-3-3H60c-1.657,0-3,1.343-3,3v12"/>
+		<path fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="
+			M60,57"/>
+		<line fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" x1="93" y1="36" x2="111" y2="36"/>
+		<line fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" x1="93" y1="57" x2="111" y2="57"/>
+	</g>
+	<g>
+		<path fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" d="M91.236,93.889h-80.55
+			c-0.989,0-1.79-0.868-1.79-1.939V31.854c0-1.071,0.801-1.939,1.79-1.939h80.55c0.989,0,1.79,0.868,1.79,1.939V91.95
+			C93.026,93.021,92.225,93.889,91.236,93.889z"/>
+		<rect x="41" y="94" fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" width="19" height="11"/>
+		
+			<line fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" x1="33" y1="105" x2="67" y2="105"/>
+		<rect x="12.5" y="35.5" fill="none" stroke="#000000" stroke-miterlimit="10" width="77" height="53"/>
+		<polyline fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" points="
+			59.862,71.766 71.302,65.307 64.596,53.754 63.026,59.613 42.341,54.07 40.659,60.35 61.343,65.892 59.76,71.802 39.075,66.26 
+			37.505,72.119 31.02,60.866 42.315,54.252 		"/>
+	</g>
+</g>
+</svg>

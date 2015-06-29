@@ -34,6 +34,12 @@ define([], function()
                     'controllers/RegisterController'
                 ]
             },
+            '/student': {
+                templateUrl: '/partials/student_register.html',
+                dependencies: [
+                    'controllers/StudentRegController'
+                ]
+            },
             '/login': {
                 templateUrl: '/partials/login.html',
                 dependencies: [
