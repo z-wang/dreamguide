@@ -78,14 +78,17 @@ define(['app', 'jquery','highmaps',
             // Initiate the chart
             $('#map1').highcharts('Map', {
                 chart : {
-                    borderWidth : 0
+                    borderWidth : 0,
+                    height: 350
+
                 },
 
                 colors: ['rgba(192,192,192,0.05)', 'rgba(192,192,192,0.2)', 'rgba(192,192,192,0.4)',
                     'rgba(192,192,192,0.5)', 'rgba(192,192,192,0.6)', 'rgba(192,192,192,0.8)', 'rgba(192,192,192,1)'],
 
                 title : {
-                    text : '海外顾问分布'
+                    text : '海外顾问分布',
+                    margin: 1
                 },
 
                 mapNavigation: {

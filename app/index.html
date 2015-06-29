@@ -12,9 +12,10 @@
         <link rel="stylesheet" href="/styles/angular/angularUI/select2.css">
         <link rel="stylesheet" href="/lib/angular-ui/select.min.css">
 
-        <title>AngularJS Lazy Loading Demo</title>
+        <title>DreamGuide社区</title>
     </head>
-    <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+    <body>
+    <div id="loading" class="content-blank-white"></div>
     <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
         <div class="container">
             <div class="navbar-header">
@@ -22,15 +23,20 @@
                         class="fa fa-bars"></i></button>
                 <a class="navbar-brand page-scroll" href="/" style="padding: 7px 15px 15px 15px">
                     <img src="image/logo.png" alt="Dreamguide Icon" style="height:35px;">
-
-                </a></div>
-            <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
+                </a>
+            </div>
+            <div id="nav-bar" style="visibility: hidden;" class="collapse navbar-collapse navbar-right navbar-main-collapse">
                 <ul class="nav navbar-nav">
                     <li class="hidden active"><a href="/about">项目介绍</a></li>
                     <li><a class="page-scroll" href="/one2one">一对一平台</a></li>
                     <li><a class="page-scroll" href="/register_info">成为导师</a></li>
-                    <li><a class="page-scroll" href="/login">登录/注册</a></li>
-                    <li><a class="page-scroll" id="contactus" href="">联系我们</a></li>
+                    <li><a class="page-scroll" href="/student" data-ng-show="!$root.user.userName">用户注册</a></li>
+                    <li><a class="page-scroll" href="/calender" data-ng-show="$root.user.userName">日历</a></li>
+                    <li><a class="page-scroll" href="/login" data-ng-show="!$root.user.userName">登录</a></li>
+                    <li><a class="page-scroll" href="/profile" data-ng-show="$root.user.userName">{{$root.user.userName}}</a></li>
+                    <li><a class="page-scroll" href="/" data-ng-show="$root.user.userName" onclick="window.location.reload()">退出</a></li>
+
+                    <!--<li><a class="page-scroll" id="contactus" href="">联系我们</a></li>-->
                 </ul>
             </div>
         </div>
@@ -42,13 +48,11 @@
     <div class="content-footer" id="content-footer">
         <div class="container">
             <div class="row row-centered">
-                <div class="col-xs-3 col-centered">
+                <div class="col-xs-3 col-centered" style="border-right: 1px solid #C0C0C0;  margin-right: 0;">
 
                     <h4>关于我们</h4>
                     <p class="caption">
                         <a href="#about">项目信息</a>
-                        <br>
-                        <a href="/georgia-tech">Dream Guide理念</a>
                         <br>
                         <a href="/organizations">一对一服务平台</a>
                         <br>
@@ -58,10 +62,12 @@
                     </p>
 
                 </div>
-                <div class="col-xs-3 col-centered">
+                <div class="col-xs-3 col-centered" style="border-right: 1px solid #C0C0C0;  margin-right: 0;">
 
                     <h4>Dream 社区</h4>
                     <p class="caption">
+                        <a href="/georgia-tech">Dream Guide理念</a>
+                        <br>
                         <a href="">导师博客推荐</a>
                         <br>
                         <a href="/press">新闻 &amp; 媒体</a>
@@ -70,11 +76,11 @@
                     </p>
 
                 </div>
-                <div class="col-xs-3 col-centered">
+                <div class="col-xs-3 col-centered" style="border-right: 1px solid #C0C0C0;  margin-right: 0;">
 
                     <h4>Dream Guide</h4>
                     <p class="caption">
-                        <a href="/us">关于</a>
+                        <a href="/us">公司介绍</a>
                         <br>
                         <a href="/jobs">职位招聘</a>
                         <br>
@@ -86,42 +92,59 @@
                 </div>
                 <div class="col-xs-3 col-centered">
                     <h4>社交和移动平台</h4>
-                    <a href="#"><div class="fa fa-weibo fa-3x"></div></a>
-                    <a href="#"><div class="fa fa-weixin fa-3x"></div></a>
-                    <a href="#"><div class="fa fa-skype fa-3x"></div></a>
-                    <a href="#"><div class="fa fa-linkedin fa-3x"></div></a>
-                    <a href="#"><div class="fa fa-qq fa-3x"></div></a>
-                    <br />
+
                     <div class="row">
                         <br />
-                        <div class="col-xs-12">
-                            <div class="text-center-xs">
-                                <!--<a href="https://itunes.apple.com/us/app/id819700933?mt=8">-->
-                                <a href="#">
-                                    <!--<img alt="Apple store" class="img-initial mobile-button" src="//lh6.ggpht.com/5mY-J8xINNmZ4x_6mbNYmhDWFT_qzG4q4QA2jPzRfiqRjUticf5u0eEEATtX04gbr_KrDSx8SDDBpGRHAWU=s150#w=300&amp;h=88" srcset="//lh6.ggpht.com/5mY-J8xINNmZ4x_6mbNYmhDWFT_qzG4q4QA2jPzRfiqRjUticf5u0eEEATtX04gbr_KrDSx8SDDBpGRHAWU=s300#w=300&amp;h=88 2x">-->
-                                </a>
-                                <p></p>
-                                <!--<a href="https://play.google.com/store/apps/details?id=com.udacity.android">-->
-                                <a href="#">
-                                    <!--<img alt="Google Play" class="mobile-button" src="//lh5.ggpht.com/Zb2s5Ho_mzDPnb9dBDIqQPpwFrxz1e902ksTnir8Cs_KdrYLvN_TLVK1pmKGbMPgolJ2wIlY23yI9OODDss=s150#w=300&amp;h=88" srcset="//lh5.ggpht.com/Zb2s5Ho_mzDPnb9dBDIqQPpwFrxz1e902ksTnir8Cs_KdrYLvN_TLVK1pmKGbMPgolJ2wIlY23yI9OODDss=s300#w=300&amp;h=88 2x">-->
-                                </a>
-                            </div>
-                        </div>
-                        <br />
+                        <!--<a href="#"><div class="fa fa-weibo fa-3x"></div></a>-->
+                        <a href="#"><img class="icon-small" alt="calendar and clock" src="image/svg/cssi_wechat.svg"></a>
+                        <a href="#"><img class="icon-small" alt="calendar and clock" src="image/svg/cssi_sina_weibo.svg"></a>
+                        <a href="#"><img class="icon-small" alt="calendar and clock" src="image/svg/cssi_zhihu.svg"></a>
+                        <a href="#"><img class="icon-small" alt="calendar and clock" src="image/svg/ios.svg"></a>
+                        <a href="#"><img class="icon-small" alt="calendar and clock" src="image/svg/android.svg"></a>
+
+                        <!--<a href="#"><div class="fa fa-weixin fa-3x"></div></a>-->
+                        <!--<a href="#"><div class="fa fa-skype fa-3x"></div></a>-->
+                        <!--<a href="#"><div class="fa fa-linkedin fa-3x"></div></a>-->
                     </div>
+                    <!--<a href="#"><div class="fa fa-weibo fa-3x"></div></a>-->
+                    <!--<a href="#"><div ><img class="icon-small" alt="calendar and clock" src="image/svg/cssi_wechat.svg"></div></a>-->
+                    <!--<a href="#"><div ><img class="icon-small" alt="calendar and clock" src="image/svg/cssi_sina_weibo.svg"></div></a>-->
+                    <!--<a href="#"><div ><img class="icon-small" alt="calendar and clock" src="image/svg/cssi_zhihu.svg"></div></a>-->
+                    <!--<a href="#"><div class="fa fa-weixin fa-3x"></div></a>-->
+                    <!--<a href="#"><div class="fa fa-skype fa-3x"></div></a>-->
+                    <!--<a href="#"><div class="fa fa-linkedin fa-3x"></div></a>-->
+                    <!--<div class="row">-->
+                        <!--<br />-->
+                        <!--<div class="col-xs-12">-->
+                            <!--<div class="text-center-xs">-->
+                                <!--&lt;!&ndash;<a href="https://itunes.apple.com/us/app/id819700933?mt=8">&ndash;&gt;-->
+                                <!--<a href="#">-->
+                                    <!--&lt;!&ndash;<img alt="Apple store" class="img-initial mobile-button" src="//lh6.ggpht.com/5mY-J8xINNmZ4x_6mbNYmhDWFT_qzG4q4QA2jPzRfiqRjUticf5u0eEEATtX04gbr_KrDSx8SDDBpGRHAWU=s150#w=300&amp;h=88" srcset="//lh6.ggpht.com/5mY-J8xINNmZ4x_6mbNYmhDWFT_qzG4q4QA2jPzRfiqRjUticf5u0eEEATtX04gbr_KrDSx8SDDBpGRHAWU=s300#w=300&amp;h=88 2x">&ndash;&gt;-->
+                                <!--</a>-->
+                                <!--<p></p>-->
+                                <!--&lt;!&ndash;<a href="https://play.google.com/store/apps/details?id=com.udacity.android">&ndash;&gt;-->
+                                <!--<a href="#">-->
+                                    <!--&lt;!&ndash;<img alt="Google Play" class="mobile-button" src="//lh5.ggpht.com/Zb2s5Ho_mzDPnb9dBDIqQPpwFrxz1e902ksTnir8Cs_KdrYLvN_TLVK1pmKGbMPgolJ2wIlY23yI9OODDss=s150#w=300&amp;h=88" srcset="//lh5.ggpht.com/Zb2s5Ho_mzDPnb9dBDIqQPpwFrxz1e902ksTnir8Cs_KdrYLvN_TLVK1pmKGbMPgolJ2wIlY23yI9OODDss=s300#w=300&amp;h=88 2x">&ndash;&gt;-->
+                                <!--</a>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
                     <div class="row row-gap-small">
                         <div class="col-xs-12 text-muted" style="font-size: 14px">
                             <br />
-                            版权所有 © 2005 – 2014, DreamGuide。
+                            版权所有 © DreamGuide。
                             <br />
-                            保留所有权利, 京ICP备15013505号。
+                            保留权利, 京ICP备15013505号。
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div id="loading" class="content-blank-white"></div>
+
+    <!--<div style="position:absolute; right:0;bottom:0">-->
+        <!--<button>hahahaasdasds</button>-->
+    <!--</div>-->
     <script>
     function show(id, value) {
         document.getElementById(id).style.display = value ? 'block' : 'none';
@@ -139,7 +162,7 @@
     }
 
     onReady(function () {
-        //show('content-footer', true);
+        document.getElementById("nav-bar").style.visibility = "visible";
         show('loading', false);
     });
     </script>
