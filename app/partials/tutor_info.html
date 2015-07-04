@@ -1,25 +1,92 @@
 <div class="content-section" id="index" ng-controller="RegisterController">
     <div class="container">
+        <div class="section-inverse section-inverse-space section-narrow" id="more-details">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
+                        <div class="section section-small">
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-12 text-center">
+                                    <img class="icon-large" alt="calendar and clock" src="../image/svg/dreamguide.svg">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-10 col-xs-offset-1">
+                                    <h3 class="text-center">导师福利:</h3>
+                                    <div class="row row-gap-medium">
+                                        <div class="col-xs-12 col-sm-6">
+                                            <ul class="list-check">
+                                                <li><p>化知识为实用</p></li>
+                                                <li><p>扩大社交网络</p></li>
+                                                <li><p>培养沟通能力</p></li>
+                                                <li><p>反馈思考</p></li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-6">
+                                            <ul class="list-check">
+                                                <li><p>发现团队，发现伙伴</p></li>
+                                                <li><p>获得相应的酬劳</p></li>
+                                                <li><p>获得社区积分</p></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-xs-10 col-xs-offset-1 text-center">
+                                    导师需要实名认证，点击查看更多 - <a href="/" target="_blank">福利细节</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="section section-standout-alternate">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-8 col-md-offset-2">
+                        <h2 class="h-slim-top">Dreamguide导师的责任</h2>
+                        <!--<div class="pretty-format"><p>These are the projects you'll build and the classes that will prepare you to build each of the projects. You'll have access to all these in the Nanodegree:</p>-->
+                        <br />
+                            <p><strong>保持个人信息真实准确</strong></p>
+
+                            <!--<p>Learn fundamental data science skills like data wrangling, applied statistics and machine learning, effective visualization, and working with big data using MapReduce. Pose a question about the New York City Subway and work with the subway ridership dataset to draw an interesting conclusion about the dataset itself.</p>-->
+
+                            <p><strong>对他人的个人及敏感信息有意识的保密</strong> <br>
+
+                            <p><strong>在客观的基础上用自己的经验帮助别人获得新视角</strong> <br>
+                                <!--Use R to apply exploratory data analysis techniques. Practice understanding a single variable and relationships between multiple variables, and explore a selected data set for distributions, outliers, and anomalies.</p>-->
+
+                            <!--<p>Prepare for this project with: <a href="https://www.udacity.com/course/data-analysis-with-r&#45;&#45;ud651">Data Analysis with R</a></p>-->
+
+                            <p><strong>用诚实的态度提出中肯的建议</strong> <br>
+
+                            <p><strong>及时回复, 并且保持一定活跃度</strong></p>
+
+                        </div>
+                    </div>
+                </div>
+        </div>
+        <br />
         <div class="row">
             <div class="col-lg-12 col-sm-12 col-xs-12" >
-                <div class="panel panel-default">
-                    <div class="panel-body">
-                        <h4>成为dreamguide导师</h4>
-                        <p>化知识为实用</p>
-                        <p>扩大社交网络，培养沟通能力</p>
-                        <p>经验传递的反馈思考，教学相长</p>
-                        <p>发现团队，发现伙伴</p>
-                        <p>获得应得的酬劳</p>
-                    </div>
-                </div>
-                <div class="panel panel-default">
-                    <div class="panel-body">
-                        <h4>dreamguide导师的责任</h4>
-                        <p>在客观的基础上用自己的经验帮助别人获得新视角</p>
-                        <p>诚实的态度，中肯的建议</p>
-                        <p>及时回复</p>
-                    </div>
-                </div>
+                <!--<div class="panel panel-default">-->
+                    <!--<div class="panel-body">-->
+                        <!--<h4>成为dreamguide导师</h4>-->
+                        <!--<p>化知识为实用</p>-->
+                        <!--<p>扩大社交网络，培养沟通能力</p>-->
+                        <!--<p>经验传递的反馈思考，教学相长</p>-->
+                        <!--<p>发现团队，发现伙伴</p>-->
+                        <!--<p>获得应得的酬劳</p>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div class="panel panel-default">-->
+                    <!--<div class="panel-body">-->
+
+                    <!--</div>-->
+                <!--</div>-->
                 <div class="panel panel-default">
                     <div class="panel-body">
                         <h4>dreamguide平台协议</h4>
@@ -33,9 +100,14 @@
             </div>
         </div>
 
+
         <div class="row">
-            <a class="page-scroll" href="/register">确认</a>
+            <div class="col-xs-3 pull-right">
+                <button type="submit" class="btn btn-block btn-primary" data-ng-click="toRegister()">认同协议，前往注册</button>
+            </div>
         </div>
+
+
 
     </div>
 </div>

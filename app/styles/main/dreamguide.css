@@ -1,8 +1,11 @@
 body {
     width: 100%;
     height: 100%;
-    font-family: Lora,"Helvetica Neue",Helvetica,Arial,宋体, SimSun, 华文细黑, STXihei, sans-serif;
-    color: #f3f3f3;
+    font-family: "Whitney SSm A","Whitney SSm B","Helvetica Neue",Helvetica,Arial,sans-serif;
+    /*font-family: Lora,"Helvetica Neue",Helvetica,Arial,宋体, SimSun, 华文细黑, STXihei, sans-serif;*/
+    font-size: 14px;
+    line-height: 1.7;
+    color: #303030;
     background-color: #f3f3f3;
 }
 
@@ -265,7 +268,7 @@ a:focus {
     display: table;
     width: 100%;
     height: auto;
-    padding: 175px 0;
+    padding: 160px 0;
     text-align: center;
     color: #fff;
     background: url(../../image/main/dreamguide02.jpg) no-repeat bottom center scroll;
@@ -382,10 +385,12 @@ a:focus {
     padding-top: 50px;
     padding-bottom: 100px;
     font-size: 14px;
+    line-height: 1.7;
     color: #303030;
     background-color: #fff;
     /*background-color: #F0F0F0;*/
-    font-family: "微軟正黑體", "Microsoft JhengHei",  Tahoma , Verdana , Arial , sans-serif;
+    /*font-family: "华文细黑", "Microsoft JhengHei",  Tahoma , Verdana , Arial , sans-serif;*/
+    font-family: "Whitney SSm A","Whitney SSm B","Helvetica Neue",Helvetica,Arial,sans-serif;
 }
 .content-footer{
     padding-top:75px;
@@ -394,7 +399,7 @@ a:focus {
     color: #303030;
     /*background-color: #fff;*/
     background-color: #F0F0F0;
-    font-family: "微軟正黑體", "Microsoft JhengHei",  Tahoma , Verdana , Arial , sans-serif;
+    font-family: "华文细黑", "Microsoft JhengHei",  Tahoma , Verdana , Arial , sans-serif;
 }
 
 .content-blank-white{
@@ -419,12 +424,12 @@ hr.hr-gradient {
 }
 
 .icon-large {
-    width: 75px;
+    width: 100px;
     font-size: 75px;
 }
 
 .icon-middle {
-    width: 50px;
+    width: 60px;
     font-size: 35px;
 }
 
@@ -485,6 +490,32 @@ hr.hr-gradient {
 
 .section.section-slim,.section-inverse.section-slim{
     padding-top:0;padding-bottom:0
+}
+
+.section-inverse {
+    background-color: #4e4e4e;
+}
+
+.section.section-standout-alternate {
+    background-color: #dfeaf1;
+}
+
+.section.section-small, .section-inverse.section-small {
+    padding-top: 30px;
+    padding-bottom: 30px;
+    background-color: #fff;
+}
+
+.section, .section-inverse {
+    padding-top: 60px;
+    padding-bottom: 60px;
+}
+
+.section-inverse.section-inverse-space {
+    background-image: -webkit-linear-gradient(top,#294860 0,#307699 100%);
+    background-image: linear-gradient(to bottom,#294860 0,#307699 100%);
+    background-repeat: repeat-x;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff294860', endColorstr='#ff307699', GradientType=0);
 }
 
 .section.section-front-end-web{

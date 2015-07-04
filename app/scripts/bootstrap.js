@@ -4,7 +4,7 @@ require.config({
 		'angular': '/bower_components/angular/angular.min',
 		'angular-route': '/bower_components/angular-route/angular-route.min',
         'angular-sanitize' : '../lib/angular/angular-sanitize.min',
-        'bootstrap': '../lib/bootstrap/js/bootstrap.min',
+        'bootstrapjs': '../lib/bootstrap/js/bootstrap.min',
 		'jquery': '/bower_components/jquery/dist/jquery.min',
         //'route-style' : '../lib/route-style/route-style',
         'highmaps': '../lib/highmaps/highmaps',
@@ -16,12 +16,12 @@ require.config({
     },
 	shim: {
 		'app': {
-			deps: ['angular', 'angular-route', 'bootstrap']
+			deps: ['angular', 'angular-route', 'bootstrapjs']
 		},
 		'angular-route': {
 			deps: ['angular']
 		},
-		'bootstrap': {
+		'bootstrapjs': {
 			deps: ['jquery']
 		},
         'angular-sanitize' : {

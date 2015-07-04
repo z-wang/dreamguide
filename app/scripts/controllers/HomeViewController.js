@@ -1,4 +1,4 @@
-define(['app', 'jquery','highmaps',
+define(['app', 'jquery','bootstrap','highmaps',
     'custom-world',
     'custom-data'], function(app)
 {
@@ -36,6 +36,12 @@ define(['app', 'jquery','highmaps',
                         scrollTop: $("#content-footer").offset().top},
                     'slow');
             });
+
+            $scope.showModal = false;
+            $scope.toggleModal = function(){
+                console.log("!");
+                $scope.showModal = !$scope.showModal;
+            };
 
             var data = [
                 {
