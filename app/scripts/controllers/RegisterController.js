@@ -4,11 +4,17 @@
 define(['app'], function(app)
 {
     app.controller('RegisterController',
-        ['$scope', function($scope) {
+        ['$scope','$location', function($scope, $location) {
                 console.log('register');
                 $(window).scrollTop(0);
                 $(window).unbind("scroll");
                 $('.navbar').unbind('mouseenter mouseleave');
                 $(".navbar-fixed-top").addClass("top-nav-collapse");
+
+
+            $scope.toRegister = function(){
+                $(window).scrollTop(0);
+                $location.path("/register");
+            }
         }]);
 });

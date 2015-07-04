@@ -33,6 +33,7 @@
                     <li><a class="page-scroll" href="/student" data-ng-show="!$root.user.userName">用户注册</a></li>
                     <li><a class="page-scroll" href="/calender" data-ng-show="$root.user.userName">日历</a></li>
                     <li><a class="page-scroll" href="/login" data-ng-show="!$root.user.userName">登录</a></li>
+
                     <li><a class="page-scroll" href="/profile" data-ng-show="$root.user.userName">{{$root.user.userName}}</a></li>
                     <li><a class="page-scroll" href="/" data-ng-show="$root.user.userName" onclick="window.location.reload()">退出</a></li>
 

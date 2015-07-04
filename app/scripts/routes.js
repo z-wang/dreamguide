@@ -6,7 +6,8 @@ define([], function()
             '/': {
                 templateUrl: '/partials/index.html',
                 dependencies: [
-                    'controllers/HomeViewController'
+                    'controllers/HomeViewController',
+                    'directives/login-toggle'
                 ]
             },
             //'/about/:person': {
