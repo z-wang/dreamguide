@@ -145,8 +145,8 @@
                                         <img flow-img="$flow.files[0]" />
                                     </div>
                                     <div>
-                                        <button href="#" class="btn" ng-hide="$flow.files.length" flow-btn flow-attrs="{accept:'image/*'}">选择图片</button>
-                                        <button href="#" class="btn" ng-show="$flow.files.length" flow-btn flow-attrs="{accept:'image/*'}">确认</button>
+                                        <button href="#" class="btn btn-primary" ng-hide="$flow.files.length" flow-btn flow-attrs="{accept:'image/*'}">选择图片</button>
+                                        <button href="#" class="btn btn-success" ng-show="$flow.files.length" flow-btn flow-attrs="{accept:'image/*'}">确认</button>
                                         <button href="#" class="btn btn-danger" ng-show="$flow.files.length"
                                            ng-click="$flow.cancel()">
                                             删除
