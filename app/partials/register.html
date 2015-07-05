@@ -1,3 +1,8 @@
+<!--<style>-->
+    <!--.thumbnail {-->
+        <!--max-width: 200px; max-height: 150px; line-height: 20px; margin-bottom: 5px;-->
+    <!--}-->
+<!--</style>-->
 <div class="content-section" id="index" ng-controller="RegisterController">
     <div class="container">
         <div class="row col-xs-12">
@@ -17,7 +22,7 @@
                             <h3 class="panel-title">个人信息</h3>
                         </div>
                         <div class="panel-body">
-                            <form class="" role="form" data-ng-submit="signInEmail()">
+                            <!--<form class="" role="form" data-ng-submit="signInEmail()">-->
                                 <!--<div class="row ng-hide" data-ng-show="fieldErrors || errorMessage">-->
                                 <!--<div class="col-xs-12 alert alert-danger">-->
                                 <!--<p data-ng-bind-html="errorMessage" class="ng-binding"></p>-->
@@ -26,18 +31,20 @@
                                 <!--</ul>-->
                                 <!--</div>-->
                                 <!--</div>-->
-                                <div class="row">
-                                    <div class="col-sm-6 col-xs-6">
+                            <div class="col-sm-6 col-xs-6">
+
+                            <div class="row">
+                                    <!--<div class="col-sm-6 col-xs-6">-->
                                         <div>
                                             <!--<div data-ng-class="{'has-error': contactInfoErrors.setsEmail}">-->
                                             <label for="email">显示姓名</label>
                                             <div style="clear:both"></div>
                                             <input type="text" class="form-control pull-left ng-pristine ng-valid" placeholder="将在社区中显示" data-ng-model="show_name">
                                         </div>
-                                    </div>
+                                    <!--</div>-->
                                 </div>
                                 <div class="row">
-                                    <div class="col-sm-6 col-xs-6">
+                                    <!--<div class="col-sm-6 col-xs-6">-->
                                         <!--<div data-ng-class="{'has-error': contactInfoErrors.setsPassword}">-->
                                         <div>
                                             <label for="password">性别</label>
@@ -50,70 +57,70 @@
                                             <!--<div style="clear:both"></div>-->
                                             <!--<input type="text" class="form-control pull-left ng-pristine ng-valid" placeholder="性别" data-ng-model="real_name">-->
                                         </div>
-                                    </div>
+                                    <!--</div>-->
                                 </div>
                                 <div class="row">
-                                    <div class="col-sm-6 col-xs-6">
+                                    <!--<div class="col-sm-6 col-xs-6">-->
                                         <!--<div data-ng-class="{'has-error': contactInfoErrors.setsPassword}">-->
                                         <div>
                                             <label for="password">真实姓名</label>
                                             <div style="clear:both"></div>
                                             <input type="text" class="form-control pull-left ng-pristine ng-valid" placeholder="请填写真实姓名" data-ng-model="real_name">
                                         </div>
-                                    </div>
+                                    <!--</div>-->
                                 </div>
                                 <div class="row">
-                                    <div class="col-sm-6 col-xs-6">
+                                    <!--<div class="col-sm-6 col-xs-6">-->
                                         <div>
                                             <!--<div data-ng-class="{'has-error': contactInfoErrors.setsEmail}">-->
                                             <label for="email">电子邮箱</label>
                                             <div style="clear:both"></div>
                                             <input type="text" class="form-control pull-left ng-pristine ng-valid ng-valid-email" id="email" placeholder="邮箱将作为登陆账户" data-ng-model="email">
                                         </div>
-                                    </div>
+                                    <!--</div>-->
                                 </div>
                                 <div class="row">
-                                    <div class="col-sm-6 col-xs-6">
+                                    <!--<div class="col-sm-6 col-xs-6">-->
                                         <!--<div data-ng-class="{'has-error': contactInfoErrors.setsPassword}">-->
                                         <div>
                                             <label for="password">密码</label>
                                             <div style="clear:both"></div>
                                             <input type="text" class="form-control pull-left ng-pristine ng-valid" id="password" placeholder="登陆密码" data-ng-model="password">
                                         </div>
-                                    </div>
+                                    <!--</div>-->
                                 </div>
                                 <div class="row">
-                                    <div class="col-sm-6 col-xs-6">
+                                    <!--<div class="col-sm-6 col-xs-6">-->
                                         <div>
                                             <!--<div data-ng-class="{'has-error': contactInfoErrors.setsEmail}">-->
                                             <label for="email">微信号/QQ号</label>
                                             <div style="clear:both"></div>
                                             <input type="text" class="form-control pull-left ng-pristine ng-valid" placeholder="填写微信/QQ号码，便于联系沟通" data-ng-model="wechat">
                                         </div>
-                                    </div>
+                                    <!--</div>-->
                                 </div>
                                 <div class="row">
-                                    <div class="col-sm-6 col-xs-6">
+                                    <!--<div class="col-sm-6 col-xs-6">-->
                                         <!--<div data-ng-class="{'has-error': contactInfoErrors.setsPassword}">-->
                                         <div>
                                             <label for="password">常用电话(海外)</label>
                                             <div style="clear:both"></div>
                                             <input type="text" class="form-control pull-left ng-pristine ng-valid" placeholder="请填写常用电话" data-ng-model='cellphone'>
                                         </div>
-                                    </div>
+                                    <!--</div>-->
                                 </div>
                                 <div class="row">
-                                    <div class="col-sm-6 col-xs-6">
+                                    <!--<div class="col-sm-6 col-xs-6">-->
                                         <!--<div data-ng-class="{'has-error': contactInfoErrors.setsPassword}">-->
                                         <div>
                                             <label for="password">SKYPE号码</label>
                                             <div style="clear:both"></div>
                                             <input type="text" class="form-control pull-left ng-pristine ng-valid" placeholder="请填写Skype号码" data-ng-model='skype'>
                                         </div>
-                                    </div>
+                                    <!--</div>-->
                                 </div>
                                 <div class="row">
-                                    <div class="col-sm-6 col-xs-6">
+                                    <!--<div class="col-sm-6 col-xs-6">-->
                                         <!--<div data-ng-class="{'has-error': contactInfoErrors.setsPassword}">-->
                                         <div>
                                             <label for="password">支付宝账号</label>
@@ -122,7 +129,34 @@
                                         </div>
                                     </div>
                                 </div>
-                            </form>
+                            <div class="col-sm-6 col-xs-6" flow-init="{target: '/img/upLoad', testChunks:false}"
+                                 flow-files-submitted="$flow.upload()"
+                                 flow-file-success="$file.msg = $message">
+
+                                <br />
+                                头像上传
+                                <hr class="soften"/>
+
+                                <div>
+                                    <div class="thumbnail" ng-hide="$flow.files.length">
+                                        <img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&text=no+image" />
+                                    </div>
+                                    <div class="thumbnail" ng-show="$flow.files.length">
+                                        <img flow-img="$flow.files[0]" />
+                                    </div>
+                                    <div>
+                                        <button href="#" class="btn" ng-hide="$flow.files.length" flow-btn flow-attrs="{accept:'image/*'}">选择图片</button>
+                                        <button href="#" class="btn" ng-show="$flow.files.length" flow-btn flow-attrs="{accept:'image/*'}">确认</button>
+                                        <button href="#" class="btn btn-danger" ng-show="$flow.files.length"
+                                           ng-click="$flow.cancel()">
+                                            删除
+                                        </button>
+                                    </div>
+                                    <br />
+                                        只接受 PNG,GIF,JPG 格式的图片文件.
+                                </div>
+                            </div>
+                            <!--</form>-->
                         </div>
                     </div>
                     <div class="panel panel-default">

@@ -6,6 +6,7 @@ require.config({
         'angular-sanitize' : '../lib/angular/angular-sanitize.min',
         'bootstrapjs': '../lib/bootstrap/js/bootstrap.min',
 		'jquery': '/bower_components/jquery/dist/jquery.min',
+        'ng-flow': '../lib/angular/ng-flow',
         //'route-style' : '../lib/route-style/route-style',
         'highmaps': '../lib/highmaps/highmaps',
         'highcharts': '../lib/highcharts/highcharts',
@@ -25,6 +26,9 @@ require.config({
 			deps: ['jquery']
 		},
         'angular-sanitize' : {
+            deps: ['angular']
+        },
+        'ng-flow':{
             deps: ['angular']
         },
         //'route-style' : {

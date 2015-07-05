@@ -13,6 +13,11 @@ app.get('/*', function(req,res)
     res.sendfile(__dirname + '/app/index.html');
 });
 
+app.post('/img/upLoad',function(req,res){
+    console.log(req.files);
+    res.end("yes");
+});
+
 app.listen(10100);
 
 console.log('Listening on port 10100');
