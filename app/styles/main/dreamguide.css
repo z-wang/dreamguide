@@ -322,6 +322,13 @@ a:focus {
     transition: background .3s ease-in-out;
 }
 
+/*.thumbnail-large {*/
+    /*max-width: 500px;*/
+    /*max-height: 400px;*/
+    /*line-height: 20px;*/
+    /*margin-bottom: 10px;*/
+    /*}*/
+
 .btn-circle:hover,
 .btn-circle:focus {
     outline: 0;

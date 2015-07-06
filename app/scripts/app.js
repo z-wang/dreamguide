@@ -1,6 +1,6 @@
-define(['routes','services/dependencyResolverFor', 'ui-select', 'angular-sanitize', 'ng-flow'], function(config, dependencyResolverFor)
+define(['routes','services/dependencyResolverFor', 'ui-select', 'angular-sanitize'], function(config, dependencyResolverFor)
 {
-    var app = angular.module('app', ['ngRoute', 'ui.select', 'ngSanitize', 'flow']);
+    var app = angular.module('app', ['ngRoute', 'ui.select', 'ngSanitize']);
 
     app.config(
     [

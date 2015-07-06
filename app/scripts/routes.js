@@ -26,13 +26,18 @@ define([], function()
             '/register_info':{
                 templateUrl: '/partials/tutor_info.html',
                 dependencies: [
-                    'controllers/RegisterController'
+                    'controllers/RegisterController',
+                    'services/fileReaderService'
                 ]
             },
             '/register': {
                 templateUrl: '/partials/register.html',
                 dependencies: [
-                    'controllers/RegisterController'
+                    'controllers/RegisterController',
+                    'services/fileReaderService',
+                    'directives/file-select',
+                    'directives/file-field'
+                    //'../lib/angular/angular-bootstrap-file'
                 ]
             },
             '/student': {
