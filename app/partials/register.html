@@ -131,42 +131,51 @@
                             <br />
                                 <b>头像上传</b>
                                 <br />
-                                只接受 PNG,GIF,JPG 格式的图片文件.
+                                做一名有头有脸可信可爱的导师，请上传一张你认为最帅气最职业最有范的个人半身照。(只接受小于200KB, PNG,GIF,JPG 格式的图片文件)
                                 <hr class="soften"/>
 
-                                <div>
-                                    <div  ng-hide="imageSrc">
-                                        <img style="display: block;margin-left: auto;margin-right: auto;  max-height: 250px; max-width: 250px;" src="http://www.placehold.it/250x250/EFEFEF/AAAAAA&text=no+image" />
-                                    </div>
-                                    <div ng-show="imageSrc">
-                                        <img alt="image" style="display: block;margin-left: auto;margin-right: auto; max-height: 250px; max-width: 250px;"  ng-src="{{imageSrc}}" /><br/>
-                                    </div>
-                                    <div>
-                                          <input type="file" ng-file-select="onFileSelect($files)" multiple>
-                                    </div>
-                                    <!--<form class="form" ng-submit="doUpload()">-->
-                                        <!--<div class="form-group">-->
-                                            <!--<label>Title</label>-->
-                                            <!--<input ng-model="title" type="text" class="form-control" required>-->
-                                        <!--</div>-->
-                                        <!--<div class="form-group">-->
-                                            <!--<file-field class="btn" ng-model="uploadFile" preview="previewImage">Select File</file-field>-->
-                                        <!--</div>-->
-                                        <!--<button class="btn btn-primary">Submit</button>-->
-                                    <!--</form>-->
-                                </div>
-                                <br />上传进度:
-                                <progress value="{{progress}}"></progress>
-                            <!--</div>-->
-                                <!--<div class="col-sm-4" ng-show="previewImage">-->
-                                    <!--<h3>Preview</h3>-->
-                                    <!--<img ng-src="{{previewImage}}" width="200">-->
-                                    <!--<br>-->
-                                    <!--{{uploadFile.name}}-->
+                                <!--<div>-->
+                                    <!--<div ng-hide="imageSrc">-->
+                                        <!--<img style="display: block;margin-left: auto;margin-right: auto;  max-height: 250px; max-width: 250px;" src="http://www.placehold.it/250x250/EFEFEF/AAAAAA&text=no+image" />-->
+                                    <!--</div>-->
+                                    <!--<div ng-show="imageSrc">-->
+                                        <!--<img alt="image" style="display: block;margin-left: auto;margin-right: auto; max-height: 250px; max-width: 250px;"  ng-src="{{imageSrc}}" /><br/>-->
+                                    <!--</div>-->
+                                    <!--<div>-->
+                                          <!--<input type="file" id="choose-file" ng-file-select="onFileSelect($files)" multiple>-->
+                                    <!--</div>-->
+                                    <!--&lt;!&ndash;<form class="form" ng-submit="doUpload()">&ndash;&gt;-->
+                                        <!--&lt;!&ndash;<div class="form-group">&ndash;&gt;-->
+                                            <!--&lt;!&ndash;<label>Title</label>&ndash;&gt;-->
+                                            <!--&lt;!&ndash;<input ng-model="title" type="text" class="form-control" required>&ndash;&gt;-->
+                                        <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                                        <!--&lt;!&ndash;<div class="form-group">&ndash;&gt;-->
+                                            <!--&lt;!&ndash;<file-field class="btn" ng-model="uploadFile" preview="previewImage">Select File</file-field>&ndash;&gt;-->
+                                        <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                                        <!--&lt;!&ndash;<button class="btn btn-primary">Submit</button>&ndash;&gt;-->
+                                    <!--&lt;!&ndash;</form>&ndash;&gt;-->
                                 <!--</div>-->
-                            </div>
+                                <!--<br />上传进度:-->
+                                <!--<progress value="{{progress}}"></progress>-->
+                            <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                                <!--&lt;!&ndash;<div class="col-sm-4" ng-show="previewImage">&ndash;&gt;-->
+                                    <!--&lt;!&ndash;<h3>Preview</h3>&ndash;&gt;-->
+                                    <!--&lt;!&ndash;<img ng-src="{{previewImage}}" width="200">&ndash;&gt;-->
+                                    <!--&lt;!&ndash;<br>&ndash;&gt;-->
+                                    <!--&lt;!&ndash;{{uploadFile.name}}&ndash;&gt;-->
+                                <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                            <!--</div>-->
+
+                                <input type="file" img-cropper-fileread image="cropper.sourceImage" />
+                                <div>
+                                    <canvas width="500" height="300" id="canvas" image-cropper image="cropper.sourceImage" cropped-image="cropper.croppedImage" crop-width="200" crop-height="200" keep-aspect="true"></canvas>
+                                </div>
+                                <div>Cropped Image:</div>
+                                <div ng-show="cropper.croppedImage!=null"><img ng-src="{{cropper.croppedImage}}" /></div>{{cropper.croppedImage}}
 
 
+                                <div id="drawing">
+                                </div>
                             <!--</form>-->
                         </div>
                     </div>
@@ -258,7 +267,7 @@
                             </form>
                         </div>
                     </div>
-                    <button type="button" class="btn btn-primary">
+                    <button type="button" class="btn btn-primary" ng-click="submitApply()">
                         提交申请
                     </button>
                     <button type="button" class="btn btn-default">

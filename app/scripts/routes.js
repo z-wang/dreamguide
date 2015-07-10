@@ -36,9 +36,18 @@ define([], function()
                     'controllers/RegisterController',
                     'services/fileReaderService',
                     'directives/file-select',
-                    'directives/file-field'
+                    'directives/file-field',
+                    'directives/image-cropper',
+                    'directives/img-cropper-file-read'
+
                     //'../lib/angular/angular-bootstrap-file'
                 ]
+            },
+            '/thankyou':{
+                templateUrl: '/partials/thankyou.html'
+            },
+            '/profile':{
+                templateUrl: '/partials/profile.html'
             },
             '/student': {
                 templateUrl: '/partials/student_register.html',
