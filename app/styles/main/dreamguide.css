@@ -88,6 +88,7 @@ a:focus {
 .row-centered {
     text-align:center;
 }
+
 .col-centered {
     display:inline-block;
     float:none;
@@ -258,6 +259,14 @@ a:focus {
     margin-top: 30px;
 }
 
+.row.row-gap-info {
+    font-family: STFangsong, FangSong;
+    text-align: center;
+    font-size: 36px;
+    color: #004B00;
+    font-weight: 900;
+}
+
 .stationary-text-bottom {
     font-size: 20px;
     font-family: "Whitney SSm A","Whitney SSm B","Helvetica Neue",Helvetica,Arial,sans-serif;
@@ -305,6 +314,21 @@ a:focus {
     .intro .intro-body .intro-text {
         font-size: 25px;
     }
+}
+
+.tutor_info {
+    display: table;
+    width: 100%;
+    height: auto;
+    padding: 180px 0;
+    text-align: center;
+    color: #fff;
+    background: url(../../image/main/tutor_front.jpg) no-repeat bottom center scroll;
+    background-color: #000;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
 }
 
 .btn-circle {

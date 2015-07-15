@@ -26,17 +26,13 @@ define([], function()
             '/register_info':{
                 templateUrl: '/partials/tutor_info.html',
                 dependencies: [
-                    'controllers/RegisterController',
-                    'services/fileReaderService'
+                    'controllers/TutorInfoController'
                 ]
             },
             '/register': {
                 templateUrl: '/partials/register.html',
                 dependencies: [
                     'controllers/RegisterController',
-                    'services/fileReaderService',
-                    'directives/file-select',
-                    'directives/file-field',
                     'directives/image-cropper',
                     'directives/img-cropper-file-read'
 
@@ -44,7 +40,10 @@ define([], function()
                 ]
             },
             '/thankyou':{
-                templateUrl: '/partials/thankyou.html'
+                templateUrl: '/partials/thankyou.html',
+                dependencies: [
+                    'controllers/ThankYouController'
+                ]
             },
             '/profile':{
                 templateUrl: '/partials/profile.html'

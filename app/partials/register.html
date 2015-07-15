@@ -1,6 +1,5 @@
 <div class="content-section" id="index" ng-controller="RegisterController">
     <div class="container">
-        <div class="row col-xs-12">
             <div class="panel panel-default">
                 <!--<div class="panel-heading">-->
                     <!--<h3 class="panel-title">Dream Guide导师注册申请</h3>-->
@@ -14,270 +13,158 @@
                     </div>
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <h3 class="panel-title">个人信息</h3>
+                            <h3 class="panel-title"><b>个人信息</b></h3>
                         </div>
                         <div class="panel-body">
-                            <!--<form class="" role="form" data-ng-submit="signInEmail()">-->
-                                <!--<div class="row ng-hide" data-ng-show="fieldErrors || errorMessage">-->
-                                <!--<div class="col-xs-12 alert alert-danger">-->
-                                <!--<p data-ng-bind-html="errorMessage" class="ng-binding"></p>-->
-                                <!--<ul>-->
-                                <!--&lt;!&ndash; ngRepeat: (field, error) in fieldErrors &ndash;&gt;-->
-                                <!--</ul>-->
-                                <!--</div>-->
-                                <!--</div>-->
                             <div class="col-sm-6 col-xs-6">
 
-                            <div class="row">
-                                    <!--<div class="col-sm-6 col-xs-6">-->
-                                        <div>
-                                            <!--<div data-ng-class="{'has-error': contactInfoErrors.setsEmail}">-->
-                                            <label for="email">显示姓名</label>
-                                            <div style="clear:both"></div>
-                                            <input type="text" class="form-control pull-left ng-pristine ng-valid" placeholder="将在社区中显示" data-ng-model="show_name">
-                                        </div>
-                                    <!--</div>-->
-                                </div>
-                                <div class="row">
-                                    <!--<div class="col-sm-6 col-xs-6">-->
-                                        <!--<div data-ng-class="{'has-error': contactInfoErrors.setsPassword}">-->
-                                        <div>
-                                            <label for="password">性别</label>
-                                            <label class="radio-inline">
-                                                <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> 男
-                                            </label>
-                                            <label class="radio-inline">
-                                                <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> 女
-                                            </label>
-                                            <!--<div style="clear:both"></div>-->
-                                            <!--<input type="text" class="form-control pull-left ng-pristine ng-valid" placeholder="性别" data-ng-model="real_name">-->
-                                        </div>
-                                    <!--</div>-->
-                                </div>
-                                <div class="row">
-                                    <!--<div class="col-sm-6 col-xs-6">-->
-                                        <!--<div data-ng-class="{'has-error': contactInfoErrors.setsPassword}">-->
-                                        <div>
-                                            <label for="password">真实姓名</label>
-                                            <div style="clear:both"></div>
-                                            <input type="text" class="form-control pull-left ng-pristine ng-valid" placeholder="请填写真实姓名" data-ng-model="real_name">
-                                        </div>
-                                    <!--</div>-->
-                                </div>
-                                <div class="row">
-                                    <!--<div class="col-sm-6 col-xs-6">-->
-                                        <div>
-                                            <!--<div data-ng-class="{'has-error': contactInfoErrors.setsEmail}">-->
-                                            <label for="email">电子邮箱</label>
-                                            <div style="clear:both"></div>
-                                            <input type="text" class="form-control pull-left ng-pristine ng-valid ng-valid-email" id="email" placeholder="邮箱将作为登陆账户" data-ng-model="email">
-                                        </div>
-                                    <!--</div>-->
-                                </div>
-                                <div class="row">
-                                    <!--<div class="col-sm-6 col-xs-6">-->
-                                        <!--<div data-ng-class="{'has-error': contactInfoErrors.setsPassword}">-->
-                                        <div>
-                                            <label for="password">密码</label>
-                                            <div style="clear:both"></div>
-                                            <input type="text" class="form-control pull-left ng-pristine ng-valid" id="password" placeholder="登陆密码" data-ng-model="password">
-                                        </div>
-                                    <!--</div>-->
-                                </div>
-                                <div class="row">
-                                    <!--<div class="col-sm-6 col-xs-6">-->
-                                        <div>
-                                            <!--<div data-ng-class="{'has-error': contactInfoErrors.setsEmail}">-->
-                                            <label for="email">微信号/QQ号</label>
-                                            <div style="clear:both"></div>
-                                            <input type="text" class="form-control pull-left ng-pristine ng-valid" placeholder="填写微信/QQ号码，便于联系沟通" data-ng-model="wechat">
-                                        </div>
-                                    <!--</div>-->
-                                </div>
-                                <div class="row">
-                                    <!--<div class="col-sm-6 col-xs-6">-->
-                                        <!--<div data-ng-class="{'has-error': contactInfoErrors.setsPassword}">-->
-                                        <div>
-                                            <label for="password">常用电话(海外)</label>
-                                            <div style="clear:both"></div>
-                                            <input type="text" class="form-control pull-left ng-pristine ng-valid" placeholder="请填写常用电话" data-ng-model='cellphone'>
-                                        </div>
-                                    <!--</div>-->
-                                </div>
-                                <div class="row">
-                                    <!--<div class="col-sm-6 col-xs-6">-->
-                                        <!--<div data-ng-class="{'has-error': contactInfoErrors.setsPassword}">-->
-                                        <div>
-                                            <label for="password">SKYPE号码</label>
-                                            <div style="clear:both"></div>
-                                            <input type="text" class="form-control pull-left ng-pristine ng-valid" placeholder="请填写Skype号码" data-ng-model='skype'>
-                                        </div>
-                                    <!--</div>-->
-                                </div>
-                                <div class="row">
-                                    <!--<div class="col-sm-6 col-xs-6">-->
-                                        <!--<div data-ng-class="{'has-error': contactInfoErrors.setsPassword}">-->
-                                        <div>
-                                            <label for="password">支付宝账号</label>
-                                            <div style="clear:both"></div>
-                                            <input type="text" class="form-control pull-left ng-pristine ng-valid" placeholder="支付宝账号便于交付" data-ng-model="real_name">
-                                        </div>
+                                <form name="loginForm" novalidate>
+                                    <br />
+                                    <div class="form-group" ng-class="{'has-error': loginForm.showname.$invalid}">
+                                        <label>显示姓名</label>
+
+                                        <input class="form-control" name="showname" type="text"
+                                               placeholder="英文名，将作为用户名称在平台中显示" required ng-model="tutor.showName" />
+                                        <span class="help-block" ng-show="loginForm.showname.$error.required">不能为空</span>
                                     </div>
+                                    <div class="form-group" ng-class="{'has-error': loginForm.username.$invalid}">
+                                        <label>真实姓名</label>
+                                        <input class="form-control" name="username" type="text"
+                                               placeholder="有助于身份核实, 不会在平台中显示" required ng-model="tutor.userName" />
+                                        <span class="help-block" ng-show="loginForm.username.$error.required">不能为空</span>
+                                    </div>
+                                    <div class="form-group" ng-class="{'has-error': loginForm.email.$invalid}">
+                                        <label for="email">电子邮箱</label>
+                                        <input class="form-control" id="email" name="email" type="email"
+                                               placeholder="电子邮箱将作为登陆账户" required ng-model="tutor.email" />
+                                        <span class="help-block" ng-show="loginForm.email.$error.required">不能为空</span>
+                                    </div>
+                                    <div class="form-group" ng-class="{'has-error': loginForm.password.$invalid}">
+                                        <label>密码</label>
+                                        <input class="form-control" name="password" type="password"
+                                               placeholder="登录密码" required ng-model="tutor.passWord" />
+                                        <span class="help-block" ng-show="loginForm.password.$error.required">不能为空</span>
+                                    </div>
+                                    <div class="form-group" ng-class="{'has-error': loginForm.wechat.$invalid}">
+                                        <label>微信号/QQ号</label>
+                                        <input class="form-control" name="wechat" type="text"
+                                               placeholder="有助于沟通联系" required ng-model="tutor.wechat" />
+                                        <span class="help-block" ng-show="loginForm.wechat.$error.required">不能为空</span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>常用电话</label>
+                                        <input class="form-control" name="cellphone" type="text"
+                                               placeholder="有助于沟通联系" required ng-model="tutor.cellphone" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Skype 号码</label>
+                                        <input class="form-control" name="skype" type="text"
+                                               placeholder="辅助沟通交流" required ng-model="tutor.skype" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label>支付宝账号</label>
+                                        <input class="form-control" name="alipay" type="text"
+                                               placeholder="支付宝账号便于交付,是平台主要支付手段之一" required ng-model="tutor.alipay" />
+                                    </div>
+
+                                </form>
+
                                 </div>
-                            <!--<div class="col-sm-6 col-xs-6" flow-init="{target: '/img/upLoad', testChunks:false}"-->
-                                 <!--flow-files-submitted="$flow.upload()"-->
-                                 <!--flow-file-success="$file.msg = $message">-->
                             <div class="col-sm-6 col-xs-6">
                             <br />
                                 <b>头像上传</b>
                                 <br />
-                                做一名有头有脸可信可爱的导师，请上传一张你认为最帅气最职业最有范的个人半身照。(只接受小于200KB, PNG,GIF,JPG 格式的图片文件)
+                                做一名有头有脸可信可爱的导师，请上传一张你认为最帅气最职业最有范的个人半身照。(PNG,GIF,JPG 格式的图片文件)
                                 <hr class="soften"/>
-
-                                <!--<div>-->
-                                    <!--<div ng-hide="imageSrc">-->
-                                        <!--<img style="display: block;margin-left: auto;margin-right: auto;  max-height: 250px; max-width: 250px;" src="http://www.placehold.it/250x250/EFEFEF/AAAAAA&text=no+image" />-->
-                                    <!--</div>-->
-                                    <!--<div ng-show="imageSrc">-->
-                                        <!--<img alt="image" style="display: block;margin-left: auto;margin-right: auto; max-height: 250px; max-width: 250px;"  ng-src="{{imageSrc}}" /><br/>-->
-                                    <!--</div>-->
-                                    <!--<div>-->
-                                          <!--<input type="file" id="choose-file" ng-file-select="onFileSelect($files)" multiple>-->
-                                    <!--</div>-->
-                                    <!--&lt;!&ndash;<form class="form" ng-submit="doUpload()">&ndash;&gt;-->
-                                        <!--&lt;!&ndash;<div class="form-group">&ndash;&gt;-->
-                                            <!--&lt;!&ndash;<label>Title</label>&ndash;&gt;-->
-                                            <!--&lt;!&ndash;<input ng-model="title" type="text" class="form-control" required>&ndash;&gt;-->
-                                        <!--&lt;!&ndash;</div>&ndash;&gt;-->
-                                        <!--&lt;!&ndash;<div class="form-group">&ndash;&gt;-->
-                                            <!--&lt;!&ndash;<file-field class="btn" ng-model="uploadFile" preview="previewImage">Select File</file-field>&ndash;&gt;-->
-                                        <!--&lt;!&ndash;</div>&ndash;&gt;-->
-                                        <!--&lt;!&ndash;<button class="btn btn-primary">Submit</button>&ndash;&gt;-->
-                                    <!--&lt;!&ndash;</form>&ndash;&gt;-->
-                                <!--</div>-->
-                                <!--<br />上传进度:-->
-                                <!--<progress value="{{progress}}"></progress>-->
-                            <!--&lt;!&ndash;</div>&ndash;&gt;-->
-                                <!--&lt;!&ndash;<div class="col-sm-4" ng-show="previewImage">&ndash;&gt;-->
-                                    <!--&lt;!&ndash;<h3>Preview</h3>&ndash;&gt;-->
-                                    <!--&lt;!&ndash;<img ng-src="{{previewImage}}" width="200">&ndash;&gt;-->
-                                    <!--&lt;!&ndash;<br>&ndash;&gt;-->
-                                    <!--&lt;!&ndash;{{uploadFile.name}}&ndash;&gt;-->
-                                <!--&lt;!&ndash;</div>&ndash;&gt;-->
-                            <!--</div>-->
 
                                 <input type="file" img-cropper-fileread image="cropper.sourceImage" />
                                 <div>
-                                    <canvas width="500" height="300" id="canvas" image-cropper image="cropper.sourceImage" cropped-image="cropper.croppedImage" crop-width="200" crop-height="200" keep-aspect="true"></canvas>
+                                    <canvas width="500" height="300" id="canvas" image-cropper image="cropper.sourceImage" cropped-image="cropper.croppedImage" crop-width="250" crop-height="250" keep-aspect="true"></canvas>
                                 </div>
-                                <div>Cropped Image:</div>
-                                <div ng-show="cropper.croppedImage!=null"><img ng-src="{{cropper.croppedImage}}" /></div>{{cropper.croppedImage}}
+                                <div>图片预览:</div>
+                                <div ng-show="cropper.croppedImage!=null"><img ng-src="{{cropper.croppedImage}}" /></div>
 
+                                <!--<button ng-click="upload()">click</button>-->
 
                                 <div id="drawing">
                                 </div>
-                            <!--</form>-->
                         </div>
                     </div>
+                        </div>
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <h3 class="panel-title">专业和工作背景</h3>
                         </div>
                         <div class="panel-body">
-                            <form class="" role="form" data-ng-submit="signInEmail2()">
-                                <!--<div class="row ng-hide" data-ng-show="fieldErrors || errorMessage">-->
-                                <!--<div class="col-xs-12 alert alert-danger">-->
-                                <!--<p data-ng-bind-html="errorMessage" class="ng-binding"></p>-->
-                                <!--<ul>-->
-                                <!--&lt;!&ndash; ngRepeat: (field, error) in fieldErrors &ndash;&gt;-->
-                                <!--</ul>-->
-                                <!--</div>-->
-                                <!--</div>-->
-                                <div class="row">
-                                    <div class="col-sm-6 col-xs-6">
-                                        <div>
-                                            <!--<div data-ng-class="{'has-error': contactInfoErrors.setsEmail}">-->
-                                            <label for="email">LinkedIn/领英 链接</label>
-                                            <div style="clear:both"></div>
-                                            <input type="text" class="form-control pull-left ng-pristine ng-valid" placeholder="example: https://www.linkedin.com/in/abc " data-ng-model="linkedin">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-sm-6 col-xs-6">
-                                        <!--<div data-ng-class="{'has-error': contactInfoErrors.setsPassword}">-->
-                                        <div>
-                                            <label for="password">留学国家</label>
-                                            <div style="clear:both"></div>
-                                            <input type="text" class="form-control pull-left ng-pristine ng-valid" placeholder="留学国家" data-ng-model="real_name">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-sm-6 col-xs-6">
-                                        <div>
-                                            <!--<div data-ng-class="{'has-error': contactInfoErrors.setsEmail}">-->
-                                            <label for="email">在读/毕业院校</label>
-                                            <div style="clear:both"></div>
-                                            <input type="text" class="form-control pull-left ng-pristine ng-valid ng-valid-email" placeholder="留学所去学校" data-ng-model="email">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-sm-6 col-xs-6">
-                                        <!--<div data-ng-class="{'has-error': contactInfoErrors.setsPassword}">-->
-                                        <div>
-                                            <label for="password">专业</label>
-                                            <div style="clear:both"></div>
-                                            <input type="text" class="form-control pull-left ng-pristine ng-valid" placeholder="请选择学习专业" data-ng-model="password">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-sm-6 col-xs-6">
-                                        <div>
-                                            <!--<div data-ng-class="{'has-error': contactInfoErrors.setsEmail}">-->
-                                            <label for="email">学校邮箱</label>
-                                            <div style="clear:both"></div>
-                                            <input type="text" class="form-control pull-left ng-pristine ng-valid" placeholder="填写邮箱有助于验证导师信息" data-ng-model="wechat">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-sm-6 col-xs-6">
-                                        <!--<div data-ng-class="{'has-error': contactInfoErrors.setsPassword}">-->
-                                        <div>
-                                            <label for="password">现工作单位及地区</label>
-                                            <div style="clear:both"></div>
-                                            <input type="text" class="form-control pull-left ng-pristine ng-valid" placeholder="" data-ng-model='skype'>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-sm-6 col-xs-6">
-                                        <!--<div data-ng-class="{'has-error': contactInfoErrors.setsPassword}">-->
-                                        <div>
-                                            <label for="password">个人简介</label>
-                                            <div style="clear:both"></div>
-                                            <textarea type="text" class="form-control pull-left ng-pristine ng-valid" placeholder="请用少于100字介绍自己的学习工作状况" data-ng-model='cellphone'></textarea>
-                                        </div>
-                                    </div>
-                                </div>
+                            <div class="col-sm-6 col-xs-6">
+                                <form name="loginForm2" novalidate>
+                                    <br />
+                                    <div class="form-group" ng-class="{'has-error': loginForm2.studycountry.$invalid}">
+                                        <label>留学国家</label>
 
-                            </form>
+                                        <input class="form-control" name="studycountry" type="text"
+                                               placeholder="填写最高学历在读或毕业学校所在国家即可" required ng-model="tutor.studyCountry" />
+                                        <span class="help-block" ng-show="loginForm2.studycountry.$error.required">不能为空</span>
+                                    </div>
+                                    <div class="form-group" ng-class="{'has-error': loginForm2.workcountry.$invalid}">
+                                        <label>现居国家/地区</label>
+                                        <input class="form-control" name="workcountry" type="text"
+                                               placeholder="毕业后工作所在国家或地区，在读学生填写学校国家" required ng-model="tutor.workCountry" />
+                                        <span class="help-block" ng-show="loginForm2.workcountry.$error.required">不能为空</span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>LinkedIn/领英 链接</label>
+                                        <input class="form-control" name="linkedin" type="text"
+                                               placeholder="有助于身份核实，不会在平台中显示" required ng-model="tutor.linkedin" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label>工作单位</label>
+                                        <input class="form-control" name="company" type="text"
+                                               placeholder="已经工作的导师可以填写现在的工作单位" required ng-model="tutor.company" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label>个人简介</label>
+                                        <textarea  class="form-control" placeholder="请用少于100字介绍自己的学习工作状况" data-ng-model='cellphone'></textarea>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="col-sm-6 col-xs-6">
+                                <form name="loginForm3" novalidate>
+                                    <br />
+                                    <div class="form-group" ng-class="{'has-error': loginForm3.school.$invalid}">
+                                        <label for="email">在读/毕业院校</label>
+                                        <input class="form-control" id="email" name="school" type="text"
+                                               placeholder="填写国外最高学历在读或毕业院校, 推荐使用英文全称" required ng-model="tutor.school" />
+                                        <span class="help-block" ng-show="loginForm3.school.$error.required">不能为空</span>
+                                    </div>
+                                    <div class="form-group" ng-class="{'has-error': loginForm3.major.$invalid}">
+                                        <label>专业</label>
+                                        <input class="form-control" name="major" type="text"
+                                               placeholder="选择相关专业" required ng-model="tutor.passWord" />
+                                        <span class="help-block" ng-show="loginForm3.major.$error.required">不能为空</span>
+                                    </div>
+                                    <div class="form-group" ng-class="{'has-error': loginForm3.schoolemail.$invalid}">
+                                        <label>学校邮箱</label>
+                                        <input class="form-control" name="schoolemail" type="email"
+                                               placeholder="填写学校邮箱有助于加快身份验证" required ng-model="tutor.schoolEmail" />
+                                        <span class="help-block" ng-show="loginForm3.schoolemail.$error.required">不能为空</span>
+                                    </div>
+
+                                </form>
+                            </div>
                         </div>
+
                     </div>
+
                     <button type="button" class="btn btn-primary" ng-click="submitApply()">
                         提交申请
                     </button>
+
                     <button type="button" class="btn btn-default">
                         重置申请
                     </button>
                 </div>
             </div>
-
-
-
 
         </div>
     </div>

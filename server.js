@@ -1,5 +1,13 @@
 var express = require('express');
 var bodyParser = require('body-parser');
+var nodemailer = require('nodemailer');
+var transporter = nodemailer.createTransport({
+    service: 'Gmail',
+    auth: {
+        user: 'test.dreamguide@gmail.com',
+        pass: 'testdreamguide'
+    }
+});
 var app     = express();
 var maxAge  = 31557600000;
 var fs = require('fs');
@@ -17,6 +25,20 @@ app.get('/*', function(req,res)
     res.sendfile(__dirname + '/app/index.html');
 });
 
+function decodeBase64Image(dataString) {
+    var matches = dataString.match(/^data:([A-Za-z-+\/]+);base64,(.+)$/),
+        response = {};
+
+    if (matches.length !== 3) {
+        return new Error('Invalid input string');
+    }
+
+    response.type = matches[1];
+    response.data = new Buffer(matches[2], 'base64');
+
+    return response;
+}
+
 app.post('/img/upLoad',function(req,res){
     //console.log(req.files);
     //fs.readFile('/var/folders/v8/kd9qkk1s4kb8rcgxz51t148h0000gn/T/9878a8d30108ce7d1dbbf9a088aebeba', {encoding: 'utf-8'}, function(err,data){
@@ -32,14 +54,34 @@ app.post('/img/upLoad',function(req,res){
     //
     //});
     //console.log(req.body.msg);
-    var message = req.body.msg;
+    //var message = req.body.msg;
+    //var message = decodeBase64Image(req.body.msg).data;
+    var message = req.body.msg.replace(/^data:image\/png;base64,/, "");
     var filename = req.body.name;
     var path = "tmp/";
-    fs.writeFile(path+filename, message, function (err, data) {
+    console.log(message);
+    fs.writeFile(path+filename, message,'base64', function (err, data) {
         if (err) {
             return console.log(err);
         }
         console.log(data);
+    });
+
+    var mailOptions = {
+        from: 'test.dreamguide@gmail.com', // sender address
+        to: 'test.dreamguide@gmail.com', // list of receivers
+        subject: 'Hello', // Subject line
+        text: 'Hello world' // plaintext body
+        //html: '<b>Hello world ✔</b>' // html body
+    };
+
+    // send mail with defined transport object
+    transporter.sendMail(mailOptions, function(error, info){
+        if(error){
+            console.log(error);
+        }else{
+            console.log('Message sent: ' + info.response);
+        }
     });
 
     res.end("yes");
