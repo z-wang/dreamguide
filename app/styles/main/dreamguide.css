@@ -263,7 +263,7 @@ a:focus {
     font-family: STFangsong, FangSong;
     text-align: center;
     font-size: 36px;
-    color: #004B00;
+    color: #11505d;
     font-weight: 900;
 }
 
@@ -320,7 +320,7 @@ a:focus {
     display: table;
     width: 100%;
     height: auto;
-    padding: 180px 0;
+    padding: 120px 0;
     text-align: center;
     color: #fff;
     background: url(../../image/main/tutor_front.jpg) no-repeat bottom center scroll;
