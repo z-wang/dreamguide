@@ -89,8 +89,9 @@ define([
                 });
 
                 $scope.uploadImage($scope.tutor.email);
-                //sendEmail('meng.zhang@diycac.org',JSON.stringify($scope.tutor));
                 var message = "新加入用户ID为 "+$scope.tutor.email + ", 请及时核实。";
+                sendEmail('meng.zhang@diycac.org', message);
+
                 sendEmail('timwang2k8@gmail.com', message);
 
                 $location.path("/thankyou");

@@ -7,8 +7,12 @@ var transporter = nodemailer.createTransport({
         user: 'test.dreamguide@gmail.com',
         pass: 'testdreamguide'
     }
+    //service: 'QQex',
+    //auth: {
+    //    //user: 'dreamguide',
+    //    //pass: 'abc.123'
+    //}
 });
-console.log(transporter);
 var app     = express();
 var maxAge  = 31557600000;
 var fs = require('fs');
@@ -70,7 +74,6 @@ app.post('/img/upLoad',function(req,res){
 });
 
 app.post('/util/sendEmail',function(req, res){
-    console.log("post to email");
     var mailOptions = {
         from: 'test.dreamguide@gmail.com', // sender address
         to: req.body.to, // list of receivers
