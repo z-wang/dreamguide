@@ -6,7 +6,8 @@ require.config({
         'angular-sanitize' : '../lib/angular/angular-sanitize.min',
         'bootstrapjs': '../lib/bootstrap/js/bootstrap.min',
 		'jquery': '/bower_components/jquery/dist/jquery.min',
-        'svgjs': '../lib/image/svg.min',
+       // 'svgjs': '../lib/image/svg.min',
+        //'md5js':'../lib/md5/md5',
         //'angular-bootstrap-file' : '../lib/angular/angular-bootstrap-file',
         //'ng-flow': '../lib/angular/ng-flow',
         //'route-style' : '../lib/route-style/route-style',
@@ -19,7 +20,7 @@ require.config({
     },
 	shim: {
 		'app': {
-			deps: ['angular', 'angular-route', 'bootstrapjs', 'svgjs']
+			deps: ['angular', 'angular-route', 'bootstrapjs']
 		},
 		'angular-route': {
 			deps: ['angular']

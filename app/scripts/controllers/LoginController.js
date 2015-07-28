@@ -14,26 +14,25 @@ define(['app'], function(app)
                 $('.navbar').unbind('mouseenter mouseleave');
                 $(".navbar-fixed-top").addClass("top-nav-collapse");
 
-                //
                 $scope.auth = function(){
+                    var pwd = $scope.password;
                     var dataSet = {
                         query:{
                             filtered:{
                                 filter:{
-                                    bool:{
-                                        should:[
-                                            {
-                                                term:{_id:$scope.account}
-                                            },{
-                                                term:{password:$scope.password}
-                                            }
-                                        ]
-                                    }
+                                    and :[
+                                        {
+                                            term: {_id: $scope.account}
+                                        },
+                                        {
+                                            term:{password:pwd}
+                                        }
+                                    ]
                                 }
                             }
                         }
                     };
-                    console.log(dataSet);
+                    console.log(JSON.stringify(dataSet));
                     var req = {
                         method: 'POST',
                         url: 'http://dreamguideedu.com:9200/dreamguide/accounts/_search',
@@ -41,15 +40,14 @@ define(['app'], function(app)
                     };
 
                     $http(req).success(function(data){
+                        console.log(data);
                         if(data.hits.total>0){
-                            $rootScope.user = {
-                                userName:"用户x123eq1"
-                            };
+                            $rootScope.user = data.hits.hits[0]._source;
                             console.log("go");
                             $location.path("/");
+                        }else{
+                            alert("用户名或密码不正确！");
                         }
-
-                       // $state.go("index");
                     }).error(function(data){
                         alert("用户名或密码不正确！");
                     });
@@ -58,7 +56,7 @@ define(['app'], function(app)
                 $scope.register = function(){
                     var dataSet = JSON.stringify({
                         id : $scope.phoneNum,
-                        password : $scope.password
+                        password : md5($scope.password, "dream")
                     });
                     var req = {
                         method: 'POST',

@@ -13,5 +13,9 @@ define([
             $(window).unbind("scroll");
             $('.navbar').unbind('mouseenter mouseleave');
             $(".navbar-fixed-top").addClass("top-nav-collapse");
+
+            $scope.jumpToProfile = function(){
+
+            }
         }])
 });

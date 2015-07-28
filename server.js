@@ -51,7 +51,6 @@ app.post('/img/upLoad',function(req,res){
     //    }else{
     //        console.log(err);
     //    }
-    //
     //});
     //console.log(req.body.msg);
     //var message = req.body.msg;
@@ -66,13 +65,15 @@ app.post('/img/upLoad',function(req,res){
         }
         console.log(data);
     });
+    res.end("yes");
+});
 
+app.post('/util/sendEmail',function(req, res){
     var mailOptions = {
         from: 'test.dreamguide@gmail.com', // sender address
-        to: 'test.dreamguide@gmail.com', // list of receivers
-        subject: 'Hello', // Subject line
-        text: 'Hello world' // plaintext body
-        //html: '<b>Hello world ✔</b>' // html body
+        to: req.body.to, // list of receivers
+        subject: 'Dreamguide平台，有新的导师注册', // Subject line
+        text: req.body.content
     };
 
     // send mail with defined transport object
@@ -83,8 +84,7 @@ app.post('/img/upLoad',function(req,res){
             console.log('Message sent: ' + info.response);
         }
     });
-
-    res.end("yes");
+    res.end("ok");
 });
 
 app.post('/img/downLoad',function(req, res){

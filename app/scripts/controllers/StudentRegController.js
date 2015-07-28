@@ -15,7 +15,6 @@ define(['app'], function(app)
                 $('.navbar').unbind('mouseenter mouseleave');
                 $(".navbar-fixed-top").addClass("top-nav-collapse");
 
-
                 var phoneAuthCode;
                 var createID;
                 $scope.passArea = false;
@@ -60,6 +59,12 @@ define(['app'], function(app)
                     var userInfo = {
                         password : $scope.password,
                         userName : "用户"+userName,
+                        id : createID,
+                        phoneNum : createID,
+                        status : {
+                            tutor_active : 0,
+                            student_active : 1
+                        },
                         userImage : userImage
                     };
 

@@ -63,7 +63,54 @@ define([
             //};
 
             $scope.submitApply = function(){
+                console.log($scope.tutor);
+
+                var temp = $scope.tutor.password;
+                console.log(temp);
+                $scope.tutor.password = temp;
+                $scope.tutor.status = {
+                    tutor_active:0,
+                    student_active:1
+                };
+
+                var req = {
+                    method: 'POST',
+                    url: 'http://dreamguideedu.com:9200/dreamguide/accounts/'+$scope.tutor.email,
+                    //headers: {
+                    //    'Content-Type': undefined
+                    //},
+                    data: JSON.stringify($scope.tutor)
+                };
+
+                $http(req).success(function(data){
+                    console.log(data);
+                }).error(function(data){
+                    console.log(data);
+                });
+
+                $scope.uploadImage($scope.tutor.email);
+                //sendEmail('meng.zhang@diycac.org',JSON.stringify($scope.tutor));
+                var message = "新加入用户ID为 "+$scope.tutor.email + ", 请及时核实。";
+                sendEmail('timwang2k8@gmail.com', message);
+
                 $location.path("/thankyou");
+            };
+
+            $scope.reset = function(){
+                $scope.tutor = {};
+            };
+
+            var sendEmail = function(to, content){
+                $http.post('/util/sendEmail', {
+                    to:to,
+                    content: content
+                }).
+                    success(function(data, status, headers, config) {
+                        console.log(data);
+                    }).
+                    error(function(data, status, headers, config) {
+                        console.log(data);
+                    });
             };
 
 
@@ -91,11 +138,14 @@ define([
             //    return new Blob([ia], {type:mimeString});
             //}
 
-            $scope.upload = function(){
+
+            $scope.uploadImage = function(name){
+                if(!$scope.cropper.croppedImage)
+                    return;
                 var result = $scope.cropper.croppedImage;
                 $http.post('/img/upLoad', {
                     msg: result,
-                    name: '1.png'
+                    name: name+'.png'
                 }).
                     success(function(data, status, headers, config) {
                         console.log(data);
