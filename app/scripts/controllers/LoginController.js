@@ -20,14 +20,16 @@ define(['app'], function(app)
                         query:{
                             filtered:{
                                 filter:{
-                                    and :[
-                                        {
-                                            term: {_id: $scope.account}
-                                        },
-                                        {
-                                            term:{password:pwd}
-                                        }
-                                    ]
+                                    bool: {
+                                        must: [
+                                            {
+                                                term: {_id: $scope.account}
+                                            },
+                                            {
+                                                term: {passWord: pwd}
+                                            }
+                                        ]
+                                    }
                                 }
                             }
                         }

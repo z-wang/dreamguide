@@ -40,7 +40,6 @@ define(['app'], function(app)
                     //promise call, send out by text message
                     alert( "已发送验证码: " + phoneAuthCode);
 
-
                     return  phoneAuthCode;
                 };
 
@@ -49,6 +48,8 @@ define(['app'], function(app)
                     if($scope.confirmAuthCode && $scope.confirmAuthCode.length>0 && $scope.confirmAuthCode==phoneAuthCode){
                         $scope.passArea = true;
                         console.log($scope.passArea );
+                    } else{
+                        alert("请输入正确的验证码");
                     }
                 };
 
