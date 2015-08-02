@@ -15,10 +15,17 @@ define([
 
             console.log($scope);
 
+            $scope.tutor={
+                gradSchool : "University of Southampton",
+                gradMajor : "戏剧舞台美术设计"
+            };
             $scope.toRegister = function(){
                 $(window).scrollTop(0);
                 $location.path("/register");
             };
+
+            $scope.availableSchools = [];
+            $scope.availableFields = [];
 
             //console.log(fileReader);
 
@@ -64,10 +71,13 @@ define([
 
             $scope.submitApply = function(){
                 console.log($scope.tutor);
+                if($scope.cropper.croppedImage){
+                    console.log("请上传头像图片");
+                }
 
-                var temp = $scope.tutor.password;
-                console.log(temp);
-                $scope.tutor.password = temp;
+                //var temp = $scope.tutor.password;
+                //console.log(temp);
+                //$scope.tutor.passWord = md5(temp);
                 $scope.tutor.status = {
                     tutor_active:0,
                     student_active:1
@@ -98,6 +108,10 @@ define([
             };
 
             $scope.reset = function(){
+                var temp = $scope.tutor.passWord;
+                console.log(temp);
+                $scope.tutor.passWord = md5(temp);
+                console.log($scope.tutor);
                 $scope.tutor = {};
             };
 
@@ -112,6 +126,56 @@ define([
                     error(function(data, status, headers, config) {
                         console.log(data);
                     });
+            };
+
+            var loadSchoolsInfo = function(){
+                var req = {
+                    method: 'POST',
+                    url: 'http://dreamguideedu.com:9200/dreamguide/schools/_search',
+                    params: {
+                        size: 1000,
+                        from: 0
+                    },
+                    //headers: {
+                    //    'Content-Type': undefined
+                    //},
+                    data: {}
+                };
+
+                $http(req).success(function(data){
+                    console.log(data);
+                    data.hits.hits.map(function(d){
+                        if(d._source.nameen.length>0 && $scope.availableSchools.indexOf(d._source.nameen) <0 ){
+                            $scope.availableSchools.push(d._source.nameen);
+                        }
+                    });
+                }).error(function(data){
+                    console.log(data);
+                });
+
+                var req1 = {
+                    method: 'POST',
+                    url: 'http://dreamguideedu.com:9200/dreamguide/specialtys/_search',
+                    params: {
+                        size: 1000,
+                        from: 0
+                    },
+                    //headers: {
+                    //    'Content-Type': undefined
+                    //},
+                    data: {}
+                };
+
+                $http(req1).success(function(data){
+                    console.log(data);
+                    data.hits.hits.map(function(d){
+                        if(d._source.namecn.length>0 && $scope.availableFields.indexOf(d._source.namecn) <0 ){
+                            $scope.availableFields.push(d._source.namecn);
+                        }
+                    });
+                }).error(function(data){
+                    console.log(data);
+                });
             };
 
 
@@ -158,6 +222,8 @@ define([
                         // or server returns response with an error status.
                     });
             };
+
+            loadSchoolsInfo();
 
             }]);
 });
