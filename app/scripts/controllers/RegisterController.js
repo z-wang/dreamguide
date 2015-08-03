@@ -75,6 +75,9 @@ define([
                     console.log("请上传头像图片");
                 }
 
+                var temp = $scope.tutor.passWord;
+                console.log(temp);
+                $scope.tutor.passWord = md5(temp);
                 //var temp = $scope.tutor.password;
                 //console.log(temp);
                 //$scope.tutor.passWord = md5(temp);
@@ -108,10 +111,7 @@ define([
             };
 
             $scope.reset = function(){
-                var temp = $scope.tutor.passWord;
-                console.log(temp);
-                $scope.tutor.passWord = md5(temp);
-                console.log($scope.tutor);
+                //console.log($scope.tutor);
                 $scope.tutor = {};
             };
 

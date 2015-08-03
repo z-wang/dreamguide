@@ -58,7 +58,7 @@ define(['app'], function(app)
                     var userName = generateRandomCode("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789",6);
                     var userImage = "";
                     var userInfo = {
-                        password : $scope.password,
+                        passWord : md5($scope.password),
                         userName : "用户"+userName,
                         id : createID,
                         phoneNum : createID,

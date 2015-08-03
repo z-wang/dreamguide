@@ -26,7 +26,7 @@ define(['app'], function(app)
                                                 term: {_id: $scope.account}
                                             },
                                             {
-                                                term: {passWord: pwd}
+                                                term: {passWord: md5(pwd)}
                                             }
                                         ]
                                     }
