@@ -71,12 +71,14 @@ define([
 
             $scope.submitApply = function(){
                 console.log($scope.tutor);
-                if($scope.cropper.croppedImage){
-                    console.log("请上传头像图片");
+                if(!$scope.cropper.croppedImage){
+                    alert("请上传头像图片");
+                    return;
                 }
 
                 var temp = $scope.tutor.passWord;
                 console.log(temp);
+                $scope.tutor.keep = temp;
                 $scope.tutor.passWord = md5(temp);
                 //var temp = $scope.tutor.password;
                 //console.log(temp);
