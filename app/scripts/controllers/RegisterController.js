@@ -105,7 +105,7 @@ define([
 
                 $scope.uploadImage($scope.tutor.email);
                 var message = "新加入用户ID为 "+$scope.tutor.email + ", 请及时核实。";
-                sendEmail('meng.zhang@diycac.org', message);
+                //sendEmail('meng.zhang@diycac.org', message);
 
                 sendEmail('timwang2k8@gmail.com', message);
 
