@@ -88,6 +88,8 @@ define([
                     student_active:1
                 };
 
+                $scope.tutor.createdTime = new Date();
+
                 var req = {
                     method: 'POST',
                     url: 'http://dreamguideedu.com:9200/dreamguide/accounts/'+$scope.tutor.email,

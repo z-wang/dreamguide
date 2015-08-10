@@ -66,6 +66,7 @@ define(['app'], function(app)
                             tutor_active : 0,
                             student_active : 1
                         },
+                        createdTime : new Date(),
                         userImage : userImage
                     };
 
