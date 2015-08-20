@@ -46,7 +46,10 @@ define([], function()
                 ]
             },
             '/profile':{
-                templateUrl: '/partials/profile.html'
+                templateUrl: '/partials/profile.html',
+                dependencies: [
+                    'controllers/ProfileController'
+                ]
             },
             '/student': {
                 templateUrl: '/partials/student_register.html',
