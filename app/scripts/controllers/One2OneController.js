@@ -9,6 +9,9 @@ define(['app','jquery'], function(app)
                 console.log("one2");
                 $scope.filters = {};
                 $scope.country = {};
+                $scope.image = {
+                    defaultImage : 'image/avatar/zz@test.com.png'
+                };
 
                 $scope.countries = [
                     {name: 'Afghanistan', code: 'AF'},

@@ -60,15 +60,15 @@ app.post('/img/upLoad',function(req,res){
     //console.log(req.body.msg);
     //var message = req.body.msg;
     //var message = decodeBase64Image(req.body.msg).data;
+    console.log(req.body.msg);
     var message = req.body.msg.replace(/^data:image\/png;base64,/, "");
-    var filename = req.body.name;
-    var path = "tmp/";
-    console.log(message);
-    fs.writeFile(path+filename, message,'base64', function (err, data) {
+    var fileName = req.body.name;
+    var path = "app/image/avatar/";
+    fs.writeFile(path+fileName, message,'base64', function (err, data) {
         if (err) {
             return console.log(err);
         }
-        console.log(data);
+        console.log(data.length);
     });
     res.end("yes");
 });
@@ -93,6 +93,16 @@ app.post('/util/sendEmail',function(req, res){
 });
 
 app.post('/img/downLoad',function(req, res){
+    var fileName = req.body.name;
+    var path = "tmp/";
+    var contents = "";
+    fs.readFile(path + fileName + ".png", function(err, data){
+        if (err) {
+            return console.log(err);
+        }
+        contents = data;
+        console.log(contents);
+    });
 
     res.send("yes");
 });

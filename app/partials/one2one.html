@@ -54,7 +54,7 @@
                         <div ng-repeat="person in model.tutors">
                             <div class="col-sm-3 col-md-3">
                                 <div class="thumbnail">
-                                    <img src="image/avatar/photo3.jpeg" alt="">
+                                    <img ng-src={{image.defaultImage}} alt="">
                                     <div class="caption">
                                         <b>{{person.name}}</b>
                                         <br />
