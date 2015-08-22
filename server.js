@@ -108,6 +108,6 @@ app.post('/img/downLoad',function(req, res){
     res.send("yes");
 });
 
-app.listen(10100);
+app.listen(80);
 
-console.log('Listening on port 10100');
+console.log('Listening on port 80');
