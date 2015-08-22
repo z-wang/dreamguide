@@ -68,7 +68,8 @@ app.post('/img/upLoad',function(req,res){
         if (err) {
             return console.log(err);
         }
-        console.log(data.length);
+        console.log("show!");
+        console.log(data);
     });
     res.end("yes");
 });
