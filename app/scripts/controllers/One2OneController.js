@@ -107,7 +107,6 @@ define(['app','jquery'], function(app)
                     };
 
                     $http(req).success(function(data){
-                        console.log(data);
                         $scope.model.tutors= data.hits.hits;
                         $scope.model.tutors.map(function(d){
                             $http.post('/img/downLoad', {
@@ -124,17 +123,14 @@ define(['app','jquery'], function(app)
                                 }).
                                 error(function(data, status, headers, config) {
                                     d.image = $scope.image.defaultImage;
-                                    console.log(data);
                                 });
                             d.name = d._source.userName;
                             d.school = d._source.gradSchool;
                             d.major = d._source.gradMajor;
                             d.country = d._source.studyCountry;
                         });
-                        console.log(data);
 
                     }).error(function(data){
-
                         console.log(data);
                     });
                 };
