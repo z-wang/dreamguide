@@ -1,7 +1,7 @@
 require.config({
     baseUrl: '/scripts',
     paths: {
-		'angular': '/bower_components/angular/angular.min',
+		'angular': '../lib/angular/angular.min',
 		'angular-route': '/bower_components/angular-route/angular-route.min',
         'angular-sanitize' : '../lib/angular/angular-sanitize.min',
         'bootstrapjs': '../lib/bootstrap/js/bootstrap.min',

@@ -26,9 +26,31 @@
                 </div>
             </div>
         </div>
+
+
+
         <div class="row">
             <div class="col-sm-4">
                 <div class="panel panel-default">
+                    <div class="panel-body">
+                        <div class="col-lg-12 col-sm-12 col-xs-12" >
+                                    <div>
+                                        <b>常见专业：</b>
+                                    </div>
+                                    <div>
+                                        商科: <a>金融</a>, <a>MBA</a>, <a>会计</a>, <a>经济</a>
+                                    </div>
+                                    <div>
+                                        工程: <a>计算机工程</a>, <a>电子工程</a>, <a>机械工程</a>
+                                    </div>
+                                    <div>
+                                        理学: <a>物理</a>, <a>化学</a>, <a>统计</a>, <a>应用数学</a>
+                                    </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+
                     <div class="panel-body">
                         选择想要学习的领域
                     <ui-select multiple  ng-model="filters.fields">
@@ -46,6 +68,8 @@
                         </ui-select-choices>
                     </ui-select>
                     </div>
+
+
                 </div>
             </div>
             <div class="col-sm-8">
@@ -53,14 +77,19 @@
                     <div class="panel-body">
                         <div ng-repeat="person in model.tutors">
                             <div class="col-sm-3 col-md-3">
-                                <div class="thumbnail">
-                                    <img ng-src={{image.defaultImage}} alt="">
+                                <div class="thumbnail" style="height:300px">
+                                    <img ng-src={{person.image}} alt="">
                                     <div class="caption">
                                         <b>{{person.name}}</b>
                                         <br />
+                                        <br />
+
                                         {{person.school}}
                                         <br />
-                                        {{person.job}}
+                                        <br />
+
+                                        {{person.major}}
+                                        <!--{{person.country}}-->
 
                                     </div>
                                 </div>

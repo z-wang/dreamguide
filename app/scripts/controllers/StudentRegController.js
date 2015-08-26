@@ -63,7 +63,7 @@ define(['app'], function(app)
                         id : createID,
                         phoneNum : createID,
                         status : {
-                            tutor_active : 0,
+                            tutor_active : -1,
                             student_active : 1
                         },
                         createdTime : new Date(),

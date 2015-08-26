@@ -95,17 +95,19 @@ app.post('/util/sendEmail',function(req, res){
 
 app.post('/img/downLoad',function(req, res){
     var fileName = req.body.name;
-    var path = "tmp/";
+    var path = "app/image/avatar/";
     var contents = "";
     fs.readFile(path + fileName + ".png", function(err, data){
         if (err) {
-            return console.log(err);
+            console.log(err);
+            contents = "-1";
+        } else {
+            contents = data;
+            console.log(contents);
         }
-        contents = data;
-        console.log(contents);
     });
 
-    res.send("yes");
+    res.send(contents);
 });
 
 app.listen(80);
