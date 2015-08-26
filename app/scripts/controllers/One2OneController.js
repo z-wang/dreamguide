@@ -111,18 +111,19 @@ define(['app','jquery'], function(app)
                         $scope.model.tutors= data.hits.hits;
                         $scope.model.tutors.map(function(d){
                             $http.post('/img/downLoad', {
-                                name: "1"
+                                name: d._id
                             }).
                                 success(function(data, status, headers, config) {
                                     console.log("1");
-                                    if(data=="0"){
-                                        d.image = $scope.image.defaultImage;
-                                    }else{
+                                    if(data=="1"){
                                         d.image = 'image/avatar/'+ d._id+'.png';
                                         console.log(d);
+                                    }else{
+                                        d.image = $scope.image.defaultImage;
                                     }
                                 }).
                                 error(function(data, status, headers, config) {
+                                    d.image = $scope.image.defaultImage;
                                     console.log(data);
                                 });
                             d.name = d._source.userName;

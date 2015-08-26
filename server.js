@@ -100,7 +100,7 @@ app.post('/img/downLoad',function(req, res){
     fs.readFile(path + fileName + ".png", function(err, data){
         if (err) {
             console.log(err);
-            res.end("0");
+            return console.log(err);
         } else {
             contents = data;
             console.log(contents);
