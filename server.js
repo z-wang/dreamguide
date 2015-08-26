@@ -100,10 +100,10 @@ app.post('/img/downLoad',function(req, res){
     fs.readFile(path + fileName + ".png", function(err, data){
         if (err) {
             console.log(err);
-            res.status(500).send('Something broke!');
+            //res.status(500).send('Something broke!');
+            res.send('Something broke!');
         } else {
             contents = data;
-            console.log(contents);
             res.end("1");
         }
     });
