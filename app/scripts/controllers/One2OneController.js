@@ -113,10 +113,8 @@ define(['app','jquery'], function(app)
                                 name: d._id
                             }).
                                 success(function(data, status, headers, config) {
-                                    console.log("1");
                                     if(data=="1"){
                                         d.image = 'image/avatar/'+ d._id+'.png';
-                                        console.log(d);
                                     }else{
                                         d.image = $scope.image.defaultImage;
                                     }
