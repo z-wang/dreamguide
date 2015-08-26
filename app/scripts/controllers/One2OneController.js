@@ -94,15 +94,6 @@ define(['app','jquery'], function(app)
                 }).error(function(data){
                     console.log(data);
                 });
-                //$http({
-                //    method: 'POST',
-                //    url: clientOpts.host + searchOpts.index + '/_search',
-                //    params: {
-                //        size: searchOpts.size,
-                //        from: searchOpts.from
-                //    },
-                //    data: searchOpts.body.toJSON()
-                //})
 
                 var loadTutors = function(){
                     var req = {
@@ -112,9 +103,6 @@ define(['app','jquery'], function(app)
                             size: 8,
                             from: 0
                         },
-                        //headers: {
-                        //    'Content-Type': undefined
-                        //},
                         data: {}
                     };
 
@@ -123,22 +111,19 @@ define(['app','jquery'], function(app)
                         $scope.model.tutors= data.hits.hits;
                         $scope.model.tutors.map(function(d){
                             $http.post('/img/downLoad', {
-                                name: d._id
+                                name: "1"
                             }).
                                 success(function(data, status, headers, config) {
                                     console.log("1");
-                                    if(data.length==0){
+                                    if(data=="0"){
                                         d.image = $scope.image.defaultImage;
                                     }else{
                                         d.image = 'image/avatar/'+ d._id+'.png';
+                                        console.log(d);
                                     }
-                                    // this callback will be called asynchronously
-                                    // when the response is available
                                 }).
                                 error(function(data, status, headers, config) {
                                     console.log(data);
-                                    // called asynchronously if an error occurs
-                                    // or server returns response with an error status.
                                 });
                             d.name = d._source.userName;
                             d.school = d._source.gradSchool;
