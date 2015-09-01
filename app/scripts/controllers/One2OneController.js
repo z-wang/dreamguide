@@ -10,7 +10,7 @@ define(['app','jquery'], function(app)
                 $scope.filters = {};
                 $scope.country = {};
                 $scope.image = {
-                    defaultImage : 'image/avatar/zz@test.com.jpg'
+                    defaultImage : 'image/avatar/zz@test.com.png'
                 };
                 $scope.model = {
                     tutors : []
@@ -109,13 +109,11 @@ define(['app','jquery'], function(app)
                     $http(req).success(function(data){
                         $scope.model.tutors= data.hits.hits;
                         for(var i = 0;i<$scope.model.tutors.length;i++){
-                            console.log($scope.model.tutors[i]._source.realName);
                             if($scope.model.tutors[i]._source.realName===undefined){
                                 $scope.model.tutors.splice(i, 1);
                                 i--;
                             }
                         }
-                        console.log($scope.model.tutors);
                         $scope.model.tutors.map(function(d){
                             $http.post('/img/downLoad', {
                                 name: d._id
