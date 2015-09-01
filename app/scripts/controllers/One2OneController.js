@@ -10,7 +10,7 @@ define(['app','jquery'], function(app)
                 $scope.filters = {};
                 $scope.country = {};
                 $scope.image = {
-                    defaultImage : 'image/avatar/noface.jpeg'
+                    defaultImage : 'image/avatar/zz@test.com.jpg'
                 };
                 $scope.model = {
                     tutors : []
