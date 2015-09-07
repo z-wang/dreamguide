@@ -28,9 +28,14 @@ define([
             $scope.searchUser = function(){
                 //search and get
                 console.log("search");
+                var searchUrl = 'http://dreamguideedu.com:9200/dreamguide/accounts/_search?q=_id:'+ $scope.search.context +'*';
+                if($scope.search.context==undefined ||$scope.search.context==""){
+                    searchUrl= 'http://dreamguideedu.com:9200/dreamguide/accounts/_search';
+                }
+
                 var req = {
                     method: 'POST',
-                    url: 'http://dreamguideedu.com:9200/dreamguide/accounts/_search?q=_id:'+ $scope.search.context +'*',
+                    url: searchUrl,
                     params: {
                         size: 1000,
                         from: 0
