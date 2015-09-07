@@ -68,6 +68,14 @@ define([], function()
                 dependencies: [
                     'controllers/One2OneController'
                 ]
+            },
+            '/admin/edit': {
+                templateUrl: '/partials/admin/edit.html',
+                dependencies: [
+                    'controllers/admin/AdminEditController',
+                    'directives/image-cropper',
+                    'directives/img-cropper-file-read'
+                ]
             }
         }
     };
