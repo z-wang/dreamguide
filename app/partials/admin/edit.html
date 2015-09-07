@@ -1,0 +1,197 @@
+<div class="content-section" id="index" ng-controller="AdminEditController">
+    <div class="container">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                搜索用户
+            </div>
+            <div class="panel-body">
+                <div class="col-sm-9" >
+                    <input class="form-control" name="search_user" type="text" placeholder="可使用email搜索" ng-model="search.context" />
+                </div>
+                <button class="btn btn-primary" ng-click="searchUser()">搜索</button>
+            </div>
+            <div class="panel-body">
+                <table ng-table="tableParams" class="table">
+                    <tr ng-repeat="user in $data track by $index">
+                        <td data-title="'邮箱'">
+                            <span ng-if="!user.$edit">{{user._id}}</span>
+                            <div ng-if="user.$edit"><input class="form-control" type="text" ng-model="user.name" /></div>
+                        </td>
+                        <td data-title="'姓名'" width="200">
+                            <span ng-if="!user.$edit">{{user._source.realName}}</span>
+                            <div ng-if="user.$edit"><input class="form-control" type="number" ng-model="user.age" /></div>
+                        </td>
+                        <td data-title="'注册时间'" width="200">
+                            <span ng-if="!user.$edit">{{user._source.createdTime}}</span>
+                            <div ng-if="user.$edit"><input class="form-control" type="number" ng-model="user.age" /></div>
+                        </td>
+                        <td data-title="'修改时间'" width="200">
+                            <span ng-if="!user.$edit">{{user._source.editedTime}}</span>
+                            <div ng-if="user.$edit"><input class="form-control" type="number" ng-model="user.age" /></div>
+                        </td>
+                        <td data-title="'操作'" width="200">
+                            <a ng-if="!user.$edit" href="" class="btn btn-default btn-xs" ng-click="editRecord($index)">Edit</a>
+                            <!--<a ng-if="!user.$edit" href="" class="btn btn-primary btn-xs" ng-click="user.$edit = true">Save</a>-->
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="panel panel-default" ng-show="tutor">
+            <div class="panel-body">
+                <h2 style="margin: 0 0 10px;">导师资料修改</h2>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"><b>个人信息</b></h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="col-sm-6 col-xs-6">
+
+                            <form name="loginForm" novalidate>
+                                <br />
+                                <div class="form-group">
+                                    <label>显示姓名</label>
+                                    <input class="form-control" name="username" type="text"
+                                           placeholder="英文名，将作为用户名称在平台中显示" ng-model="tutor.userName" />
+                                </div>
+                                <div class="form-group">
+                                    <label>真实姓名</label>
+                                    <input class="form-control" name="realname" type="text"
+                                           placeholder="有助于身份核实, 不会在平台中显示" ng-model="tutor.realName" />
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">电子邮箱</label>
+                                    <input class="form-control" id="email" name="email" type="email"
+                                           placeholder="电子邮箱将作为登陆账户" ng-model="tutor.email" />
+                                </div>
+                                <div class="form-group">
+                                    <label>微信号/QQ号</label>
+                                    <input class="form-control" name="wechat" type="text"
+                                           placeholder="有助于沟通联系" ng-model="tutor.wechat" />
+                                </div>
+                                <div class="form-group">
+                                    <label>常用电话</label>
+                                    <input class="form-control" name="cellphone" type="text"
+                                           placeholder="有助于沟通联系" ng-model="tutor.cellphone" />
+                                </div>
+                                <div class="form-group">
+                                    <label>Skype 号码</label>
+                                    <input class="form-control" name="skype" type="text"
+                                           placeholder="辅助沟通交流" ng-model="tutor.skype" />
+                                </div>
+                                <div class="form-group">
+                                    <label>支付宝账号</label>
+                                    <input class="form-control" name="alipay" type="text"
+                                           placeholder="支付宝账号便于交付,是平台主要支付手段之一" ng-model="tutor.alipay" />
+                                </div>
+
+                            </form>
+
+                        </div>
+                        <div class="col-sm-6 col-xs-6">
+                            <br />
+                            <b>头像上传</b>
+                            <br />
+                            <hr class="soften"/>
+
+                            <input type="file" img-cropper-fileread image="cropper.sourceImage" />
+                            <div>
+                                <canvas width="500" height="300" id="canvas" image-cropper image="cropper.sourceImage" cropped-image="cropper.croppedImage" crop-width="130" crop-height="130" keep-aspect="true"></canvas>
+                            </div>
+                            <div>图片预览:</div>
+                            <div ng-show="cropper.croppedImage!=null"><img ng-src="{{cropper.croppedImage}}" /></div>
+                            <div id="drawing">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">专业和工作背景</h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="col-sm-6 col-xs-6">
+                            <form name="loginForm2" novalidate>
+                                <br />
+                                <div class="form-group">
+                                    <label>留学国家</label>
+
+                                    <input class="form-control" name="studycountry" type="text"
+                                           placeholder="填写最高学历在读或毕业学校所在国家即可" ng-model="tutor.studyCountry" />
+                                </div>
+                                <div class="form-group">
+                                    <label>现居国家/地区</label>
+                                    <input class="form-control" name="workcountry" type="text"
+                                           placeholder="毕业后工作所在国家或地区，在读学生填写学校国家" ng-model="tutor.workCountry" />
+                                </div>
+                                <div class="form-group">
+                                    <label>LinkedIn/领英 链接</label>
+                                    <input class="form-control" name="linkedin" type="text"
+                                           placeholder="有助于身份核实，不会在平台中显示" ng-model="tutor.linkedin" />
+                                </div>
+                                <div class="form-group">
+                                    <label>工作单位</label>
+                                    <input class="form-control" name="company" type="text"
+                                           placeholder="已经工作的导师可以填写现在的工作单位" ng-model="tutor.company" />
+                                </div>
+                                <div class="form-group">
+                                    <label>个人简介</label>
+                                    <textarea style="height: 150px;" class="form-control" placeholder="请用少于100字介绍自己的学习工作状况, 个人简介会成为别人了解你资料的第一印象。" ng-model="tutor.profile"></textarea>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-sm-6 col-xs-6">
+                            <form name="loginForm3" novalidate>
+                                <br />
+                                <div class="form-group">
+                                    <label for="school">在读/毕业院校</label>
+                                    <ui-select id="school" name="school" ng-model="tutor.gradSchool" style="font-family: Georgia, Serif;">
+                                        <ui-select-match placeholder="选择国外最高学历在读或毕业院校">{{$select.selected}}</ui-select-match>
+                                        <ui-select-choices repeat="school in availableSchools | filter: $select.search">
+                                            <span ng-bind-html="school | highlight: $select.search"></span>
+                                        </ui-select-choices>
+                                    </ui-select>
+                                </div>
+                                <div class="form-group">
+                                    <label>学历</label>
+                                    <input class="form-control" name="degree" type="text"
+                                           placeholder="获得或在读的最高学位，如Master" ng-model="tutor.degree" />
+                                </div>
+                                <div class="form-group">
+                                    <label>专业</label>
+
+                                    <ui-select name="major" ng-model="tutor.gradMajor">
+                                        <ui-select-match placeholder="选择相关专业">{{$select.selected}}</ui-select-match>
+                                        <ui-select-choices repeat="field in availableFields | filter: $select.search">
+                                            <span ng-bind-html="field | highlight: $select.search"></span>
+                                        </ui-select-choices>
+                                    </ui-select>
+                                </div>
+                                <div class="form-group">
+                                    <label>学校邮箱</label>
+                                    <input class="form-control" name="schoolemail"
+                                           placeholder="填写学校邮箱有助于加快身份验证" ng-model="tutor.schoolEmail" />
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+
+                <button type="button" class="btn btn-success" ng-click="submitPhoto()">
+                    上传头像
+                </button>
+                <button type="button" class="btn btn-primary" ng-click="submitApply()">
+                    变更
+                </button>
+
+                <button type="button" class="btn btn-default" ng-click="reset()">
+                    重置
+                </button>
+            </div>
+        </div>
+
+    </div>
+</div>
+</div>
