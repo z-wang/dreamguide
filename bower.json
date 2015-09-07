@@ -6,7 +6,6 @@
     "Zihan Wang <wangzhkevin@gmail.com>"
   ],
   "description": "Dreamguide, use angular JS",
-  //  "main": "index.html",
   "main": "./dist/dreamguide.js",
   "keywords": [
     "Lazy",
