@@ -95,13 +95,16 @@ define([
 
                 $http(req).success(function(data){
                     console.log(data);
+                    alert("成功变更！");
                 }).error(function(data){
                     console.log(data);
+                    alert("服务器错误");
                 });
             };
 
             $scope.reset = function(){
                 //console.log($scope.tutor);
+                alert("恢复为原数据库数据");
                 $scope.tutor = angular.copy($scope.resetTutor);
             };
 
@@ -170,10 +173,12 @@ define([
                 }).
                     success(function(data, status, headers, config) {
                         console.log(data);
+                        alert("上传新头像成功");
                         // this callback will be called asynchronously
                         // when the response is available
                     }).
                     error(function(data, status, headers, config) {
+                        alert("上传出错");
                         // called asynchronously if an error occurs
                         // or server returns response with an error status.
                     });
