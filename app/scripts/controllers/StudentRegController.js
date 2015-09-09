@@ -82,6 +82,7 @@ define(['app'], function(app)
                     $http(req).success(function(data){
                         if(data.created){
                             console.log("go");
+                            alert("注册成功!");
                             $rootScope.user = userInfo;
                             $location.path("/");
                         }

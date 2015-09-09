@@ -202,6 +202,13 @@ a:focus {
     animation: push-text-in 12s 0s linear infinite;
 }
 
+.sliding-text>span:nth-child(1){
+    -webkit-animation-delay:0s;
+    -moz-animation-delay:0s;
+    -o-animation-delay:0s;
+    animation-delay:0s
+}
+
 .sliding-text>span:nth-child(2){
     -webkit-animation-delay:3s;
     -moz-animation-delay:3s;

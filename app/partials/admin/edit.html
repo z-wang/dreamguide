@@ -2,17 +2,20 @@
     <div class="container">
         <div class="panel panel-default">
             <div class="panel-heading">
-                搜索用户
+                搜索 + 修改
             </div>
             <div class="panel-body">
-                <div class="col-sm-9" >
-                    <input class="form-control" name="search_user" type="text" placeholder="可使用email搜索" ng-model="search.context" />
+                <div class="col-sm-8" >
+                    <input class="form-control" name="search_user" type="text" placeholder="可使用email开头搜索导师，或学校，专业和用户" ng-model="search.context" />
                 </div>
-                <button class="btn btn-primary" ng-click="searchUser()">搜索</button>
+                <button class="btn btn-primary" ng-click="searchTutor()">搜索导师</button>
+                <button class="btn btn-default" ng-click="searchSchool()">搜索学校</button>
+                <button class="btn btn-danger" ng-click="searchMajor()">搜索专业</button>
+                <button class="btn btn-success" ng-click="searchUser()">搜索用户</button>
             </div>
-            <div class="panel-body">
-                <table ng-table="tableParams" class="table">
-                    <tr ng-repeat="user in $data track by $index">
+            <div id="tutor-table" class="panel-body" ng-show="flags.tutorTable" >
+                <table ng-table="tableParams" class="table" >
+                    <tr ng-repeat="user in $data track by $index" >
                         <td data-title="'序号'">
                             {{$index+1}}
                         </td>
@@ -39,9 +42,122 @@
                     </tr>
                 </table>
             </div>
+            <div id="school-table" class="panel-body" ng-show="flags.schoolTable" >
+                <table ng-table="schoolTableParams" class="table" >
+                    <tr ng-repeat="school in $data track by $index" >
+                        <td data-title="'序号'">
+                            {{$index+1}}
+                        </td>
+                        <td data-title="'中文名称'">
+                            <span ng-if="!school.$edit">{{school._source.namecn}}</span>
+                            <div ng-if="school.$edit"><input class="form-control" type="text" ng-model="school.name" /></div>
+                        </td>
+                        <td data-title="'英文名称'" width="200">
+                            <span ng-if="!school.$edit">{{school._source.nameen}}</span>
+                            <div ng-if="school.$edit"><input class="form-control" type="number" ng-model="school.age" /></div>
+                        </td>
+                        <td data-title="'注册时间'" width="200">
+                            <span ng-if="!school.$edit">{{school._source.createdTime}}</span>
+                            <div ng-if="school.$edit"><input class="form-control" type="number" ng-model="school.age" /></div>
+                        </td>
+                        <td data-title="'修改时间'" width="200">
+                            <span ng-if="!school.$edit">{{school._source.editedTime}}</span>
+                            <div ng-if="school.$edit"><input class="form-control" type="number" ng-model="school.age" /></div>
+                        </td>
+                        <td data-title="'操作'" width="200">
+                            <a ng-if="!school.$edit" href="" class="btn btn-default btn-xs" ng-click="editSchoolRecord($index)">Edit</a>
+                            <!--<a ng-if="!user.$edit" href="" class="btn btn-primary btn-xs" ng-click="user.$edit = true">Save</a>-->
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <div id="major-table" class="panel-body" ng-show="flags.majorTable" >
+            <table ng-table="majorTableParams" class="table" >
+                <tr ng-repeat="major in $data track by $index" >
+                    <td data-title="'序号'">
+                        {{$index+1}}
+                    </td>
+                    <td data-title="'中文名称'">
+                        <span ng-if="!major.$edit">{{major._source.namecn}}</span>
+                        <div ng-if="major.$edit"><input class="form-control" type="text" ng-model="major.name" /></div>
+                    </td>
+                    <td data-title="'英文名称'" width="200">
+                        <span ng-if="!major.$edit">{{major._source.nameen}}</span>
+                        <div ng-if="major.$edit"><input class="form-control" type="number" ng-model="major.age" /></div>
+                    </td>
+                    <td data-title="'注册时间'" width="200">
+                        <span ng-if="!major.$edit">{{major._source.createdTime}}</span>
+                        <div ng-if="major.$edit"><input class="form-control" type="number" ng-model="major.age" /></div>
+                    </td>
+                    <td data-title="'修改时间'" width="200">
+                        <span ng-if="!major.$edit">{{major._source.editedTime}}</span>
+                        <div ng-if="major.$edit"><input class="form-control" type="number" ng-model="major.age" /></div>
+                    </td>
+                    <td data-title="'操作'" width="200">
+                        <a ng-if="!major.$edit" href="" class="btn btn-default btn-xs" ng-click="editMajorRecord($index)">Edit</a>
+                        <!--<a ng-if="!user.$edit" href="" class="btn btn-primary btn-xs" ng-click="user.$edit = true">Save</a>-->
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="panel panel-default" ng-show="major&&flags.majorTable">
+            <div class="panel-body">
+                <h2 style="margin: 0 0 10px;">专业资料修改</h2>
+                <div class="form-group">
+                    <label>专业中文名称</label>
+                    <input class="form-control" name="namecn" type="text"
+                           placeholder="中文名" ng-model="major.namecn" />
+                </div>
+                <div class="form-group">
+                    <label>专业英文名称</label>
+                    <input class="form-control" name="nameen" type="text"
+                           placeholder="英文名" ng-model="major.nameen" />
+                </div>
+                <div class="form-group">
+                    <label>专业大类(英文,如 Engineering)</label>
+                    <input class="form-control" name="country" type="text"
+                           placeholder="Engineering/Business...，英文" ng-model="major.school" />
+                </div>
+                <button type="button" class="btn btn-primary" ng-click="submitChange('major')">
+                    变更
+                </button>
+
+                <button type="button" class="btn btn-default" ng-click="resetMajor()">
+                    重置
+                </button>
+            </div>
         </div>
 
-        <div class="panel panel-default" ng-show="tutor">
+        <div class="panel panel-default" ng-show="school&&flags.schoolTable">
+            <div class="panel-body">
+                <h2 style="margin: 0 0 10px;">学校资料修改</h2>
+                <div class="form-group">
+                    <label>学校中文名称</label>
+                    <input class="form-control" name="namecn" type="text"
+                           placeholder="中文名" ng-model="school.namecn" />
+                </div>
+                <div class="form-group">
+                    <label>学校英文名称</label>
+                    <input class="form-control" name="nameen" type="text"
+                           placeholder="英文名" ng-model="school.nameen" />
+                </div>
+                <div class="form-group">
+                    <label>学校所在国家(英文)</label>
+                    <input class="form-control" name="country" type="text"
+                           placeholder="国家/区域，英文" ng-model="school.country" />
+                </div>
+                <button type="button" class="btn btn-primary" ng-click="submitChange('school')">
+                    变更
+                </button>
+
+                <button type="button" class="btn btn-default" ng-click="resetSchool()">
+                    重置
+                </button>
+            </div>
+        </div>
+
+        <div class="panel panel-default" ng-show="tutor&&flags.tutorTable">
             <div class="panel-body">
                 <h2 style="margin: 0 0 10px;">导师资料修改</h2>
                 <div class="panel panel-default">
@@ -195,6 +311,21 @@
             </div>
         </div>
 
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                添加
+            </div>
+            <div class="panel-body">
+                <button class="btn btn-primary" ng-click="addTutor()">添加导师</button>
+                <button class="btn btn-default" ng-click="addSchool()">添加学校</button>
+                <button class="btn btn-danger" ng-click="addMajor()">添加专业</button>
+                <button class="btn btn-success" ng-click="addUser()">添加用户</button>
+            </div>
+            <div class="panel-body">
+
+            </div>
+        </div>
+
+        </div>
     </div>
-</div>
 </div>

@@ -85,7 +85,8 @@ define([
                 //$scope.tutor.passWord = md5(temp);
                 $scope.tutor.status = {
                     tutor_active:0,
-                    student_active:1
+                    student_active:1,
+                    self_apply:1
                 };
 
                 $scope.tutor.createdTime = new Date();
