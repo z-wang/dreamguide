@@ -11,7 +11,7 @@
                 <button class="btn btn-primary" ng-click="searchTutor()">搜索导师</button>
                 <button class="btn btn-default" ng-click="searchSchool()">搜索学校</button>
                 <button class="btn btn-danger" ng-click="searchMajor()">搜索专业</button>
-                <button class="btn btn-success" ng-click="searchUser()">搜索用户</button>
+                <!--<button class="btn btn-success" ng-click="searchUser()">搜索用户</button>-->
             </div>
             <div id="tutor-table" class="panel-body" ng-show="flags.tutorTable" >
                 <table ng-table="tableParams" class="table" >
@@ -182,7 +182,7 @@
                                 <div class="form-group">
                                     <label for="email">电子邮箱</label>
                                     <input class="form-control" id="email" name="email" type="email"
-                                           placeholder="电子邮箱将作为登陆账户" ng-model="tutor.email" />
+                                           placeholder="电子邮箱将作为登陆账户, 不能为空!!! 如果是添加新账户，密码与email自动一致" ng-model="tutor.email" />
                                 </div>
                                 <div class="form-group">
                                     <label>微信号/QQ号</label>
@@ -316,10 +316,10 @@
                 添加
             </div>
             <div class="panel-body">
-                <button class="btn btn-primary" ng-click="addTutor()">添加导师</button>
-                <button class="btn btn-default" ng-click="addSchool()">添加学校</button>
-                <button class="btn btn-danger" ng-click="addMajor()">添加专业</button>
-                <button class="btn btn-success" ng-click="addUser()">添加用户</button>
+                <button class="btn btn-primary" ng-click="addNew('tutor')">添加导师</button>
+                <button class="btn btn-default" ng-click="addNew('school')">添加学校</button>
+                <button class="btn btn-danger" ng-click="addNew('major')">添加专业</button>
+                <!--<button class="btn btn-success" ng-click="addNew()">添加用户</button>-->
             </div>
             <div class="panel-body">
 

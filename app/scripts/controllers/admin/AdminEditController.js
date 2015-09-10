@@ -204,6 +204,11 @@ define([
             $scope.submitChange = function(name){
                 $scope[name].editedTime = new Date();
 
+                if($scope[name].id==undefined || $scope[name].id.length==0){
+                    var d = new Date();
+                    var r = Math.floor(Math.random() * 6) + 1;
+                    $scope[name].id = r + ""+ d.getTime();
+                }
                 var type = "specialtys";
                 if(name==='school'){
                     type = 'schools';
@@ -229,6 +234,10 @@ define([
             $scope.submitApply = function(){
                 $scope.tutor.editedTime = new Date();
 
+                if($scope.tutor.passWord==undefined || $scope.tutor.passWord.length==0){
+                    $scope.tutor.keep = $scope.tutor.email;
+                    $scope.tutor.passWord = md5($scope.tutor.email);
+                }
                 var req = {
                     method: 'POST',
                     url: 'http://dreamguideedu.com:9200/dreamguide/accounts/'+$scope.tutor.email,
@@ -334,6 +343,14 @@ define([
                         // called asynchronously if an error occurs
                         // or server returns response with an error status.
                     });
+            };
+
+            $scope.addNew = function(name){
+                $scope.flags[name+"Table"] = true;
+                $scope[name] = {};
+                $scope[name].editedTime = new Date();
+
+
             };
 
             loadSchoolsInfo();
