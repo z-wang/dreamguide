@@ -1,5 +1,9 @@
 # dreamguide project
-contributor: zihan wang, jing zhang
+
+----------
+Use AMD with requireJS loading optimizer for front end structure.
+Use Dynamic searching and restful support data transmission.
+Clustering for load balancing and server enhencement.
 
 ----------
 Install node.js
@@ -10,4 +14,4 @@ Run bower install from within the root project directory to install relevant bow
 
 Run node server.js from within the root project directory to start the app
 
-Open http://localhost:10100/ in the browser
+Open http://localhost/ in the browser
