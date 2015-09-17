@@ -64,7 +64,7 @@ define(['app','jquery'], function(app)
 
                 $http(req).success(function(data){
                     data.hits.hits.map(function(d){
-                        if(d._source.nameen.length>0 && $scope.availableSchools.indexOf(d._source.nameen) <0 ){
+                        if(d._source.nameen!=undefined && d._source.nameen.length>0 && $scope.availableSchools.indexOf(d._source.nameen) <0 ){
                             $scope.availableSchools.push(d._source.nameen);
                         }
                     });
@@ -87,13 +87,21 @@ define(['app','jquery'], function(app)
 
                 $http(req1).success(function(data){
                     data.hits.hits.map(function(d){
-                        if(d._source.namecn.length>0 && $scope.availableFields.indexOf(d._source.namecn) <0 ){
+                        if(d._source.namecn!=undefined && d._source.namecn.length>0 && $scope.availableFields.indexOf(d._source.namecn) <0 ){
                             $scope.availableFields.push(d._source.namecn);
                         }
                     });
                 }).error(function(data){
                     console.log(data);
                 });
+
+                $scope.makeAppointment = function(index){
+                    var tutor = $scope.model.tutors[index];
+                    var message = "确认预约" + tutor.name +"吗? 预约费用为60人民币/小时.";
+                    if (confirm(message)) {
+                        alert("预约成功!");
+                    }
+                };
 
                 var loadTutors = function(){
                     var req = {

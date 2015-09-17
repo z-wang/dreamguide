@@ -75,10 +75,12 @@
             <div class="col-sm-8">
                 <div class="panel panel-default">
                     <div class="panel-body">
-                        <div ng-repeat="person in model.tutors">
-                            <div class="col-sm-3 col-md-3">
-                                <div class="thumbnail" style="height:340px">
-                                    <img ng-src={{person.image}} alt="" height="180px" width="180px">
+                        <div ng-repeat="person in model.tutors track by $index">
+                            <div class="thumbnail" style="height:160px">
+                                <div class="col-sm-3 col-md-3">
+                                    <img ng-src={{person.image}} alt="" height="150px" width="150px">
+                                </div>
+                                <div class="col-sm-7 col-md-7">
                                     <div class="caption">
                                         <b>{{person.name}}</b>
                                         <br />
@@ -92,6 +94,13 @@
                                         <!--{{person.country}}-->
 
                                     </div>
+                                </div>
+                                <div class="col-sm-2 col-md-2">
+                                    <br />
+                                    <button class="btn btn-primary">主页</button>
+                                    <br />
+                                    <br />
+                                    <button class="btn btn-success" ng-click="makeAppointment($index)">预约</button>
                                 </div>
                             </div>
                         </div>
