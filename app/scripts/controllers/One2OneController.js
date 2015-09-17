@@ -87,8 +87,8 @@ define(['app','jquery'], function(app)
 
                 $http(req1).success(function(data){
                     data.hits.hits.map(function(d){
-                        if(d._source.namecn!=undefined && d._source.namecn.length>0 && $scope.availableFields.indexOf(d._source.namecn) <0 ){
-                            $scope.availableFields.push(d._source.namecn);
+                        if(d._source.nameen!=undefined && d._source.nameen.length>0 && $scope.availableFields.indexOf(d._source.nameen) <0 ){
+                            $scope.availableFields.push(d._source.nameen);
                         }
                     });
                 }).error(function(data){
@@ -139,6 +139,7 @@ define(['app','jquery'], function(app)
                             d.name = d._source.userName;
                             d.school = d._source.gradSchool;
                             d.major = d._source.gradMajor;
+                            d.degree = d._source.degree;
                             d.country = d._source.studyCountry;
                         });
 
