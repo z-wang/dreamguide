@@ -36,7 +36,7 @@
                             <div ng-if="user.$edit"><input class="form-control" type="number" ng-model="user.age" /></div>
                         </td>
                         <td data-title="'操作'" width="200">
-                            <a ng-if="!user.$edit" href="" class="btn btn-default btn-xs" ng-click="editRecord($index)">Edit</a>
+                            <a ng-if="!user.$edit" href="" class="btn btn-default btn-xs" ng-click="editRecord($index, $data)">Edit</a>
                             <!--<a ng-if="!user.$edit" href="" class="btn btn-primary btn-xs" ng-click="user.$edit = true">Save</a>-->
                         </td>
                     </tr>
@@ -65,7 +65,7 @@
                             <div ng-if="school.$edit"><input class="form-control" type="number" ng-model="school.age" /></div>
                         </td>
                         <td data-title="'操作'" width="200">
-                            <a ng-if="!school.$edit" href="" class="btn btn-default btn-xs" ng-click="editSchoolRecord($index)">Edit</a>
+                            <a ng-if="!school.$edit" href="" class="btn btn-default btn-xs" ng-click="editSchoolRecord($index, $data)">Edit</a>
                             <!--<a ng-if="!user.$edit" href="" class="btn btn-primary btn-xs" ng-click="user.$edit = true">Save</a>-->
                         </td>
                     </tr>
@@ -73,29 +73,32 @@
             </div>
 
             <div id="major-table" class="panel-body" ng-show="flags.majorTable" >
-            <table ng-table="majorTableParams" class="table" >
+            <table ng-table="majorTableParams" class="table table-condensed table-bordered table-striped" >
+
+                <!--<tr ng-repeat="row in $data">-->
+                    <!--<td data-title="'Name'" sortable="'name'">{{row.name}}</td>-->
+                    <!--<td data-title="'Age'" sortable="'age'">{{row.age}}</td>-->
+                    <!--<td data-title="'Money'">{{row.money}}</td>-->
+                <!--</tr>-->
+                <!-- -->
                 <tr ng-repeat="major in $data track by $index" >
                     <td data-title="'序号'">
                         {{$index+1}}
                     </td>
-                    <td data-title="'中文名称'">
-                        <span ng-if="!major.$edit">{{major._source.namecn}}</span>
-                        <div ng-if="major.$edit"><input class="form-control" type="text" ng-model="major.name" /></div>
+                    <td data-title="'中文名称'"  sortable="'_id'">
+                        {{major._source.namecn}}
                     </td>
-                    <td data-title="'英文名称'" width="200">
-                        <span ng-if="!major.$edit">{{major._source.nameen}}</span>
-                        <div ng-if="major.$edit"><input class="form-control" type="number" ng-model="major.age" /></div>
+                    <td data-title="'英文名称'" width="200"  sortable="'nameen'">
+                        {{major._source.nameen}}
                     </td>
-                    <td data-title="'注册时间'" width="200">
-                        <span ng-if="!major.$edit">{{major._source.createdTime}}</span>
-                        <div ng-if="major.$edit"><input class="form-control" type="number" ng-model="major.age" /></div>
+                    <td data-title="'注册时间'" width="200"  sortable="'createdTime'">
+                        {{major._source.createdTime}}
                     </td>
-                    <td data-title="'修改时间'" width="200">
-                        <span ng-if="!major.$edit">{{major._source.editedTime}}</span>
-                        <div ng-if="major.$edit"><input class="form-control" type="number" ng-model="major.age" /></div>
+                    <td data-title="'修改时间'" width="200"  sortable="'editedTime'">
+                       {{major._source.editedTime}}
                     </td>
                     <td data-title="'操作'" width="200">
-                        <a ng-if="!major.$edit" href="" class="btn btn-default btn-xs" ng-click="editMajorRecord($index)">Edit</a>
+                        <a href="" class="btn btn-default btn-xs" ng-click="editMajorRecord($index, $data)">Edit</a>
                         <!--<a ng-if="!user.$edit" href="" class="btn btn-primary btn-xs" ng-click="user.$edit = true">Save</a>-->
                     </td>
                 </tr>
@@ -234,15 +237,23 @@
                             <form name="loginForm2" novalidate>
                                 <br />
                                 <div class="form-group">
-                                    <label>留学国家</label>
+                                    <label>留学国家/地区</label>
 
-                                    <input class="form-control" name="studycountry" type="text"
-                                           placeholder="填写最高学历在读或毕业学校所在国家即可" ng-model="tutor.studyCountry" />
+                                    <ui-select id="studycountry" name="studycountry" ng-model="tutor.studyCountry">
+                                        <ui-select-match placeholder="填写留学时最高学历在读或毕业学校所在国家即可">{{$select.selected}}</ui-select-match>
+                                        <ui-select-choices repeat="country in availableCountries | filter: $select.search">
+                                            <span ng-bind-html="country | highlight: $select.search"></span>
+                                        </ui-select-choices>
+                                    </ui-select>
                                 </div>
                                 <div class="form-group">
                                     <label>现居国家/地区</label>
-                                    <input class="form-control" name="workcountry" type="text"
-                                           placeholder="毕业后工作所在国家或地区，在读学生填写学校国家" ng-model="tutor.workCountry" />
+                                    <ui-select id="workcountry" name="workcountry" ng-model="tutor.workCountry">
+                                        <ui-select-match placeholder="毕业后工作所在国家或地区，在读学生填写学校国家">{{$select.selected}}</ui-select-match>
+                                        <ui-select-choices repeat="country in availableCountries | filter: $select.search">
+                                            <span ng-bind-html="country | highlight: $select.search"></span>
+                                        </ui-select-choices>
+                                    </ui-select>
                                 </div>
                                 <div class="form-group">
                                     <label>LinkedIn/领英 链接</label>
@@ -253,6 +264,15 @@
                                     <label>工作单位</label>
                                     <input class="form-control" name="company" type="text"
                                            placeholder="已经工作的导师可以填写现在的工作单位" ng-model="tutor.company" />
+                                </div>
+                                <div class="form-group">
+                                    <label>工作领域</label>
+                                    <ui-select id="workfield" name="workfield" ng-model="tutor.workField">
+                                        <ui-select-match placeholder="主要从事的工作方向, 如Finance, IT等等">{{$select.selected}}</ui-select-match>
+                                        <ui-select-choices repeat="field in availableFields | filter: $select.search">
+                                            <span ng-bind-html="field | highlight: $select.search"></span>
+                                        </ui-select-choices>
+                                    </ui-select>
                                 </div>
                                 <div class="form-group">
                                     <label>个人简介</label>
@@ -274,15 +294,20 @@
                                 </div>
                                 <div class="form-group">
                                     <label>学历</label>
-                                    <input class="form-control" name="degree" type="text"
-                                           placeholder="获得或在读的最高学位，如Master" ng-model="tutor.degree" />
+                                    <label for="degree">学位</label>
+                                    <ui-select id="degree" name="degree" ng-model="tutor.degree">
+                                        <ui-select-match placeholder="获得或在读的最高学位，如Master">{{$select.selected}}</ui-select-match>
+                                        <ui-select-choices repeat="degree in availableDegrees | filter: $select.search">
+                                            <span ng-bind-html="degree | highlight: $select.search"></span>
+                                        </ui-select-choices>
+                                    </ui-select>
                                 </div>
                                 <div class="form-group">
                                     <label>专业</label>
 
                                     <ui-select name="major" ng-model="tutor.gradMajor">
                                         <ui-select-match placeholder="选择相关专业">{{$select.selected}}</ui-select-match>
-                                        <ui-select-choices repeat="field in availableFields | filter: $select.search">
+                                        <ui-select-choices repeat="field in availableMajors | filter: $select.search">
                                             <span ng-bind-html="field | highlight: $select.search"></span>
                                         </ui-select-choices>
                                     </ui-select>
@@ -291,6 +316,35 @@
                                     <label>学校邮箱</label>
                                     <input class="form-control" name="schoolemail"
                                            placeholder="填写学校邮箱有助于加快身份验证" ng-model="tutor.schoolEmail" />
+                                </div>
+                                <div class="form-group">
+                                    <label for="undergrad">本科在读/毕业院校</label>
+                                    <ui-select id="undergrad" name="underSchool" ng-model="tutor.underSchool" style="font-family: Georgia, Serif;">
+                                        <ui-select-match placeholder="选择本科在读或毕业院校">{{$select.selected}}</ui-select-match>
+                                        <ui-select-choices repeat="school in availableSchools | filter: $select.search">
+                                            <span ng-bind-html="school | highlight: $select.search"></span>
+                                        </ui-select-choices>
+                                    </ui-select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="underdegree">学位</label>
+                                    <ui-select id="underdegree" name="underDegree" ng-model="tutor.underDegree" style="font-family: Georgia, Serif;">
+                                        <ui-select-match placeholder="本科获得或在读的学位，如Bachelor">{{$select.selected}}</ui-select-match>
+                                        <ui-select-choices repeat="degree in availableDegrees | filter: $select.search">
+                                            <span ng-bind-html="degree | highlight: $select.search"></span>
+                                        </ui-select-choices>
+                                    </ui-select>
+                                    <!--<input class="form-control" name="underDegree" type="text"-->
+                                    <!--placeholder="本科获得或在读的学位，如B.S." required ng-model="tutor.underDegree" />-->
+                                </div>
+                                <div class="form-group">
+                                    <label>专业</label>
+                                    <ui-select name="underMajor" ng-model="tutor.underMajor">
+                                        <ui-select-match placeholder="选择相关专业">{{$select.selected}}</ui-select-match>
+                                        <ui-select-choices repeat="field in availableMajors | filter: $select.search">
+                                            <span ng-bind-html="field | highlight: $select.search"></span>
+                                        </ui-select-choices>
+                                    </ui-select>
                                 </div>
                             </form>
                         </div>

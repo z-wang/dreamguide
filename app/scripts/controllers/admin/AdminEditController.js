@@ -6,7 +6,7 @@ define([
 ], function(app)
 {
     app.controller('AdminEditController',
-        ['$scope','$location','$http', 'ngTableParams','$sce', function($scope, $location,$http, ngTableParams, $sce) {
+        ['$scope','$location','$http', 'ngTableParams','NgTableParams','$sce', function($scope, $location,$http, ngTableParams, NgTableParams, $sce) {
             $(window).scrollTop(0);
             $(window).unbind("scroll");
             $('.navbar').unbind('mouseenter mouseleave');
@@ -114,16 +114,19 @@ define([
                 $http(req).success(function(data){
                     console.log(data);
                     $scope.search.data = data.hits.hits;
-                    $scope.majorTableParams = new ngTableParams({
-                        page: 1,            // show first page
-                        count: 5           // count per page
-                    }, {
-                        total: $scope.search.data.length, // length of data
-                        getData: function($defer, params) {
-                            $defer.resolve($scope.search.data.slice((params.page() - 1) * params.count(), params.page() * params.count()));
-                        }
-                    });
-                    //data.hits.hits
+                    //var datasets = [];
+                    //
+                    //$scope.search.data.map(function(d){
+                    //    datasets.push(d._source);
+                    //});
+
+                    $scope.majorTableParams = new NgTableParams({
+                        // initial sort order, not working
+                       // sorting: { namecn: "asc" }
+                        }, {
+                            dataset: $scope.search.data
+                        });
+
                 }).error(function(data){
                     console.log(data);
                 });
@@ -172,26 +175,38 @@ define([
                 });
             };
 
-            $scope.editRecord = function(index){
+            $scope.editRecord = function(index, data){
                 console.log("edit",index);
-                $scope.tutor = angular.copy($scope.search.data[index]._source);
-                $scope.resetTutor = angular.copy($scope.search.data[index]._source);
+                $scope.tutor = angular.copy(data[index]._source);
+                $scope.resetTutor = angular.copy(data[index]._source);
             };
 
-            $scope.editSchoolRecord = function(index){
+            $scope.editSchoolRecord = function(index, data){
                 console.log("edit",index);
-                $scope.school = angular.copy($scope.search.data[index]._source);
-                $scope.resetSchool = angular.copy($scope.search.data[index]._source);
+                $scope.school = angular.copy(data[index]._source);
+                $scope.resetSchool = angular.copy(data[index]._source);
             };
 
-            $scope.editMajorRecord = function(index){
+            $scope.editMajorRecord = function(index, data){
                 console.log("edit",index);
-                $scope.major = angular.copy($scope.search.data[index]._source);
-                $scope.resetMajor = angular.copy($scope.search.data[index]._source);
+                $scope.major = angular.copy(data[index]._source);
+                $scope.resetMajor = angular.copy(data[index]._source);
             };
 
             $scope.availableSchools = [];
-            $scope.availableFields = [];
+            $scope.availableMajors = [];
+            $scope.availableFields = ["Architecture",  "Design", "Landscape Architecture", "Urban & Regional Planning", "Teaching",
+                "Counseling", "Social Work", "Library/Info Services", "Internships & Short-Term Work", "Volunteering", "Translation & Interpretation", "Tourism", "Business",
+                "Research", "Arts", "Broadcasting", "Fashion", "Films", "Museums", "Performing Arts","Advertising", "Journalism",
+                "Aerospace", "Civil/Environ", "EE", "CS/IT", "IEOR", "Mech", "MatSci", "Nuclear", "Statistics", "Law", "Public Advocacy",
+                "Accounting", "Consulting", "HR", "Insurance", "Real Estate", "Environmental Engineering",  "PR", "Finance", "Investment",
+                "Dentistry", "Optometry", "Pharmacy", "Veterinary Medicine", "Health Management", "Agriculture", "Bioinformatics & Biostatistics",
+                "Biotechnology", "Botany", "Forensic Science", "Genetics", "Marine Science", "Science Education", "Zoology"];
+            $scope.availableCountries = ["Australia", "Canada", "China", "France", "Germany", "Greece", "Hong Kong", "Japan", "South Korea",
+                "Russia", "Singapore", "Taiwan", "United States", "United Kingdom", "Other" ];
+            $scope.availableDegrees = ["Associate", "Associate of Arts", "Associate of Business", "Associate of Science", "Bachelor", "Bachelor of Business",
+                "Bachelor of Engineering", "Bachelor of Arts", "Bachelor of Science", "Master", "Master of Business", "MBA", "Master of Engineering",
+                "Master of Science", "Master of Arts", "PhD", "JD", "MD"];
 
             $scope.submitPhoto = function(){
                 if(!$scope.cropper.croppedImage){
@@ -312,8 +327,8 @@ define([
 
                 $http(req1).success(function(data){
                     data.hits.hits.map(function(d){
-                        if(d._source.namecn.length>0 && $scope.availableFields.indexOf(d._source.namecn) <0 ){
-                            $scope.availableFields.push(d._source.namecn);
+                        if(d._source.nameen != undefined && d._source.nameen.length>0 && $scope.availableMajors.indexOf(d._source.nameen) <0 ){
+                            $scope.availableMajors.push(d._source.nameen);
                         }
                     });
                 }).error(function(data){
