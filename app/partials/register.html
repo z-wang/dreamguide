@@ -100,17 +100,27 @@
                                 <form name="loginForm2" novalidate>
                                     <br />
                                     <div class="form-group" ng-class="{'has-error': loginForm2.studycountry.$invalid}">
-                                        <label>留学国家</label>
+                                        <label>留学国家/地区</label>
 
-                                        <input class="form-control" name="studycountry" type="text"
-                                               placeholder="填写最高学历在读或毕业学校所在国家即可" required ng-model="tutor.studyCountry" />
+                                        <ui-select id="studycountry" name="studycountry" ng-model="tutor.studyCountry" required>
+                                            <ui-select-match placeholder="填写留学时最高学历在读或毕业学校所在国家即可">{{$select.selected}}</ui-select-match>
+                                            <ui-select-choices repeat="country in availableCountries | filter: $select.search">
+                                                <span ng-bind-html="country | highlight: $select.search"></span>
+                                            </ui-select-choices>
+                                        </ui-select>
+
+                                        <!--<input class="form-control" name="studycountry" type="text"-->
+                                               <!--placeholder="填写最高学历在读或毕业学校所在国家即可" required ng-model="tutor.studyCountry" />-->
                                         <span class="help-block" ng-show="loginForm2.studycountry.$error.required">不能为空</span>
                                     </div>
                                     <div class="form-group" ng-class="{'has-error': loginForm2.workcountry.$invalid}">
                                         <label>现居国家/地区</label>
-                                        <input class="form-control" name="workcountry" type="text"
-                                               placeholder="毕业后工作所在国家或地区，在读学生填写学校国家" required ng-model="tutor.workCountry" />
-                                        <span class="help-block" ng-show="loginForm2.workcountry.$error.required">不能为空</span>
+                                        <ui-select id="workcountry" name="workcountry" ng-model="tutor.workCountry">
+                                            <ui-select-match placeholder="毕业后工作所在国家或地区，在读学生填写学校国家">{{$select.selected}}</ui-select-match>
+                                            <ui-select-choices repeat="country in availableCountries | filter: $select.search">
+                                                <span ng-bind-html="country | highlight: $select.search"></span>
+                                            </ui-select-choices>
+                                        </ui-select>
                                     </div>
                                     <div class="form-group">
                                         <label>LinkedIn/领英 链接</label>
@@ -123,8 +133,17 @@
                                                placeholder="已经工作的导师可以填写现在的工作单位" ng-model="tutor.company" />
                                     </div>
                                     <div class="form-group">
+                                        <label>工作领域</label>
+                                        <ui-select id="workfield" name="workfield" ng-model="tutor.workField">
+                                            <ui-select-match placeholder="主要从事的工作方向, 如Finance, IT等等">{{$select.selected}}</ui-select-match>
+                                            <ui-select-choices repeat="field in availableFields | filter: $select.search">
+                                                <span ng-bind-html="field | highlight: $select.search"></span>
+                                            </ui-select-choices>
+                                        </ui-select>
+                                    </div>
+                                    <div class="form-group">
                                         <label>个人简介</label>
-                                        <textarea style="height: 150px;" class="form-control" placeholder="请用少于100字介绍自己的学习工作状况, 个人简介会成为别人了解你资料的第一印象。" ng-model="tutor.profile"></textarea>
+                                        <textarea style="height: 200px;" class="form-control" placeholder="请用少于100字介绍自己的学习工作状况, 个人简介会成为别人了解你资料的第一印象。" ng-model="tutor.profile"></textarea>
                                     </div>
                                 </form>
                             </div>
@@ -132,7 +151,7 @@
                                 <form name="loginForm3" novalidate>
                                     <br />
                                     <div class="form-group" ng-class="{'has-error': loginForm3.school.$invalid}">
-                                        <label for="school">在读/毕业院校</label>
+                                        <label for="school">留学在读/毕业院校</label>
                                         <ui-select id="school" name="school" ng-model="tutor.gradSchool" style="font-family: Georgia, Serif;" required>
                                             <ui-select-match placeholder="选择国外最高学历在读或毕业院校">{{$select.selected}}</ui-select-match>
                                             <ui-select-choices repeat="school in availableSchools | filter: $select.search">
@@ -153,10 +172,14 @@
                                         <span class="help-block" ng-show="loginForm3.school.$error.required">不能为空</span>
                                     </div>
                                     <div class="form-group" ng-class="{'has-error': loginForm3.degree.$invalid}">
-                                        <label>学历</label>
-                                        <input class="form-control" name="degree" type="text"
-                                               placeholder="获得或在读的最高学位，如Master" required ng-model="tutor.degree" />
 
+                                        <label for="degree">学位</label>
+                                        <ui-select id="degree" name="degree" ng-model="tutor.degree" style="font-family: Georgia, Serif;" required>
+                                            <ui-select-match placeholder="获得或在读的最高学位，如Master">{{$select.selected}}</ui-select-match>
+                                            <ui-select-choices repeat="degree in availableDegrees | filter: $select.search">
+                                                <span ng-bind-html="degree | highlight: $select.search"></span>
+                                            </ui-select-choices>
+                                        </ui-select>
                                         <span class="help-block" ng-show="loginForm3.degree.$error.required">不能为空</span>
                                     </div>
                                     <div class="form-group" ng-class="{'has-error': loginForm3.major.$invalid}">
@@ -164,7 +187,7 @@
 
                                         <ui-select name="major" ng-model="tutor.gradMajor" required>
                                             <ui-select-match placeholder="选择相关专业">{{$select.selected}}</ui-select-match>
-                                            <ui-select-choices repeat="field in availableFields | filter: $select.search">
+                                            <ui-select-choices repeat="field in availableMajors | filter: $select.search">
                                                 <span ng-bind-html="field | highlight: $select.search"></span>
                                             </ui-select-choices>
                                         </ui-select>
@@ -174,6 +197,35 @@
                                         <label>学校邮箱</label>
                                         <input class="form-control" name="schoolemail"
                                                placeholder="填写学校邮箱有助于加快身份验证" ng-model="tutor.schoolEmail" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="undergrad">本科在读/毕业院校</label>
+                                        <ui-select id="undergrad" name="underSchool" ng-model="tutor.underSchool" style="font-family: Georgia, Serif;">
+                                            <ui-select-match placeholder="选择本科在读或毕业院校">{{$select.selected}}</ui-select-match>
+                                            <ui-select-choices repeat="school in availableSchools | filter: $select.search">
+                                                <span ng-bind-html="school | highlight: $select.search"></span>
+                                            </ui-select-choices>
+                                        </ui-select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="underdegree">学位</label>
+                                        <ui-select id="underdegree" name="underDegree" ng-model="tutor.underDegree" style="font-family: Georgia, Serif;">
+                                            <ui-select-match placeholder="本科获得或在读的学位，如Bachelor">{{$select.selected}}</ui-select-match>
+                                            <ui-select-choices repeat="degree in availableDegrees | filter: $select.search">
+                                                <span ng-bind-html="degree | highlight: $select.search"></span>
+                                            </ui-select-choices>
+                                        </ui-select>
+                                        <!--<input class="form-control" name="underDegree" type="text"-->
+                                               <!--placeholder="本科获得或在读的学位，如B.S." required ng-model="tutor.underDegree" />-->
+                                    </div>
+                                    <div class="form-group">
+                                        <label>专业</label>
+                                        <ui-select name="underMajor" ng-model="tutor.underMajor">
+                                            <ui-select-match placeholder="选择相关专业">{{$select.selected}}</ui-select-match>
+                                            <ui-select-choices repeat="field in availableMajors | filter: $select.search">
+                                                <span ng-bind-html="field | highlight: $select.search"></span>
+                                            </ui-select-choices>
+                                        </ui-select>
                                     </div>
                                 </form>
                             </div>

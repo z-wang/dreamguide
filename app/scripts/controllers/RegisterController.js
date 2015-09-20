@@ -16,8 +16,8 @@ define([
             console.log($scope);
 
             $scope.tutor={
-                gradSchool : "University of Southampton",
-                gradMajor : "戏剧舞台美术设计"
+                gradSchool : "",
+                gradMajor : ""
             };
             $scope.toRegister = function(){
                 $(window).scrollTop(0);
@@ -25,7 +25,19 @@ define([
             };
 
             $scope.availableSchools = [];
-            $scope.availableFields = [];
+            $scope.availableMajors = [];
+            $scope.availableFields = ["Architecture",  "Design", "Landscape Architecture", "Urban & Regional Planning", "Teaching",
+                "Counseling", "Social Work", "Library/Info Services", "Internships & Short-Term Work", "Volunteering", "Translation & Interpretation", "Tourism", "Business",
+                "Research", "Arts", "Broadcasting", "Fashion", "Films", "Museums", "Performing Arts","Advertising", "Journalism",
+                "Aerospace", "Civil/Environ", "EE", "CS/IT", "IEOR", "Mech", "MatSci", "Nuclear", "Statistics", "Law", "Public Advocacy",
+                "Accounting", "Consulting", "HR", "Insurance", "Real Estate", "Environmental Engineering",  "PR", "Finance", "Investment",
+                "Dentistry", "Optometry", "Pharmacy", "Veterinary Medicine", "Health Management", "Agriculture", "Bioinformatics & Biostatistics",
+                "Biotechnology", "Botany", "Forensic Science", "Genetics", "Marine Science", "Science Education", "Zoology"];
+            $scope.availableCountries = ["Australia", "Canada", "China", "France", "Germany", "Greece", "Hong Kong", "Japan", "South Korea",
+                "Russia", "Singapore", "Taiwan", "United States", "United Kingdom", "Other" ];
+            $scope.availableDegrees = ["Associate", "Associate of Arts", "Associate of Business", "Associate of Science", "Bachelor", "Bachelor of Business",
+                "Bachelor of Engineering", "Bachelor of Arts", "Bachelor of Science", "Master", "Master of Business", "MBA", "Master of Engineering",
+                "Master of Science", "Master of Arts", "PhD", "JD", "MD"];
 
             //console.log(fileReader);
 
@@ -150,7 +162,7 @@ define([
                 $http(req).success(function(data){
                     console.log(data);
                     data.hits.hits.map(function(d){
-                        if(d._source.nameen.length>0 && $scope.availableSchools.indexOf(d._source.nameen) <0 ){
+                        if(d._source.nameen!=undefined && d._source.nameen.length>0 && $scope.availableSchools.indexOf(d._source.nameen) <0 ){
                             $scope.availableSchools.push(d._source.nameen);
                         }
                     });
@@ -174,8 +186,8 @@ define([
                 $http(req1).success(function(data){
                     console.log(data);
                     data.hits.hits.map(function(d){
-                        if(d._source.namecn.length>0 && $scope.availableFields.indexOf(d._source.namecn) <0 ){
-                            $scope.availableFields.push(d._source.namecn);
+                        if(d._source.nameen!=undefined && d._source.nameen.length>0 && $scope.availableMajors.indexOf(d._source.nameen) <0 ){
+                            $scope.availableMajors.push(d._source.nameen);
                         }
                     });
                 }).error(function(data){
