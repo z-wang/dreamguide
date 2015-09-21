@@ -35,7 +35,10 @@
                             <span ng-if="!user.$edit">{{user._source.editedTime}}</span>
                             <div ng-if="user.$edit"><input class="form-control" type="number" ng-model="user.age" /></div>
                         </td>
-                        <td data-title="'操作'" width="200">
+                        <td data-title="'是否active'" width="100">
+                            {{user._source.profileStatus}}
+                        </td>
+                        <td data-title="'操作'" width="100">
                             <a ng-if="!user.$edit" href="" class="btn btn-default btn-xs" ng-click="editRecord($index, $data)">Edit</a>
                             <!--<a ng-if="!user.$edit" href="" class="btn btn-primary btn-xs" ng-click="user.$edit = true">Save</a>-->
                         </td>
@@ -64,9 +67,12 @@
                             <span ng-if="!school.$edit">{{school._source.editedTime}}</span>
                             <div ng-if="school.$edit"><input class="form-control" type="number" ng-model="school.age" /></div>
                         </td>
-                        <td data-title="'操作'" width="200">
+                        <td data-title="'是否active'" width="100">
+                            {{school._source.status}}
+                        </td>
+                        <td data-title="'操作'" width="100">
                             <a ng-if="!school.$edit" href="" class="btn btn-default btn-xs" ng-click="editSchoolRecord($index, $data)">Edit</a>
-                            <!--<a ng-if="!user.$edit" href="" class="btn btn-primary btn-xs" ng-click="user.$edit = true">Save</a>-->
+                            <!--<a ng-if="!school.$edit" href="" class="btn btn-primary btn-xs" ng-click="deleteSchoolRecord($index, $data)">Delete</a>-->
                         </td>
                     </tr>
                 </table>
@@ -97,7 +103,10 @@
                     <td data-title="'修改时间'" width="200"  sortable="'editedTime'">
                        {{major._source.editedTime}}
                     </td>
-                    <td data-title="'操作'" width="200">
+                    <td data-title="'是否active'" width="100"  sortable="'editedTime'">
+                        {{major._source.status}}
+                    </td>
+                    <td data-title="'操作'" width="100">
                         <a href="" class="btn btn-default btn-xs" ng-click="editMajorRecord($index, $data)">Edit</a>
                         <!--<a ng-if="!user.$edit" href="" class="btn btn-primary btn-xs" ng-click="user.$edit = true">Save</a>-->
                     </td>
@@ -118,9 +127,20 @@
                            placeholder="英文名" ng-model="major.nameen" />
                 </div>
                 <div class="form-group">
-                    <label>专业大类(英文,如 Engineering)</label>
-                    <input class="form-control" name="country" type="text"
-                           placeholder="Engineering/Business...，英文" ng-model="major.school" />
+                    <label>专业大类领域(英文,如 Engineering)</label>
+                    <ui-select id="majorfield" name="majorfield" ng-model="major.school">
+                        <ui-select-match placeholder="主要方向, 如Finance, IT等等">{{$select.selected}}</ui-select-match>
+                        <ui-select-choices repeat="field in availableFields | filter: $select.search">
+                            <span ng-bind-html="field | highlight: $select.search"></span>
+                        </ui-select-choices>
+                    </ui-select>
+                </div>
+                <div class="form-group">
+                    <label for="majorSelect">选择Active/Inactive: </label><br>
+                    <select name="majorSelect" id="majorSelect" ng-model="major.status">
+                        <option value="Active">Active</option>
+                        <option value="Inactive">Inactive</option>
+                    </select><br>
                 </div>
                 <button type="button" class="btn btn-primary" ng-click="submitChange('major')">
                     变更
@@ -147,8 +167,19 @@
                 </div>
                 <div class="form-group">
                     <label>学校所在国家(英文)</label>
-                    <input class="form-control" name="country" type="text"
-                           placeholder="国家/区域，英文" ng-model="school.country" />
+                    <ui-select id="schoolcountry" name="schoolcountry" ng-model="school.country">
+                        <ui-select-match placeholder="国家/区域，英文">{{$select.selected}}</ui-select-match>
+                        <ui-select-choices repeat="country in availableCountries | filter: $select.search">
+                            <span ng-bind-html="country | highlight: $select.search"></span>
+                        </ui-select-choices>
+                    </ui-select>
+                </div>
+                <div class="form-group">
+                    <label for="schoolSelect">选择Active/Inactive: </label><br>
+                    <select name="schoolSelect" id="schoolSelect" ng-model="school.status">
+                        <option value="Active">Active</option>
+                        <option value="Inactive">Inactive</option>
+                    </select><br>
                 </div>
                 <button type="button" class="btn btn-primary" ng-click="submitChange('school')">
                     变更
@@ -277,6 +308,13 @@
                                 <div class="form-group">
                                     <label>个人简介</label>
                                     <textarea style="height: 150px;" class="form-control" placeholder="请用少于100字介绍自己的学习工作状况, 个人简介会成为别人了解你资料的第一印象。" ng-model="tutor.profile"></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label for="tutorSelect">选择Active/Inactive: </label><br>
+                                    <select name="tutorSelect" id="tutorSelect" ng-model="tutor.profileStatus">
+                                        <option value="Active">Active</option>
+                                        <option value="Inactive">Inactive</option>
+                                    </select><br>
                                 </div>
                             </form>
                         </div>

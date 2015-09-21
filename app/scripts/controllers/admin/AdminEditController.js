@@ -187,6 +187,12 @@ define([
                 $scope.resetSchool = angular.copy(data[index]._source);
             };
 
+            //$scope.deleteSchoolRecord = function(index, data){
+            //    console.log("delete",data[index]);
+            //    //$scope.school = angular.copy(data[index]._source);
+            //    //$scope.resetSchool = angular.copy(data[index]._source);
+            //};
+
             $scope.editMajorRecord = function(index, data){
                 console.log("edit",index);
                 $scope.major = angular.copy(data[index]._source);
@@ -361,6 +367,10 @@ define([
             };
 
             $scope.addNew = function(name){
+                Object.keys($scope.flags).map(function(d){
+                    $scope.flags[d] = false;
+                });
+
                 $scope.flags[name+"Table"] = true;
                 $scope[name] = {};
                 $scope[name].editedTime = new Date();
