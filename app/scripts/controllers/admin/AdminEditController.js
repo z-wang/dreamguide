@@ -24,6 +24,10 @@ define([
                 majorTable: false
             };
 
+            $scope.image = {
+                defaultImage : 'image/avatar/zz@test.com.png'
+            };
+
             $scope.search = {
                 data:[]
             };
@@ -176,8 +180,22 @@ define([
             };
 
             $scope.editRecord = function(index, data){
-                console.log("edit",index);
+                console.log("edit",data[index]);
                 $scope.tutor = angular.copy(data[index]._source);
+                $http.post('/img/downLoad', {
+                    name: data[index]._id
+                }).
+                    success(function(d, status, headers, config) {
+                        if(d=="1"){
+                            $scope.tutor.image = 'image/avatar/'+ data[index]._id+'.png';
+                            console.log($scope.tutor.image);
+                        }else{
+                            $scope.tutor.image = $scope.image.defaultImage;
+                        }
+                    }).
+                    error(function(d, status, headers, config) {
+                        $scope.tutor.image = $scope.image.defaultImage;
+                    });
                 $scope.resetTutor = angular.copy(data[index]._source);
             };
 
