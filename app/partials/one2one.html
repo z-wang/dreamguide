@@ -37,15 +37,22 @@
                                     <div>
                                         <b>热门专业：</b>
                                     </div>
+                            <br />
                                     <div>
-                                        商科: <a>金融</a>, <a>MBA</a>, <a>会计</a>, <a>经济</a>
+                                        Business: <a>Finance</a>, <a>MBA</a>, <a>Account</a>, <a>Information Systems</a>
                                     </div>
+                            <br />
                                     <div>
-                                        工程: <a>计算机工程</a>, <a>电子工程</a>, <a>机械工程</a>
+                                        Engineering: <a>FE</a>, <a>ECE</a>, <a>ME</a>
                                     </div>
+                            <br />
                                     <div>
-                                        理学: <a>物理</a>, <a>化学</a>, <a>统计</a>, <a>应用数学</a>
+                                        Science: <a>Physics</a>, <a>Chemistry</a>, <a>CS</a>
                                     </div>
+                            <br />
+                            <div>
+                                Math: <a>Statistics</a>, <a>Applied Math</a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -55,9 +62,18 @@
                         选择想要学习的领域
                     <ui-select multiple  ng-model="filters.fields">
                         <ui-select-match placeholder="选择专业领域...">{{$item}}</ui-select-match>
-                        <ui-select-choices repeat="major in availableFields">
-                            {{major}}
+                        <ui-select-choices repeat="major in availableFields | filter: $select.search">
+                            <span ng-bind-html="major | highlight: $select.search"></span>
                         </ui-select-choices>
+
+                        <!--<ui-select id="schoolcountry" name="schoolcountry" ng-model="school.country">-->
+                            <!--<ui-select-match placeholder="国家/区域，英文">{{$select.selected}}</ui-select-match>-->
+                            <!--<ui-select-choices repeat="country in availableCountries | filter: $select.search">-->
+                                <!--<span ng-bind-html="country | highlight: $select.search"></span>-->
+                            <!--</ui-select-choices>-->
+                        <!--</ui-select>-->
+
+
                     </ui-select>
                     <hr>
                     选择想要了解的学校
@@ -77,8 +93,10 @@
                     <div class="panel-body">
                         <div ng-repeat="person in model.tutors track by $index">
                             <div class="thumbnail" style="height:160px">
-                                <div class="col-sm-3 col-md-3">
-                                    <img ng-src={{person.image}} alt="" height="150px" width="150px">
+                                <div class="col-sm-3 col-md-3" style="margin-top: 5px;">
+                                    <div>
+                                        <img ng-src={{person.image}} alt="" height="140px" width="140px">
+                                    </div>
                                 </div>
                                 <div class="col-sm-7 col-md-7">
                                     <div class="caption">
