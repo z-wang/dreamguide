@@ -6,6 +6,7 @@ require.config({
         'angular-sanitize' : '../lib/angular/angular-sanitize.min',
         'bootstrapjs': '../lib/bootstrap/js/bootstrap.min',
 		'jquery': '/bower_components/jquery/dist/jquery.min',
+        'ui-bootstrap':'../lib/angular-ui/ui-bootstrap-tpls.min',
         //'angularAMD': '../lib/angularAMD/angularAMD.min',
         //'ngload' : '../lib/angularAMD/ngload.min',
        // 'svgjs': '../lib/image/svg.min',
@@ -45,6 +46,9 @@ require.config({
         'angular-sanitize' : {
             deps: ['angular']
         },
+        'ui-bootstrap' :{
+            deps: ['angular']
+        },
         'ng-table': {
             deps: ['angular', 'jquery']
         },
@@ -77,7 +81,7 @@ require.config({
 require
 (
     [
-        'app', 'angular','angular-route', 'bootstrapjs', 'ng-table'
+        'app', 'angular','angular-route', 'bootstrapjs', 'ng-table', 'ui-bootstrap'
     ],
     function()
     {
