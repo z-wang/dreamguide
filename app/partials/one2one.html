@@ -1,4 +1,144 @@
 <div class="content-section" id="index" ng-controller="One2OneController">
+    <script type="text/ng-template" id="myModalContent.html">
+        <div class="modal-header">
+            <h3 class="modal-title">预约导师</h3>
+        </div>
+
+        <div class="modal-body">
+            <div class="row" style="padding-left:15px; padding-bottom: 15px; padding-right: 15px;border-bottom: 1px solid #e5e5e5;">
+                <h5>{{selected.tutor.name}}导师的信息</h5>
+                <div class="row col-sm-12 col-xs-12">
+                    名字: {{selected.tutor.name}}
+                </div>
+                <div class="row col-sm-12 col-xs-12">
+                    本科信息: {{selected.tutor._source.underSchool}}  {{selected.tutor._source.underMajor}}  {{selected.tutor._source.underDegree}}
+                </div>
+                <div class="row col-sm-12 col-xs-12">
+                    留学背景: {{selected.tutor._source.gradSchool}} ,  {{selected.tutor._source.gradMajor}},  {{selected.tutor._source.degree}}
+                </div>
+                <div class="row col-sm-12 col-xs-12">
+                    咨询费用: 60元人民币/小时
+                </div>
+            </div>
+            <div class="row" style="padding-top:15px;">
+                <div class="col-sm-8 col-xs-8">
+                    <div>
+                        <!--<div data-ng-class="{'has-error': contactInfoErrors.setsEmail}">-->
+                        <label>手机号</label>
+                        <div style="clear:both"></div>
+                        <input class="form-control pull-left" placeholder="输入手机号" data-ng-model="appointment.account">
+                        <!--ng-pristine ng-valid ng-valid-email-->
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-8 col-xs-8">
+                    <!--<div data-ng-class="{'has-error': contactInfoErrors.setsPassword}">-->
+                    <div>
+                        <label for="password">密码</label>
+                        <div style="clear:both"></div>
+                        <input type="password" class="form-control pull-left ng-pristine ng-valid" id="password" placeholder="密码" data-ng-model="appointment.password">
+                    </div>
+                </div>
+            </div>
+            <div class="row" style="padding-top:15px;">
+                <div class="col-sm-8 col-xs-8">
+                    <div>
+                        <label>名字</label>
+                        <div style="clear:both"></div>
+                        <input class="form-control pull-left" placeholder="输入昵称" data-ng-model="appointment.name">
+                    </div>
+                </div>
+            </div>
+            <div class="row" >
+                <br />
+            </div>
+            <div class="row">
+                    <div class="col-sm-12 col-xs-12">
+                        预约时间:</div>
+                    <div class="col-sm-3 col-xs-3">
+                        <ui-select ng-model="appointment.time_slot1.year">
+                        <ui-select-match placeholder="">{{$select.selected}}年</ui-select-match>
+                        <ui-select-choices repeat="year in dates.years">
+                        <span ng-bind-html="year | highlight: $select.search"></span>
+                        </ui-select-choices>
+                        </ui-select>
+                    </div>
+                    <div class="col-sm-2 col-xs-2">
+                        <ui-select ng-model="appointment.time_slot1.month">
+                            <ui-select-match placeholder="">{{$select.selected}}月</ui-select-match>
+                            <ui-select-choices repeat="month in dates.months">
+                                <span ng-bind-html="month | highlight: $select.search"></span>
+                            </ui-select-choices>
+                        </ui-select>
+                    </div>
+                    <div class="col-sm-2 col-xs-2">
+                        <ui-select ng-model="appointment.time_slot1.day">
+                            <ui-select-match placeholder="">{{$select.selected}}日</ui-select-match>
+                            <ui-select-choices repeat="day in dates.days">
+                                <span ng-bind-html="day | highlight: $select.search"></span>
+                            </ui-select-choices>
+                        </ui-select>
+                    </div>
+                    <div class="col-sm-5 col-xs-5">
+                        <ui-select ng-model="appointment.time_slot1.time">
+                            <ui-select-match placeholder="">{{$select.selected}} 北京时间</ui-select-match>
+                            <ui-select-choices repeat="time in dates.times">
+                                <span ng-bind-html="time | highlight: $select.search"></span>
+                            </ui-select-choices>
+                        </ui-select>
+                    </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-12 col-xs-12">
+                    备选预约时间:</div>
+                <div class="col-sm-3 col-xs-3">
+                    <ui-select ng-model="appointment.time_slot2.year">
+                        <ui-select-match placeholder="">{{$select.selected}}年</ui-select-match>
+                        <ui-select-choices repeat="year in dates.years">
+                            <span ng-bind-html="year | highlight: $select.search"></span>
+                        </ui-select-choices>
+                    </ui-select>
+                </div>
+                <div class="col-sm-2 col-xs-2">
+                    <ui-select ng-model="appointment.time_slot2.month">
+                        <ui-select-match placeholder="">{{$select.selected}}月</ui-select-match>
+                        <ui-select-choices repeat="month in dates.months">
+                            <span ng-bind-html="month | highlight: $select.search"></span>
+                        </ui-select-choices>
+                    </ui-select>
+                </div>
+                <div class="col-sm-2 col-xs-2">
+                    <ui-select ng-model="appointment.time_slot2.day">
+                        <ui-select-match placeholder="">{{$select.selected}}日</ui-select-match>
+                        <ui-select-choices repeat="day in dates.days">
+                            <span ng-bind-html="day | highlight: $select.search"></span>
+                        </ui-select-choices>
+                    </ui-select>
+                </div>
+                <div class="col-sm-5 col-xs-5">
+                    <ui-select ng-model="appointment.time_slot2.time">
+                        <ui-select-match placeholder="">{{$select.selected}} 北京时间</ui-select-match>
+                        <ui-select-choices repeat="time in dates.times">
+                            <span ng-bind-html="time | highlight: $select.search"></span>
+                        </ui-select-choices>
+                    </ui-select>
+                </div>
+            </div>
+
+            <!--<ul>-->
+                <!--&lt;!&ndash;<li ng-repeat="item in items">&ndash;&gt;-->
+                    <!--&lt;!&ndash;<a href="#" ng-click="$event.preventDefault(); selected.item = item">{{ item }}</a>&ndash;&gt;-->
+                <!--&lt;!&ndash;</li>&ndash;&gt;-->
+            <!--</ul>-->
+            <!--Selected: <b>{{ selected.item }}</b>-->
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" type="button" ng-click="ok()">确认预约</button>
+            <button class="btn btn-warning" type="button" ng-click="cancel()">取消</button>
+        </div>
+    </script>
     <div class="container">
         <div class="row">
             <div class="col-lg-12 col-sm-12 col-xs-12" >
@@ -26,8 +166,6 @@
                 </div>
             </div>
         </div>
-
-
 
         <div class="row">
             <div class="col-sm-4">
@@ -65,15 +203,6 @@
                         <ui-select-choices repeat="major in availableFields | filter: $select.search">
                             <span ng-bind-html="major | highlight: $select.search"></span>
                         </ui-select-choices>
-
-                        <!--<ui-select id="schoolcountry" name="schoolcountry" ng-model="school.country">-->
-                            <!--<ui-select-match placeholder="国家/区域，英文">{{$select.selected}}</ui-select-match>-->
-                            <!--<ui-select-choices repeat="country in availableCountries | filter: $select.search">-->
-                                <!--<span ng-bind-html="country | highlight: $select.search"></span>-->
-                            <!--</ui-select-choices>-->
-                        <!--</ui-select>-->
-
-
                     </ui-select>
                     <hr>
                     选择想要了解的学校
@@ -117,7 +246,8 @@
                                     <button class="btn btn-primary">主页</button>
                                     <br />
                                     <br />
-                                    <button class="btn btn-success" ng-click="makeAppointment($index)">预约</button>
+                                    <button class="btn btn-success" ng-click="openModal($index)">预约</button>
+                                    <!--"makeAppointment($index)"-->
                                 </div>
                             </div>
                         </div>
