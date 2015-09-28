@@ -17,7 +17,7 @@
                     留学背景: {{selected.tutor._source.gradSchool}} ,  {{selected.tutor._source.gradMajor}},  {{selected.tutor._source.degree}}
                 </div>
                 <div class="row col-sm-12 col-xs-12">
-                    咨询费用: 60元人民币/小时
+                    咨询费用: 60元人民币/30分钟
                 </div>
             </div>
             <div class="row" style="padding-top:15px;">
@@ -135,6 +135,9 @@
             <!--Selected: <b>{{ selected.item }}</b>-->
         </div>
         <div class="modal-footer">
+            <div class="row pull-left col-xs-8">
+                *平台会根据你填入的手机号和密码自动生成账号。
+            </div>
             <button class="btn btn-primary" type="button" ng-click="ok()">确认预约</button>
             <button class="btn btn-warning" type="button" ng-click="cancel()">取消</button>
         </div>
@@ -221,13 +224,13 @@
                 <div class="panel panel-default">
                     <div class="panel-body">
                         <div ng-repeat="person in model.tutors track by $index">
-                            <div class="thumbnail" style="height:160px">
-                                <div class="col-sm-3 col-md-3" style="margin-top: 5px;">
+                            <div class="thumbnail" style="height:130px">
+                                <div class="col-sm-2 col-md-2" style="margin-top: 5px;">
                                     <div>
-                                        <img ng-src={{person.image}} alt="" height="140px" width="140px">
+                                        <img ng-src={{person.image}} alt="" height="110px" width="110px">
                                     </div>
                                 </div>
-                                <div class="col-sm-7 col-md-7">
+                                <div class="col-sm-8 col-md-8" style="padding-left: 30px;">
                                     <div class="caption">
                                         <b>{{person.name}}</b>
                                         <br />
