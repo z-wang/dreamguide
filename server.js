@@ -78,7 +78,7 @@ app.post('/util/sendEmail',function(req, res){
     var mailOptions = {
         from: 'test.dreamguide@gmail.com', // sender address
         to: req.body.to, // list of receivers
-        subject: 'Dreamguide平台，有新的导师注册', // Subject line
+        subject: 'Dreamguide平台，有新的导师/学生注册', // Subject line
         text: req.body.content
     };
 
