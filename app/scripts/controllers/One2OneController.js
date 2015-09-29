@@ -170,7 +170,7 @@ define(['app','jquery'], function(app)
                     });
                 };
 
-                if($routeParams.major.toLowerCase()=="mis"){
+                if($routeParams.major && $routeParams.major!=undefined && $routeParams.major.toLowerCase()=="mis"){
                     $scope.loadTutors("MIS");
                 }else {
                     $scope.loadTutors();
