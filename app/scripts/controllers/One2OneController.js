@@ -2,11 +2,10 @@ define(['app','jquery'], function(app)
 {
     app.controller('One2OneController',
         [
-            '$scope', '$http','$modal', '$log',
+            '$scope', '$http','$modal', '$log','$routeParams',
 
-            function($scope, $http, $modal, $log)
+            function($scope, $http, $modal, $log, $routeParams)
             {
-                console.log("one2");
                 $scope.filters = {};
                 $scope.country = {};
                 $scope.image = {
@@ -171,8 +170,11 @@ define(['app','jquery'], function(app)
                     });
                 };
 
-                $scope.loadTutors();
-
+                if($routeParams.major.toLowerCase()=="mis"){
+                    $scope.loadTutors("MIS");
+                }else {
+                    $scope.loadTutors();
+                }
             }
         ]);
 
