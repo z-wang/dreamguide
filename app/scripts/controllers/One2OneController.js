@@ -89,10 +89,15 @@ define(['app','jquery'], function(app)
                     console.log(data);
                 });
 
-                var loadTutors = function(){
+                $scope.loadTutors = function(flag){
+                    var urls= 'http://dreamguideedu.com:9200/dreamguide/accounts/_search?q=_missing_:needToNotify';
+                    if(flag&&flag!=undefined && flag=="MIS"){
+                        urls= 'http://www.dreamguideedu.com:9200/dreamguide/accounts/_search?q=gradMajor:Information System&size=100'
+                    }
+
                     var req = {
                         method: 'POST',
-                        url: 'http://dreamguideedu.com:9200/dreamguide/accounts/_search?q=_missing_:needToNotify',
+                        url: urls,
                         params: {
                             size: 10,
                             from: 0
@@ -135,6 +140,8 @@ define(['app','jquery'], function(app)
                 };
 
 
+
+
                 $scope.items = ['item1', 'item2', 'item3'];
 
                 $scope.openModal = function (index, size) {
@@ -162,7 +169,7 @@ define(['app','jquery'], function(app)
                     });
                 };
 
-                loadTutors();
+                $scope.loadTutors();
 
             }
         ]);
