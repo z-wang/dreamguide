@@ -91,15 +91,17 @@ define(['app','jquery'], function(app)
 
                 $scope.loadTutors = function(flag){
                     var urls= 'http://dreamguideedu.com:9200/dreamguide/accounts/_search?q=_missing_:needToNotify';
+                    var num = 10;
                     if(flag&&flag!=undefined && flag=="MIS"){
                         urls= 'http://www.dreamguideedu.com:9200/dreamguide/accounts/_search?q=gradMajor:Information System&size=100'
+                        num=50;
                     }
 
                     var req = {
                         method: 'POST',
                         url: urls,
                         params: {
-                            size: 10,
+                            size: num,
                             from: 0
                         },
                         data: {}
