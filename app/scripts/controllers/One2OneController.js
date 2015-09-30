@@ -92,7 +92,7 @@ define(['app','jquery'], function(app)
                     var urls= 'http://dreamguideedu.com:9200/dreamguide/accounts/_search?q=_missing_:needToNotify';
                     var num = 10;
                     if(flag&&flag!=undefined && flag=="MIS"){
-                        urls= 'http://www.dreamguideedu.com:9200/dreamguide/accounts/_search?q=gradMajor:Information System&size=100'
+                        urls= 'http://www.dreamguideedu.com:9200/dreamguide/accounts/_search?q=gradMajor:Information System';
                         num=50;
                     }
 
@@ -109,7 +109,9 @@ define(['app','jquery'], function(app)
                     $http(req).success(function(data){
                         $scope.model.tutors= data.hits.hits;
                         for(var i = 0;i<$scope.model.tutors.length;i++){
-                            if($scope.model.tutors[i]._source.realName===undefined){
+                            if($scope.model.tutors[i]._source.realName===undefined||
+                                ($scope.model.tutors[i]._source.profileStatus && $scope.model.tutors[i]._source.profileStatus === "Inactive" )
+                            ){
                                 $scope.model.tutors.splice(i, 1);
                                 i--;
                             }
