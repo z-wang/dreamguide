@@ -151,7 +151,7 @@
                             地区过滤器：
                         </div>
                         <div class="col-sm-2">
-                            <a>美国</a>
+                            <a>美国/加拿大</a>
                         </div>
                         <div class="col-sm-2">
                             <a>英国</a>
@@ -160,7 +160,7 @@
                             <a>澳洲</a>
                         </div>
                         <div class="col-sm-2">
-                            <a>加拿大</a>
+                            <a>法国</a>
                         </div>
                         <div class="col-sm-2">
                             <a>显示全部</a>
@@ -223,7 +223,7 @@
             <div class="col-sm-8">
                 <div class="panel panel-default">
                     <div class="panel-body">
-                        <div ng-repeat="person in model.tutors track by $index">
+                        <div ng-repeat="person in model.currentTutors track by $index">
                             <div class="thumbnail" style="height:130px">
                                 <div class="col-sm-2 col-md-2" style="margin-top: 5px;">
                                     <div>
@@ -254,6 +254,22 @@
                                 </div>
                             </div>
                         </div>
+                        浏览 <select ng-model="viewby" ng-change="setItemsPerPage(viewby)"><option>3</option><option>5</option><option>10</option><option>20</option><option>30</option><option>40</option><option>50</option></select> 位导师每页.
+
+                        <div>
+                            <!--<table class="table">-->
+                                <!--<tr ng-repeat="row in data.slice(((currentPage-1)*itemsPerPage), ((currentPage)*itemsPerPage))">-->
+                                    <!--<td>{{row.name}}</td>-->
+                                    <!--<td>{{row.id}}</td>-->
+                                <!--</tr>-->
+                            <!--</table>-->
+
+                            <!--<pagination total-items="totalItems" ng-model="currentPage" ng-change="pageChanged()" class="pagination-sm" items-per-page="itemsPerPage"></pagination>-->
+                            <!--<pre>The selected page no: {{currentPage}}</pre>-->
+                            <pagination total-items="totalItems" ng-model="currentPage" max-size="maxSize" ng-change="pageChanged()" class="pagination-sm" boundary-links="true" rotate="false" num-pages="numPages" items-per-page="itemsPerPage"></pagination>
+
+                        </div>
+
                     </div>
                 </div>
             </div>

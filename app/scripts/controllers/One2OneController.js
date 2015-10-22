@@ -15,6 +15,26 @@ define(['app','jquery'], function(app)
                     tutors : []
                 };
 
+                $scope.viewby = 10;
+                $scope.totalItems = $scope.model.tutors.length;
+                $scope.currentPage = 1;
+                $scope.itemsPerPage = $scope.viewby;
+                $scope.maxSize = 5; //Number of pager buttons to show
+
+                //$scope.setPage = function (pageNo) {
+                //    $scope.currentPage = pageNo;
+                //};
+                $scope.setItemsPerPage = function(num) {
+                    $scope.itemsPerPage = num;
+                    $scope.currentPage = 1; //reset to first page
+                    $scope.model.currentTutors = $scope.model.tutors.slice(0, num);
+                };
+                $scope.pageChanged = function() {
+                    if($scope.model.tutors.length > 0)
+                    $scope.model.currentTutors = $scope.model.tutors.slice((($scope.currentPage-1)*$scope.itemsPerPage), (($scope.currentPage)*$scope.itemsPerPage));
+                    console.log('Page changed to: ' + $scope.currentPage);
+                };
+
                 $scope.availableColors = ['Red','Green','Blue','Yellow','Magenta','Maroon','Umbra','Turquoise'];
                 $scope.availableSchools = [];
                 $scope.availableFields = [];
@@ -90,10 +110,9 @@ define(['app','jquery'], function(app)
 
                 $scope.loadTutors = function(flag){
                     var urls= 'http://dreamguideedu.com:9200/dreamguide/accounts/_search?q=_missing_:needToNotify';
-                    var num = 10;
+                    var num = 1000;
                     if(flag&&flag!=undefined && flag=="MIS"){
                         urls= 'http://www.dreamguideedu.com:9200/dreamguide/accounts/_search?q=gradMajor:Information System';
-                        num=50;
                     }
 
                     var req = {
@@ -136,6 +155,9 @@ define(['app','jquery'], function(app)
                             d.degree = d._source.degree;
                             d.country = d._source.studyCountry;
                         });
+
+                        $scope.model.currentTutors = $scope.model.tutors.slice(0,10);
+                        $scope.totalItems = $scope.model.tutors.length;
 
                     }).error(function(data){
                         console.log(data);
