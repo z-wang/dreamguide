@@ -201,8 +201,8 @@ define(['app','jquery'], function(app)
         ]);
 
     app.controller('One2OneModalController',[
-        '$scope', '$modalInstance', 'items', 'tutor', '$http','$rootScope',
-        function($scope,$modalInstance, items, tutor, $http, $rootScope){
+        '$scope', '$modalInstance', 'items', 'tutor', '$http','$rootScope','$location',
+        function($scope,$modalInstance, items, tutor, $http, $rootScope, $location){
             $scope.items = items;
             $scope.selected = {
                 item: $scope.items[0],
@@ -267,7 +267,7 @@ define(['app','jquery'], function(app)
                     var message2 = "新加入用户电话为 "+$scope.appointment.account+" 用户昵称: "+$scope.appointment.name+", 预约导师为: "+
                         $scope.appointment.tutor._id + " 导师名字："+ $scope.appointment.tutor.name+ ", 请及时核实。";
 
-                    //sendEmail('meng.zhang@diycac.org', message2);
+                    sendEmail('meng.zhang@diycac.org', message2);
                     sendEmail('timwang2k8@gmail.com', message2);
                     alert("预约信息已发送，请等候导师联系你并确认预约时间! 谢谢!");
                 }
