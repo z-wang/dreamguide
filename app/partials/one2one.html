@@ -53,79 +53,79 @@
             <div class="row" >
                 <br />
             </div>
-            <div class="row">
-                    <div class="col-sm-12 col-xs-12">
-                        预约时间:</div>
-                    <div class="col-sm-3 col-xs-3">
-                        <ui-select ng-model="appointment.time_slot1.year">
-                        <ui-select-match placeholder="">{{$select.selected}}年</ui-select-match>
-                        <ui-select-choices repeat="year in dates.years">
-                        <span ng-bind-html="year | highlight: $select.search"></span>
-                        </ui-select-choices>
-                        </ui-select>
-                    </div>
-                    <div class="col-sm-2 col-xs-2">
-                        <ui-select ng-model="appointment.time_slot1.month">
-                            <ui-select-match placeholder="">{{$select.selected}}月</ui-select-match>
-                            <ui-select-choices repeat="month in dates.months">
-                                <span ng-bind-html="month | highlight: $select.search"></span>
-                            </ui-select-choices>
-                        </ui-select>
-                    </div>
-                    <div class="col-sm-2 col-xs-2">
-                        <ui-select ng-model="appointment.time_slot1.day">
-                            <ui-select-match placeholder="">{{$select.selected}}日</ui-select-match>
-                            <ui-select-choices repeat="day in dates.days">
-                                <span ng-bind-html="day | highlight: $select.search"></span>
-                            </ui-select-choices>
-                        </ui-select>
-                    </div>
-                    <div class="col-sm-5 col-xs-5">
-                        <ui-select ng-model="appointment.time_slot1.time">
-                            <ui-select-match placeholder="">{{$select.selected}} 北京时间</ui-select-match>
-                            <ui-select-choices repeat="time in dates.times">
-                                <span ng-bind-html="time | highlight: $select.search"></span>
-                            </ui-select-choices>
-                        </ui-select>
-                    </div>
-            </div>
+            <!--<div class="row">-->
+                    <!--<div class="col-sm-12 col-xs-12">-->
+                        <!--预约时间:</div>-->
+                    <!--<div class="col-sm-3 col-xs-3">-->
+                        <!--<ui-select ng-model="appointment.time_slot1.year">-->
+                        <!--<ui-select-match placeholder="">{{$select.selected}}年</ui-select-match>-->
+                        <!--<ui-select-choices repeat="year in dates.years">-->
+                        <!--<span ng-bind-html="year | highlight: $select.search"></span>-->
+                        <!--</ui-select-choices>-->
+                        <!--</ui-select>-->
+                    <!--</div>-->
+                    <!--<div class="col-sm-2 col-xs-2">-->
+                        <!--<ui-select ng-model="appointment.time_slot1.month">-->
+                            <!--<ui-select-match placeholder="">{{$select.selected}}月</ui-select-match>-->
+                            <!--<ui-select-choices repeat="month in dates.months">-->
+                                <!--<span ng-bind-html="month | highlight: $select.search"></span>-->
+                            <!--</ui-select-choices>-->
+                        <!--</ui-select>-->
+                    <!--</div>-->
+                    <!--<div class="col-sm-2 col-xs-2">-->
+                        <!--<ui-select ng-model="appointment.time_slot1.day">-->
+                            <!--<ui-select-match placeholder="">{{$select.selected}}日</ui-select-match>-->
+                            <!--<ui-select-choices repeat="day in dates.days">-->
+                                <!--<span ng-bind-html="day | highlight: $select.search"></span>-->
+                            <!--</ui-select-choices>-->
+                        <!--</ui-select>-->
+                    <!--</div>-->
+                    <!--<div class="col-sm-5 col-xs-5">-->
+                        <!--<ui-select ng-model="appointment.time_slot1.time">-->
+                            <!--<ui-select-match placeholder="">{{$select.selected}} 北京时间</ui-select-match>-->
+                            <!--<ui-select-choices repeat="time in dates.times">-->
+                                <!--<span ng-bind-html="time | highlight: $select.search"></span>-->
+                            <!--</ui-select-choices>-->
+                        <!--</ui-select>-->
+                    <!--</div>-->
+            <!--</div>-->
 
-            <div class="row">
-                <div class="col-sm-12 col-xs-12">
-                    备选预约时间:</div>
-                <div class="col-sm-3 col-xs-3">
-                    <ui-select ng-model="appointment.time_slot2.year">
-                        <ui-select-match placeholder="">{{$select.selected}}年</ui-select-match>
-                        <ui-select-choices repeat="year in dates.years">
-                            <span ng-bind-html="year | highlight: $select.search"></span>
-                        </ui-select-choices>
-                    </ui-select>
-                </div>
-                <div class="col-sm-2 col-xs-2">
-                    <ui-select ng-model="appointment.time_slot2.month">
-                        <ui-select-match placeholder="">{{$select.selected}}月</ui-select-match>
-                        <ui-select-choices repeat="month in dates.months">
-                            <span ng-bind-html="month | highlight: $select.search"></span>
-                        </ui-select-choices>
-                    </ui-select>
-                </div>
-                <div class="col-sm-2 col-xs-2">
-                    <ui-select ng-model="appointment.time_slot2.day">
-                        <ui-select-match placeholder="">{{$select.selected}}日</ui-select-match>
-                        <ui-select-choices repeat="day in dates.days">
-                            <span ng-bind-html="day | highlight: $select.search"></span>
-                        </ui-select-choices>
-                    </ui-select>
-                </div>
-                <div class="col-sm-5 col-xs-5">
-                    <ui-select ng-model="appointment.time_slot2.time">
-                        <ui-select-match placeholder="">{{$select.selected}} 北京时间</ui-select-match>
-                        <ui-select-choices repeat="time in dates.times">
-                            <span ng-bind-html="time | highlight: $select.search"></span>
-                        </ui-select-choices>
-                    </ui-select>
-                </div>
-            </div>
+            <!--<div class="row">-->
+                <!--<div class="col-sm-12 col-xs-12">-->
+                    <!--备选预约时间:</div>-->
+                <!--<div class="col-sm-3 col-xs-3">-->
+                    <!--<ui-select ng-model="appointment.time_slot2.year">-->
+                        <!--<ui-select-match placeholder="">{{$select.selected}}年</ui-select-match>-->
+                        <!--<ui-select-choices repeat="year in dates.years">-->
+                            <!--<span ng-bind-html="year | highlight: $select.search"></span>-->
+                        <!--</ui-select-choices>-->
+                    <!--</ui-select>-->
+                <!--</div>-->
+                <!--<div class="col-sm-2 col-xs-2">-->
+                    <!--<ui-select ng-model="appointment.time_slot2.month">-->
+                        <!--<ui-select-match placeholder="">{{$select.selected}}月</ui-select-match>-->
+                        <!--<ui-select-choices repeat="month in dates.months">-->
+                            <!--<span ng-bind-html="month | highlight: $select.search"></span>-->
+                        <!--</ui-select-choices>-->
+                    <!--</ui-select>-->
+                <!--</div>-->
+                <!--<div class="col-sm-2 col-xs-2">-->
+                    <!--<ui-select ng-model="appointment.time_slot2.day">-->
+                        <!--<ui-select-match placeholder="">{{$select.selected}}日</ui-select-match>-->
+                        <!--<ui-select-choices repeat="day in dates.days">-->
+                            <!--<span ng-bind-html="day | highlight: $select.search"></span>-->
+                        <!--</ui-select-choices>-->
+                    <!--</ui-select>-->
+                <!--</div>-->
+                <!--<div class="col-sm-5 col-xs-5">-->
+                    <!--<ui-select ng-model="appointment.time_slot2.time">-->
+                        <!--<ui-select-match placeholder="">{{$select.selected}} 北京时间</ui-select-match>-->
+                        <!--<ui-select-choices repeat="time in dates.times">-->
+                            <!--<span ng-bind-html="time | highlight: $select.search"></span>-->
+                        <!--</ui-select-choices>-->
+                    <!--</ui-select>-->
+                <!--</div>-->
+            <!--</div>-->
 
             <!--<ul>-->
                 <!--&lt;!&ndash;<li ng-repeat="item in items">&ndash;&gt;-->

@@ -164,12 +164,10 @@ define(['app','jquery'], function(app)
                     });
                 };
 
-
-
-
                 $scope.items = ['item1', 'item2', 'item3'];
 
                 $scope.openModal = function (index, size) {
+                    index = ($scope.currentPage-1)*$scope.itemsPerPage + index;
                     console.log(index, $scope.model.tutors[index]);
                     //size = 'lg', 'sm' or blank
                     var modalInstance = $modal.open({
@@ -253,31 +251,31 @@ define(['app','jquery'], function(app)
                     alert("请输入密码");
                     return;
                 }
-                if(Object.keys($scope.appointment.time_slot1).length<4)
-                {
-                    alert("请至少完整输入第一个预约日期及时间。");
-                    return;
-                }
+                //if(Object.keys($scope.appointment.time_slot1).length<4)
+                //{
+                //    alert("请至少完整输入第一个预约日期及时间。");
+                //    return;
+                //}
 
                 var message = "确认预约" + tutor.name +"吗? ";
                 if (confirm(message)) {
-                    var time1 = $scope.appointment.time_slot1.year+" "+$scope.appointment.time_slot1.month+" "+$scope.appointment.time_slot1.day+" "
-                            + $scope.appointment.time_slot1.time;
+                    //var time1 = $scope.appointment.time_slot1.year+" "+$scope.appointment.time_slot1.month+" "+$scope.appointment.time_slot1.day+" "
+                    //        + $scope.appointment.time_slot1.time;
 
-                    $scope.register($scope.appointment.name, $scope.appointment.account, $scope.appointment.password, time1);
+                    $scope.register($scope.appointment.name, $scope.appointment.account, $scope.appointment.password);
 
-                    var message2 = "新加入用户电话为 "+$scope.appointment.account+", 预约导师为: "+ $scope.appointment.tutor._id +
-                        " 名字："+ $scope.appointment.tutor.name+ ". 预约时间为："+ time1+ ", 请及时核实。";
+                    var message2 = "新加入用户电话为 "+$scope.appointment.account+" 用户昵称: "+$scope.appointment.name+", 预约导师为: "+
+                        $scope.appointment.tutor._id + " 导师名字："+ $scope.appointment.tutor.name+ ", 请及时核实。";
 
-                    sendEmail('meng.zhang@diycac.org', message2);
+                    //sendEmail('meng.zhang@diycac.org', message2);
                     sendEmail('timwang2k8@gmail.com', message2);
-                    alert("预约信息已发送，请等候导师确认你的时间! 谢谢!");
+                    alert("预约信息已发送，请等候导师联系你并确认预约时间! 谢谢!");
                 }
 
                 $modalInstance.close($scope.selected.item);
             };
 
-            $scope.register = function(name, phone, password, time1, time2){
+            $scope.register = function(name, phone, password){
                 var id = phone;
                 var userName = name;
                 var userImage = "";
@@ -290,7 +288,6 @@ define(['app','jquery'], function(app)
                         tutor_active : -1,
                         student_active : 1
                     },
-                    requestedAppointment: time1,
                     createdTime : new Date(),
                     userImage : userImage
                 };
