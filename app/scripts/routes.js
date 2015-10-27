@@ -60,13 +60,15 @@ define([], function()
             '/login': {
                 templateUrl: '/partials/login.html',
                 dependencies: [
-                    'controllers/LoginController'
+                    'controllers/LoginController',
+                    'services/searchService'
                 ]
             },
             '/one2one': {
                 templateUrl: '/partials/one2one.html',
                 dependencies: [
-                    'controllers/One2OneController'
+                    'controllers/One2OneController',
+                    'services/searchService'
                 ]
             },
             '/admin/edit': {
@@ -75,6 +77,12 @@ define([], function()
                     'controllers/admin/AdminEditController',
                     'directives/image-cropper',
                     'directives/img-cropper-file-read'
+                ]
+            },
+            '/admin/edit/temp/updater': {
+                templateUrl: '/partials/admin/updater.html',
+                dependencies: [
+                    'controllers/admin/AdminUpdaterController'
                 ]
             }
         }

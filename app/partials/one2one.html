@@ -150,21 +150,27 @@
                         <div class="col-sm-2">
                             地区过滤器：
                         </div>
-                        <div class="col-sm-2">
-                            <a>美国/加拿大</a>
+                        <div class="col-sm-10">
+                            <div class="col-sm-2">
+                                <a ng-click="getFilterResults('country','United States')">美国</a>
+                            </div>
+                            <div class="col-sm-2">
+                                <a ng-click="getFilterResults('country','Canada')">加拿大</a>
+                            </div>
+                            <div class="col-sm-2">
+                                <a ng-click="getFilterResults('country','United Kingdom')">英国</a>
+                            </div>
+                            <div class="col-sm-2">
+                                <a ng-click="getFilterResults('country','Australia')">澳洲</a>
+                            </div>
+                            <div class="col-sm-2">
+                                <a ng-click="getFilterResults('country','France')">法国</a>
+                            </div>
+                            <div class="col-sm-2">
+                                <a ng-click="getFilterResults('country','All')">显示全部</a>
+                            </div>
                         </div>
-                        <div class="col-sm-2">
-                            <a>英国</a>
-                        </div>
-                        <div class="col-sm-2">
-                            <a>澳洲</a>
-                        </div>
-                        <div class="col-sm-2">
-                            <a>法国</a>
-                        </div>
-                        <div class="col-sm-2">
-                            <a>显示全部</a>
-                        </div>
+
                     </div>
                 </div>
             </div>
@@ -180,15 +186,22 @@
                                     </div>
                             <br />
                                     <div>
-                                        Business: <a>Finance</a>, <a>MBA</a>, <a>Account</a>, <a href="#" ng-click="loadTutors('MIS')">Information Systems</a>
+                                        Business: <a ng-click="getFilterResults('major','Finance')">Finance</a>,
+                                        <a ng-click="getFilterResults('major','MBA')">MBA</a>,
+                                        <a ng-click="getFilterResults('major','Accounting')">Accounting</a>,
+                                        <a ng-click="getFilterResults('major','Management Information System')">Information Systems</a>
                                     </div>
                             <br />
                                     <div>
-                                        Engineering: <a>FE</a>, <a>ECE</a>, <a>ME</a>
+                                        Engineering: <a ng-click="getFilterResults('major','Financial Engineering')">FE</a>,
+                                        <a ng-click="getFilterResults('major','Electrical and Electronic Engineering')">ECE</a>,
+                                        <a ng-click="getFilterResults('major','Mechanical Engineering')">ME</a>
                                     </div>
                             <br />
                                     <div>
-                                        Science: <a>Physics</a>, <a>Chemistry</a>, <a>CS</a>
+                                        Science: <a>Physics</a>,
+                                        <a>Chemistry</a>,
+                                        <a ng-click="getFilterResults('major','Computer Science')">CS</a>
                                     </div>
                             <br />
                             <div>
@@ -201,18 +214,21 @@
 
                     <div class="panel-body">
                         选择想要学习的领域
-                    <ui-select multiple  ng-model="filters.fields">
-                        <ui-select-match placeholder="选择专业领域...">{{$item}}</ui-select-match>
+                    <ui-select ng-model="filters.fields" ng-change="getFilterResults('major', '')">
+                        <ui-select-match placeholder="选择专业领域...">{{filters.fields}}</ui-select-match>
+                        <!--<ui-select-match placeholder="选择专业领域...">{{$item}}</ui-select-match>-->
                         <ui-select-choices repeat="major in availableFields | filter: $select.search">
                             <span ng-bind-html="major | highlight: $select.search"></span>
                         </ui-select-choices>
                     </ui-select>
                     <hr>
                     选择想要了解的学校
-                    <ui-select multiple ng-model="filters.schools">
-                        <ui-select-match placeholder="选择学校...">{{$item}}</ui-select-match>
-                        <ui-select-choices repeat="school in availableSchools">
-                            {{school}}
+                    <!--<ui-select multiple ng-model="filters.schools">-->
+                    <ui-select ng-model="filters.schools" ng-change="getFilterResults('school', '')">
+                        <!--<ui-select-match placeholder="选择学校...">{{$item}}</ui-select-match>-->
+                        <ui-select-match placeholder="选择学校...">{{filters.schools}}</ui-select-match>
+                        <ui-select-choices repeat="school in availableSchools | filter: $select.search">
+                            <span ng-bind-html="school | highlight: $select.search"></span>
                         </ui-select-choices>
                     </ui-select>
                     </div>

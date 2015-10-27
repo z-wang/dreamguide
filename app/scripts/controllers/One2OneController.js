@@ -2,18 +2,26 @@ define(['app','jquery'], function(app)
 {
     app.controller('One2OneController',
         [
-            '$scope', '$http','$modal', '$log','$routeParams',
+            '$scope', '$http','$modal', '$log','$routeParams', 'searchService',
 
-            function($scope, $http, $modal, $log, $routeParams)
+            function($scope, $http, $modal, $log, $routeParams, searchService)
             {
                 $scope.filters = {};
                 $scope.country = {};
+                $scope.availableSchools = [];
+                $scope.availableFields = [];
                 $scope.image = {
                     defaultImage : 'image/avatar/zz@test.com.png'
                 };
                 $scope.model = {
                     tutors : []
                 };
+
+                $(window).scrollTop(0);
+                $('html, body').animate({ scrollTop: 0 }, 'slow');
+                $(window).unbind("scroll");
+                $('.navbar').unbind('mouseenter mouseleave');
+                $(".navbar-fixed-top").addClass("top-nav-collapse");
 
                 $scope.viewby = 10;
                 $scope.totalItems = $scope.model.tutors.length;
@@ -35,10 +43,6 @@ define(['app','jquery'], function(app)
                     console.log('Page changed to: ' + $scope.currentPage);
                 };
 
-                $scope.availableColors = ['Red','Green','Blue','Yellow','Magenta','Maroon','Umbra','Turquoise'];
-                $scope.availableSchools = [];
-                $scope.availableFields = [];
-
                 $scope.dates = {
                     years : [2015,2016],
                     months : [1,2,3,4,5,6,7,8,9,10,11,12],
@@ -54,114 +58,93 @@ define(['app','jquery'], function(app)
                     time_slot3 : {}
                 };
 
+                var processTutorCallBack = function(data){
+                    $scope.model.tutors= data.hits.hits;
+                    //for(var i = 0;i<$scope.model.tutors.length;i++){
+                    //    if($scope.model.tutors[i]._source.realName===undefined||
+                    //        ($scope.model.tutors[i]._source.profileStatus && $scope.model.tutors[i]._source.profileStatus === "Inactive" )
+                    //    ){
+                    //        $scope.model.tutors.splice(i, 1);
+                    //        i--;
+                    //    }
+                    //}
+                    $scope.model.tutors.map(function(d){
+                        $http.post('/img/downLoad', {
+                            name: d._id
+                        }).
+                            success(function(data, status, headers, config) {
+                                if(data=="1"){
+                                    d.image = 'image/avatar/'+ d._id+'.png';
+                                }else{
+                                    d.image = $scope.image.defaultImage;
+                                }
+                            }).
+                            error(function(data, status, headers, config) {
+                                d.image = $scope.image.defaultImage;
+                            });
+                        d.name = d._source.userName;
+                        d.school = d._source.gradSchool;
+                        d.major = d._source.gradMajor;
+                        d.degree = d._source.degree;
+                        d.country = d._source.studyCountry;
+                    });
 
-                $(window).scrollTop(0);
-                $('html, body').animate({ scrollTop: 0 }, 'slow');
-                $(window).unbind("scroll");
-                $('.navbar').unbind('mouseenter mouseleave');
-                $(".navbar-fixed-top").addClass("top-nav-collapse");
-
-
-                var req = {
-                    method: 'POST',
-                    url: 'http://dreamguideedu.com:9200/dreamguide/schools/_search',
-                    params: {
-                                size: 1000,
-                                from: 0
-                            },
-                    //headers: {
-                    //    'Content-Type': undefined
-                    //},
-                    data: {}
+                    $scope.model.currentTutors = $scope.model.tutors.slice(0,10);
+                    $scope.totalItems = $scope.model.tutors.length;
                 };
 
-                $http(req).success(function(data){
+                var processSchoolCallBack = function(data){
                     data.hits.hits.map(function(d){
                         if(d._source.nameen!=undefined && d._source.nameen.length>0 && $scope.availableSchools.indexOf(d._source.nameen) <0 ){
                             $scope.availableSchools.push(d._source.nameen);
                         }
                     });
-                }).error(function(data){
-                    console.log(data);
-                });
-
-                var req1 = {
-                    method: 'POST',
-                    url: 'http://dreamguideedu.com:9200/dreamguide/specialtys/_search',
-                    params: {
-                        size: 1000,
-                        from: 0
-                    },
-                    //headers: {
-                    //    'Content-Type': undefined
-                    //},
-                    data: {}
                 };
 
-                $http(req1).success(function(data){
+                var processMajorCallBack = function(data){
                     data.hits.hits.map(function(d){
                         if(d._source.nameen!=undefined && d._source.nameen.length>0 && $scope.availableFields.indexOf(d._source.nameen) <0 ){
                             $scope.availableFields.push(d._source.nameen);
                         }
                     });
-                }).error(function(data){
-                    console.log(data);
-                });
+                };
 
-                $scope.loadTutors = function(flag){
-                    var urls= 'http://dreamguideedu.com:9200/dreamguide/accounts/_search?q=_missing_:needToNotify';
-                    var num = 1000;
-                    if(flag&&flag!=undefined && flag=="MIS"){
-                        urls= 'http://www.dreamguideedu.com:9200/dreamguide/accounts/_search?q=gradMajor:Information System';
+                searchService.makeQueryCallBack('dreamguide','schools', '{size:2000,from:0}',processSchoolCallBack);
+                searchService.makeQueryCallBack('dreamguide','specialtys', '{size:2000,from:0}',processMajorCallBack);
+                searchService.makeQueryCallBack('users','accounts', searchService.tutorFilterQuery('profileStatus','Active', 1000),processTutorCallBack);
+
+                $scope.countryFiltering = function( country ){
+                    var query = searchService.tutorFilterQuery('gradCountry',country,1000);
+                    console.log(query);
+                    searchService.makeQueryCallBack('users','accounts', query,processTutorCallBack);
+                };
+
+
+                $scope.getFilterResults = function( key, value ){
+                    //FixME(ZW): in the future support not only grad school and undergrad school but phd ...
+                    switch (key) {
+                        case "country":
+                            key = "gradCountry";
+                            break;
+                        case "major":
+                            key = "gradMajor";
+                            if(value === '') {
+                                value = $scope.filters.fields;
+                            }
+                            break;
+                        case "school":
+                            key = "gradSchool";
+                            if(value === '') {
+                                value = $scope.filters.schools;
+                            }
+                            break;
                     }
 
-                    var req = {
-                        method: 'POST',
-                        url: urls,
-                        params: {
-                            size: num,
-                            from: 0
-                        },
-                        data: {}
-                    };
-
-                    $http(req).success(function(data){
-                        $scope.model.tutors= data.hits.hits;
-                        for(var i = 0;i<$scope.model.tutors.length;i++){
-                            if($scope.model.tutors[i]._source.realName===undefined||
-                                ($scope.model.tutors[i]._source.profileStatus && $scope.model.tutors[i]._source.profileStatus === "Inactive" )
-                            ){
-                                $scope.model.tutors.splice(i, 1);
-                                i--;
-                            }
-                        }
-                        $scope.model.tutors.map(function(d){
-                            $http.post('/img/downLoad', {
-                                name: d._id
-                            }).
-                                success(function(data, status, headers, config) {
-                                    if(data=="1"){
-                                        d.image = 'image/avatar/'+ d._id+'.png';
-                                    }else{
-                                        d.image = $scope.image.defaultImage;
-                                    }
-                                }).
-                                error(function(data, status, headers, config) {
-                                    d.image = $scope.image.defaultImage;
-                                });
-                            d.name = d._source.userName;
-                            d.school = d._source.gradSchool;
-                            d.major = d._source.gradMajor;
-                            d.degree = d._source.degree;
-                            d.country = d._source.studyCountry;
-                        });
-
-                        $scope.model.currentTutors = $scope.model.tutors.slice(0,10);
-                        $scope.totalItems = $scope.model.tutors.length;
-
-                    }).error(function(data){
-                        console.log(data);
-                    });
+                    var query = searchService.tutorFilterQuery( key,value,1000);
+                    if(value === 'All'){
+                        query = searchService.tutorFilterQuery('profileStatus','Active', 1000);
+                    }
+                    searchService.makeQueryCallBack('users','accounts', query,processTutorCallBack);
                 };
 
                 $scope.items = ['item1', 'item2', 'item3'];
@@ -192,11 +175,11 @@ define(['app','jquery'], function(app)
                     });
                 };
 
-                if($routeParams.major && $routeParams.major!=undefined && $routeParams.major.toLowerCase()=="mis"){
-                    $scope.loadTutors("MIS");
-                }else {
-                    $scope.loadTutors();
-                }
+                //if($routeParams.major && $routeParams.major!=undefined && $routeParams.major.toLowerCase()=="mis"){
+                //    $scope.loadTutors("MIS");
+                //}else {
+                //    $scope.loadTutors();
+                //}
             }
         ]);
 
