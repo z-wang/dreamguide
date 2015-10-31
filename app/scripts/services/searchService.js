@@ -33,6 +33,16 @@ define(['app'], function(app)
                             console.log(data);
                         });
                     },
+                    indexRecord:function(indice, type, id, obj, callback){
+                        var path = baseInfo.http + baseInfo.url + ":" +baseInfo.port + "/" + indice + "/" +type + "/" + id;
+                        $http.post(path, obj).success(function(data){
+                            if(callback){
+                                callback(data);
+                            }
+                        }).error(function(data){
+                            console.log(data);
+                        });
+                    },
                     tutorFilterQuery: function(key,value,size){
                         var queryObj = {
                                 from: 0,
