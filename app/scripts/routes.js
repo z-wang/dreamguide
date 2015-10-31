@@ -71,6 +71,14 @@ define([], function()
                     'services/searchService'
                 ]
             },
+            '/util/question': {
+                templateUrl: '/partials/util/question.html',
+                dependencies: [
+                    'controllers/util/QuestionUtilController',
+                    'services/emailService',
+                    'services/searchService'
+                ]
+            },
             '/admin/edit': {
                 templateUrl: '/partials/admin/edit.html',
                 dependencies: [
@@ -78,13 +86,14 @@ define([], function()
                     'directives/image-cropper',
                     'directives/img-cropper-file-read'
                 ]
-            },
-            '/admin/edit/temp/updater': {
-                templateUrl: '/partials/admin/updater.html',
-                dependencies: [
-                    'controllers/admin/AdminUpdaterController'
-                ]
             }
+            //,
+            //'/admin/edit/temp/updater': {
+            //    templateUrl: '/partials/admin/updater.html',
+            //    dependencies: [
+            //        'controllers/admin/AdminUpdaterController'
+            //    ]
+            //}
         }
     };
 });

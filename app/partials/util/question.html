@@ -1,0 +1,30 @@
+<div class="container xs-col-12" style="font-size:40px;" id="index" ng-controller="QuestionUtilController">
+    <br />
+    <!--<h1>让我们来回答你的留学问题!</h1>-->
+    <div style="font-size:38px">
+        <p style="font-size:38px">网上纷杂的信息不知道怎么整理？</p>
+        <p style="font-size:38px">不知道如何处理自己的时间分配？</p>
+        <p style="font-size:38px">怎么能排出一份合理的选校名单？</p>
+        <p style="font-size:38px">一边要顾忌GT绩点没有时间仔细处理留学问题？</p>
+
+        <p style="font-size:38px">我们会回答你所有的问题，踊跃来留言吧!</p>
+    </div>
+    <br />
+    <form role="form">
+        <div class="form-group">
+            <label>微信号:</label>
+            <input type="text" class="form-control" style="font-size:40px;height:auto" ng-model="question.contact" placeholder="让我们知道如何联系你~" required>
+        </div>
+        <div class="form-group">
+            <label>你所关心的学校(选填):</label>
+            <input type="text" class="form-control" style="font-size:40px;height:auto" ng-model="question.school" placeholder="帮助我们定位合适的导师，选填">
+        </div>
+        <div class="form-group"> 
+            <label>提出你的困惑:</label>
+            <textarea class="form-control" style="font-size:40px;height:240px" ng-model="question.content"
+                      placeholder="问题描述越详细越好，举个栗子: 我硬件成绩G/T/GPA是310/95/3.3,申请马里兰大学ME专业成功率大吗？" required></textarea>
+        </div>
+        *我们会对所有提问者信息及回答保密。
+        <button type="submit" class="btn btn-success" style="font-size:50px" ng-click="submitQuestion()">提交</button>
+    </form>
+</div>
