@@ -8,11 +8,6 @@ define(['app'], function(app)
                     heading: 'About Us'
                 };
 
-                //$(window).scrollTop(0);
-                //$('html, body').animate({ scrollTop: 0 }, 'slow');
-                //$(window).unbind("scroll");
-                //$('.navbar').unbind('mouseenter mouseleave');
-                //$(".navbar-fixed-top").addClass("top-nav-collapse");
                 $('body').css('background', '#D8D8D8');
                 $('.navbar').hide();
                 $('#content-footer').hide();
@@ -25,6 +20,7 @@ define(['app'], function(app)
                 $scope.submitQuestion = function() {
                     if($scope.question.contact === "" || $scope.question.content === "")
                         return;
+                    
                     var current = new Date();
                     $scope.question.askedDate = current;
                     $scope.question.hasAnswered = 0;
