@@ -79,6 +79,14 @@ define([], function()
                     'services/searchService'
                 ]
             },
+            '/util/thankyou': {
+                templateUrl: '/partials/util/thankyou.html',
+                dependencies: [
+                    'controllers/util/QuestionUtilController',
+                    'services/emailService',
+                    'services/searchService'
+                ]
+            },
             '/admin/edit': {
                 templateUrl: '/partials/admin/edit.html',
                 dependencies: [
