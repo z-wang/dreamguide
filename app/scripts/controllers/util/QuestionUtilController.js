@@ -18,10 +18,13 @@ define(['app'], function(app)
                 $('#content-footer').hide();
 
                 $scope.question={
-                    contact : ""
+                    contact : "",
+                    content : ""
                 };
 
                 $scope.submitQuestion = function() {
+                    if($scope.question.contact === "" || $scope.question.content === "")
+                        return;
                     var current = new Date();
                     $scope.question.askedDate = current;
                     $scope.question.hasAnswered = 0;
