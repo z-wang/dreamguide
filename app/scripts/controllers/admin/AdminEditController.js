@@ -6,7 +6,7 @@ define([
 ], function(app)
 {
     app.controller('AdminEditController',
-        ['$scope','$location','$http', 'ngTableParams','NgTableParams','$sce', function($scope, $location,$http, ngTableParams, NgTableParams, $sce) {
+        ['$scope','$location','$http', 'ngTableParams','NgTableParams','$sce', 'searchService', function($scope, $location,$http, ngTableParams, NgTableParams, $sce, searchService) {
             $(window).scrollTop(0);
             $(window).unbind("scroll");
             $('.navbar').unbind('mouseenter mouseleave');
@@ -143,26 +143,11 @@ define([
                 $scope.flags.schoolTable = false;
                 $scope.flags.majorTable = false;
 
-                var searchUrl = 'http://dreamguideedu.com:9200/dreamguide/accounts/_search?q=_id:'+ $scope.search.context +'*';
+                var queryObj = searchService.getByEmailQuery("email",$scope.search.context,"Tutor",1000);
                 if($scope.search.context==undefined ||$scope.search.context==""){
-                    searchUrl= 'http://dreamguideedu.com:9200/dreamguide/accounts/_search';
+                    queryObj = searchService.getByEmailQuery("email","","Tutor",1000);
                 }
-
-                var req = {
-                    method: 'POST',
-                    url: searchUrl,
-                    params: {
-                        size: 1000,
-                        from: 0
-                    },
-                    //headers: {
-                    //    'Content-Type': undefined
-                    //},
-                    data: {}
-                };
-
-                $http(req).success(function(data){
-                    console.log(data);
+                searchService.makeQueryCallBack('users','accounts',queryObj,function(data){
                     $scope.search.data = data.hits.hits;
                     $scope.tableParams = new ngTableParams({
                         page: 1,            // show first page
@@ -173,9 +158,6 @@ define([
                             $defer.resolve($scope.search.data.slice((params.page() - 1) * params.count(), params.page() * params.count()));
                         }
                     });
-                    //data.hits.hits
-                }).error(function(data){
-                    console.log(data);
                 });
             };
 

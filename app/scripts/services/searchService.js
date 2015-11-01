@@ -67,6 +67,31 @@ define(['app'], function(app)
                         queryObj.query.filtered.filter.bool.must.term[key] = value;
                         return queryObj;
                     },
+                    //this query is used to wildcard email with tutor/student back
+                    getByEmailQuery : function(email, value, userType,size){
+                        var queryObj = {
+                            from: 0,
+                            size: size||10,
+                            query:{
+                                filtered:{
+                                    query : {
+                                        wildcard: {}
+                                    },
+                                    filter:{
+                                        bool:{
+                                            must:{
+                                                term:{
+                                                    registerAs: userType
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        };
+                        queryObj.query.filtered.query.wildcard[email] = value+"*"; //to get all email with value*
+                        return queryObj;
+                    },
                     tutorMultiFiltersQuery: function(){
                         console.log("multi filters");
                     }

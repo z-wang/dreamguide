@@ -92,7 +92,8 @@ define([], function()
                 dependencies: [
                     'controllers/admin/AdminEditController',
                     'directives/image-cropper',
-                    'directives/img-cropper-file-read'
+                    'directives/img-cropper-file-read',
+                    'services/searchService'
                 ]
             }
             //,
