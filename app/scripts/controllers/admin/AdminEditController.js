@@ -259,20 +259,9 @@ define([
                     $scope.tutor.keep = $scope.tutor.email;
                     $scope.tutor.passWord = md5($scope.tutor.email);
                 }
-                var req = {
-                    method: 'POST',
-                    url: 'http://dreamguideedu.com:9200/dreamguide/accounts/'+$scope.tutor.email,
-                    //headers: {
-                    //    'Content-Type': undefined
-                    //},
-                    data: JSON.stringify($scope.tutor)
-                };
 
-                $http(req).success(function(data){
+                searchService.indexRecord('users', 'accounts', $scope.tutor.email, $scope.tutor, function(){
                     alert("成功变更！");
-                }).error(function(data){
-                    console.log(data);
-                    alert("服务器错误");
                 });
             };
 
