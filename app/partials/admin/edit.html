@@ -423,8 +423,8 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="undergrad">硕士毕业院校(选填,如果最高学位为博士)</label>
-                                    <ui-select id="undergrad" name="underSchool" ng-model="tutor.advancedSchool" style="font-family: Georgia, Serif;">
+                                    <label for="advancedGrad">硕士毕业院校(选填,如果最高学位为博士)</label>
+                                    <ui-select id="advancedGrad" name="underSchool" ng-model="tutor.advancedSchool" style="font-family: Georgia, Serif;">
                                         <ui-select-match placeholder="选择本科在读或毕业院校">{{$select.selected}}</ui-select-match>
                                         <ui-select-choices repeat="school in availableSchools | filter: $select.search">
                                             <span ng-bind-html="school | highlight: $select.search"></span>
@@ -432,8 +432,8 @@
                                     </ui-select>
                                 </div>
                                 <div class="form-group">
-                                    <label for="underdegree">硕士学位(选填)</label>
-                                    <ui-select id="underdegree" name="underDegree" ng-model="tutor.advancedDegree" style="font-family: Georgia, Serif;">
+                                    <label for="advanceDegree">硕士学位(选填)</label>
+                                    <ui-select id="advanceDegree" name="advanceDegree" ng-model="tutor.advancedDegree" style="font-family: Georgia, Serif;">
                                         <ui-select-match placeholder="本科获得或在读的学位，如Bachelor">{{$select.selected}}</ui-select-match>
                                         <ui-select-choices repeat="degree in availableDegrees | filter: $select.search">
                                             <span ng-bind-html="degree | highlight: $select.search"></span>
@@ -445,7 +445,7 @@
 
                                 <div class="form-group">
                                     <label>硕士专业(选填)</label>
-                                    <ui-select name="underMajor" ng-model="tutor.advancedMajor">
+                                    <ui-select name="advancedMajor" ng-model="tutor.advancedMajor">
                                         <ui-select-match placeholder="选择相关专业">{{$select.selected}}</ui-select-match>
                                         <ui-select-choices repeat="field in availableMajors | filter: $select.search">
                                             <span ng-bind-html="field | highlight: $select.search"></span>
@@ -454,7 +454,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label>硕士学校所在国家(选填)</label>
-                                    <ui-select id="undercountry" name="undercountry" ng-model="tutor.advancedCountry">
+                                    <ui-select name="advancedcountry" ng-model="tutor.advancedCountry">
                                         <ui-select-match placeholder="本科就读或毕业的国家">{{$select.selected}}</ui-select-match>
                                         <ui-select-choices repeat="country in availableCountries | filter: $select.search">
                                             <span ng-bind-html="country | highlight: $select.search"></span>
@@ -462,15 +462,15 @@
                                     </ui-select>
                                 </div>
                                 <div class="form-group">
-                                    <label for="tutorSelect">选择 学生/导师: </label><br>
-                                    <select name="tutorSelect" id="tutorSelect" ng-model="tutor.registerAs">
+                                    <label for="tutorRegister">选择 学生/导师: </label><br>
+                                    <select name="tutorRegister" id="tutorRegister" ng-model="tutor.registerAs">
                                         <option value="Tutor">导师</option>
                                         <option value="Student">学生</option>
                                     </select><br>
                                 </div>
                                 <div class="form-group">
-                                    <label for="tutorSelect">导师总分数: </label><br>
-                                    <select name="tutorSelect" id="tutorSelect" ng-model="tutor.stars">
+                                    <label for="tutorStar">导师总分数: </label><br>
+                                    <select name="tutorStar" id="tutorStar" ng-model="tutor.star">
                                         <option value="5">5</option>
                                         <option value="4">4</option>
                                         <option value="3">3</option>
@@ -478,11 +478,9 @@
                                         <option value="1">1</option>
                                     </select><br>
                                 </div>
-
                             </form>
                         </div>
                     </div>
-
                 </div>
 
                 <button type="button" class="btn btn-success" ng-click="submitPhoto()">
