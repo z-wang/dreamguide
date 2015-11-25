@@ -608,6 +608,58 @@ hr.hr-gradient {
     -o-background-size: cover;
 }
 
+/* panelNews */
+.panelNew {
+    border-style: solid;
+    border-width: 1px;
+    border-color: #d8d8d8;
+    margin-bottom: 1.25rem;
+    padding: 1.25rem;
+    background: #f2f2f2;
+    color: #333333; }
+.panelNew > :first-child {
+    margin-top: 0; }
+.panelNew > :last-child {
+    margin-bottom: 0; }
+.panelNew h1, .panelNew h2, .panelNew h3, .panelNew h4, .panelNew h5, .panelNew h6, .panelNew p, .panelNew li, .panelNew dl {
+    color: #333333; }
+.panelNew h1, .panelNew h2, .panelNew h3, .panelNew h4, .panelNew h5, .panelNew h6 {
+    line-height: 1;
+    margin-bottom: 0.625rem; }
+.panelNew h1.subheader, .panelNew h2.subheader, .panelNew h3.subheader, .panelNew h4.subheader, .panelNew h5.subheader, .panelNew h6.subheader {
+    line-height: 1.4; }
+.panelNew.transparents {
+    border-style: solid;
+    border-width: 1px;
+    margin-bottom: 1.25rem;
+    padding: 1.25rem;
+    color: #333333;
+}
+.panelNew.callout {
+    border-style: solid;
+    border-width: 1px;
+    border-color: #d8d8d8;
+    margin-bottom: 1.25rem;
+    padding: 1.25rem;
+    background: #ecfaff;
+    color: #333333; }
+.panelNew.callout > :first-child {
+    margin-top: 0; }
+.panelNew.callout > :last-child {
+    margin-bottom: 0; }
+.panelNew.callout h1, .panelNew.callout h2, .panelNew.callout h3, .panelNew.callout h4, .panelNew.callout h5, .panelNew.callout h6, .panelNew.callout p, .panelNew.callout li, .panelNew.callout dl {
+    color: #333333; }
+.panelNew.callout h1, .panelNew.callout h2, .panelNew.callout h3, .panelNew.callout h4, .panelNew.callout h5, .panelNew.callout h6 {
+    line-height: 1;
+    margin-bottom: 0.625rem; }
+.panelNew.callout h1.subheader, .panelNew.callout h2.subheader, .panelNew.callout h3.subheader, .panelNew.callout h4.subheader, .panelNew.callout h5.subheader, .panelNew.callout h6.subheader {
+    line-height: 1.4; }
+.panelNew.callout a:not(.button) {
+    color: #008CBA; }
+.panelNew.callout a:not(.button):hover, .panelNew.callout a:not(.button):focus {
+    color: #0078a0; }
+.panelNew.radius {
+    border-radius: 3px; }
 
 .service-item {
     margin-bottom: 20px;

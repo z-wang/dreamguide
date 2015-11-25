@@ -2,9 +2,9 @@ define(['app','jquery'], function(app)
 {
     app.controller('One2OneController',
         [
-            '$scope', '$http','$modal', '$log','$routeParams', 'searchService',
+            '$scope', '$http','$modal', '$log','$routeParams', 'searchService', '$rootScope', '$location', 'encodeService',
 
-            function($scope, $http, $modal, $log, $routeParams, searchService)
+            function($scope, $http, $modal, $log, $routeParams, searchService, $rootScope, $location, encodeService)
             {
                 $scope.filters = {};
                 $scope.country = {};
@@ -148,6 +148,14 @@ define(['app','jquery'], function(app)
                 };
 
                 $scope.items = ['item1', 'item2', 'item3'];
+
+                $scope.openInfoPage = function(index) {
+                    index = ($scope.currentPage-1)*$scope.itemsPerPage + index;
+                    var tutor = $scope.model.tutors[index];
+                    $rootScope.selectedTutor = tutor;
+                    var idEncoding = encodeService.simpleEncode(tutor._id);
+                    $location.path("/tutor_profile/"+idEncoding);
+                };
 
                 $scope.openModal = function (index, size) {
                     index = ($scope.currentPage-1)*$scope.itemsPerPage + index;

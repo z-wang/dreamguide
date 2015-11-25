@@ -10,13 +10,14 @@ define([], function()
                     'directives/login-toggle'
                 ]
             },
-            //'/about/:person': {
-            //    templateUrl: '/views/about.html',
-            //    dependencies: [
-            //        'controllers/AboutViewController',
-            //        'directives/app-color'
-            //    ]
-            //},
+            '/tutor_profile/:tutor': {
+                templateUrl: '/partials/profiles/tutor_info.html',
+                dependencies: [
+                    'controllers/profiles/ViewTutorProfileController',
+                    'services/searchService',
+                    'services/encodeService'
+                ]
+            },
             //'/contact': {
             //    templateUrl: '/views/contact.html',
             //    dependencies: [
@@ -68,7 +69,8 @@ define([], function()
                 templateUrl: '/partials/one2one.html',
                 dependencies: [
                     'controllers/One2OneController',
-                    'services/searchService'
+                    'services/searchService',
+                    'services/encodeService'
                 ]
             },
             '/util/question': {
