@@ -56,7 +56,8 @@ define([], function()
             '/student': {
                 templateUrl: '/partials/student_register.html',
                 dependencies: [
-                    'controllers/StudentRegController'
+                    'controllers/StudentRegController',
+                    'services/searchService'
                 ]
             },
             '/login': {
