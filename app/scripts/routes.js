@@ -35,8 +35,9 @@ define([], function()
                 dependencies: [
                     'controllers/RegisterController',
                     'directives/image-cropper',
-                    'directives/img-cropper-file-read'
-
+                    'directives/img-cropper-file-read',
+                    'services/emailService',
+                    'services/searchService'
                     //'../lib/angular/angular-bootstrap-file'
                 ]
             },
