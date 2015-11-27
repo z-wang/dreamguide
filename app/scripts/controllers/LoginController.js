@@ -5,8 +5,8 @@ define(['app'], function(app)
 {
     app.controller('LoginController',
         [
-            '$scope', '$rootScope', '$http', '$location',
-            function($scope, $rootScope, $http, $location)
+            '$scope', '$rootScope', '$http', '$location', 'searchService',
+            function($scope, $rootScope, $http, $location, searchService)
             {
                 //[ZW] TODO: this block controls the page style but going to move them to a service or directive
                 $(window).scrollTop(0);
@@ -37,7 +37,7 @@ define(['app'], function(app)
                     console.log(JSON.stringify(dataSet));
                     var req = {
                         method: 'POST',
-                        url: 'http://dreamguideedu.com:9200/dreamguide/accounts/_search',
+                        url: 'http://dreamguideedu.com:9200/users/accounts/_search',
                         data:JSON.stringify(dataSet)
                     };
 
@@ -54,36 +54,6 @@ define(['app'], function(app)
                         alert("用户名或密码不正确！");
                     });
                 };
-
-                $scope.register = function(){
-                    var dataSet = JSON.stringify({
-                        id : $scope.phoneNum,
-                        password : md5($scope.password, "dream")
-                    });
-                    var req = {
-                        method: 'POST',
-                        url: 'http://dreamguideedu.com:9200/dreamguide/accounts/'+$scope.phoneNum,
-                        data: dataSet
-                    };
-                    console.log(dataSet);
-
-                    $http(req).success(function(data){
-                        console.log("go");
-                       // $location.path("/");
-                        $rootScope.user = {
-                            id:data._id
-                        };
-                        console.log($rootScope);
-                        // $state.go("index");
-                    }).error(function(data){
-                        alert("验证码不正确！");
-                        console.log(data);
-                    });
-                };
-
-                //$scope.firstName = "John";
-                //$scope.lastName = "Doe";
-                //console.log($scope);
             }
         ]);
 });

@@ -5,9 +5,9 @@ define(['app'], function(app)
 {
     app.controller('StudentRegController',
         [
-            '$scope', '$rootScope', '$http', '$location',
+            '$scope', '$rootScope', '$http', '$location', 'searchService',
 
-            function($scope, $rootScope, $http, $location)
+            function($scope, $rootScope, $http, $location, searchService)
             {
                 //[ZW] TODO: this block controls the page style but going to move them to a service or directive
                 $(window).scrollTop(0);
@@ -59,27 +59,20 @@ define(['app'], function(app)
                     var userImage = "";
                     var userInfo = {
                         passWord : md5($scope.password),
-                        userName : "用户"+userName,
+                        userName : "DG用户"+userName,
                         id : createID,
-                        phoneNum : createID,
-                        status : {
-                            tutor_active : -1,
-                            student_active : 1
-                        },
+                        cellphone : createID,
+                        tutor_active : -1,
+                        student_active : 1,
+                        self_apply: 1,
+                        registerAs: "Student",
                         createdTime : new Date(),
                         userImage : userImage
                     };
 
                     console.log(userInfo);
 
-                    //make http call , in success, set rootscope and jump
-                    var req = {
-                        method: 'POST',
-                        url: 'http://dreamguideedu.com:9200/dreamguide/accounts/'+id,
-                        data:JSON.stringify(userInfo)
-                    };
-
-                    $http(req).success(function(data){
+                    searchService.indexRecord('users', 'accounts', id, userInfo, function(data){
                         if(data.created){
                             console.log("go");
                             alert("注册成功!");
@@ -87,9 +80,8 @@ define(['app'], function(app)
                             $location.path("/");
                         }
                         // $state.go("index");
-                    }).error(function(data){
-                        alert("用户名或密码不正确！");
-                    });
+                    })
+
                 };
             }
         ]);
