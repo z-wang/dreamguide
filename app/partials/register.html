@@ -141,9 +141,10 @@
                                             </ui-select-choices>
                                         </ui-select>
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group" ng-class="{'has-error': loginForm2.profile.$invalid}">
                                         <label>个人简介</label>
-                                        <textarea style="height: 200px;" class="form-control" placeholder="请用少于100字介绍自己的学习工作状况, 个人简介会成为别人了解你资料的第一印象。" ng-model="tutor.profile"></textarea>
+                                        <textarea style="height: 200px;" name="profile" class="form-control" placeholder="请用少于100字介绍自己的学习工作状况, 个人简介会成为别人了解你资料的第一印象。" ng-model="tutor.profile" required></textarea>
+                                        <span class="help-block" ng-show="loginForm2.profile.$error.required">不能为空</span>
                                     </div>
                                 </form>
                             </div>
@@ -198,34 +199,37 @@
                                         <input class="form-control" name="schoolemail"
                                                placeholder="填写学校邮箱有助于加快身份验证" ng-model="tutor.schoolEmail" />
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group" ng-class="{'has-error': loginForm3.underSchool.$invalid}">
                                         <label for="undergrad">本科在读/毕业院校</label>
-                                        <ui-select id="undergrad" name="underSchool" ng-model="tutor.underSchool" style="font-family: Georgia, Serif;">
+                                        <ui-select id="undergrad" name="underSchool" ng-model="tutor.underSchool" style="font-family: Georgia, Serif;" required>
                                             <ui-select-match placeholder="选择本科在读或毕业院校">{{$select.selected}}</ui-select-match>
                                             <ui-select-choices repeat="school in availableSchools | filter: $select.search">
                                                 <span ng-bind-html="school | highlight: $select.search"></span>
                                             </ui-select-choices>
                                         </ui-select>
+                                        <span class="help-block" ng-show="loginForm3.underSchool.$error.required">不能为空</span>
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group" ng-class="{'has-error': loginForm3.underDegree.$invalid}">
                                         <label for="underdegree">学位</label>
-                                        <ui-select id="underdegree" name="underDegree" ng-model="tutor.underDegree" style="font-family: Georgia, Serif;">
+                                        <ui-select id="underdegree" name="underDegree" ng-model="tutor.underDegree" style="font-family: Georgia, Serif;" required>
                                             <ui-select-match placeholder="本科获得或在读的学位，如Bachelor">{{$select.selected}}</ui-select-match>
                                             <ui-select-choices repeat="degree in availableDegrees | filter: $select.search">
                                                 <span ng-bind-html="degree | highlight: $select.search"></span>
                                             </ui-select-choices>
                                         </ui-select>
+                                        <span class="help-block" ng-show="loginForm3.underDegree.$error.required">不能为空</span>
                                         <!--<input class="form-control" name="underDegree" type="text"-->
                                                <!--placeholder="本科获得或在读的学位，如B.S." required ng-model="tutor.underDegree" />-->
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group" ng-class="{'has-error': loginForm3.underMajor.$invalid}">
                                         <label>专业</label>
-                                        <ui-select name="underMajor" ng-model="tutor.underMajor">
+                                        <ui-select name="underMajor" ng-model="tutor.underMajor" required>
                                             <ui-select-match placeholder="选择相关专业">{{$select.selected}}</ui-select-match>
                                             <ui-select-choices repeat="field in availableMajors | filter: $select.search">
                                                 <span ng-bind-html="field | highlight: $select.search"></span>
                                             </ui-select-choices>
                                         </ui-select>
+                                        <span class="help-block" ng-show="loginForm3.underMajor.$error.required">不能为空</span>
                                     </div>
                                 </form>
                             </div>
