@@ -2,26 +2,17 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var nodemailer = require('nodemailer');
 var transporter = nodemailer.createTransport({
-    smtpTransport({
-        host: 'smtp.163.com',
-        port: 465,
-        secure: true,
-        auth: {
-            user: 'dreamguideService@163.com',
-            pass: 'dreamguide'
-        }
-    })
-    //service: 'Gmail',
-    //auth: {
-    //    user: 'test.dreamguide@gmail.com',
-    //    pass: 'testdreamguide'
-    //}
+    service: 'Hotmail',
+    auth: {
+        user: 'dreamguideservice@hotmail.com',
+        pass: 'Dreamguide123*'
+    }
+});
     //service: 'QQex',
     //auth: {
     //    //user: 'dreamguide',
     //    //pass: 'abc.123'
     //}
-});
 
 var app     = express();
 var maxAge  = 31557600000;
@@ -86,7 +77,7 @@ app.post('/img/upLoad',function(req,res){
 
 app.post('/util/sendEmail',function(req, res){
     var mailOptions = {
-        from: 'test.dreamguide@gmail.com', // sender address
+        from: 'dreamguideservice@hotmail.com', // sender address
         to: req.body.to, // list of receivers
         subject: 'Dreamguide平台，有新的导师/学生注册', // Subject line
         text: req.body.content

@@ -24,6 +24,8 @@ define(['app'], function(app)
                 $scope.isActive = function(name){
                     return $scope.profileSelectionValue == name;
                 };
+
+                $scope.default = 3;
                 //$scope.firstName = "John";
                 //$scope.lastName = "Doe";
                 //console.log($scope);
