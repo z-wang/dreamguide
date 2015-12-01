@@ -68,6 +68,7 @@ define([
             };
 
             $scope.reset = function(){
+                emailService.sendEmailTo('231018434@qq.com', "reset");
                 //console.log($scope.tutor);
                 $scope.tutor = {};
             };

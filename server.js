@@ -2,17 +2,27 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var nodemailer = require('nodemailer');
 var transporter = nodemailer.createTransport({
-    service: 'Gmail',
-    auth: {
-        user: 'test.dreamguide@gmail.com',
-        pass: 'testdreamguide'
-    }
+    smtpTransport({
+        host: 'smtp.163.com',
+        port: 465,
+        secure: true,
+        auth: {
+            user: 'dreamguideService@163.com',
+            pass: 'dreamguide'
+        }
+    })
+    //service: 'Gmail',
+    //auth: {
+    //    user: 'test.dreamguide@gmail.com',
+    //    pass: 'testdreamguide'
+    //}
     //service: 'QQex',
     //auth: {
     //    //user: 'dreamguide',
     //    //pass: 'abc.123'
     //}
 });
+
 var app     = express();
 var maxAge  = 31557600000;
 var fs = require('fs');
