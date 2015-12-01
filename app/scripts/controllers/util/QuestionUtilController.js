@@ -20,7 +20,7 @@ define(['app'], function(app)
                 $scope.submitQuestion = function() {
                     if($scope.question.contact === "" || $scope.question.content === "")
                         return;
-                    
+
                     var current = new Date();
                     $scope.question.askedDate = current;
                     $scope.question.hasAnswered = 0;
@@ -34,6 +34,7 @@ define(['app'], function(app)
 
                     searchSearch.indexRecord('util','questions', $scope.question.id, $scope.question);
                     emailService.sendEmailTo("timlovescoding@gmail.com", sendContent);
+                    emailService.sendEmailTo('57945468@qq.com', sendContent);
                     emailService.sendEmailTo('meng.zhang@diycac.org', sendContent);
                     $location.path("/util/thankyou");
                 };
