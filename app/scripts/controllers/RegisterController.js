@@ -60,8 +60,9 @@ define([
 
                 $scope.uploadImage($scope.tutor.email);
                 var message = "新加入用户ID为 "+$scope.tutor.email + ", 请及时核实。";
-                //emailService.sendEmailTo('meng.zhang@diycac.org', message);
-                //emailService.sendEmailTo('timwang2k8@gmail.com', message);
+                emailService.sendEmailTo('57945468@qq.com', message);
+                emailService.sendEmailTo('meng.zhang@diycac.org', message);
+                emailService.sendEmailTo('timwang2k8@gmail.com', message);
 
                 $location.path("/thankyou");
             };
