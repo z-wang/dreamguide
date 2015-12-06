@@ -1,8 +1,7 @@
 body {
     width: 100%;
     height: 100%;
-    font-family: 宋体, SimSun, 华文细黑, STXihei,"Whitney SSm A","Whitney SSm B","Helvetica Neue",Helvetica,Arial,sans-serif;
-    /*font-family: Lora,"Helvetica Neue",Helvetica,Arial,宋体, SimSun, 华文细黑, STXihei, sans-serif;*/
+    font-family: "Hiragino Sans GB","Microsoft YaHei","WenQuanYi Micro Hei",Arial,Helvetica,sans-serif;
     font-size: 14px;
     line-height: 1.7;
     color: #303030;
@@ -21,7 +20,7 @@ h4,
 h6 {
     margin: 0 0 35px;
     text-transform: uppercase;
-    font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-family: "Hiragino Sans GB","Microsoft YaHei","WenQuanYi Micro Hei",Arial,Helvetica,sans-serif;
     font-weight: 700;
     letter-spacing: 1px;
 }
@@ -29,7 +28,7 @@ h6 {
 h5{
     margin: 0 0 15px;
     text-transform: uppercase;
-    font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-family: "Hiragino Sans GB","Microsoft YaHei","WenQuanYi Micro Hei",Arial,Helvetica,sans-serif;
     font-weight: 700;
     letter-spacing: 1px;
 }
@@ -48,7 +47,7 @@ p {
     }
     p.people{
         margin: 0 0 15px;
-        font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+        font-family: "Hiragino Sans GB","Microsoft YaHei","WenQuanYi Micro Hei",Arial,Helvetica,sans-serif;
         font-weight: 300;
         letter-spacing: 1px;
     }
@@ -102,7 +101,7 @@ a:focus {
     margin-bottom: 0;
     border-bottom: 1px solid rgba(255,255,255,.3);
     text-transform: uppercase;
-    font-family: "Whitney SSm A","Whitney SSm B","Helvetica Neue",Helvetica,Arial,宋体, SimSun, 华文细黑, STXihei, sans-serif;
+    font-family: "Hiragino Sans GB","Microsoft YaHei","WenQuanYi Micro Hei",Arial,Helvetica,sans-serif;
     /*Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;*/
     background-color: #000;
 }
@@ -122,7 +121,7 @@ a:focus {
 }
 
 .navbar-custom .dropdown-menu {
-    font-family: "Whitney SSm A","Whitney SSm B","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-family: "Hiragino Sans GB","Microsoft YaHei","WenQuanYi Micro Hei",Arial,Helvetica,sans-serif;
     background-color: #C0C0C0;
 
 }
@@ -267,7 +266,7 @@ a:focus {
 }
 
 .row.row-gap-info {
-    font-family: STFangsong, FangSong;
+    font-family: "Hiragino Sans GB","Microsoft YaHei","WenQuanYi Micro Hei",Arial,Helvetica,sans-serif;
     text-align: center;
     font-size: 36px;
     color: #11505d;
@@ -276,7 +275,7 @@ a:focus {
 
 .stationary-text-bottom {
     font-size: 20px;
-    font-family: "Whitney SSm A","Whitney SSm B","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-family: "Hiragino Sans GB","Microsoft YaHei","WenQuanYi Micro Hei",Arial,Helvetica,sans-serif;
 }
 
 .intro {
@@ -286,6 +285,7 @@ a:focus {
     padding: 160px 0;
     text-align: center;
     color: #fff;
+    font-family: "Hiragino Sans GB","Microsoft YaHei","WenQuanYi Micro Hei",Arial,Helvetica,sans-serif;
     background: url(../../image/main/dreamguide02.jpg) no-repeat bottom center scroll;
     background-color: #000;
     -webkit-background-size: cover;
@@ -427,7 +427,7 @@ a:focus {
     background-color: #fff;
     /*background-color: #F0F0F0;*/
     /*font-family: "华文细黑", "Microsoft JhengHei",  Tahoma , Verdana , Arial , sans-serif;*/
-    font-family: "Whitney SSm A","Whitney SSm B","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-family: "Hiragino Sans GB","Microsoft YaHei","WenQuanYi Micro Hei",Arial,Helvetica,sans-serif;
 }
 .content-footer{
     padding-top:75px;
@@ -437,7 +437,7 @@ a:focus {
     /*background-color: #fff;*/
     background-color: #F0F0F0;
     font-size: 12px;
-    font-family: "宋体", "Microsoft JhengHei",  Tahoma , Verdana , Arial , sans-serif;
+    font-family: "Hiragino Sans GB","Microsoft YaHei","WenQuanYi Micro Hei",Arial,Helvetica,sans-serif;
 }
 
 .content-blank-white{
@@ -459,6 +459,7 @@ hr.hr-gradient {
     color: #307699;
     font-size: 16px;
     background-color: #fff;
+    font-family: "Hiragino Sans GB","Microsoft YaHei","WenQuanYi Micro Hei",Arial,Helvetica,sans-serif;
 }
 
 .icon-large {
@@ -511,6 +512,7 @@ hr.hr-gradient {
     color: #307699;
     font-size: 16px;
     background-color: #F0F0F0;
+    font-family: "Hiragino Sans GB","Microsoft YaHei","WenQuanYi Micro Hei",Arial,Helvetica,sans-serif;
 }
 
 .text-inverse{
@@ -749,7 +751,7 @@ hr.hr-gradient {
 }
 
 .btn {
-    font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-family: "Hiragino Sans GB","Microsoft YaHei","WenQuanYi Micro Hei",Arial,Helvetica,sans-serif;
     font-weight: 400;
     -webkit-transition: all .3s ease-in-out;
     -moz-transition: all .3s ease-in-out;
