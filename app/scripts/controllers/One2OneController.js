@@ -2,20 +2,35 @@ define(['app','jquery'], function(app)
 {
     app.controller('One2OneController',
         [
-            '$scope', '$http','$modal', '$log','$routeParams', 'searchService', '$rootScope', '$location', 'encodeService',
+            '$scope',
+            '$http',
+            '$modal',
+            '$log',
+            '$routeParams',
+            'searchService',
+            '$rootScope',
+            '$location',
+            'encodeService',
+            'constantService',
 
-            function($scope, $http, $modal, $log, $routeParams, searchService, $rootScope, $location, encodeService)
+            function($scope, $http, $modal, $log, $routeParams, searchService, $rootScope,
+                     $location, encodeService, constantService)
             {
                 $scope.filters = {};
                 $scope.country = {};
                 $scope.availableSchools = [];
                 $scope.availableFields = [];
+                $scope.constants = {};
+                $scope.constants.countries = constantService.countries;
                 $scope.image = {
                     defaultImage : 'image/avatar/zz@test.com.png'
                 };
                 $scope.model = {
                     tutors : []
                 };
+
+                //this is a cache of $scope.model.tutors
+                var tutors = [];
 
                 $(window).scrollTop(0);
                 $('html, body').animate({ scrollTop: 0 }, 'slow');
@@ -36,6 +51,7 @@ define(['app','jquery'], function(app)
                     $scope.itemsPerPage = num;
                     $scope.currentPage = 1; //reset to first page
                     $scope.model.currentTutors = $scope.model.tutors.slice(0, num);
+                    $scope.totalItems = $scope.model.tutors.length;
                 };
                 $scope.pageChanged = function() {
                     if($scope.model.tutors.length > 0)
@@ -43,14 +59,88 @@ define(['app','jquery'], function(app)
                     console.log('Page changed to: ' + $scope.currentPage);
                 };
 
-                $scope.dates = {
-                    years : [2015,2016],
-                    months : [1,2,3,4,5,6,7,8,9,10,11,12],
-                    days: [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31],
-                    times: ["07:00-07:30","07:30-08:00","08:00-08:30","08:30-09:00","09:00-09:30","09:30-10:00","10:00-10:30",
-                        "10:30-11:00", "19:30-20:00","20:00-20:30", "20:30-21:00", "21:00-21:30","21:30-22:00","22:00-22:30",
-                        "22:30-23:00", "23:00-23:30"]
+                $scope.updatePageFilter= function(key){
+                    if(key === "country") {
+                        //update schools/tutors, first take school/field filters into consideration
+                        //clear filters.fields and filters.school
+                        $scope.filters.field = undefined;
+                        $scope.filters.school = undefined;
+                        $scope.availableSchools = [];
+                        searchService.makeQueryCallBack('dreamguide','schools', '{size:2000,from:0}',processSchoolCallBack);
+                        //searchService.makeQueryCallBack('users','accounts', searchService.tutorFilterQuery('profileStatus','Active', 1000),processTutorCallBack);
+                        $scope.model.tutors = [];
+                        tutors.map(function(data){
+                            if(data._source.gradCountry == $scope.filters.country) {
+                                $scope.model.tutors.push(data);
+                            }
+                        });
+                        mapTutorData($scope.model.tutors);
+                        $scope.setItemsPerPage(10);
+                    } else if (key === "major") {
+                        $scope.model.tutors = [];
+                        tutors.map(function(data){
+                            if(data._source.gradMajor == $scope.filters.field) {
+                                if($scope.filters.country) {
+                                    if ($scope.filters.country == data._source.gradCountry) {
+                                        if($scope.filters.school) {
+                                            if($scope.filters.school == data._source.gradSchool) {
+                                                $scope.model.tutors.push(data);
+                                            }
+                                        } else {
+                                            $scope.model.tutors.push(data);
+                                        }
+                                    }
+                                } else {
+                                    if($scope.filters.school) {
+                                        if($scope.filters.school == data._source.gradSchool) {
+                                            $scope.model.tutors.push(data);
+                                        }
+                                    } else {
+                                        $scope.model.tutors.push(data);
+                                    }
+                                }
+                            }
+                        });
+                        mapTutorData($scope.model.tutors);
+                        $scope.setItemsPerPage(10);
+                    } else if (key === "school") {
+                        $scope.model.tutors = [];
+                        tutors.map(function(data){
+                            if(data._source.gradSchool == $scope.filters.school) {
+                                if($scope.filters.country) {
+                                    if ($scope.filters.country == data._source.gradCountry) {
+                                        if($scope.filters.field) {
+                                            if($scope.filters.field == data._source.gradMajor) {
+                                                $scope.model.tutors.push(data);
+                                            }
+                                        } else {
+                                            $scope.model.tutors.push(data);
+                                        }
+                                    }
+                                } else {
+                                    if($scope.filters.field) {
+                                        if($scope.filters.field == data._source.gradMajor) {
+                                            $scope.model.tutors.push(data);
+                                        }
+                                    } else {
+                                        $scope.model.tutors.push(data);
+                                    }
+                                }
+                            }
+                        });
+                        mapTutorData($scope.model.tutors);
+                        $scope.setItemsPerPage(10);
+                    }
                 };
+
+                //$scope.dates = {
+                //    years : [2015,2016],
+                //    months : [1,2,3,4,5,6,7,8,9,10,11,12],
+                //    days: [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31],
+                //    times: ["07:00-07:30","07:30-08:00","08:00-08:30","08:30-09:00","09:00-09:30","09:30-10:00","10:00-10:30",
+                //        "10:30-11:00", "19:30-20:00","20:00-20:30", "20:30-21:00", "21:00-21:30","21:30-22:00","22:00-22:30",
+                //        "22:30-23:00", "23:00-23:30"]
+                //};
 
                 $scope.appointment = {
                     time_slot1 : {},
@@ -58,17 +148,8 @@ define(['app','jquery'], function(app)
                     time_slot3 : {}
                 };
 
-                var processTutorCallBack = function(data){
-                    $scope.model.tutors= data.hits.hits;
-                    //for(var i = 0;i<$scope.model.tutors.length;i++){
-                    //    if($scope.model.tutors[i]._source.realName===undefined||
-                    //        ($scope.model.tutors[i]._source.profileStatus && $scope.model.tutors[i]._source.profileStatus === "Inactive" )
-                    //    ){
-                    //        $scope.model.tutors.splice(i, 1);
-                    //        i--;
-                    //    }
-                    //}
-                    $scope.model.tutors.map(function(d){
+                var mapTutorData = function(tutorArray) {
+                    tutorArray.map(function(d){
                         $http.post('/img/downLoad', {
                             name: d._id
                         }).
@@ -88,6 +169,20 @@ define(['app','jquery'], function(app)
                         d.degree = d._source.degree;
                         d.country = d._source.studyCountry;
                     });
+                };
+
+                var processTutorCallBack = function(data){
+                    $scope.model.tutors= data.hits.hits;
+                    tutors = angular.copy($scope.model.tutors);
+                    //for(var i = 0;i<$scope.model.tutors.length;i++){
+                    //    if($scope.model.tutors[i]._source.realName===undefined||
+                    //        ($scope.model.tutors[i]._source.profileStatus && $scope.model.tutors[i]._source.profileStatus === "Inactive" )
+                    //    ){
+                    //        $scope.model.tutors.splice(i, 1);
+                    //        i--;
+                    //    }
+                    //}
+                    mapTutorData($scope.model.tutors);
 
                     $scope.model.currentTutors = $scope.model.tutors.slice(0,10);
                     $scope.totalItems = $scope.model.tutors.length;
@@ -96,7 +191,13 @@ define(['app','jquery'], function(app)
                 var processSchoolCallBack = function(data){
                     data.hits.hits.map(function(d){
                         if(d._source.nameen!=undefined && d._source.nameen.length>0 && $scope.availableSchools.indexOf(d._source.nameen) <0 ){
-                            $scope.availableSchools.push(d._source.nameen);
+                            if($scope.filters.country) {
+                                if($scope.filters.country == d._source.country) {
+                                    $scope.availableSchools.push(d._source.nameen);
+                                }
+                            } else {
+                                    $scope.availableSchools.push(d._source.nameen);
+                                }
                         }
                     });
                 };
@@ -129,13 +230,13 @@ define(['app','jquery'], function(app)
                         case "major":
                             key = "gradMajor";
                             if(value === '') {
-                                value = $scope.filters.fields;
+                                value = $scope.filters.field;
                             }
                             break;
                         case "school":
                             key = "gradSchool";
                             if(value === '') {
-                                value = $scope.filters.schools;
+                                value = $scope.filters.school;
                             }
                             break;
                     }

@@ -213,20 +213,32 @@
                 <div class="panel panel-default">
 
                     <div class="panel-body">
+
+                        留学目标国家
+                        <!--<ui-select multiple ng-model="filters.schools">-->
+                        <ui-select ng-model="filters.country" ng-change="updatePageFilter('country')">
+                            <!--<ui-select-match placeholder="选择学校...">{{$item}}</ui-select-match>-->
+                            <ui-select-match placeholder="选择国家...">{{filters.country}}</ui-select-match>
+                            <ui-select-choices repeat="country in constants.countries | filter: $select.search">
+                                <span ng-bind-html="country | highlight: $select.search"></span>
+                            </ui-select-choices>
+                        </ui-select>
+                        <hr>
                         选择想要学习的领域
-                    <ui-select ng-model="filters.fields" ng-change="getFilterResults('major', '')">
-                        <ui-select-match placeholder="选择专业领域...">{{filters.fields}}</ui-select-match>
+                    <ui-select ng-model="filters.field" ng-change="updatePageFilter('major')">
+                        <ui-select-match placeholder="选择专业领域...">{{filters.field}}</ui-select-match>
                         <!--<ui-select-match placeholder="选择专业领域...">{{$item}}</ui-select-match>-->
                         <ui-select-choices repeat="major in availableFields | filter: $select.search">
                             <span ng-bind-html="major | highlight: $select.search"></span>
                         </ui-select-choices>
                     </ui-select>
                     <hr>
+
                     选择想要了解的学校
                     <!--<ui-select multiple ng-model="filters.schools">-->
-                    <ui-select ng-model="filters.schools" ng-change="getFilterResults('school', '')">
+                    <ui-select ng-model="filters.school" ng-change="updatePageFilter('school')">
                         <!--<ui-select-match placeholder="选择学校...">{{$item}}</ui-select-match>-->
-                        <ui-select-match placeholder="选择学校...">{{filters.schools}}</ui-select-match>
+                        <ui-select-match placeholder="选择学校...">{{filters.school}}</ui-select-match>
                         <ui-select-choices repeat="school in availableSchools | filter: $select.search">
                             <span ng-bind-html="school | highlight: $select.search"></span>
                         </ui-select-choices>

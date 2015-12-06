@@ -72,7 +72,8 @@ define([], function()
                 dependencies: [
                     'controllers/One2OneController',
                     'services/searchService',
-                    'services/encodeService'
+                    'services/encodeService',
+                    'services/constantService'
                 ]
             },
             '/util/question': {
