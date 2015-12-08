@@ -178,6 +178,11 @@
 
     onReady(function () {
         document.getElementById("nav-bar").style.visibility = "visible";
+        $(document).on('click','.navbar-collapse.in',function(e) {
+            if( $(e.target).is('a') ) {
+                $(this).collapse('hide');
+            }
+        });
         show('loading', false);
     });
     </script>
