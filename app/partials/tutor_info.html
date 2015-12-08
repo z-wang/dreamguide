@@ -1,49 +1,20 @@
-<div  id="index" ng-controller="TutorInfoController">
-    <div class="tutor_info">
-        <div class="container" style="margin-top:220px">
-            <div class="row" >
-                <div class="col-sm-10 col-sm-offset-1">
-                    <br/>
-                    <!--<br/>-->
-                    <!--<div class="row row-gap-info">-->
-                        <!--<b> &nbsp;</b>-->
-                    <!--</div>-->
-                    <!--<br />-->
-                        <!--<div class="row row-gap-info">-->
-                            <!--<b>为留学指明方向</b>-->
-                        <!--</div>-->
-                        <!--<br />-->
-
-                        <!--<div class="row row-gap-info">-->
-                            <!--<b>做值得信赖的伙伴</b>-->
-                        <!--</div>-->
-                        <!--<br />-->
-
-                        <!--<div class="row row-gap-info">-->
-                            <!--<b>成为"明星"导师</b>-->
-                        <!--</div>-->
-                        <!--&lt;!&ndash;<div class="stationary-text-bottom"><a href="#login">加入DreamGuide</a></div>&ndash;&gt;-->
-                </div>
-            </div>
-        </div>
-    </div>
-<div class="content-section">
-    <div class="container">
+<div id="index" ng-controller="TutorInfoController">
+<div class="content-section" style="padding-top: 25px;">
         <div class="section-inverse section-inverse-space section-narrow" id="more-details">
             <div class="container">
                 <div class="row">
-                    <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
+                    <div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
                         <div class="section section-small">
                             <div class="row">
-                                <div class="col-xs-12 col-sm-12 text-center">
+                                <div class="col-sm-12 text-center">
                                     <img class="icon-large" alt="calendar and clock" src="../image/svg/dreamguide.svg">
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-xs-10 col-xs-offset-1">
+                                <div class="col-sm-10 col-sm-offset-1">
                                     <h3 class="text-center">导师福利:</h3>
                                     <div class="row row-gap-medium">
-                                        <div class="col-xs-12 col-sm-6">
+                                        <div class="col-sm-6">
                                             <ul class="list-check">
                                                 <li><p>化知识为实用</p></li>
                                                 <li><p>扩大社交网络</p></li>
@@ -51,7 +22,7 @@
                                                 <li><p>反馈思考</p></li>
                                             </ul>
                                         </div>
-                                        <div class="col-xs-12 col-sm-6">
+                                        <div class="col-sm-6">
                                             <ul class="list-check">
                                                 <li><p>发现团队，发现伙伴</p></li>
                                                 <li><p>获得相应的酬劳</p></li>
@@ -63,10 +34,10 @@
                             </div>
                             <hr>
                             <div class="row">
-                                <div class="col-xs-10 col-xs-offset-1 text-center">
+                                <div class="col-sm-10 col-sm-offset-1 text-center">
                                     导师需要实名认证 - <a href="" data-ng-click="toRegister()">前往注册</a>
                                 </div>
-                                <div class="col-xs-10 col-xs-offset-1 text-center">
+                                <div class="col-sm-10 col-sm-offset-1 text-center">
                                     阅读 <a href="#dreamguide-payment-section">DreamGuide 平台支付协议</a>
                                 </div>
                             </div>
@@ -78,8 +49,8 @@
         <div class="section section-standout-alternate">
             <div class="container">
                 <div class="row">
-                    <div class="col-xs-12 col-sm-12 col-md-8 col-md-offset-2">
-                        <h2 class="h-slim-top">Dreamguide导师的责任</h2>
+                    <div class="col-sm-12 col-md-8 col-md-offset-2">
+                        <h2 class="h-slim-top">Dreamguide导师责任</h2>
                         <!--<div class="pretty-format"><p>These are the projects you'll build and the classes that will prepare you to build each of the projects. You'll have access to all these in the Nanodegree:</p>-->
                         <br />
                             <p><strong>保持个人信息真实准确</strong></p>
@@ -103,35 +74,13 @@
         </div>
         <br />
         <div class="row">
-            <div class="col-lg-12 col-sm-12 col-xs-12" >
-                <!--<div class="panel panel-default">-->
-                    <!--<div class="panel-body">-->
-                        <!--<h4>成为dreamguide导师</h4>-->
-                        <!--<p>化知识为实用</p>-->
-                        <!--<p>扩大社交网络，培养沟通能力</p>-->
-                        <!--<p>经验传递的反馈思考，教学相长</p>-->
-                        <!--<p>发现团队，发现伙伴</p>-->
-                        <!--<p>获得应得的酬劳</p>-->
-                    <!--</div>-->
-                <!--</div>-->
-                <!--<div class="panel panel-default">-->
-                    <!--<div class="panel-body">-->
-
-                    <!--</div>-->
-                <!--</div>-->
-
-
-                <!--<div class="panel panel-default">-->
-                    <!--<div class="panel-body">-->
-                        <!--<h4>dreamguide平台协议</h4>-->
-                    <!--</div>-->
-                <!--</div>-->
-                <div id="dreamguide-payment-section" class="panel panel-default">
+            <div class="container">
+            <div id="dreamguide-payment-section" class="panel panel-default">
                     <div class="panel-body">
                         <h4>dreamguide平台支付协议</h4>
                     </div>
                     <div class="panel-body">
-                        <textarea class="col-xs-12" style="height:250px; font-size: 16px;" readonly>
+                        <textarea class="col-sm-12 col-xs-12 col-md-12" style="height:250px; font-size: 16px;" readonly>
 1.  您确认，在您使用本平台支付服务（以下简称“本服务“）时，您是具有中华人民共和国法律规定的完全民事权利能力和民事行为能力的，能够独立承担民事责任的自然人（中华人民共和国境内（香港、澳门除外）的用户应年满18周岁），或者是在中国大陆地区合法开展经营活动或其他业务的法人或其他组织；本协议内容不受您所属国家或地区法律的排斥。不具备前述条件的，您应立即终止使用本服务。
 2.  本协议条款与您的权益具有或可能具有重大关系，请您在同意接受本服务前确认，您已经充分阅读、理解并接受本协议的全部内容，一旦您选择本服务，即表示您同意遵循本协议的所有约定。
 3.  您知晓，您选择使用的本服务要求您提供个人的支付信息，您需保证您所提供的所有信息是真实的、合法的、正确的、完整的。本协议所指支付信息是指您使用本服务时需要提供的个人信息，包括但不限于账户名、密码、个人姓名、身份证号码、银行卡号等。
@@ -152,16 +101,10 @@
                 </div>
             </div>
         </div>
-
-
         <div class="row">
-            <div class="col-xs-3 pull-right">
+            <div class="col-xs-12 col-sm-6 col-md-3 pull-right">
                 <button type="submit" class="btn btn-block btn-primary" ng-click="toRegister()">认同协议，前往注册</button>
             </div>
         </div>
-
-
-
     </div>
-</div>
 </div>

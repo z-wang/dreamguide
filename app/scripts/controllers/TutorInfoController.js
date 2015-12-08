@@ -4,28 +4,10 @@ define([
 {
     app.controller('TutorInfoController',
         ['$scope','$location', function($scope, $location) {
-            $(window).scroll(function() {
-                if ($(".navbar").offset().top > 50) {
-                    $(".navbar-fixed-top").addClass("top-nav-collapse");
-                } else {
-                    $(".navbar-fixed-top").removeClass("top-nav-collapse");
-                }
-            });
-
-            $('.navbar').hover(function(){
-                $(".navbar-fixed-top").addClass("top-nav-collapse");
-            },function(){
-                $(".navbar-fixed-top").removeClass("top-nav-collapse");
-            });
-
-            $('.people-overlay').hover(
-                function(){
-                    $(this).find('.people-inner').slideDown(250); //.fadeIn(250)
-                },
-                function(){
-                    $(this).find('.people-inner').slideUp(250); //.fadeOut(205)
-                }
-            );
+            $(window).scrollTop(0);
+            $(window).unbind("scroll");
+            $('.navbar').unbind('mouseenter mouseleave');
+            $(".navbar-fixed-top").addClass("top-nav-collapse");
 
             $('#contactus').click(function(){
                 $('html,body').animate({
