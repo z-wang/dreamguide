@@ -11,21 +11,63 @@
         <link rel="stylesheet" href="/styles/google/fonts/Lora.css">
         <link rel="stylesheet" href="/styles/angular/angularUI/select2.css">
         <link rel="stylesheet" href="/lib/angular-ui/select.min.css">
-
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
         <title>DreamGuide社区</title>
     </head>
     <body>
     <div id="loading" class="content-blank-white"></div>
-    <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+    <!--<div class="navbar navbar-default" role="navigation">-->
+        <!--<div class="navbar-header">-->
+            <!--<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">-->
+                <!--<span class="sr-only">Toggle navigation</span>-->
+                <!--<span class="icon-bar"></span>-->
+                <!--<span class="icon-bar"></span>-->
+                <!--<span class="icon-bar"></span>-->
+            <!--</button>-->
+            <!--<a class="navbar-brand" href="#">Project name</a>-->
+        <!--</div>-->
+        <!--<div id="nav-bar" class="navbar-collapse collapse">-->
+            <!--<ul class="nav navbar-nav">-->
+                <!--<li class="active"><a href="#">Link</a></li>-->
+                <!--<li><a href="#">Link</a></li>-->
+                <!--<li><a href="#">Link</a></li>-->
+                <!--<li class="dropdown">-->
+                    <!--<a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>-->
+                    <!--<ul class="dropdown-menu">-->
+                        <!--<li><a href="#">Action</a></li>-->
+                        <!--<li><a href="#">Another action</a></li>-->
+                        <!--<li><a href="#">Something else here</a></li>-->
+                        <!--<li class="divider"></li>-->
+                        <!--<li class="dropdown-header">Nav header</li>-->
+                        <!--<li><a href="#">Separated link</a></li>-->
+                        <!--<li><a href="#">One more separated link</a></li>-->
+                    <!--</ul>-->
+                <!--</li>-->
+            <!--</ul>-->
+            <!--<ul class="nav navbar-nav navbar-right">-->
+                <!--<li class="page-scroll"><a href="#">Default</a></li>-->
+                <!--<li><a href="../navbar-static-top/">Static top</a></li>-->
+                <!--<li><a href="../navbar-fixed-top/">Fixed top</a></li>-->
+            <!--</ul>-->
+        <!--</div>&lt;!&ndash;/.nav-collapse &ndash;&gt;-->
+    <!--</div>-->
+
+    <div id="nav-bar" style="visibility: hidden;" class="navbar navbar-custom navbar-fixed-top" role="navigation">
         <div class="container">
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse"><i
-                        class="fa fa-bars"></i></button>
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav-content"
+                        aria-expanded="false" aria-controls="navbar" style="color:white">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar" style="background-color:whitesmoke"></span>
+                    <span class="icon-bar" style="background-color:whitesmoke"></span>
+                    <span class="icon-bar" style="background-color: whitesmoke"></span>
+                </button>
                 <a class="navbar-brand page-scroll" href="/" style="padding: 7px 15px 15px 15px">
                     <img src="image/logo.png" alt="Dreamguide Icon" style="height:35px;">
                 </a>
             </div>
-            <div id="nav-bar" style="visibility: hidden;" class="collapse navbar-collapse navbar-right navbar-main-collapse">
+            <div id="nav-content" class="collapse navbar-collapse navbar-right">
                 <ul class="nav navbar-nav">
                     <li class="hidden active"><a href="/about">项目介绍</a></li>
                     <li><a class="page-scroll" href="/one2one">一对一平台</a></li>
@@ -41,15 +83,15 @@
                 </ul>
             </div>
         </div>
-    </nav>
+    </div>
     <div>
-        <div data-ng-view></div>
+        <div ng-view></div>
     </div>
 
     <div class="content-footer" id="content-footer">
         <div class="container">
             <div class="row row-centered">
-                <div class="col-xs-3 col-centered" style="border-right: 1px solid #C0C0C0;  margin-right: 0;">
+                <div class="col-md-3 col-sm-6 col-xs-12 col-centered">
 
                     <h4>关于我们</h4>
                     <p class="caption">
@@ -63,7 +105,7 @@
                     </p>
 
                 </div>
-                <div class="col-xs-3 col-centered" style="border-right: 1px solid #C0C0C0;  margin-right: 0;">
+                <div class="col-md-3 col-sm-6 col-xs-12 col-centered">
 
                     <h4>Dream 社区</h4>
                     <p class="caption">
@@ -77,7 +119,7 @@
                     </p>
 
                 </div>
-                <div class="col-xs-3 col-centered" style="border-right: 1px solid #C0C0C0;  margin-right: 0;">
+                <div class="col-md-3 col-sm-6 col-xs-12 col-centered">
 
                     <h4>Dream Guide</h4>
                     <p class="caption">
@@ -91,45 +133,17 @@
                     </p>
 
                 </div>
-                <div class="col-xs-3 col-centered">
+                <div class="col-md-3 col-sm-6 col-xs-12 col-centered">
                     <h4>社交和移动平台</h4>
 
                     <div class="row">
                         <br />
-                        <!--<a href="#"><div class="fa fa-weibo fa-3x"></div></a>-->
                         <a href="/"><img class="icon-small" alt="calendar and clock" src="image/svg/cssi_wechat.svg"></a>
                         <a href="/"><img class="icon-small" alt="calendar and clock" src="image/svg/cssi_sina_weibo.svg"></a>
                         <a href="/"><img class="icon-small" alt="calendar and clock" src="image/svg/cssi_zhihu.svg"></a>
                         <a href="/"><img class="icon-small" alt="calendar and clock" src="image/svg/ios.svg"></a>
                         <a href="/"><img class="icon-small" alt="calendar and clock" src="image/svg/android.svg"></a>
-
-                        <!--<a href="#"><div class="fa fa-weixin fa-3x"></div></a>-->
-                        <!--<a href="#"><div class="fa fa-skype fa-3x"></div></a>-->
-                        <!--<a href="#"><div class="fa fa-linkedin fa-3x"></div></a>-->
                     </div>
-                    <!--<a href="#"><div class="fa fa-weibo fa-3x"></div></a>-->
-                    <!--<a href="#"><div ><img class="icon-small" alt="calendar and clock" src="image/svg/cssi_wechat.svg"></div></a>-->
-                    <!--<a href="#"><div ><img class="icon-small" alt="calendar and clock" src="image/svg/cssi_sina_weibo.svg"></div></a>-->
-                    <!--<a href="#"><div ><img class="icon-small" alt="calendar and clock" src="image/svg/cssi_zhihu.svg"></div></a>-->
-                    <!--<a href="#"><div class="fa fa-weixin fa-3x"></div></a>-->
-                    <!--<a href="#"><div class="fa fa-skype fa-3x"></div></a>-->
-                    <!--<a href="#"><div class="fa fa-linkedin fa-3x"></div></a>-->
-                    <!--<div class="row">-->
-                        <!--<br />-->
-                        <!--<div class="col-xs-12">-->
-                            <!--<div class="text-center-xs">-->
-                                <!--&lt;!&ndash;<a href="https://itunes.apple.com/us/app/id819700933?mt=8">&ndash;&gt;-->
-                                <!--<a href="#">-->
-                                    <!--&lt;!&ndash;<img alt="Apple store" class="img-initial mobile-button" src="//lh6.ggpht.com/5mY-J8xINNmZ4x_6mbNYmhDWFT_qzG4q4QA2jPzRfiqRjUticf5u0eEEATtX04gbr_KrDSx8SDDBpGRHAWU=s150#w=300&amp;h=88" srcset="//lh6.ggpht.com/5mY-J8xINNmZ4x_6mbNYmhDWFT_qzG4q4QA2jPzRfiqRjUticf5u0eEEATtX04gbr_KrDSx8SDDBpGRHAWU=s300#w=300&amp;h=88 2x">&ndash;&gt;-->
-                                <!--</a>-->
-                                <!--<p></p>-->
-                                <!--&lt;!&ndash;<a href="https://play.google.com/store/apps/details?id=com.udacity.android">&ndash;&gt;-->
-                                <!--<a href="#">-->
-                                    <!--&lt;!&ndash;<img alt="Google Play" class="mobile-button" src="//lh5.ggpht.com/Zb2s5Ho_mzDPnb9dBDIqQPpwFrxz1e902ksTnir8Cs_KdrYLvN_TLVK1pmKGbMPgolJ2wIlY23yI9OODDss=s150#w=300&amp;h=88" srcset="//lh5.ggpht.com/Zb2s5Ho_mzDPnb9dBDIqQPpwFrxz1e902ksTnir8Cs_KdrYLvN_TLVK1pmKGbMPgolJ2wIlY23yI9OODDss=s300#w=300&amp;h=88 2x">&ndash;&gt;-->
-                                <!--</a>-->
-                            <!--</div>-->
-                        <!--</div>-->
-                    <!--</div>-->
                     <div class="row row-gap-small">
                         <div class="col-xs-12 text-muted" style="font-size: 14px">
                             <br />
