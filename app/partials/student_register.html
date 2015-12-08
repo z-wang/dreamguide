@@ -1,29 +1,16 @@
 <div class="content-section" id="index" ng-controller="StudentRegController">
     <div class="container">
         <div class="row">
-            <div class="col-xs-8 col-xs-offset-2">
+            <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 col-xs-12">
                 <div class="row row-gap-medium ng-scope">
                     <!-- ngView:  -->
                     <div>
                         <div class="form-box ng-scope" style="padding:0 35px 35px 35px; ">
-                            <div class="row form-box ng-hide" style="padding:25px 0 25px 0; border-width:0 0 1px 0">
-                                <div class="col-xs-12">
-                                    <span>You will need a Udacity account to continue</span>
-                                </div>
-                            </div>
                             <div class="panel panel-default">
                                 <div class="panel-body">
                                     <h2 style="color: #307699; line-height: 1.6;">学生注册 </h2>
 
-                                    <form class="form-horizontal ng-pristine ng-valid" role="form" data-ng-submit="signInEmail()">
-                                        <div class="row ng-hide" data-ng-show="fieldErrors || errorMessage">
-                                            <div class="col-xs-12 alert alert-danger">
-                                                <!--<p data-ng-bind-html="errorMessage" class="ng-binding"></p>-->
-                                                <ul>
-                                                    <!-- ngRepeat: (field, error) in fieldErrors -->
-                                                </ul>
-                                            </div>
-                                        </div>
+                                    <form class="form-horizontal ng-pristine ng-valid" role="form">
                                         <div class="row onboarding-form-group">
                                             <div>
                                                 <div>
@@ -32,11 +19,11 @@
                                                         <label for="phoneNum">手机号注册</label>
                                                     </div>
                                                     <div style="clear:both"></div>
-                                                    <div class="col-sm-6 col-xs-6">
+                                                    <div class="col-sm-6 col-xs-7">
                                                         <input type="phoneNum" class="form-control pull-left ng-pristine ng-valid ng-valid-email" id="phoneNum" placeholder="+86" data-ng-model="phoneNum">
                                                     </div>
-                                                    <div class="col-sm-4 col-xs-4">
-                                                        <button type="submit" class="btn btn-block btn-success" data-ng-disabled="buttonDisabled" data-ng-click="phoneAuthFns()">发送验证码</button>
+                                                    <div class="col-sm-4 col-xs-5">
+                                                        <button type="submit" class="btn btn-block btn-success" data-ng-click="phoneAuthFns()">发送验证码</button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -44,16 +31,15 @@
                                         <div class="row onboarding-form-group">
                                                 <div>
                                                     <!--data-ng-class="{'has-error': contactInfoErrors.setsEmail}">-->
-                                                    <div class="col-sm-8 col-xs-8">
+                                                    <div class="col-sm-12 col-xs-12">
                                                     <label>手机验证码</label>
                                                     </div>
 
                                                     <div style="clear:both"></div>
-                                                    <div class="col-sm-6 col-xs-6">
-
-                                                    <input class="form-control pull-left" placeholder="请输入接收到的验证码" data-ng-model="confirmAuthCode">
+                                                    <div class="col-sm-6 col-xs-7">
+                                                        <input class="form-control pull-left" placeholder="请输入接收到的验证码" data-ng-model="confirmAuthCode">
                                                     </div>
-                                                    <div class="col-sm-4 col-xs-4">
+                                                    <div class="col-sm-4 col-xs-5">
                                                         <button type="submit" class="btn btn-block btn-success" data-ng-click="showPSArea()">提交验证码</button>
                                                     </div>
                                                 </div>
