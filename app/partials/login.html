@@ -1,7 +1,7 @@
 <div class="content-section" id="index" ng-controller="LoginController">
     <div class="container">
         <div class="row">
-            <div class="col-xs-8 col-xs-offset-2" >
+            <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 col-xs-12">
                 <div class="row row-gap-medium ng-scope">
                     <!-- ngView:  -->
                     <div>
@@ -27,7 +27,7 @@
                                 <!--</div>-->
                                 <!--</div>-->
                                 <div class="row">
-                                    <div class="col-sm-8 col-xs-8">
+                                    <div class="col-sm-8 col-xs-12">
                                         <div>
                                             <!--<div data-ng-class="{'has-error': contactInfoErrors.setsEmail}">-->
                                             <label>邮箱/手机号</label>
@@ -38,7 +38,7 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-sm-8 col-xs-8">
+                                    <div class="col-sm-8 col-xs-12">
                                         <!--<div data-ng-class="{'has-error': contactInfoErrors.setsPassword}">-->
                                         <div>
                                             <label for="password">密码</label>
@@ -48,7 +48,7 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-sm-12 col-xs-12">
+                                    <div class="col-sm-8 col-xs-12">
                                         <a href="#!/request-password-reset"><small>忘记密码?</small></a>
                                     </div>
                                 </div>
@@ -58,8 +58,10 @@
                                     <div class="col-sm-4 col-xs-6">
                                         <button type="submit" class="btn btn-block btn-primary" data-ng-click="auth()">登陆</button>
                                     </div>
-                                    <div class="col-sm-8 col-xs-6">
-                                        还没有账户？<a href="/student">注册入口！</a>
+                                    <div class="col-sm-8 col-xs-6 pull-right">
+                                        还没有账户？
+                                        <br />
+                                        <a href="/student">注册入口！</a>
                                     </div>
                                 </div>
                             </form>
