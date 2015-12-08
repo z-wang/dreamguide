@@ -166,7 +166,7 @@ define(['app','jquery'], function(app)
                         d.name = d._source.userName;
                         d.school = d._source.gradSchool;
                         d.major = d._source.gradMajor;
-                        d.degree = d._source.degree;
+                        d.degree = d._source.gradDegree;
                         d.country = d._source.studyCountry;
                     });
                 };

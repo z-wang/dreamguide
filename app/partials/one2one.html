@@ -143,7 +143,7 @@
         </div>
     </script>
     <div class="container">
-        <div class="row">
+        <div class="row hidden-xs">
             <div class="col-lg-12 col-sm-12 col-xs-12" >
                 <div class="panel panel-default">
                     <div class="panel-body">
@@ -252,33 +252,35 @@
                 <div class="panel panel-default">
                     <div class="panel-body">
                         <div ng-repeat="person in model.currentTutors track by $index">
-                            <div class="thumbnail" style="height:130px">
-                                <div class="col-sm-2 col-md-2" style="margin-top: 5px;">
-                                    <div>
-                                        <img ng-src={{person.image}} alt="" height="110px" width="110px">
+                            <div class="panel panel-default">
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-xs-6 col-sm-2 col-md-2" style="margin-top: 5px;">
+                                        <img ng-src={{person.image}} class="img-rounded" alt="" height="110" width="110">
                                     </div>
-                                </div>
-                                <div class="col-sm-8 col-md-8" style="padding-left: 30px;">
-                                    <div class="caption">
-                                        <b>{{person.name}}</b>
+                                    <div class="col-xs-6 col-sm-2 col-md-2 col-sm-push-8">
+                                        <br />
+                                        <button class="btn btn-primary" ng-click="openInfoPage($index)">主页</button>
                                         <br />
                                         <br />
-
-                                        {{person.school}}
-                                        <br />
-                                        <br />
-                                        {{person.degree}}  {{person.major}}
-                                        <!--{{person.country}}-->
-
+                                        <button class="btn btn-success" ng-click="openModal($index)">预约</button>
+                                        <!--"makeAppointment($index)"-->
                                     </div>
+                                    <div class="col-xs-12 col-sm-7 col-md-7 col-md-offset-1 col-sm-pull-2" style="padding-left: 30px;">
+                                        <div class="caption">
+                                            <b>{{person.name}}</b>
+                                            <br />
+                                            <br />
+                                            {{person.school}}
+                                            <br />
+                                            {{person.degree}}
+                                            <br />
+                                            {{person.major}}
+                                            <!--{{person.country}}-->
+                                        </div>
+                                    </div>
+
                                 </div>
-                                <div class="col-sm-2 col-md-2">
-                                    <br />
-                                    <button class="btn btn-primary" ng-click="openInfoPage($index)">主页</button>
-                                    <br />
-                                    <br />
-                                    <button class="btn btn-success" ng-click="openModal($index)">预约</button>
-                                    <!--"makeAppointment($index)"-->
                                 </div>
                             </div>
                         </div>
