@@ -1,53 +1,51 @@
 <div class="content-section" id="index" ng-controller="RegisterController">
     <div class="container">
-            <div class="panel panel-default">
-                <div class="panel-body">
-                    <h2 style="margin: 0 0 10px;">导师资格申请表</h2>
-                    <div class="alert alert-warning alert-dismissible" role="alert">
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <strong></strong> 我们将对所有个人信息进行保密 ( <a>隐私政策</a> ), 完成填写及提交后平台会及时与你联系。
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <h2 style="margin: 0 0 10px;">导师资格申请表</h2>
+                <div class="alert alert-warning alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <strong></strong> 我们将对个人信息进行保密 ( <a>隐私政策</a> ), 完成填写及提交后平台会及时与你联系。
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"><b>个人信息</b></h3>
                     </div>
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <h3 class="panel-title"><b>个人信息</b></h3>
-                        </div>
-                        <div class="panel-body">
-                            <form name="loginForm" novalidate>
+                    <div class="panel-body">
+                        <form name="loginForm" novalidate>
                             <div class="col-sm-6 col-xs-12">
-
-                                    <div class="form-group" ng-class="{'has-error': loginForm.username.$invalid}">
-                                        <label>显示姓名</label>
-
-                                        <input class="form-control" name="username" type="text"
-                                               placeholder="将作为用户名称在平台显示" required ng-model="tutor.userName" />
-                                        <span class="help-block" ng-show="loginForm.username.$error.required">不能为空</span>
-                                    </div>
-                                    <div class="form-group" ng-class="{'has-error': loginForm.realname.$invalid}">
-                                        <label>真实姓名</label>
-                                        <input class="form-control" name="realname" type="text"
-                                               placeholder="不在平台中显示，有助于身份核实" required ng-model="tutor.realName" />
-                                        <span class="help-block" ng-show="loginForm.realname.$error.required">不能为空</span>
-                                    </div>
-                                    <div class="form-group" ng-class="{'has-error': loginForm.email.$invalid}">
-                                        <label for="email">电子邮箱</label>
-                                        <input class="form-control" id="email" name="email" type="email"
-                                               placeholder="电子邮箱将作为登陆账户" required ng-model="tutor.email" />
-                                        <span class="help-block" ng-show="loginForm.email.$error.required">不能为空</span>
-                                    </div>
-                                    <div class="form-group" ng-class="{'has-error': loginForm.password.$invalid}">
-                                        <label>密码</label>
-                                        <input class="form-control" name="password" type="password"
-                                               placeholder="登录密码" required ng-model="tutor.passWord" />
-                                        <span class="help-block" ng-show="loginForm.password.$error.required">不能为空</span>
-                                    </div>
-                                    <div class="form-group" ng-class="{'has-error': loginForm.wechat.$invalid}">
-                                        <label>微信号/QQ号</label>
-                                        <input class="form-control" name="wechat" type="text"
-                                               placeholder="有助于沟通联系" required ng-model="tutor.wechat" />
-                                        <span class="help-block" ng-show="loginForm.wechat.$error.required">不能为空</span>
-                                    </div>
-
+                                <div class="form-group" ng-class="{'has-error': loginForm.username.$invalid}">
+                                    <label>显示姓名</label>
+                                    <input class="form-control" name="username" type="text"
+                                           placeholder="将作为用户名称在平台显示" required ng-model="tutor.userName" />
+                                    <span class="help-block" ng-show="loginForm.username.$error.required">不能为空</span>
                                 </div>
+                                <div class="form-group" ng-class="{'has-error': loginForm.realname.$invalid}">
+                                    <label>真实姓名</label>
+                                    <input class="form-control" name="realname" type="text"
+                                           placeholder="不在平台中显示，有助于身份核实" required ng-model="tutor.realName" />
+                                    <span class="help-block" ng-show="loginForm.realname.$error.required">不能为空</span>
+                                </div>
+                                <div class="form-group" ng-class="{'has-error': loginForm.email.$invalid}">
+                                    <label for="email">电子邮箱</label>
+                                    <input class="form-control" id="email" name="email" type="email"
+                                           placeholder="电子邮箱将作为登陆账户" required ng-model="tutor.email" />
+                                    <span class="help-block" ng-show="loginForm.email.$error.required">不能为空</span>
+                                </div>
+                                <div class="form-group" ng-class="{'has-error': loginForm.password.$invalid}">
+                                    <label>密码</label>
+                                    <input class="form-control" name="password" type="password"
+                                           placeholder="登录密码" required ng-model="tutor.passWord" />
+                                    <span class="help-block" ng-show="loginForm.password.$error.required">不能为空</span>
+                                </div>
+                                <div class="form-group" ng-class="{'has-error': loginForm.wechat.$invalid}">
+                                    <label>微信号/QQ号</label>
+                                    <input class="form-control" name="wechat" type="text"
+                                           placeholder="有助于沟通联系" required ng-model="tutor.wechat" />
+                                    <span class="help-block" ng-show="loginForm.wechat.$error.required">不能为空</span>
+                                </div>
+                            </div>
+
                             <div class="col-sm-6 col-xs-12">
                                 <div class="form-group" ng-class="{'has-error': loginForm.studycountry.$invalid}">
                                     <label>留学国家/地区</label>
@@ -61,16 +59,11 @@
                                 </div>
                                 <div class="form-group" ng-class="{'has-error': loginForm.school.$invalid}">
                                     <label for="school">留学在读/毕业院校</label>
-                                    <ui-select id="school" name="school" ng-model="tutor.gradSchool" style="font-family: Georgia, Serif;" required>
-                                        <ui-select-match placeholder="在读或毕业海外院校">{{$select.selected}}</ui-select-match>
-                                        <ui-select-choices repeat="school in availableSchools | filter: $select.search">
-                                            <span ng-bind-html="school | highlight: $select.search"></span>
-                                        </ui-select-choices>
-                                    </ui-select>
+                                    <input class="form-control" name="school" id="school" type="text"
+                                           placeholder="在读或毕业海外院校" required ng-model="tutor.gradSchool" />
                                     <span class="help-block" ng-show="loginForm.school.$error.required">不能为空</span>
                                 </div>
                                 <div class="form-group" ng-class="{'has-error': loginForm.degree.$invalid}">
-
                                     <label for="degree">学位</label>
                                     <ui-select id="degree" name="degree" ng-model="tutor.degree" style="font-family: Georgia, Serif;" required>
                                         <ui-select-match placeholder="获得学位，如Master">{{$select.selected}}</ui-select-match>
@@ -82,31 +75,26 @@
                                 </div>
                                 <div class="form-group" ng-class="{'has-error': loginForm.major.$invalid}">
                                     <label>专业</label>
-
-                                    <ui-select name="major" ng-model="tutor.gradMajor" required>
-                                        <ui-select-match placeholder="选择相关专业">{{$select.selected}}</ui-select-match>
-                                        <ui-select-choices repeat="field in availableMajors | filter: $select.search">
-                                            <span ng-bind-html="field | highlight: $select.search"></span>
-                                        </ui-select-choices>
-                                    </ui-select>
+                                    <input class="form-control" name="major" type="text"
+                                           placeholder="选择相关专业" required ng-model="tutor.gradMajor" />
                                     <span class="help-block" ng-show="loginForm.major.$error.required">不能为空</span>
                                 </div>
 
                             </div>
-                            </form>
+                        </form>
 
-                        </div>
                     </div>
-
-                    <button type="button" class="btn btn-primary" ng-disabled="!loginForm.$valid" ng-click="submitApply()">
-                        提交申请
-                    </button>
-
-                    <button type="button" class="btn btn-default" ng-click="reset()">
-                        重置申请
-                    </button>
                 </div>
-            </div>
 
+                <button type="button" class="btn btn-primary" ng-disabled="!loginForm.$valid" ng-click="submitApply()">
+                    提交申请
+                </button>
+
+                <button type="button" class="btn btn-default" ng-click="reset()">
+                    重置申请
+                </button>
+            </div>
         </div>
+
     </div>
+</div>
