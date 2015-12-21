@@ -4,15 +4,20 @@ define([
 {
     app.controller('TutorInfoController',
         ['$scope','$location', function($scope, $location) {
-            $(window).scrollTop(0);
-            $(window).unbind("scroll");
-            $('.navbar').unbind('mouseenter mouseleave');
-            $(".navbar-fixed-top").addClass("top-nav-collapse");
+            $('.navbar').hover(function(){
+                $(".navbar-fixed-top").addClass("top-nav-collapse");
+            },function(){
+                //$(".navbar-fixed-top").removeClass("top-nav-collapse");
+            });
+            $(window).scroll(function() {
+                console.log($(".navbar"));
 
-            $('#contactus').click(function(){
-                $('html,body').animate({
-                        scrollTop: $("#content-footer").offset().top},
-                    'slow');
+                if ($(".navbar").offset().top > 50) {
+                    console.log($(".navbar").offset().top);
+                    $(".navbar-fixed-top").addClass("top-nav-collapse");
+                } else {
+                    $(".navbar-fixed-top").removeClass("top-nav-collapse");
+                }
             });
 
             $scope.toRegister = function(){
