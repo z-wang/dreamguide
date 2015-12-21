@@ -38,24 +38,14 @@
                                            placeholder="登录密码" required ng-model="tutor.passWord" />
                                     <span class="help-block" ng-show="loginForm.password.$error.required">不能为空</span>
                                 </div>
+                            </div>
+
+                            <div class="col-sm-6 col-xs-12">
                                 <div class="form-group" ng-class="{'has-error': loginForm.wechat.$invalid}">
                                     <label>微信号/QQ号</label>
                                     <input class="form-control" name="wechat" type="text"
                                            placeholder="有助于沟通联系" required ng-model="tutor.wechat" />
                                     <span class="help-block" ng-show="loginForm.wechat.$error.required">不能为空</span>
-                                </div>
-                            </div>
-
-                            <div class="col-sm-6 col-xs-12">
-                                <div class="form-group" ng-class="{'has-error': loginForm.studycountry.$invalid}">
-                                    <label>留学国家/地区</label>
-                                    <ui-select id="studycountry" name="studycountry" ng-model="tutor.studyCountry" required>
-                                        <ui-select-match placeholder="填写留学所在国家">{{$select.selected}}</ui-select-match>
-                                        <ui-select-choices repeat="country in availableCountries | filter: $select.search">
-                                            <span ng-bind-html="country | highlight: $select.search"></span>
-                                        </ui-select-choices>
-                                    </ui-select>
-                                    <span class="help-block" ng-show="loginForm.studycountry.$error.required">不能为空</span>
                                 </div>
                                 <div class="form-group" ng-class="{'has-error': loginForm.school.$invalid}">
                                     <label for="school">留学在读/毕业院校</label>
