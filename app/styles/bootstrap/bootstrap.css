@@ -3085,6 +3085,22 @@ fieldset[disabled] .btn-default.active {
   color: #fff;
   background-color: #333;
 }
+.btn-custom-transparent {
+  font-size: 18px;
+  color: #1E3547;
+  background-color: transparent;
+  border-color: #1E3547;
+}
+.btn-custom-transparent:hover,
+.btn-custom-transparent:focus,
+.btn-custom-transparent.focus,
+.btn-custom-transparent:active,
+.btn-custom-transparent.active,
+.open > .dropdown-toggle.btn-custom-transparent {
+  color: #fff;
+  background-color: #286090;
+  border-color: #204d74;
+}
 .btn-primary {
   color: #fff;
   background-color: #337ab7;
