@@ -8,6 +8,10 @@ var transporter = nodemailer.createTransport({
         pass: 'Dreamguide123*'
     }
 });
+
+//for future use, different env
+var port = process.env.PORT || 80;
+
     //service: 'QQex',
     //auth: {
     //    //user: 'dreamguide',
@@ -110,6 +114,6 @@ app.post('/img/downLoad',function(req, res){
     });
 });
 
-app.listen(80);
+app.listen(port);
 
 console.log('Listening on port 80');
