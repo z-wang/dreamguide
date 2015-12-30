@@ -15,7 +15,8 @@ define([], function()
                 dependencies: [
                     'controllers/profiles/ViewTutorProfileController',
                     'services/searchService',
-                    'services/encodeService'
+                    'services/encodeService',
+                    'directives/starRating'
                 ]
             },
             //'/contact': {
