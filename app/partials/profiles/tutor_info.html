@@ -1,35 +1,63 @@
-<!--<link rel="stylesheet" href="/styles/foundation/foundation.min.css">-->
 <div class="content-section" id="index" ng-controller="ViewTutorProfileController">
     <div class="container">
-        <div class="panel">
-            <h3>{{}}</h3>
-            <p>{{thisTutor.userName}}, {{thisTutor.profile}}</p>
-        </div>
-        <div class="col-sm-9">
-            <div class="col-sm-2 col-md-2" style="margin-top: 5px;">
-                <div>
-                    <img ng-src={{thisTutor.image}} alt="" height="110px" width="110px">
+        <div class="row">
+            <div class="col-sm-9 col-xs-12">
+                <div class="row">
+                    <div class="col-xs-6 col-sm-6 col-md-2" style="margin-top: 5px;">
+                        <img ng-src={{image.defaultImage}} class="img-rounded" alt="" height="110" width="110">
+                        <!--thisTutor.image-->
+                    </div>
+                    <div class="col-sm-6 col-xs-6 col-md-9 col-md-offset-1">
+                        <p>{{thisTutor.userName}}</p>
+                        <p>{{thisTutor.gradSchool}}</p>
+                        <p>{{thisTutor.gradDegree}}, {{thisTutor.gradMajor}}</p>
+                    </div>
+                </div>
+                <br />
+                <div class="row col-sm-12">
+                    <p>{{thisTutor.profile}}</p>
+                </div>
+                <!--<div >-->
+                <!--<p>本科信息: <a>{{thisTutor.underSchool}}</a>   {{thisTutor.underDegree}}   {{thisTutor.underMajor}}</p>-->
+                <!--<p>留学背景: <a>{{thisTutor.gradSchool}}</a>, {{thisTutor.gradDegree}}, {{thisTutor.gradMajor}}</p>-->
+                <!--<p>工作背景: {{thisTutor.company}} {{thisTutor.workCountry}}</p>-->
+                <!--<p>{{thisTutor.profile}}</p>-->
+                <!--</div>-->
+            </div>
+            <div class="panelNew col-xs-12 col-sm-3">
+                <div class="col-xs-6 col-sm-10 col-sm-offset-1" style="margin-top:20px;">
+                    <div class="row" style="text-align: center">
+                        <star-rating ng-model="rating.current" max="rating.total" readonly="rating.isReadOnly"></star-rating>
+                        <label>评分: 4.5</label>
+                    </div>
+                    <div style="text-align: center">
+                        <button class="btn btn-success">查看评价(条)</button>
+                    </div>
+                </div>
+                <div class="col-xs-6 col-sm-10 col-sm-offset-1" style="margin-top:20px;">
+                    <div class="row visible-xs" style="text-align: center; margin-top:10px;">
+                        <label>咨询费用为$10/30分钟</label>
+                    </div>
+
+                    <div style="text-align: center">
+                        <button class="btn btn-primary">预约导师
+                <!--<span tooltip-html-unsafe="<span>导师预约：选择你想咨询的导师并提交问题表格</span>-->
+                    <!--<br />-->
+                    <!--<div>预约确认：完成支付，平台小秘书确认双方时间</div>-->
+                    <!--<br />-->
+                    <!--<p>Line 3</p>" tooltip-placement="bottom">-->
+                    <!--预约导师-->
+                <!--</span>-->
+                        </button>
+                    </div>
+                    <div class="hidden-xs" style="text-align: center">咨询费用为$10/30分钟</div>
                 </div>
             </div>
-            <div class="col-sm-10 col-xs-10">
-                <p>本科信息: <a>{{thisTutor.underSchool}}</a>   {{thisTutor.underDegree}}   {{thisTutor.underMajor}}</p>
-                <p>留学背景: <a>{{thisTutor.gradSchool}}</a>, {{thisTutor.gradDegree}}, {{thisTutor.gradMajor}}</p>
-                <p>工作背景: {{thisTutor.company}} {{thisTutor.workCountry}}</p>
-            </div>
         </div>
-        <div class="panelNew col-sm-3">
-            <button class="col-sm-10 col-sm-offset-1 btn btn-primary">预约导师</button>
-            <br />
-            <br />
-            <button class="col-sm-10 col-sm-offset-1 btn btn-success">查看评价(条)</button>
-
-            <br />
-            <br />
-
-            <p>预约费用为￥60元/30分钟</p>
+        <div class="row">
+            <!--评论区-->
         </div>
-
-
-
+        <!--<div star-rating ng-model="rating.total" max="5" on-rating-select="changeStar()" readonly="rating.isReadOnly">评分</div>-->
+        <!--<label>评分: 4.5</label>-->
     </div>
 </div>
