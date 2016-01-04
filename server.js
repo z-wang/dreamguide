@@ -1,6 +1,7 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var nodemailer = require('nodemailer');
+var mongoose = require('mongoose');
 var transporter = nodemailer.createTransport({
     service: 'Hotmail',
     auth: {
@@ -8,6 +9,23 @@ var transporter = nodemailer.createTransport({
         pass: 'Dreamguide123*'
     }
 });
+var db = mongoose.connect('mongodb://115.28.86.184:27017/dreamguide');
+var Schema = mongoose.Schema;
+var inputSchema = new Schema({
+    createdTime: Date,
+    applyDegree: String,
+    applyMajor: String,
+    fulltime: Number,
+    gpa: Number,
+    gre: Number,
+    internship: Number,
+    patent: Number,
+    publication: Number,
+    tofel: Number,
+    undergradSchool: String
+});
+
+var eselection = mongoose.model('eselection', inputSchema);
 
 //for future use, different env
 var port = process.env.PORT || 80;
@@ -112,6 +130,36 @@ app.post('/img/downLoad',function(req, res){
             res.end("1");
         }
     });
+});
+
+app.post('/tools/eselection/inputquery',function(req,res){
+    var input = req.body.input;
+
+    var newInput = new eselection({
+        createdTime: new Date(),
+        applyDegree: input.applyDegree || "",
+        applyMajor: input.applyMajor || "",
+        fulltime: input.fulltime || 0,
+        gpa: input.gpa || 3,
+        gre: input.gre || 280,
+        internship: input.internship || 0,
+        patent: input.patent || 0,
+        publication: input.publication || 0,
+        tofel: input.tofel || 0,
+        undergradSchool: input.undergradSchool || ""
+    });
+    // save the user
+    newInput.save(function(err, data) {
+        if (err) return console.error(err);
+        console.log(data);
+        //mongoose.connection.close(function () {
+        //            console.log('Mongoose connection disconnected');
+        //        });
+    });
+
+    //mongoose.disconnect();
+    //mongoose.connection.close();
+    res.end("yes");
 });
 
 app.listen(port);
