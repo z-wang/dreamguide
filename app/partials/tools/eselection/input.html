@@ -1,0 +1,99 @@
+<div class="content-section" id="index" ng-controller="InputController">
+    <div class="container">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <h2 style="margin: 0 0 10px;">填写你的个人背景</h2>
+                <!--<div class="alert alert-warning alert-dismissible" role="alert">-->
+                    <!--<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>-->
+                    <!--<strong></strong> 我们将对个人信息进行保密 ( <a>隐私政策</a> ), 完成填写及提交后平台会及时与你联系。-->
+                <!--</div>-->
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"><b>以下信息均为到申请时间时预计可以获得的结果</b></h3>
+                    </div>
+                    <div class="panel-body">
+                        <form name="inputForm" novalidate>
+                            <div class="col-sm-6 col-xs-12">
+                                <div class="form-group" ng-class="{'has-error': inputForm.undergradSchool.$invalid}">
+                                    <label for="undergradSchool">本科院校</label>
+                                    <ui-select name="undergradSchool" id="undergradSchool" ng-model="input.undergradSchool" style="font-family: Georgia, Serif;" required>
+                                        <ui-select-match placeholder="本科学校">{{$select.selected}}</ui-select-match>
+                                        <ui-select-choices repeat="undergradSchool in undergradSchools | filter: $select.search">
+                                            <span ng-bind-html="undergradSchool | highlight: $select.search"></span>
+                                        </ui-select-choices>
+                                    </ui-select>
+                                </div>
+                                <div class="form-group" ng-class="{'has-error': inputForm.applyDegree.$invalid}">
+                                    <label>申请学位</label>
+                                    <ui-select name="applyDegree" ng-model="input.applyDegree" style="font-family: Georgia, Serif;" required>
+                                        <ui-select-match placeholder="选择学位">{{$select.selected}}</ui-select-match>
+                                        <ui-select-choices repeat="degree in applyDegrees | filter: $select.search">
+                                            <span ng-bind-html="degree | highlight: $select.search"></span>
+                                        </ui-select-choices>
+                                    </ui-select>
+                                </div>
+                                <div class="form-group" ng-class="{'has-error': inputForm.applyMajor.$invalid}">
+                                    <label>申请专业</label>
+                                    <ui-select id="applyMajor" name="applyMajor" ng-model="input.applyMajor" style="font-family: Georgia, Serif;" required>
+                                        <ui-select-match placeholder="选择专业">{{$select.selected}}</ui-select-match>
+                                        <ui-select-choices repeat="major in applyMajors | filter: $select.search">
+                                            <span ng-bind-html="major | highlight: $select.search"></span>
+                                        </ui-select-choices>
+                                    </ui-select>
+                                </div>
+                                <div class="form-group" ng-class="{'has-error': inputForm.internship.$invalid}">
+                                    <label>校内外实习次数</label>
+                                    <input class="form-control" id="internship" name="internship" type="number" min="0"
+                                           placeholder="获得的实习次数" required ng-model="input.internship" />
+                                </div>
+                                <div class="form-group" ng-class="{'has-error': inputForm.fulltime.$invalid}">
+                                    <label>相关领域工作时间</label>
+                                    <input class="form-control" id="fulltime" name="fulltime" type="number" min="0"
+                                           placeholder="全职工作时间, 单位:年" required ng-model="input.fulltime" />
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6 col-xs-12">
+                                <div class="form-group" ng-class="{'has-error': inputForm.gpa.$invalid}">
+                                    <label>GPA(4.0为满绩点)</label>
+                                    <input class="form-control" id="gpa" name="gpa" type="number" max="4" min="1"
+                                           placeholder="综合GPA, 如3.2" required ng-model="input.gpa" />
+                                </div>
+                                <div class="form-group" ng-class="{'has-error': inputForm.tofel.$invalid}">
+                                    <label>TOFEL</label>
+                                    <input class="form-control" id="tofel" name="tofel" type="number" max="120" min="5"
+                                           placeholder="雅思转换成托福分数" required ng-model="input.tofel" />
+                                </div>
+                                <div class="form-group" ng-class="{'has-error': inputForm.gre.$invalid}">
+                                    <label>GRE/GMAT</label>
+                                    <input class="form-control" name="gre" type="number" min="0"
+                                           placeholder="填写325或740" required ng-model="input.gre" />
+                                </div>
+                                <div class="form-group" ng-class="{'has-error': inputForm.publication.$invalid}">
+                                    <label>论文发表数量</label>
+                                    <input class="form-control" id="publication" name="publication" type="number" min="0"
+                                           placeholder="必须在正式出版物上发表" required ng-model="input.publication" />
+                                </div>
+                                <div class="form-group" ng-class="{'has-error': inputForm.patent.$invalid}">
+                                    <label>专利数量</label>
+                                    <input class="form-control" id="patent" name="patent" type="number" min="0"
+                                           placeholder="已经正式申报的专利" required ng-model="input.patent" />
+                                </div>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+
+                <button type="button" class="btn btn-primary" ng-disabled="inputForm.$invalid" ng-click="submitApply()">
+                    提交查询
+                </button>
+
+                <button type="button" class="btn btn-default" ng-click="reset()">
+                    重置信息
+                </button>
+            </div>
+        </div>
+
+    </div>
+</div>

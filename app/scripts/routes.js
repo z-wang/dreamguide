@@ -101,6 +101,15 @@ define([], function()
                     'directives/img-cropper-file-read',
                     'services/searchService'
                 ]
+            },
+            '/tools/eselection/input': {
+                templateUrl: '/partials/tools/eselection/input.html',
+                dependencies: [
+                    'controllers/tools/eselection/InputController',
+                    'services/emailService',
+                    'services/searchService'
+                    //'../lib/angular/angular-bootstrap-file'
+                ]
             }
             //,
             //'/admin/edit/temp/updater': {
