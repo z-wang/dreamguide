@@ -2,6 +2,9 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var nodemailer = require('nodemailer');
 var mongoose = require('mongoose');
+var eselectionData = require('./data/eselection');
+var ml = require('machine_learning');
+
 var transporter = nodemailer.createTransport({
     service: 'Hotmail',
     auth: {
@@ -28,7 +31,7 @@ var inputSchema = new Schema({
 var eselection = mongoose.model('eselection', inputSchema);
 
 //for future use, different env
-var port = process.env.PORT || 80;
+var port = process.env.PORT || 3000;
 
     //service: 'QQex',
     //auth: {
@@ -145,7 +148,7 @@ app.post('/tools/eselection/inputquery',function(req,res){
         internship: input.internship || 0,
         patent: input.patent || 0,
         publication: input.publication || 0,
-        tofel: input.tofel || 0,
+        toefl: input.toefl || 0,
         undergradSchool: input.undergradSchool || ""
     });
     // save the user
@@ -160,6 +163,65 @@ app.post('/tools/eselection/inputquery',function(req,res){
     //mongoose.disconnect();
     //mongoose.connection.close();
     res.end("yes");
+});
+
+var simplePrediction = function(data, result, userData){
+    var knn = new ml.KNN({
+        data : data,
+        result : result
+    });
+
+    return knn.predict({
+        x : userData,
+        k : 9,
+
+        weightf : {type : 'gaussian', sigma : 10.0},
+        // default : {type : 'gaussian', sigma : 10.0}
+        // {type : 'none'}. weight == 1
+        // Or you can use your own weight f
+        // weightf : function(distance) {return 1./distance}
+
+        distance : {type : 'euclidean'}
+        // default : {type : 'euclidean'}
+        // {type : 'pearson'}
+        // Or you can use your own distance function
+        // distance : function(vecx, vecy) {return Math.abs(dot(vecx,vecy));}
+    });
+};
+
+app.post('/tools/eselection/getPredictions', function(req,res){
+    var inputObj = req.body.input;
+    console.log(req.body);
+    //generate preprocessed data
+    var input = [];
+    var results = [];
+    input.push(inputObj.undergradSchool, inputObj.toefl, inputObj.gre, inputObj.gpa);
+    input = eselectionData.getPreprocessedData(input);
+    eselectionData.getSchoolNames.map(function(name) {
+            results.push({
+                name : name,
+                prediction: ( simplePrediction(
+                    eselectionData.getSchoolDataAndResult(name).data,
+                    eselectionData.getSchoolDataAndResult(name).result,
+                    input
+                ) * 100 ).toFixed(3)
+            });
+        });
+
+    //TODO: selection function for chongci, baodi schools here: postDataProcess
+    //sort results
+    //function compare(schoolA, schoolB) {
+    //    if (schoolA.prediction < schoolB.prediction)
+    //        return -1;
+    //    else if (schoolA.prediction > schoolB.prediction)
+    //        return 1;
+    //    else
+    //        return 0;
+    //}
+    //
+    //results.sort(compare);
+    console.log(results);
+    res.json(results);
 });
 
 app.listen(port);
