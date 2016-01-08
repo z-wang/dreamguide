@@ -31,7 +31,7 @@ var inputSchema = new Schema({
 var eselection = mongoose.model('eselection', inputSchema);
 
 //for future use, different env
-var port = process.env.PORT || 3000;
+var port = process.env.PORT || 80;
 
     //service: 'QQex',
     //auth: {
