@@ -2,6 +2,8 @@
  * Created by zihanwang on 1/8/16.
  */
 var ranks = {
+    //all schools and values are calculted by Huang Shan's Model, from easiest to hardest
+    //can try to use the rank online(USNews, etc.), and compare results.
     finance : {
         schools:
             [ 'University at Buffalo',
@@ -13,7 +15,7 @@ var ranks = {
                 'American University',
                 'University of Delaware',
                 'University of Connecticut',
-                'The University of Maryland',
+                'University of Maryland',
                 'Rutgers University',
                 'University of Pittsburgh',
                 'Tulane University',
@@ -21,7 +23,7 @@ var ranks = {
                 'Boston University',
                 'Northeastern University',
                 'Johns Hopkins University',
-                'University of Southern California (Marshall)',
+                'University of Southern California',
                 'Fordham University',
                 'Ohio State University (Fisher)',
                 'Case Western Reserve University',
@@ -30,7 +32,7 @@ var ranks = {
                 'University of Rochester (Simon)',
                 'University of Illinois Urbana-Champaign',
                 'Syracuse University',
-                'University of Texas Austin (McCombs)',
+                'University of Texas at Austin',
                 'Purdue University',
                 'Boston College',
                 'Brandeis University',
@@ -43,7 +45,7 @@ var ranks = {
                 'Carnegie Mellon University',
                 'New York University',
                 'University of California-Berkeley',
-                'Massachusetts Institute of Technology (Sloan)' ],
+                'MIT' ],
         values :    [ 0.86,
             0.84,
             0.84,
@@ -88,7 +90,7 @@ var ranks = {
 };
 
 module.exports = {
-    ranks : function(major){
+    getRankbyMajor : function(major){
         return ranks[major];
     }
 };
