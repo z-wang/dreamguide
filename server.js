@@ -32,7 +32,7 @@ var inputSchema = new Schema({
 var eselection = mongoose.model('eselection', inputSchema);
 
 //for future use, different env
-var port = process.env.PORT || 80;
+var port = process.env.PORT || 3001;
 
     //service: 'QQex',
     //auth: {
@@ -328,7 +328,7 @@ var getPredition = function(req,res){
         });
 
         if (predict <= 12) {
-            schoolBucket.top.push(name);
+            //schoolBucket.top.push(name);
             chanceBucket.veryLow.push(name);
         } else if (predict > 12 && predict <=34) {
             schoolBucket.top.push(name);
