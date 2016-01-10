@@ -92,8 +92,36 @@
                 <button type="button" class="btn btn-default" ng-click="reset()">
                     重置信息
                 </button>
-                <div ng-repeat="obj in results | orderBy:'prediction' ">
-                    {{obj.name}} : {{obj.prediction}}%
+
+                <br />
+                <br />
+
+                <div class="panel panel-default" ng-show="flags.applicationList">
+                    <div class="panel-body">
+                        <h4>冲刺学校</h4>
+                        <div ng-repeat="school in applicationList.top">
+                            {{school}}
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <h4>合适学校</h4>
+                        <div ng-repeat="school in applicationList.reality">
+                            {{school}}
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <h4>保底学校</h4>
+                        <div ng-repeat="school in applicationList.backup">
+                            {{school}}
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default" ng-show="flags.applicationList">
+                    <div class="panel-body">
+                        <div ng-repeat="obj in results">
+                            {{obj.name}} : {{obj.prediction}}%
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

@@ -22,6 +22,18 @@ define([
                     gradMajor : ""
                 };
 
+                $scope.flags = {
+                    schoolList : false,
+                    applicationList: false,
+                    singleSchool : false
+                };
+
+                $scope.applicationList = {
+                    top : [],
+                    reality: [],
+                    backup : []
+                };
+
                 $scope.toRegister = function(){
                     $(window).scrollTop(0);
                     $location.path("/register");
@@ -49,7 +61,6 @@ define([
                     "其他" : 6
                 };
 
-
                 $scope.submitApply = function(){
                     var rawData = {
                         undergradSchool : Number(schoolValues[$scope.input.undergradSchool]),
@@ -63,7 +74,10 @@ define([
                         input: rawData
                     }).
                         success(function(data, status, headers, config) {
-                            $scope.results = data;
+                            $scope.results = data.results;
+                            $scope.flags.applicationList = true;
+                            $scope.applicationList = data.schoolList;
+                            console.log(data);
                             console.log("prediction success");
                         }).
                         error(function(data, status, headers, config) {
