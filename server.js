@@ -248,7 +248,7 @@ var adjustSchoolFunc = function(schoolList, rankList){
     schoolList.reality.map(function(school){
         if(topList.indexOf(school) >= 0 && topList.indexOf(school) > Number(0.7 * topList.length)) {
             newSchoolList.top.push(school);
-        } else if (backupList.indexOf(school) >= 0 && backupList.indexOf(school) < Number(0.4 * backupList.length)){
+        } else if (backupList.indexOf(school) >= 0 && backupList.indexOf(school) < Number(0.7 * backupList.length)){
             newSchoolList.backup.push(school);
         } else {
             newSchoolList.reality.push(school);
