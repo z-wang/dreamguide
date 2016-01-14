@@ -35,7 +35,6 @@ define([
                 };
 
                 $scope.showSchool = function(name){
-                    console.log(name);
                     $scope.school.show = true;
                     $scope.school.name = name;
                     for (var i = 0; i < $scope.results.length; i++) {
@@ -46,7 +45,6 @@ define([
                     $scope.school.toeflPercentage = Number($scope.school.percentage) + 5 < 100 ? Number($scope.school.percentage) + 5 : 100;
                     $scope.school.grePercentage = Number($scope.school.percentage) + 2 < 100 ? Number($scope.school.percentage) + 2 : 100;
                     $scope.school.gpaPercentage = Number($scope.school.percentage) + 8 < 100 ? Number($scope.school.percentage) + 8 : 100;
-                    console.log($scope.school);
 
                     if ($location.hash() !== 'school') {
                         $location.hash('school');
