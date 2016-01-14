@@ -5,17 +5,8 @@ define(['app', 'jquery','bootstrap','highmaps',
 	app.controller('HomeViewController',
     [
         '$scope',
-
         function($scope)
         {
-            $(window).scroll(function() {
-                if ($(".navbar").offset().top > 50) {
-                    $(".navbar-fixed-top").addClass("top-nav-collapse");
-                } else {
-                    $(".navbar-fixed-top").removeClass("top-nav-collapse");
-                }
-            });
-
             $('.navbar').hover(function(){
                 $(".navbar-fixed-top").addClass("top-nav-collapse");
             },function(){
