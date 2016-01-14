@@ -23,9 +23,9 @@ require.config({
         'ng-table':'../lib/ng-table/ng-table.min'
     },
 	shim: {
-		//'app': {
-		//	deps: ['angular','angular-route', 'bootstrapjs']
-		//},
+		'app': {
+			deps: ['jquery']
+		},
         'jquery':{
             exports: 'jquery'
         },
@@ -36,10 +36,6 @@ require.config({
 		'angular-route': {
 			deps: ['angular']
 		},
-        //'angularAMD' :{
-        //    deps: ['angular']
-        //},
-        //'ngload': ['angularAMD'],
 		'bootstrapjs': {
 			deps: ['jquery']
 		},
@@ -81,7 +77,7 @@ require.config({
 require
 (
     [
-        'app', 'angular','angular-route', 'bootstrapjs', 'ng-table', 'ui-bootstrap'
+        'jquery', 'app', 'angular','angular-route', 'bootstrapjs', 'ng-table', 'ui-bootstrap'
     ],
     function()
     {
