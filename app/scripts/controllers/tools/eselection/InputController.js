@@ -5,27 +5,62 @@
  * Created by zihanwang on 6/14/15.
  */
 define([
-    '../../../app'
+    '../../../app',
+    'jquery'
 ], function(app)
 {
     app.controller('InputController',
-        ['$scope','$location','$http', 'emailService','searchService',
-            function($scope, $location,$http, emailService, searchService) {
+        ['$scope', '$http', '$window','$location','$route', '$anchorScroll', 'emailService','searchService',
+            function($scope, $http, $window, $location, $route, $anchorScroll, emailService, searchService) {
                 console.log('input');
-                $(window).scrollTop(0);
-                $(window).unbind("scroll");
+                $location.hash('index');
+                $anchorScroll();
+                //$(window).scrollTop(0);
+                //$(window).unbind("scroll");
                 $('.navbar').unbind('mouseenter mouseleave');
                 $(".navbar-fixed-top").addClass("top-nav-collapse");
+
+                var lastRoute = $route.current;
+                $scope.$on('$locationChangeSuccess', function(event) {
+                    $route.current = lastRoute;
+                });
 
                 $scope.tutor = {
                     gradSchool : "",
                     gradMajor : ""
                 };
 
+                $scope.school = {
+                    show : false
+                };
+
+                $scope.showSchool = function(name){
+                    console.log(name);
+                    $scope.school.show = true;
+                    $scope.school.name = name;
+                    for (var i = 0; i < $scope.results.length; i++) {
+                        if($scope.results[i].name == name) {
+                            $scope.school.percentage = Number($scope.results[i].prediction);
+                        }
+                    }
+                    $scope.school.toeflPercentage = Number($scope.school.percentage) + 5 < 100 ? Number($scope.school.percentage) + 5 : 100;
+                    $scope.school.grePercentage = Number($scope.school.percentage) + 2 < 100 ? Number($scope.school.percentage) + 2 : 100;
+                    $scope.school.gpaPercentage = Number($scope.school.percentage) + 8 < 100 ? Number($scope.school.percentage) + 8 : 100;
+                    console.log($scope.school);
+
+                    if ($location.hash() !== 'school') {
+                        $location.hash('school');
+                    } else {
+                        $anchorScroll();
+                    }
+
+                };
+
                 $scope.flags = {
                     schoolList : false,
                     applicationList: false,
-                    singleSchool : false
+                    singleSchool : false,
+                    showPercentage : false
                 };
 
                 $scope.applicationList = {
@@ -61,6 +96,10 @@ define([
                     "其他" : 6
                 };
 
+                $scope.showPercentage = function(){
+                    $scope.flags.showPercentage = !$scope.flags.showPercentage;
+                };
+
                 $scope.submitApply = function(){
                     var rawData = {
                         undergradSchool : Number(schoolValues[$scope.input.undergradSchool]),
@@ -68,7 +107,13 @@ define([
                         gre: Number($scope.input.gre),
                         gpa: Number($scope.input.gpa)
                     };
-                    console.log(rawData);
+                    //$location.hash();
+                    //$anchorScroll();
+                    if ($location.hash() !== 'applicationList') {
+                        $location.hash('applicationList');
+                    } else {
+                        $anchorScroll();
+                    }
 
                     $http.post('/tools/eselection/getPredictions', {
                         input: rawData

@@ -85,7 +85,7 @@
                     </div>
                 </div>
 
-                <button type="button" class="btn btn-primary" ng-disabled="inputForm.$invalid" ng-click="submitApply()">
+                <button type="button" class="btn btn-success" ng-disabled="inputForm.$invalid" ng-click="submitApply()">
                     提交查询
                 </button>
 
@@ -93,31 +93,58 @@
                     重置信息
                 </button>
 
+                <button type="button" class="btn btn-info" ng-show="!flags.showPercentage" ng-click="showPercentage()">
+                    打开附加显示
+                </button>
+                <button type="button" class="btn btn-info" ng-show="flags.showPercentage" ng-click="showPercentage()">
+                    关闭附加显示
+                </button>
+
                 <br />
+                <div id="applicationList" ></div>
                 <br />
 
                 <div class="panel panel-default" ng-show="flags.applicationList">
                     <div class="panel-body">
+                    <div class="col-sm-6 col-xs-12">
                         <h4>冲刺学校</h4>
-                        <div ng-repeat="school in applicationList.top">
-                            {{school}}
+                        <div ng-repeat="school in applicationList.top track by $index">
+                            <a ng-click="showSchool(school)">{{school}}</a>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 hidden-xs">
+                        <br/>
+                        冲刺学校一般指录取几率很低或者对某一项指标有特殊要求的学校，建议在选校名单中有20%左右的冲刺学校，包括dream schools.
+                    </div>
+                    </div>
+                    <div class="panel-body">
+                        <div class="col-sm-6 col-xs-12">
+                            <h4>合适学校</h4>
+                            <div ng-repeat="school in applicationList.reality">
+                                <a ng-click="showSchool(school)">{{school}}</a>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 hidden-xs">
+                            <br/>
+                            合适的学校在是申请者很大几率申到并且最后会去的学校，一般占选校名单60%左右的份额.
                         </div>
                     </div>
                     <div class="panel-body">
-                        <h4>合适学校</h4>
-                        <div ng-repeat="school in applicationList.reality">
-                            {{school}}
-                        </div>
-                    </div>
-                    <div class="panel-body">
+                        <div class="col-sm-6 col-xs-12">
                         <h4>保底学校</h4>
                         <div ng-repeat="school in applicationList.backup">
-                            {{school}}
+                            <a ng-click="showSchool(school)">{{school}}</a>
+                        </div>
+                    </div>
+                        <div class="col-sm-6 hidden-xs">
+                            <br/>
+                            保底学校是一定要选的，大概占名单中20-30的份额%
                         </div>
                     </div>
                 </div>
-                <div class="panel panel-default" ng-show="flags.applicationList">
+                <div class="panel panel-default" ng-show="flags.showPercentage">
                     <div class="panel-body">
+                        <h4>根据你的情况生成的相对百分比:</h4>
                         <div ng-repeat="obj in results">
                             {{obj.name}} : {{obj.prediction}}%
                         </div>
@@ -125,6 +152,71 @@
                 </div>
             </div>
         </div>
+        <div id="school" class="panel panel-default" ng-show="school.show">
+            <div class="panel-heading">
+                <h3 class="panel-title"><b>{{school.name}}-{{input.applyMajor}}专业</b></h3>
+            </div>
+            <div class="panel-body">
+                <div class="alert alert-warning alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    通过扫描barcode，平台将推送这些申请信息到你的微信。
+                    <button class="btn btn-info">生成barcode</button>
+                </div>
+                <div class="col-sm-8 col-xs-12">
 
+                    <h4>学校申请统计结果:</h4>
+                    <div>历史录取率 38%, &nbsp;&nbsp; 平均录取GPA 3.35, &nbsp;&nbsp; 平均录取GMAT 660</div>
+
+                    <br/>
+                    <br/>
+
+                    <h4>重要申请信息</h4>
+                    <div>
+                        截止时间: 秋季申请(12月31日)&nbsp;&nbsp;
+                        Checklist: 英文主题写作&nbsp;&nbsp;
+                    </div>
+                    <div>
+                        送分代码: 1111&nbsp;&nbsp;
+                        特殊要求: 背景过好的申请者有一定几率overqualify被拒绝
+                    </div>
+                    <br/>
+                    <br/>
+
+                    <h4>导师匹配</h4>
+
+                    <br/>
+                    <br/>
+                    <h4>在读学生评价</h4>
+                    申请及学业难度
+                    <a>CSSA论坛链接</a>
+
+                </div>
+                <div class="col-sm-4 col-xs-12">
+                    <h4>根据你的情况:</h4>
+                    <div>申请成功率: {{school.percentage}}%</div>
+
+                    <br/>
+                    <h4>简单的硬件提升后:</h4>
+                    <div>
+                        提高5分托福成绩: {{school.toeflPercentage}}%
+                        <br />
+                        提高5分GRE/10分GMAT: {{school.grePercentage}}%
+                        <br/>
+                        提高0.1分GPA: {{school.gpaPercentage}}%
+                    </div>
+
+                    <button class="btn btn-primary">查看详细分析</button>
+
+                    <br/>
+                    <br />
+                    <div>
+                        平台已经匹配出与你申请背景类似的导师，获得个性提升方案不妨跟他们联系！
+                    </div>
+                    <button class="btn btn-danger">获得导师列表</button>
+                    <br />
+                    <br />
+                </div>
+            </div>
+        </div>
     </div>
 </div>
