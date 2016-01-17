@@ -1,6 +1,6 @@
 define(['routes','services/dependencyResolverFor', 'ui-select', 'angular-sanitize'], function(config, dependencyResolverFor)
 {
-    var app = angular.module('app', ['ngRoute', 'ui.select', 'ngSanitize', 'ngTable', 'ui.bootstrap']);
+    var app = angular.module('app', ['ngRoute', 'ui.select', 'ngSanitize', 'ngTable', 'ui.bootstrap', 'chart.js']);
 
     app.config(
     [
