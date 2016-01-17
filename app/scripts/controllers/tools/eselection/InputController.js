@@ -25,13 +25,18 @@ define([
                     $route.current = lastRoute;
                 });
 
+                $scope.barcode{
+                    web : '<img src="image/barcode/dreamguide_web.png" alt="barcode" style="width:120px;height:120px;">';
+                }
+
+
                 $scope.tutor = {
                     gradSchool : "",
                     gradMajor : ""
                 };
 
                 $scope.school = {
-                    show : false
+                    show : true
                 };
 
                 $scope.showSchool = function(name){
@@ -55,10 +60,10 @@ define([
                 };
 
                 $scope.flags = {
-                    schoolList : false,
-                    applicationList: false,
-                    singleSchool : false,
-                    showPercentage : false
+                    schoolList : true,
+                    applicationList: true,
+                    singleSchool : true,
+                    showPercentage : true
                 };
 
                 $scope.applicationList = {

@@ -160,7 +160,10 @@
                 <div class="alert alert-warning alert-dismissible" role="alert">
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                     通过扫描barcode，平台将推送这些申请信息到你的微信。
-                    <button class="btn btn-info">生成barcode</button>
+                    <button class="btn btn-info pull-right btn-sm" popover-placement="bottom" popover-title="Dreamguide" popover-html-unsafe="{{barcode.web}}">
+                    生成barcode
+                    </button>
+
                 </div>
                 <div class="col-sm-8 col-xs-12">
 

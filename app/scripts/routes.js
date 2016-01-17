@@ -106,7 +106,8 @@ define([], function()
                 dependencies: [
                     'controllers/tools/eselection/InputController',
                     'services/emailService',
-                    'services/searchService'
+                    'services/searchService',
+                    'directives/popoverHtmlUnsafe'
                     //'../lib/angular/angular-bootstrap-file'
                 ]
             }
