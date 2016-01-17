@@ -25,10 +25,44 @@ define([
                     $route.current = lastRoute;
                 });
 
-                $scope.barcode{
-                    web : '<img src="image/barcode/dreamguide_web.png" alt="barcode" style="width:120px;height:120px;">';
-                }
+                $scope.barcode = {
+                    web : '<img src="image/barcode/dreamguide_web.png" alt="barcode" style="width:120px;height:120px;">'
+                };
 
+                $scope.chart ={
+                    labels : ["Eating", "Drinking", "Sleeping", "Designing", "Coding", "Cycling", "Running"],
+                    data : [
+                        [65, 59, 90, 81, 56, 55, 40],
+                        [28, 48, 40, 19, 96, 27, 100]
+                    ]
+                    };
+
+                $scope.line = {
+                    acceptRate : {
+                        labels : ["2012秋季(%)", "2013春季(%)", "2013秋季(%)", "2014春季(%)", "2014秋季(%)", "2015春季(%)"],
+                        series : [' 本学校 ', ' 同档次学校 '],
+                        data : [[38, 37, 39, 37, 37, 36],
+                            [41, 43, 40, 42, 39, 41]]
+                    },
+                    averageGpa : {
+                        labels : ["2012秋季", "2013春季", "2013秋季", "2014春季", "2014秋季", "2015春季"],
+                        series : [' 本学校 ', ' 同档次学校 '],
+                        data : [[3.4, 3.2, 3.4, 3.1, 3.4, 3.2],
+                            [3.3, 3.4, 3.3, 3.3, 3.3, 3.3]]
+                    },
+                    averageGMAT : {
+                        labels : ["2012秋季", "2013春季", "2013秋季", "2014春季", "2014秋季", "2015春季"],
+                        series : [' 本学校 ', ' 同档次学校 '],
+                        data : [[690, 680, 700, 690, 700, 690],
+                            [680, 680, 680, 670, 680, 680]]
+                    },
+                    averageTOEFL : {
+                        labels : ["2012秋季", "2013春季", "2013秋季", "2014春季", "2014秋季", "2015春季"],
+                        series : [' 本学校 ',  ' 同档次学校 '],
+                        data : [[92, 93, 90, 94, 93, 93],
+                            [90, 84, 91, 88, 90, 91]]
+                    }
+                };
 
                 $scope.tutor = {
                     gradSchool : "",

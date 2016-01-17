@@ -173,14 +173,55 @@
                     <br/>
                     <br/>
 
+                    <!--<canvas class="chart chart-radar"-->
+                            <!--data="chart.data"-->
+                            <!--labels="chart.labels">-->
+                    <!--</canvas>-->
+
+                    <tabs>
+                        <pane title="项目录取率">
+                            <canvas id="line_rate" class="chart chart-line" chart-data="line.acceptRate.data"
+                                    chart-labels="line.acceptRate.labels" chart-legend="true" chart-series="line.acceptRate.series">
+                            </canvas>
+                        </pane>
+                        <pane title="录取者平均GPA">
+                            <canvas id="line_GPA" class="chart chart-line" chart-data="line.averageGpa.data"
+                                    chart-labels="line.averageGpa.labels" chart-legend="true" chart-series="line.averageGpa.series"
+                                    chart-click="onClick" >
+                            </canvas>
+                        </pane>
+                        <pane title="平均GMAT">
+                            <canvas id="line_GMAT" class="chart chart-line" chart-data="line.averageGMAT.data"
+                                    chart-labels="line.averageGMAT.labels" chart-legend="true" chart-series="line.averageGMAT.series"
+                                    chart-click="onClick" >
+                            </canvas>
+                        </pane>
+                        <pane title="平均托福成绩">
+                            <canvas id="line_TOEFL" class="chart chart-line" chart-data="line.averageTOEFL.data"
+                                    chart-labels="line.averageTOEFL.labels" chart-legend="true" chart-series="line.averageTOEFL.series"
+                                    chart-click="onClick" >
+                            </canvas>
+                        </pane>
+                    </tabs>
+
                     <h4>重要申请信息</h4>
                     <div>
+                        <a href="http://finance.tulane.edu/description.php">点击查看英文主页</a>
+                    </div>
+                    <div>
                         截止时间: 秋季申请(12月31日)&nbsp;&nbsp;
+                    </div>
+                    <div>
                         Checklist: 英文主题写作&nbsp;&nbsp;
                     </div>
                     <div>
-                        送分代码: 1111&nbsp;&nbsp;
+                        送分代码: 7308&nbsp;&nbsp;
+                    </div>
+                    <div>
                         特殊要求: 背景过好的申请者有一定几率overqualify被拒绝
+                    </div>
+                    <div>
+                        <a>CSSA论坛链接</a>
                     </div>
                     <br/>
                     <br/>
@@ -189,9 +230,6 @@
 
                     <br/>
                     <br/>
-                    <h4>在读学生评价</h4>
-                    申请及学业难度
-                    <a>CSSA论坛链接</a>
 
                 </div>
                 <div class="col-sm-4 col-xs-12">
@@ -218,6 +256,17 @@
                     <button class="btn btn-danger">获得导师列表</button>
                     <br />
                     <br />
+
+                    <div>
+                        学校/项目详细情况
+                    </div>
+                    <button class="btn btn-info">查看项目信息</button>
+
+                    <br />
+                    <br />
+                    <button class="btn btn-success">
+                        显示学生评价
+                    </button>
                 </div>
             </div>
         </div>

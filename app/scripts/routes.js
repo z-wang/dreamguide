@@ -107,7 +107,8 @@ define([], function()
                     'controllers/tools/eselection/InputController',
                     'services/emailService',
                     'services/searchService',
-                    'directives/popoverHtmlUnsafe'
+                    'directives/popoverHtmlUnsafe',
+                    'directives/tabs-panes'
                     //'../lib/angular/angular-bootstrap-file'
                 ]
             }
