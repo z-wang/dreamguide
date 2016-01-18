@@ -27,11 +27,13 @@ define([
             //$(window).unbind("scroll");
             $('.navbar').unbind('mouseenter mouseleave');
             $(".navbar-fixed-top").addClass("top-nav-collapse");
-
-            //var lastRoute = $route.current;
-            //$scope.$on('$locationChangeSuccess', function(event) {
-            //    $route.current = lastRoute;
-            //});
+            //TODO: this part is to make $anchorScroll work and keep click tab work
+            var lastRoute = $route.current;
+            $scope.$on('$locationChangeSuccess', function(event) {
+                if($route.current.$$route.templateUrl === "/partials/tools/eselection/input.html") {
+                    $route.current = lastRoute;
+                }
+            });
 
             $scope.barcode = {
                 web : '<img src="image/barcode/dreamguide_web.png" alt="barcode" style="width:120px;height:120px;">'
@@ -192,6 +194,7 @@ define([
                         $scope.results = data.results;
                         $scope.flags.applicationList = true;
                         $scope.applicationList = data.schoolList;
+                        console.log($scope);
                         console.log("prediction success");
                     }).
                     error(function(data, status, headers, config) {
