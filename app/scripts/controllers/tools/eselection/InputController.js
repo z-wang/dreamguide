@@ -70,7 +70,7 @@ define([
             };
 
             $scope.school = {
-                show : true
+                show : false
             };
 
             $scope.showSchool = function(name){
@@ -127,10 +127,10 @@ define([
             };
 
             $scope.flags = {
-                schoolList : true,
-                applicationList: true,
-                singleSchool : true,
-                showPercentage : true
+                schoolList : false,
+                applicationList: false,
+                singleSchool : false,
+                showPercentage : false
             };
 
             $scope.applicationList = {
