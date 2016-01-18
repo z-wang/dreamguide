@@ -1,12 +1,84 @@
 <div class="content-section" id="index" ng-controller="InputController">
+    <script type="text/ng-template" id="myModalContent.html">
+        <div class="modal-header">
+            <h3 class="modal-title">申请者自身条件分析</h3>
+        </div>
+
+        <div class="modal-body">
+            <div class="row" style="padding-top:15px;">
+                <div class="col-sm-8 col-xs-12" style="text-align: center">
+                    <h4>背景评估</h4>
+                    <canvas class="chart chart-radar"
+                            height="220px"
+                            data="chart.application.data"
+                            labels="chart.application.labels"
+                            chart-series="chart.application.series">
+                    </canvas>
+                </div>
+                <div class="col-sm-4 col-xs-12">
+                    <h4>提升策略</h4>
+                    <tabs>
+                        <pane title="6个月">
+                            <br/>
+                            <ul>
+                                <li>托福重新考试, 由于时间关系并且托福成绩的提高能从概率角度上最大程度提高申请的成功率，及时重考托福并拿到+5的分数。</li>
+                                <li>注重推荐信和PS, 推荐信中注重对于申请专业背景的认证, PS中进一步注重体现语言能力，以弥补托福成绩一般的情况。</li>
+                                <li>提升简历中语言能力的展示, 个人经历重精不重多, 欢迎使用<a>Dreamguide的简历工具</a>。</li>
+                                <li>调整GPA算法, 体现专业能力。欢迎使用<a>Dreamguide GPA 算法工具。</a></li>
+                            </ul>
+                        </pane>
+                        <pane title="12个月">
+                            <br/>
+                            <ul>
+                                <li>重新考GRE/GMAT, 因为需要一定时间的准备并且此时应对GPA的调整已经来不及了, GRE/GMAT成绩也是语言能力的很好表现。</li>
+                                <li>重新考托福, 可以重考1-2次，确保成绩提高5分以上。</li>
+                                <li>争取进行实习和paper的发表, 这两者在可能的状况下都要争取, 为以后提升简历和PS做准备。</li>
+                            </ul>
+                        </pane>
+                        <pane title="18个月">
+                            <br/>
+                            <ul>
+                                <li>提升本学期专业课成绩, GPA一定是最难但非常增加竞争力的条件, 尤其在申请者学校不是特别突出的情况下。最好到3.8, 3.5也很有竞争力。</li>
+                                <li>重新考GRE/GMAT, 确保到达50%以上的分数</li>
+                                <li>争取进行实习和paper的发表, 准备并进行, 确保一次实习经历。</li>
+                            </ul>
+                        </pane>
+                    </tabs>
+                </div>
+            </div>
+            <div class="row" style="padding-top:15px;">
+                <div class="col-sm-8 col-xs-12" style="text-align: center">
+                    <h4>专业构成</h4>
+                    <canvas class="chart-base" chart-type="chart.major.type"
+                            height="220px"
+                            data="chart.major.data"
+                            labels="chart.major.labels"
+                            chart-legend="true"
+                            chart-series="chart.major.series">
+                    </canvas>
+                    <button class="btn btn-primary" ng-click="chart.major.toggle()">改变图结构</button>
+                </div>
+                <div class="col-sm-4 col-xs-12">
+                    <h4>专业申请策略</h4>
+                    <div>
+                        专业录取构成决定了，文书/简历/特点准备的方向。
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <div class="row pull-left col-xs-8">
+                *平台会根据现有数据进行的资料生成，如有疑问欢迎邮件问询。
+            </div>
+            <!--<button class="btn btn-primary" type="button" ng-click="ok()">确认</button>-->
+            <button class="btn btn-warning" type="button" ng-click="cancel()">取消</button>
+        </div>
+    </script>
+
     <div class="container">
         <div class="panel panel-default">
             <div class="panel-body">
                 <h2 style="margin: 0 0 10px;">填写你的个人背景</h2>
-                <!--<div class="alert alert-warning alert-dismissible" role="alert">-->
-                    <!--<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>-->
-                    <!--<strong></strong> 我们将对个人信息进行保密 ( <a>隐私政策</a> ), 完成填写及提交后平台会及时与你联系。-->
-                <!--</div>-->
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h3 class="panel-title"><b>以下信息均为到申请时间时预计可以获得的结果</b></h3>
@@ -106,16 +178,16 @@
 
                 <div class="panel panel-default" ng-show="flags.applicationList">
                     <div class="panel-body">
-                    <div class="col-sm-6 col-xs-12">
-                        <h4>冲刺学校</h4>
-                        <div ng-repeat="school in applicationList.top track by $index">
-                            <a ng-click="showSchool(school)">{{school}}</a>
+                        <div class="col-sm-6 col-xs-12">
+                            <h4>冲刺学校</h4>
+                            <div ng-repeat="school in applicationList.top track by $index">
+                                <a ng-click="showSchool(school)">{{school}}</a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-sm-6 hidden-xs">
-                        <br/>
-                        冲刺学校一般指录取几率很低或者对某一项指标有特殊要求的学校，建议在选校名单中有20%左右的冲刺学校，包括dream schools.
-                    </div>
+                        <div class="col-sm-6 hidden-xs">
+                            <br/>
+                            冲刺学校一般指录取几率很低或者对某一项指标有特殊要求的学校，建议在选校名单中有20%左右的冲刺学校，包括dream schools.
+                        </div>
                     </div>
                     <div class="panel-body">
                         <div class="col-sm-6 col-xs-12">
@@ -131,11 +203,11 @@
                     </div>
                     <div class="panel-body">
                         <div class="col-sm-6 col-xs-12">
-                        <h4>保底学校</h4>
-                        <div ng-repeat="school in applicationList.backup">
-                            <a ng-click="showSchool(school)">{{school}}</a>
+                            <h4>保底学校</h4>
+                            <div ng-repeat="school in applicationList.backup">
+                                <a ng-click="showSchool(school)">{{school}}</a>
+                            </div>
                         </div>
-                    </div>
                         <div class="col-sm-6 hidden-xs">
                             <br/>
                             保底学校是一定要选的，大概占名单中20-30的份额%
@@ -144,7 +216,7 @@
                 </div>
                 <div class="panel panel-default" ng-show="flags.showPercentage">
                     <div class="panel-body">
-                        <h4>根据你的情况生成的相对百分比:</h4>
+                        <h4>根据申请者的情况生成的相对百分比:</h4>
                         <div ng-repeat="obj in results">
                             {{obj.name}} : {{obj.prediction}}%
                         </div>
@@ -159,25 +231,19 @@
             <div class="panel-body">
                 <div class="alert alert-warning alert-dismissible" role="alert">
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    通过扫描barcode，平台将推送这些申请信息到你的微信。
+                    通过扫描barcode，平台将推送这些申请信息到微信。
                     <button class="btn btn-info pull-right btn-sm" popover-placement="bottom" popover-title="Dreamguide" popover-html-unsafe="{{barcode.web}}">
-                    生成barcode
+                        生成barcode
                     </button>
 
                 </div>
                 <div class="col-sm-8 col-xs-12">
 
                     <h4>学校申请统计结果:</h4>
-                    <div>历史录取率 38%, &nbsp;&nbsp; 平均录取GPA 3.35, &nbsp;&nbsp; 平均录取GMAT 660</div>
+                    <div>历史录取率 38%, &nbsp;&nbsp; 平均录取GPA 3.35, &nbsp;&nbsp; 平均录取GMAT 680</div>
 
                     <br/>
                     <br/>
-
-                    <!--<canvas class="chart chart-radar"-->
-                            <!--data="chart.data"-->
-                            <!--labels="chart.labels">-->
-                    <!--</canvas>-->
-
                     <tabs>
                         <pane title="项目录取率">
                             <canvas id="line_rate" class="chart chart-line" chart-data="line.acceptRate.data"
@@ -206,7 +272,8 @@
 
                     <h4>重要申请信息</h4>
                     <div>
-                        <a href="http://finance.tulane.edu/description.php">点击查看英文主页</a>
+                        <a href="http://finance.tulane.edu/description.php">点击查看英文主页</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                        <a href="https://orgsync.com/85880/chapter">CSSA论坛链接</a>
                     </div>
                     <div>
                         截止时间: 秋季申请(12月31日)&nbsp;&nbsp;
@@ -220,20 +287,12 @@
                     <div>
                         特殊要求: 背景过好的申请者有一定几率overqualify被拒绝
                     </div>
-                    <div>
-                        <a>CSSA论坛链接</a>
-                    </div>
-                    <br/>
-                    <br/>
-
-                    <h4>导师匹配</h4>
-
                     <br/>
                     <br/>
 
                 </div>
                 <div class="col-sm-4 col-xs-12">
-                    <h4>根据你的情况:</h4>
+                    <h4>根据申请者的情况:</h4>
                     <div>申请成功率: {{school.percentage}}%</div>
 
                     <br/>
@@ -246,12 +305,12 @@
                         提高0.1分GPA: {{school.gpaPercentage}}%
                     </div>
 
-                    <button class="btn btn-primary">查看详细分析</button>
+                    <button class="btn btn-primary" ng-click="openModal()">查看详细分析</button>
 
                     <br/>
                     <br />
                     <div>
-                        平台已经匹配出与你申请背景类似的导师，获得个性提升方案不妨跟他们联系！
+                        平台已经匹配出与申请者背景类似的导师，获得个性提升方案不妨跟他们联系！
                     </div>
                     <button class="btn btn-danger">获得导师列表</button>
                     <br />

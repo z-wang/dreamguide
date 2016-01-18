@@ -9,9 +9,18 @@ define([
     'jquery'
 ], function(app)
 {
-    app.controller('InputController',
-        ['$scope', '$http', '$window','$location','$route', '$anchorScroll', 'emailService','searchService',
-            function($scope, $http, $window, $location, $route, $anchorScroll, emailService, searchService) {
+    app.controller('InputController', [
+        '$scope',
+        '$http',
+        '$modal',
+        '$log',
+        '$window',
+        '$location',
+        '$route',
+        '$anchorScroll',
+        'emailService',
+        'searchService',
+            function($scope, $http, $modal, $log, $window, $location, $route, $anchorScroll, emailService, searchService) {
                 console.log('input');
                 $location.hash('index');
                 $anchorScroll();
@@ -29,13 +38,13 @@ define([
                     web : '<img src="image/barcode/dreamguide_web.png" alt="barcode" style="width:120px;height:120px;">'
                 };
 
-                $scope.chart ={
-                    labels : ["Eating", "Drinking", "Sleeping", "Designing", "Coding", "Cycling", "Running"],
-                    data : [
-                        [65, 59, 90, 81, 56, 55, 40],
-                        [28, 48, 40, 19, 96, 27, 100]
-                    ]
-                    };
+                //$scope.chart ={
+                //    labels : ["Eating", "Drinking", "Sleeping", "Designing", "Coding", "Cycling", "Running"],
+                //    data : [
+                //        [65, 59, 90, 81, 56, 55, 40],
+                //        [28, 48, 40, 19, 96, 27, 100]
+                //    ]
+                //    };
 
                 $scope.line = {
                     acceptRate : {
@@ -90,7 +99,30 @@ define([
                     } else {
                         $anchorScroll();
                     }
+                };
 
+                $scope.openModal = function (index, size) {
+                    //size = 'lg', 'sm' or blank
+                    var modalInstance = $modal.open({
+                        animation: true,
+                        templateUrl: 'myModalContent.html',
+                        controller: 'InputModalImproveController',
+                        size:'lg',  //'sm'/'lg'
+                        resolve: {
+                            items: function () {
+                                return undefined
+                            },
+                            tutor: function(){
+                                return undefined
+                            }
+                        }
+                    });
+
+                    modalInstance.result.then(function (selectedItem) {
+                        $scope.selected = selectedItem;
+                    }, function () {
+                        $log.info('Modal dismissed at: ' + new Date());
+                    });
                 };
 
                 $scope.flags = {
@@ -191,4 +223,38 @@ define([
                     };
                 };
             }]);
+
+    app.controller('InputModalImproveController',[
+        '$scope', '$modalInstance', 'items', 'tutor', '$http','$rootScope','$location',
+        function($scope,$modalInstance, items, tutor, $http, $rootScope, $location){
+            $scope.chart={
+                application : {
+                    labels : ["学校", "GPA", "TOEFL", "GMAT", "专业"],
+                    series : [' 同期申请者 ', '优秀申请者', ' 申请者 '],
+                    data : [
+                        [5.5, 4, 5, 5.4, 6.1],
+                        [6, 4.8, 5.9, 5.1, 6],
+                        [5, 3.6, 4.2, 4.8, 6.6]
+                    ]
+                },
+                major : {
+                    labels : ["金融", "经济", "其他商科", "理科", "工程学", "其他"],
+                    data : [220, 110, 95, 75, 100, 50],
+                    type : 'PolarArea',
+                    toggle : function(){
+                        $scope.chart.major.type = $scope.chart.major.type === 'PolarArea' ? 'Pie' : 'PolarArea';
+                    }
+                }
+            };
+
+            $scope.ok = function () {
+                console.log($scope.appointment);
+                $modalInstance.close($scope.selected.item);
+            };
+            $scope.cancel = function () {
+                $modalInstance.dismiss('cancel');
+            };
+        }
+    ]);
+
 });
