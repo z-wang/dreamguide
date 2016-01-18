@@ -17,7 +17,8 @@ define(['app'], function(app)
 
                 //var tutorId = $rootScope.selectedTutor._id;
                 var getTutorCallBack = function(data) {
-                    console.log(data);
+                    //console.log(data);
+                    //console.log(tutorId);
                     $scope.thisTutor = data._source;
                     $scope.thisTutor.image = 'image/avatar/'+ tutorId+'.png';
                 };
@@ -37,7 +38,7 @@ define(['app'], function(app)
                 };
 
                 searchService.getByIdCallBack('users','accounts', tutorId, getTutorCallBack);
-                console.log($rootScope);
+                //console.log($rootScope);
             }
         ])
 });
