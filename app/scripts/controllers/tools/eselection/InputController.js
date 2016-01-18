@@ -99,12 +99,11 @@ define([
                 var templateUrl = 'applicationModalContent.html';
                 if (modalName === 'tutorList') {
                     templateUrl = 'tutorListModalContent.html';
+                } else if (modalName === 'majorInfo') {
+                    templateUrl = 'majorInfoModalContent.html';
+                } else if (modalName === 'reviews') {
+                    templateUrl = 'reviewsModalContent.html';
                 }
-                //else if (modalName === 'majorInfo') {
-                //
-                //} else if (modalName === 'reviews') {
-                //
-                //}
 
                 var modalInstance = $modal.open({
                     animation: true,
