@@ -1,5 +1,55 @@
 <div class="content-section" id="index" ng-controller="InputController">
-    <script type="text/ng-template" id="myModalContent.html">
+    <script type="text/ng-template" id="tutorListModalContent.html">
+        <div class="modal-header">
+            <h3 class="modal-title">相似情况的导师列表</h3>
+        </div>
+        <div class="modal-body">
+            <div class="row" style="padding-top:15px;">
+                <div class="col-sm-12 col-xs-12" style="text-align: center">
+                    <div ng-repeat="person in Info.tutorList track by $index">
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-xs-6 col-sm-2 col-md-2" style="margin-top: 5px;">
+                                        <img ng-src={{person.image}} class="img-rounded" alt="" height="110" width="110">
+                                    </div>
+                                    <div class="col-xs-6 col-sm-2 col-md-2 col-sm-push-8">
+                                        <br />
+                                        <button class="btn btn-primary" ng-click="openInfoPage($index)">主页</button>
+                                        <!--"makeAppointment($index)"-->
+                                    </div>
+                                    <div class="col-xs-12 col-sm-7 col-md-7 col-md-offset-1 col-sm-pull-2" style="padding-left: 30px;">
+                                        <div class="caption">
+                                            <b>{{person.name}}</b>
+                                            <br />
+                                            <br />
+                                            {{person.school}}
+                                            <br />
+                                            {{person.degree}}
+                                            <br />
+                                            {{person.major}}
+                                            <!--{{person.country}}-->
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <div class="row pull-left col-xs-8">
+                *如有疑问欢迎邮件问询。
+            </div>
+            <!--<button class="btn btn-primary" type="button" ng-click="ok()">确认</button>-->
+            <button class="btn btn-warning" type="button" ng-click="cancel()">取消</button>
+        </div>
+    </script>
+    <script type="text/ng-template" id="applicationModalContent.html">
         <div class="modal-header">
             <h3 class="modal-title">申请者自身条件分析</h3>
         </div>
@@ -210,7 +260,7 @@
                         </div>
                         <div class="col-sm-6 hidden-xs">
                             <br/>
-                            保底学校是一定要选的，大概占名单中20-30的份额%
+                            保底学校在某些申请年份中会成为申请最后的救命稻草，大概占名单中20-30的份额%
                         </div>
                     </div>
                 </div>
@@ -231,10 +281,10 @@
             <div class="panel-body">
                 <div class="alert alert-warning alert-dismissible" role="alert">
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    通过扫描barcode，平台将推送这些申请信息到微信。
-                    <button class="btn btn-info pull-right btn-sm" popover-placement="bottom" popover-title="Dreamguide" popover-html-unsafe="{{barcode.web}}">
+                    <button class="btn btn-info btn-sm" popover-placement="bottom" popover-title="Dreamguide" popover-html-unsafe="{{barcode.web}}">
                         生成barcode
                     </button>
+                    通过扫描barcode，平台将推送这些申请信息到微信。
 
                 </div>
                 <div class="col-sm-8 col-xs-12">
@@ -246,24 +296,24 @@
                     <br/>
                     <tabs>
                         <pane title="项目录取率">
-                            <canvas id="line_rate" class="chart chart-line" chart-data="line.acceptRate.data"
+                            <canvas id="line_rate" class="chart chart-line" chart-data="line.acceptRate.data" height="160px"
                                     chart-labels="line.acceptRate.labels" chart-legend="true" chart-series="line.acceptRate.series">
                             </canvas>
                         </pane>
-                        <pane title="录取者平均GPA">
-                            <canvas id="line_GPA" class="chart chart-line" chart-data="line.averageGpa.data"
+                        <pane title="平均GPA">
+                            <canvas id="line_GPA" class="chart chart-line" chart-data="line.averageGpa.data" height="160px"
                                     chart-labels="line.averageGpa.labels" chart-legend="true" chart-series="line.averageGpa.series"
                                     chart-click="onClick" >
                             </canvas>
                         </pane>
                         <pane title="平均GMAT">
-                            <canvas id="line_GMAT" class="chart chart-line" chart-data="line.averageGMAT.data"
+                            <canvas id="line_GMAT" class="chart chart-line" chart-data="line.averageGMAT.data" height="160px"
                                     chart-labels="line.averageGMAT.labels" chart-legend="true" chart-series="line.averageGMAT.series"
                                     chart-click="onClick" >
                             </canvas>
                         </pane>
-                        <pane title="平均托福成绩">
-                            <canvas id="line_TOEFL" class="chart chart-line" chart-data="line.averageTOEFL.data"
+                        <pane title="平均托福">
+                            <canvas id="line_TOEFL" class="chart chart-line" chart-data="line.averageTOEFL.data" height="160px"
                                     chart-labels="line.averageTOEFL.labels" chart-legend="true" chart-series="line.averageTOEFL.series"
                                     chart-click="onClick" >
                             </canvas>
@@ -305,25 +355,25 @@
                         提高0.1分GPA: {{school.gpaPercentage}}%
                     </div>
 
-                    <button class="btn btn-primary" ng-click="openModal()">查看详细分析</button>
+                    <button class="btn btn-primary" ng-click="openModal('', 'lg')">查看详细分析</button>
 
                     <br/>
                     <br />
                     <div>
                         平台已经匹配出与申请者背景类似的导师，获得个性提升方案不妨跟他们联系！
                     </div>
-                    <button class="btn btn-danger">获得导师列表</button>
+                    <button class="btn btn-danger" ng-click="openModal('tutorList', '')">获得导师列表</button>
                     <br />
                     <br />
 
                     <div>
                         学校/项目详细情况
                     </div>
-                    <button class="btn btn-info">查看项目信息</button>
+                    <button class="btn btn-info" ng-click="openModal('majorInfo', 'lg')">查看项目信息</button>
 
                     <br />
                     <br />
-                    <button class="btn btn-success">
+                    <button class="btn btn-success" ng-click="openModal('reviews', 'lg')">
                         显示学生评价
                     </button>
                 </div>

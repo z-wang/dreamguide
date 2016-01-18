@@ -108,7 +108,8 @@ define([], function()
                     'services/emailService',
                     'services/searchService',
                     'directives/popoverHtmlUnsafe',
-                    'directives/tabs-panes'
+                    'directives/tabs-panes',
+                    'services/encodeService'
                     //'../lib/angular/angular-bootstrap-file'
                 ]
             }
