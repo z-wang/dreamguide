@@ -216,7 +216,6 @@ define(['app','jquery'], function(app)
 
                 $scope.countryFiltering = function( country ){
                     var query = searchService.tutorFilterQuery('gradCountry',country,1000);
-                    console.log(query);
                     searchService.makeQueryCallBack('users','accounts', query,processTutorCallBack);
                 };
 
@@ -260,7 +259,7 @@ define(['app','jquery'], function(app)
 
                 $scope.openModal = function (index, size) {
                     index = ($scope.currentPage-1)*$scope.itemsPerPage + index;
-                    console.log(index, $scope.model.tutors[index]);
+                    //console.log(index, $scope.model.tutors[index]);
                     //size = 'lg', 'sm' or blank
                     var modalInstance = $modal.open({
                         animation: true,
@@ -384,7 +383,7 @@ define(['app','jquery'], function(app)
                     userImage : userImage
                 };
 
-                console.log(userInfo);
+                //console.log(userInfo);
 
                 //make http call , in success, set rootscope and jump
                 var req = {
