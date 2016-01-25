@@ -275,6 +275,9 @@ var getPredition = function(req,res){
     var listNumber = 5; //todo: make it a var people can choose, 4/8/12/16
     var schoolListArray = generateSchoolListNumArray(listNumber);
 
+    //todo: remove cross domain
+    res.header('Access-Control-Allow-Origin', '*');
+
     input.push(inputObj.undergradSchool, inputObj.toefl, inputObj.gre, inputObj.gpa);
 
     //create three bucket: <34%, 56%, >78% means top,reality,backup
