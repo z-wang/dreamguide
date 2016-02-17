@@ -1,0 +1,380 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
+<meta name="generator" content="bd-mobcard">
+<meta http-equiv="Cache-Control" content="no-cache">
+
+<script type="text/javascript" src="js/jquery-1.8.3.min.js"> </script>      
+<script type="text/javascript" >
+$(function(){
+//        alert(document.title);
+//        $('#begin').click(function(){
+//            $('#notice').css('display','none');
+//            $('#title').css('display','none');
+////            var leftPos = (typeof window.screenLeft == "number") ? window.screenTop : window.screenY;
+////            window.moveTo(200,0)
+//             // $("#notice").scrollTop(1000);
+//        //   alert($("#notice").offset().top);
+//             scrollOffset($("#notice").offset()); 
+////            // jQuery 定位让body的scrollTop等于pos的top，就实现了滚动 
+//            function scrollOffset(scroll_offset) { 
+//            $("body,html").animate({ 
+//            scrollTop: scroll_offset.top+1000
+//            }, 0); 
+//            } ;
+//         window.scroll(20000,2000); //2000代表定位到这个页面距离顶端2000px;
+//         location.href = "#notice";
+//          $('.test:first').css('display','block');
+////           alert($('.test:first').html());
+//            
+//        });
+	$('#begin_2').click(function(){
+	 
+	   $('.topbox').css('display','none'); 
+		$('.test:first').css('display','block'); 
+	});
+	 
+// 	$('li').click(function(){
+// 		console.log("li");
+// 		$(this).addClass('on');
+// //            alert(   $(this).html());
+// 		var select=$(this).children(':radio').val();
+// 		var answer=$(this).parents('div').children(':hidden').val();
+// //           s alert($(this).children(':radio').val());
+// 		var sumScore=$('#sumScore').val();
+// 		if(select===answer){
+// 			$('#sumScore').val(parseInt(sumScore)+1);
+// 		}
+// //            alert( $(this).parents('.test').css('display'));
+// 		$(this).parents('div').css('display','none');
+// 		if( $(this).parents('div').next('div').hasClass('end')){
+// 		   var score= $('#sumScore').val();
+// 		   if(score<5){
+// 			   var src="img/score"+score*5+".png";
+// 				 $('#level1 .score img').attr('src',src);
+// 				$('#level1').css('display','block');
+// 		   }else if(score<10){
+// 				 var src="img/score"+score*5+".png";
+// 				 $('#level2 .score img').attr('src',src);
+// 				 $('#level2').css('display','block');
+// 		   }else if(score<15){
+// 				 var src="img/score"+score*5+".png";
+// 				 $('#level3 .score img').attr('src',src);
+// 				 $('#level3').css('display','block');
+// 		   }else{ 
+// 				 var src="img/score"+score*5+".png";
+// 				 $('#level4 .score img').attr('src',src);
+// 				 $('#level4').css('display','block');
+// 		   }
+// 		   document.title="我在网络英语4级考试中得到了"+score*5+"分，你能超过我吗?";
+// 		   $('.guanzhu1').css('display','block');
+// //               alert(document.title);
+		   
+// 		}else{
+// 			   $(this).parents('div').next('div').css('display','block');
+// 		}
+// //            alert( $(this).parents('div').next('div').html());
+// 	});
+	
+var student = {
+	input : {}
+}
+
+var callback = function(){
+ 	console.log("radio");
+		$(this).parents('li').addClass('on');
+		$(this).parents('div').css('display','none');
+		var name = $(this).attr("name");
+		var value = $(this).val();
+		student.input[name] = Number(value);
+
+		if( $(this).parents('div').next('div').hasClass('end')){
+		   document.title="我测出来能进常春藤，你也能吗?";
+		   $('.guanzhu1').css('display','block');
+		   $.post( "http://www.dreamguideedu.com/tools/eselection/getPredictions", student)
+  			.done(function( data ) {
+  			// 	var src="img/score"+score*5+".png";
+				 // $('#level1 .score img').attr('src',src);
+				$('#result').css('display','block');
+    			var tops = data.applicationList.top;
+    			var realities = data.applicationList.reality;
+    			var backups = data.applicationList.backup;
+    			$.each(tops, function(item){
+    				$("body #list1").append('<li>'+ tops[item]+'</li>');
+    			})
+    			$.each(realities, function(item){
+    				$("body #list2").append('<li>'+ realities[item]+'</li>');
+    			})
+    			$.each(backups, function(item){
+    				$("body #list3").append('<li>'+ backups[item]+'</li>');
+    			})
+  			});
+		   
+		}else{
+			   $(this).parents('div').next('div').css('display','block');
+		}
+//            alert( $(this).parents('div').next('div').html());
+	};
+$(':radio').click(callback);
+//        $('.ask').click(function(){
+//            $(this).parents('div').css('display','none');
+//            $(this).parents('div').next('div').css('display','block');
+//            var select=$(this).parents('div').find(':radio:checked').val();
+//            alert(select);
+//        });
+		function WeiXinShareBtn() {
+		 if (typeof WeixinJSBridge == "undefined") {
+				 alert("请先通过微信搜索线话英语并添加为好友，通过微信分享文章 :) ");
+		 } else {
+		 WeixinJSBridge.invoke('shareTimeline', {
+		 "title": "英语测试",
+		 "link": "http://wx.linewow.com/ceshi/index.html",
+		 "desc": "关注互联网创业",
+		 "img_url": "http://wx.linewow.com/ceshi/img/topimg.jpg"
+		 });
+		 }
+		 }
+		  $('.share').click(function(){
+//                WeiXinShareBtn();
+
+		   $('.share_b').css('display','block');
+			 location.href = "#title";
+		});
+		
+		$('.share_b').click(function(){
+			$(this).css('display','none');
+		});
+		$('#close').click(function(){
+		   $('.guanzhu1').css('display','none');
+		});
+	
+})
+</script>      
+       
+<title>大数据告诉你该怎么选校</title>
+
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+
+</head>
+
+<body>
+ 
+<div class="topbox" id='title'>
+	<img src="img/bg1.jpg" class="bg"/>	
+	<div class="tb_txt1"><span id="ft">已有<em>3052</em>人使用</span></div>
+	<div class="con">
+		
+		<p class="test_p">根据过去三年5000+的案例生成的模式匹配系统</p>
+		<a  id="begin_2" class="test_a"><img src="img/btn.png" alt=""/></a>
+	</div>
+</div>
+
+<div class="gztt" id='notice'>
+   
+</div>
+    <div class="test">
+        <div class="score" ><img src="img/test_bg.png" alt=""  style="border:none;border-radius:0px;"/></div>
+	<div class="test_con">
+		<div class="item">
+			<div class="tit"><span>1.</span>选择生成名单学校总数</div>
+			<div class="item_con">
+				<ul>
+					<li>
+						<input type="radio" name="listNum" id="" class="rad" value='1' /><span>A</span>8所
+					</li>
+					<li>
+						<input type="radio" name="listNum" id="" class="rad" value='2'/><span>B</span>10所
+					</li>
+					<li>
+						<input type="radio" name="listNum" id="" class="rad" value='3'><span>C</span>12所
+					</li>
+					<li class="bn">
+						<input type="radio" name="listNum" id="" class="rad" value='4'/><span>D</span>15所
+					</li>
+				</ul>
+			</div>
+		</div>
+	
+	</div>
+</div>
+    <div class="test">
+         <div class="score"  ><img src="img/test_bg.png" alt="" style="border:none;border-radius:0px;"/></div>
+	<div class="test_con">
+		<div class="item">
+			<div class="tit"><span>2.</span>选择本科学校</div>
+			<div class="item_con">
+				<ul>
+					<li>
+						<input type="radio" name="undergradSchool" id="" class="rad" value='1' /><span>A</span>清华北大
+					</li>
+					<li>
+						<input type="radio" name="undergradSchool" id="" class="rad" value='2'/><span>B</span>C9 学校
+					</li>
+					<li>
+						<input type="radio" name="undergradSchool" id="" class="rad" value='3'><span>C</span>985 大学
+					</li>
+					<li>
+						<input type="radio" name="undergradSchool" id="" class="rad" value='4'/><span>D</span>211 大学
+					</li>
+					<li>
+						<input type="radio" name="undergradSchool" id="" class="rad" value='5'><span>C</span>一本大学
+					</li>
+					<li class="bn">
+						<input type="radio" name="undergradSchool" id="" class="rad" value='6'><span>C</span>一般学校
+					</li>
+				</ul>
+<!--                             <input type="hidden" value="B">
+ -->			</div>
+		</div>
+	
+	</div>
+</div>
+<div class="test">
+         <div class="score"  ><img src="img/test_bg.png" alt="" style="border:none;border-radius:0px;"/></div>
+	<div class="test_con">
+		<div class="item">
+			<div class="tit"><span>3.</span>大学GPA(以4.0为满绩点)</div>
+			<div class="item_con">
+				<ul>
+					<li>
+						<input type="radio" name="gpa" id="" class="rad" value='1' /><span>A</span>4.0/90+
+					</li>
+					<li>
+						<input type="radio" name="gpa" id="" class="rad" value='2'/><span>B</span>3.8+/88+
+					</li>
+					<li>
+						<input type="radio" name="gpa" id="" class="rad" value='3'><span>C</span>3.5+/85+
+					</li>
+					<li>
+						<input type="radio" name="gpa" id="" class="rad" value='4'/><span>D</span>3.3+/83+
+					</li>
+					<li>
+						<input type="radio" name="gpa" id="" class="rad" value='5'><span>C</span>3.0+/80+
+					</li>
+					<li class="bn">
+						<input type="radio" name="gpa" id="" class="rad" value='6'><span>C</span>低于3.0/80
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="test">
+<div class="score"  ><img src="img/test_bg.png" alt="" style="border:none;border-radius:0px;"/></div>
+	<div class="test_con">
+		<div class="item">
+			<div class="tit"><span>4.</span>托福/雅思成绩</div>
+			<div class="item_con">
+				<ul>
+					<li>
+						<input type="radio" name="toefl" id="" class="rad" value='1' /><span>A</span>110+/8+
+					</li>
+					<li>
+						<input type="radio" name="toefl" id="" class="rad" value='2'/><span>B</span>105+/7.5+
+					</li>
+					<li>
+						<input type="radio" name="toefl" id="" class="rad" value='3'><span>C</span>100+/7+
+					</li>
+					<li>
+						<input type="radio" name="toefl" id="" class="rad" value='4'/><span>D</span>95+/6.5+
+					</li>
+					<li>
+						<input type="radio" name="toefl" id="" class="rad" value='5'><span>C</span>90+/6+
+					</li>
+					<li class="bn">
+						<input type="radio" name="toefl" id="" class="rad" value='6'><span>C</span>低于90/6
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+   <div class="test">
+         <div class="score"  ><img src="img/test_bg.png" alt="" style="border:none;border-radius:0px;"/></div>
+	<div class="test_con">
+		<div class="item">
+			<div class="tit"><span>3.</span>GRE/GMAT 总分 </div>
+			<div class="item_con">
+				<ul>
+					<li>
+						<input type="radio" name="gre" id="" class="rad" value='1' /><span>A</span>330+/740+
+					</li>
+					<li>
+						<input type="radio" name="gre" id="" class="rad" value='2'/><span>B</span>325+/720+
+					</li>
+					<li>
+						<input type="radio" name="gre" id="" class="rad" value='3'><span>C</span>320+/710+
+					</li>
+					<li>
+						<input type="radio" name="gre" id="" class="rad" value='4'/><span>D</span>315+/700+
+					</li>
+					<li>
+						<input type="radio" name="gre" id="" class="rad" value='5'><span>C</span>310+/680+
+					</li>
+					<li class="bn">
+						<input type="radio" name="gre" id="" class="rad" value='6'><span>C</span>低于310/680
+					</li>
+				</ul>
+			</div>
+		</div>
+	
+	</div>
+</div>
+ 
+   
+
+<!--     
+<div class="test end" id='level1'>
+     <div class="score" ><img src="" alt=""/></div>
+	<div class="test_con">
+		<div class="answer_con">
+			<h1>网络英语一级，你完了</h1>
+			<p>
+			<span>详细分析：</span><br/>
+			我很遗憾的告诉你，在美国你是绝对看不懂西游记、红楼梦、水浒传和葫芦娃的，还能不能好好玩了，还能不能愉快的做题了，那么认真
+			</p>
+		</div>
+		
+	</div>
+	<div class="share"><img src="img/share.png" alt="分享"/></div>
+</div> -->
+
+<div class="test end" style="padding:0px 20px 0px 20px;" id='result'>
+<!--      <div class="score" ><img src="" alt=""/></div>
+ -->	
+ 	<div class="test_con" style="padding:0px 0px 0px 0px;">
+		<div class="answer_con">
+			<h4>冲刺学校</h4>
+			<ul id="list1">
+			</ul>
+		</div>
+		<div>
+			<h4>合适学校</h4>
+			<ul id="list2">
+			</ul>
+		</div>
+		<div>
+			<h4>保底学校</h4>
+			<ul id="list3">
+			</ul>
+		</div>
+	</div>
+	<div class="share"><img src="img/share.png" alt="分享"/></div>
+</div>
+
+<div class="share_b"><img src="img/fx.png" alt=""/></div>
+
+<!--<div class="guanzhu">
+  
+    <img src="img/ico_tc_bg.png" alt="关注"/>
+    </div>-->
+
+<div class="guanzhu1" id="guanzhu">	<div class="jt"><img src="img/jiantou.png" alt=""/></div>	 <p id="gz_p"> 关注中美加DIY留学，获得选校详细指导以及全面提高指南。</p>
+    <div class="guanzhu_but"><a href="http://mp.weixin.qq.com/s?__biz=MjM5MTE0ODA2MA==&mid=201128529&idx=1&sn=eaab915fd52a6c3f6e380eaf7b43848f#rd">关注：中美加留学</a></div> 
+ </div>
+   <input type="hidden" name='sumScore' id='sumScore' value="0">
+</body>
+</html>
