@@ -265,6 +265,58 @@ var adjustSchoolFunc = function(schoolList, rankList){
     return newSchoolList;
 };
 
+var getFixedNumPredict = function(totalList, expectNum, catalog) {
+    //use result.applicationList with top/reality/backup
+    //basic idea, to make sure every set has the right number of school
+    //percentage: 30% top, 20% backup, 50% reality (if expectNum == 12 -> 3, 3, 6; 10 -> 3, 2, 5; 15 ->  4, 3, 8)
+    if (totalList.top == undefined || totalList.reality == undefined || totalList.backup == undefined) {
+        return totalList;
+    }
+    var total = totalList.top.concat(totalList.reality.concat(totalList.backup));
+
+    var totalLen = total.length;
+    if (expectNum > totalLen) {
+        expectNum = totalLen;
+    }
+    var topNum, realityNum, backupNum;
+    if (expectNum == 10) {
+        topNum = 3;
+        realityNum = 5;
+        backupNum = 2;
+    } else if (expectNum == 12) {
+        topNum = 3;
+        realityNum = 6;
+        backupNum = 3;
+    } else if (expectNum == 15) {
+        topNum = 4;
+        realityNum = 8;
+        backupNum = 3;
+    } else {
+        topNum = Math.floor(0.3 * expectNum);
+        realityNum = Math.floor(0.2 * expectNum);
+        backupNum = expectNum - topNum - realityNum;
+    }
+
+    var top = [];
+    var backup = [];
+    var reality = [];
+    for (var i = 0; i < topNum; i++) {
+        top.push(total[i]);
+    }
+    total.splice(0, topNum);
+    for (i = 0; i < backupNum; i++) {
+        backup.push(total[total.length - i - 1]);
+    }
+    total.splice(total.length - backupNum, backupNum);
+    for (i = 0; i < realityNum; i++) {
+        reality.push(total[i]);
+    }
+    totalList.top = top;
+    totalList.reality = reality;
+    totalList.backup = backup;
+    return totalList;
+};
+
 var getPredition = function(req,res){
     var inputObj = req.body.input;
     console.log(req.body);
@@ -379,9 +431,9 @@ var getPredition = function(req,res){
 
     var jsonResult = {
         results : results,
-        schoolList : schoolBucket,
+        schoolList : getFixedNumPredict(schoolBucket, 12),
         chanceList : chanceBucket,
-        applicationList : applicationList
+        applicationList : getFixedNumPredict(applicationList, 12) //put 12 at first.
     };
 
     //result.map()
