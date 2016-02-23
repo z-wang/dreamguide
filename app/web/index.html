@@ -81,7 +81,7 @@ $(function(){
 	
 var student = {
 	input : {}
-}
+};
 
 var callback = function(){
  	console.log("radio");
@@ -104,13 +104,13 @@ var callback = function(){
     			var backups = data.applicationList.backup;
     			$.each(tops, function(item){
     				$("body #list1").append('<li>'+ tops[item]+'</li>');
-    			})
+    			});
     			$.each(realities, function(item){
     				$("body #list2").append('<li>'+ realities[item]+'</li>');
-    			})
+    			});
     			$.each(backups, function(item){
     				$("body #list3").append('<li>'+ backups[item]+'</li>');
-    			})
+    			});
   			});
 		   
 		}else{
@@ -183,16 +183,13 @@ $(':radio').click(callback);
 			<div class="item_con">
 				<ul>
 					<li>
-						<input type="radio" name="listNum" id="" class="rad" value='1' /><span>A</span>8所
+						<input type="radio" name="expectNum" id="" class="rad" value='10' /><span>A</span>10所
 					</li>
 					<li>
-						<input type="radio" name="listNum" id="" class="rad" value='2'/><span>B</span>10所
-					</li>
-					<li>
-						<input type="radio" name="listNum" id="" class="rad" value='3'><span>C</span>12所
+						<input type="radio" name="expectNum" id="" class="rad" value='12'/><span>B</span>12所
 					</li>
 					<li class="bn">
-						<input type="radio" name="listNum" id="" class="rad" value='4'/><span>D</span>15所
+						<input type="radio" name="expectNum" id="" class="rad" value='15'/><span>D</span>15所
 					</li>
 				</ul>
 			</div>
@@ -342,20 +339,23 @@ $(':radio').click(callback);
 	<div class="share"><img src="img/share.png" alt="分享"/></div>
 </div> -->
 
-<div class="test end" style="padding:0px 20px 0px 20px;" id='result'>
+<div class="test end" style="padding:1px 20px 1px 20px;" id='result'>
 <!--      <div class="score" ><img src="" alt=""/></div>
  -->	
- 	<div class="test_con" style="padding:0px 0px 0px 0px;">
-		<div class="answer_con">
-			<h4>冲刺学校</h4>
+ 	<div class="test_con" style="padding:0 0 0 0;">
+		<hr />
+		<div class="answer_con" style="font-size:12px">
+			<h3>冲刺学校</h3>
 			<ul id="list1">
 			</ul>
 		</div>
+		<hr />
 		<div>
-			<h4>合适学校</h4>
+			<h3>合适学校</h3>
 			<ul id="list2">
 			</ul>
 		</div>
+		<hr />
 		<div>
 			<h4>保底学校</h4>
 			<ul id="list3">
