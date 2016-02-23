@@ -319,6 +319,7 @@ var getFixedNumPredict = function(totalList, expectNum, catalog) {
 
 var getPredition = function(req,res){
     var inputObj = req.body.input;
+    var expectNum = inputObj.expectNum || 12;
     console.log(req.body);
     //generate preprocessed data
     var input = [];
@@ -431,9 +432,9 @@ var getPredition = function(req,res){
 
     var jsonResult = {
         results : results,
-        schoolList : getFixedNumPredict(schoolBucket, 12),
+        schoolList : getFixedNumPredict(schoolBucket, expectNum),
         chanceList : chanceBucket,
-        applicationList : getFixedNumPredict(applicationList, 12) //put 12 at first.
+        applicationList : getFixedNumPredict(applicationList, expectNum) //put 12 at first.
     };
 
     //result.map()
