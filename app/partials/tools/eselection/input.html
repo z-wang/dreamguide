@@ -213,12 +213,21 @@
                     <div class="panel-body">
                         <form name="inputForm" novalidate>
                             <div class="col-sm-6 col-xs-12">
-                                <div class="form-group" ng-class="{'has-error': inputForm.undergradSchool.$invalid}">
-                                    <label for="undergradSchool">本科院校</label>
-                                    <ui-select name="undergradSchool" id="undergradSchool" ng-model="input.undergradSchool" style="font-family: Georgia, Serif;" required>
-                                        <ui-select-match placeholder="本科学校">{{$select.selected}}</ui-select-match>
-                                        <ui-select-choices repeat="undergradSchool in undergradSchools | filter: $select.search">
-                                            <span ng-bind-html="undergradSchool | highlight: $select.search"></span>
+                                <div class="form-group" ng-class="{'has-error': inputForm.applyMajor.$invalid}">
+                                    <label>申请专业</label>
+                                    <ui-select id="applyMajor" name="applyMajor" ng-model="input.applyMajor" style="font-family: Georgia, Serif;" required>
+                                        <ui-select-match placeholder="选择专业">{{$select.selected}}</ui-select-match>
+                                        <ui-select-choices repeat="major in applyMajors | filter: $select.search">
+                                            <span ng-bind-html="major | highlight: $select.search"></span>
+                                        </ui-select-choices>
+                                    </ui-select>
+                                </div>
+                                <div class="form-group" ng-class="{'has-error': inputForm.expectNum.$invalid}">
+                                    <label for="expectNum">选校名单数目</label>
+                                    <ui-select name="expectNum" id="expectNum" ng-model="input.expectNum" style="font-family: Georgia, Serif;" required>
+                                        <ui-select-match placeholder="申请学校总数">{{$select.selected}}</ui-select-match>
+                                        <ui-select-choices repeat="number in expectNumList | filter: $select.search">
+                                            <span ng-bind-html="number | highlight: $select.search"></span>
                                         </ui-select-choices>
                                     </ui-select>
                                 </div>
@@ -228,15 +237,6 @@
                                         <ui-select-match placeholder="选择学位">{{$select.selected}}</ui-select-match>
                                         <ui-select-choices repeat="degree in applyDegrees | filter: $select.search">
                                             <span ng-bind-html="degree | highlight: $select.search"></span>
-                                        </ui-select-choices>
-                                    </ui-select>
-                                </div>
-                                <div class="form-group" ng-class="{'has-error': inputForm.applyMajor.$invalid}">
-                                    <label>申请专业</label>
-                                    <ui-select id="applyMajor" name="applyMajor" ng-model="input.applyMajor" style="font-family: Georgia, Serif;" required>
-                                        <ui-select-match placeholder="选择专业">{{$select.selected}}</ui-select-match>
-                                        <ui-select-choices repeat="major in applyMajors | filter: $select.search">
-                                            <span ng-bind-html="major | highlight: $select.search"></span>
                                         </ui-select-choices>
                                     </ui-select>
                                 </div>
@@ -253,6 +253,15 @@
                             </div>
 
                             <div class="col-sm-6 col-xs-12">
+                                <div class="form-group" ng-class="{'has-error': inputForm.undergradSchool.$invalid}">
+                                    <label for="undergradSchool">本科院校</label>
+                                    <ui-select name="undergradSchool" id="undergradSchool" ng-model="input.undergradSchool" style="font-family: Georgia, Serif;" required>
+                                        <ui-select-match placeholder="本科学校">{{$select.selected}}</ui-select-match>
+                                        <ui-select-choices repeat="undergradSchool in undergradSchools | filter: $select.search">
+                                            <span ng-bind-html="undergradSchool | highlight: $select.search"></span>
+                                        </ui-select-choices>
+                                    </ui-select>
+                                </div>
                                 <div class="form-group" ng-class="{'has-error': inputForm.gpa.$invalid}">
                                     <label>GPA(4.0为满绩点)</label>
                                     <input class="form-control" id="gpa" name="gpa" type="number" max="4" min="1"
@@ -269,15 +278,15 @@
                                            placeholder="填写325或740" required ng-model="input.gre" />
                                 </div>
                                 <div class="form-group" ng-class="{'has-error': inputForm.publication.$invalid}">
-                                    <label>论文发表数量</label>
+                                    <label>论文/专利发表数量</label>
                                     <input class="form-control" id="publication" name="publication" type="number" min="0"
                                            placeholder="必须在正式出版物上发表" required ng-model="input.publication" />
                                 </div>
-                                <div class="form-group" ng-class="{'has-error': inputForm.patent.$invalid}">
-                                    <label>专利数量</label>
-                                    <input class="form-control" id="patent" name="patent" type="number" min="0"
-                                           placeholder="已经正式申报的专利" required ng-model="input.patent" />
-                                </div>
+                                <!--<div class="form-group" ng-class="{'has-error': inputForm.patent.$invalid}">-->
+                                    <!--<label>专利数量</label>-->
+                                    <!--<input class="form-control" id="patent" name="patent" type="number" min="0"-->
+                                           <!--placeholder="已经正式申报的专利" required ng-model="input.patent" />-->
+                                <!--</div>-->
                             </div>
                         </form>
 
@@ -306,7 +315,7 @@
                 <div class="panel panel-default" ng-show="flags.applicationList">
                     <div class="panel-body">
                         <div class="col-sm-6 col-xs-12">
-                            <h4>冲刺学校</h4>
+                            <h4>冲刺学校 - {{applicationList.top.length}}所</h4>
                             <div ng-repeat="school in applicationList.top track by $index">
                                 <a ng-click="showSchool(school)">{{school}}</a>
                             </div>
@@ -318,7 +327,7 @@
                     </div>
                     <div class="panel-body">
                         <div class="col-sm-6 col-xs-12">
-                            <h4>合适学校</h4>
+                            <h4>合适学校 - {{applicationList.reality.length}}所</h4>
                             <div ng-repeat="school in applicationList.reality">
                                 <a ng-click="showSchool(school)">{{school}}</a>
                             </div>
@@ -330,7 +339,7 @@
                     </div>
                     <div class="panel-body">
                         <div class="col-sm-6 col-xs-12">
-                            <h4>保底学校</h4>
+                            <h4>保底学校 - {{applicationList.backup.length}}所</h4>
                             <div ng-repeat="school in applicationList.backup">
                                 <a ng-click="showSchool(school)">{{school}}</a>
                             </div>

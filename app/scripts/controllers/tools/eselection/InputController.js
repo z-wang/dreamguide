@@ -146,6 +146,7 @@ define([
             };
 
             //set selections
+            $scope.expectNumList = [10, 12, 15, 20];
             $scope.undergradSchools = ["北大清华", "C9",  "985", "211", "本专业强校(top 30)", "其他"];
             $scope.applyDegrees = ["高中", "本科", "硕士", "博士"];
             $scope.applyMajors = ["金融", "会计", "电子工程", "计算机"];
@@ -176,7 +177,8 @@ define([
                     undergradSchool : Number(schoolValues[$scope.input.undergradSchool]),
                     toefl: Number($scope.input.toefl),
                     gre: Number($scope.input.gre),
-                    gpa: Number($scope.input.gpa)
+                    gpa: Number($scope.input.gpa),
+                    expectNum : Number($scope.input.expectNum)
                 };
                 //$location.hash();
                 //$anchorScroll();
