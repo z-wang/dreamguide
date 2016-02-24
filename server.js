@@ -293,8 +293,8 @@ var getFixedNumPredict = function(totalList, expectNum, catalog) {
         backupNum = 3;
     } else {
         topNum = Math.floor(0.3 * expectNum);
-        realityNum = Math.floor(0.2 * expectNum);
-        backupNum = expectNum - topNum - realityNum;
+        backupNum = Math.floor(0.2 * expectNum);
+        realityNum = expectNum - topNum - backupNum;
     }
 
     var top = [];
