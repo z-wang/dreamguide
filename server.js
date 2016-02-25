@@ -2,8 +2,9 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var nodemailer = require('nodemailer');
 var mongoose = require('mongoose');
-var eselectionData = require('./data/eselection');
-var schoolRank = require('./data/ranks');
+//var eselectionData = require('./data/eselection');
+//var schoolRank = require('./data/ranks');
+var eselections = require('./data/tools/eselections/getEselection');
 var ml = require('machine_learning');
 
 var transporter = nodemailer.createTransport({
@@ -371,6 +372,9 @@ var getPredition = function(req,res){
         high : [],
         veryHigh : []
     };
+
+    var eselectionData = eselections[inputObj.applyMajor].eselectionData;
+    var schoolRank = eselections[inputObj.applyMajor].schoolRank;
     input = eselectionData.getPreprocessedData(input);
     eselectionData.getSchoolNames.map(function(name) {
         var predict = ( simplePrediction(
