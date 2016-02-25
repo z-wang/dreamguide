@@ -321,6 +321,7 @@ var getFixedNumPredict = function(totalList, expectNum, catalog) {
 var getPredition = function(req,res){
     var inputObj = req.body.input;
     var expectNum = inputObj.expectNum || 12;
+    var applyMajor = inputObj.applyMajor || "finance";
     console.log(req.body);
     //generate preprocessed data
     var input = [];
@@ -373,8 +374,8 @@ var getPredition = function(req,res){
         veryHigh : []
     };
 
-    var eselectionData = eselections[inputObj.applyMajor].eselectionData;
-    var schoolRank = eselections[inputObj.applyMajor].schoolRank;
+    var eselectionData = eselections[applyMajor].eselectionData;
+    var schoolRank = eselections[applyMajor].schoolRank;
     input = eselectionData.getPreprocessedData(input);
     eselectionData.getSchoolNames.map(function(name) {
         var predict = ( simplePrediction(
