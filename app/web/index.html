@@ -89,7 +89,11 @@ var callback = function(){
 		$(this).parents('div').css('display','none');
 		var name = $(this).attr("name");
 		var value = $(this).val();
-		student.input[name] = Number(value);
+        if (name != "applyMajor") {
+            student.input[name] = Number(value);
+        } else {
+            student.input[name] = value;
+        }
 
 		if( $(this).parents('div').next('div').hasClass('end')){
 		   document.title="我测出来能进常春藤，你也能吗?";
@@ -174,6 +178,28 @@ $(':radio').click(callback);
 
 <div class="gztt" id='notice'>
    
+</div>
+<div class="test">
+    <div class="score" ><img src="img/test_bg.png" alt=""  style="border:none;border-radius:0px;"/></div>
+    <div class="test_con">
+        <div class="item">
+            <div class="tit"><span>1.</span>选择所要申请的专业</div>
+            <div class="item_con">
+                <ul>
+                    <li>
+                        <input type="radio" name="applyMajor" id="" class="rad" value='finance'/><span>A</span>金融专业
+                    </li>
+                    <li>
+                        <input type="radio" name="applyMajor" id="" class="rad" value='FE'/><span>B</span>金融工程专业
+                    </li>
+                    <li class="bn">
+                        <input type="radio" name="applyMajor" id="" class="rad" value='MIS'/><span>D</span>管理信息系统专业
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
 </div>
     <div class="test">
         <div class="score" ><img src="img/test_bg.png" alt=""  style="border:none;border-radius:0px;"/></div>
