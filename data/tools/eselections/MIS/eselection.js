@@ -98,7 +98,7 @@ var schools = {
             [ 1, 2, 1, 3 ] ],
         result : [ 1, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 0, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 1, 1 ]
     },
-    "Georgia Washington University" : {
+    "George Washington University" : {
         data : [ [ 2, 5, 4, 6 ],
             [ 1, 4, 3, 2 ],
             [ 1, 3, 1, 4 ],
@@ -130,7 +130,7 @@ var schools = {
             [ 6, 4, 5, 6 ] ],
         result : [ 1, 0, 1, 1, 1, 0, 1, 1, 0, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0 ]
     },
-    "George State University" : {
+    "Georgia State University" : {
         data : [ [ 4, 5, 4, 6 ],
             [ 5, 3, 5, 3 ],
             [ 6, 5, 5, 6 ],

@@ -5,6 +5,8 @@ var financeData = require('./finance/eselection');
 var financeRank = require('./finance/ranks');
 var FEData = require('./financial_engineering/eselection');
 var FERank = require('./financial_engineering/ranks');
+var MISData = require('./MIS/eselection');
+var MISRank = require('./MIS/ranks');
 
 module.exports = {
     finance : {
@@ -14,6 +16,10 @@ module.exports = {
     FE : {
         eselectionData : FEData,
         schoolRank : FERank
+    },
+    MIS : {
+        eselectionData : MISData,
+        schoolRank : MISRank
     }
 };
 
