@@ -103,9 +103,9 @@ var callback = function(){
   			// 	var src="img/score"+score*5+".png";
 				 // $('#level1 .score img').attr('src',src);
 				$('#result').css('display','block');
-    			var tops = data.applicationList.top;
-    			var realities = data.applicationList.reality;
-    			var backups = data.applicationList.backup;
+    			var tops = data.schoolList.top;
+    			var realities = data.schoolList.reality;
+    			var backups = data.schoolList.backup;
     			$.each(tops, function(item){
     				$("body #list1").append('<li>'+ tops[item]+'</li>');
     			});
