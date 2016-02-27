@@ -386,7 +386,7 @@ var schools = {
             [ 2, 3, 4, 3 ] ],
         result : [ 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 1, 1, 0, 1, 1, 0, 0, 1, 1, 0, 1, 1, 0, 1, 1 ]
     },
-    "University of Washington" : {
+    "University of Washington, Seattle" : {
         data : [ [ 4, 3, 4, 1 ],
             [ 2, 5, 1, 6 ],
             [ 4, 3, 2, 2 ],
