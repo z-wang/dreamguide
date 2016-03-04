@@ -149,7 +149,7 @@ define([
             $scope.expectNumList = [10, 12, 15, 20];
             $scope.undergradSchools = ["北大清华", "C9",  "985", "211", "本专业强校(top 30)", "其他"];
             $scope.applyDegrees = ["高中", "本科", "硕士", "博士"];
-            $scope.applyMajors = ["金融", "金融工程", "管理信息系统"];
+            $scope.applyMajors = ["金融", "会计","金融工程", "管理信息系统"];
             //$scope.input = {};
             $scope.input = {
                 applyMajor : "金融",
@@ -176,6 +176,8 @@ define([
                 var returnMajor;
                 if (major === "金融") {
                     returnMajor = "finance";
+                } else if (major == "会计") {
+                    returnMajor = "accounting";
                 } else if (major === "金融工程") {
                     returnMajor = "FE";
                 } else if (major === "管理信息系统") {
