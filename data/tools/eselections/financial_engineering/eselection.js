@@ -532,7 +532,6 @@ module.exports = {
     getSchoolNames : [
         //"Brandeis University",
         //"Tulane University",
-        "Johns Hopkins University", //needs reload
         //"MIT",
         //"University at Buffalo",
         //"University of Texas at Austin",
@@ -541,8 +540,9 @@ module.exports = {
         //"Case Western Reserve University",
         //"Clark University",
         //"Lehigh University",
-        "University of Illinois Urbana-Champaign", // needs reload
         //"Vanderbilt University",
+        "Johns Hopkins University", //needs reload
+        "University of Illinois Urbana-Champaign", // needs reload
         "Boston College",
         "Fordham University",
         "Georgia Institute of Technology",

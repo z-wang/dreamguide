@@ -649,7 +649,6 @@ module.exports = {
         "Bentley University",
         "Carnegie Mellon University",
         "Fordham University",
-        //"George Washington University",
         "Georgia State University",
         "University of Maryland",
         "MIT",
