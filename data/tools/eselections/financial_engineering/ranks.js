@@ -23,7 +23,6 @@ var ranks = {
                 'University of Florida',
                 'Boston University',
                 'Northeastern University',
-                'Baruch College',
                 'Ohio State University (Fisher)',
                 'University of Minnesota, Twin City',
                 'Polytechnic Institute of New York University',
@@ -40,12 +39,14 @@ var ranks = {
                 'University of California-Los Angeles',
                 'University of Illinois Urbana-Champaign',
                 'Georgia Institute of Technology',
+                'MIT',
                 'Stanford University',
                 'Washington University in St. Louis (Olin)',
+                'Baruch College',
                 'New York University',
-                'MIT',
                 "University of Chicago",
                 'University of California-Berkeley',
+                'Princeton University',
                 'Cornell University',
                 'Carnegie Mellon University',
                 'Columbia University'],
@@ -91,6 +92,7 @@ var ranks = {
             0.18,
             0.17,
             0.17,
+            0.15,
             0.14 ]
     }
 };
