@@ -162,6 +162,35 @@ var updateESRow = function(data, indice, type){
     postReq.end();
 };
 
+var eselectionUpdate = function(input, req) {
+    var inputObj = {
+        createdTime: new Date(),
+        applyDegree: input.applyDegree || "",
+        applyMajor: input.applyMajor || "",
+        fulltime: input.fulltime || 0,
+        gpa: input.gpa || 3,
+        gre: input.gre || 280,
+        internship: input.internship || 0,
+        patent: input.patent || 0,
+        publication: input.publication || 0,
+        toefl: input.toefl || 0,
+        undergradSchool: input.undergradSchool || "",
+        browser: req.headers['user-agent'] || ""
+    };
+    var newInput = new eselection(inputObj);
+
+    //upload to monogodb
+    newInput.save(function(err, data) {
+        if (err) console.log(err);
+        console.log('EselectUser created!');
+        console.log(data);
+        mongoose.connection.close(function () {
+            console.log('Mongoose connection disconnected');
+        });
+    });
+    ////upload to elasticsearch
+    updateESRow(inputObj, 'eselection', 'userRecord');
+};
 app.post('/tools/eselection/inputquery',function(req,res){
     var input = req.body.input;
     var inputObj = {
@@ -181,7 +210,8 @@ app.post('/tools/eselection/inputquery',function(req,res){
 
     var newInput = new eselection(inputObj);
     // save the user
-
+    ////upload to elasticsearch
+    updateESRow(inputObj, 'eselection', 'userRecord');
     //upload to monogodb
     newInput.save(function(err, data) {
         if (err) console.log(err);
@@ -191,8 +221,6 @@ app.post('/tools/eselection/inputquery',function(req,res){
                     console.log('Mongoose connection disconnected');
                 });
     });
-    ////upload to elasticsearch
-    updateESRow(inputObj, 'eselection', 'userRecord');
 
     res.end("yes");
 });
@@ -472,6 +500,7 @@ var getPredition = function(req,res){
         applicationList : getFixedNumPredict(applicationList, expectNum) //put 12 at first.
     };
 
+    //eselectionUpdate(inputObj, req);
     //result.map()
     console.log(jsonResult);
     res.json(jsonResult);
