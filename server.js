@@ -192,7 +192,7 @@ app.post('/tools/eselection/inputquery',function(req,res){
         //        });
     });
     ////upload to elasticsearch
-    updateESRow({input: inputObj}, 'eselection', 'userRecord');
+    updateESRow(inputObj, 'eselection', 'userRecord');
 
     res.end("yes");
 });
