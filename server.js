@@ -2,6 +2,7 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var nodemailer = require('nodemailer');
 var mongoose = require('mongoose');
+var http  = require('http');
 var eselections = require('./data/tools/eselections/getEselection');
 var ml = require('machine_learning');
 //var EselectionUser = require('./data/mongo/models/tools/Eselection/User');
@@ -12,6 +13,13 @@ var transporter = nodemailer.createTransport({
         pass: 'Dreamguide123*'
     }
 });
+var baseInfo = {
+    http : 'http://',
+    url : '115.28.86.184',//'localhost',//'115.28.86.184',
+    port : '9200',
+    token : '/',
+    token2 : ':'
+};
 var db = mongoose.connect('mongodb://115.28.86.184:27017/dreamguide');
 var Schema = mongoose.Schema;
 var inputSchema = new Schema({
@@ -28,13 +36,6 @@ var inputSchema = new Schema({
     undergradSchool: String,
     browser: String
 });
-
-//var EselectionUserSchema = new Schema({
-//    browser : String,
-//    information : {},
-//    share : Boolean,
-//    create_at : Date
-//});
 
 var eselection = mongoose.model('eselection', inputSchema);
 
@@ -142,6 +143,25 @@ app.post('/img/downLoad',function(req, res){
     });
 });
 
+var updateESRow = function(data, indice, type){
+    var postData = JSON.stringify(data);
+    var postOption = {
+        host: baseInfo.host,
+        port: baseInfo.port,
+        path: '/'+ indice +'/'+ type+ '/',
+        method: 'POST'
+    };
+    var postReq = http.request(postOption, function(res) {
+        //res.setEncoding('utf8');
+        res.on('data', function(chunk){
+            console.log('Response: '+ chunk);
+        })
+    });
+    postReq.write(postData);
+    console.log(postData);
+    postReq.end();
+};
+
 app.post('/tools/eselection/inputquery',function(req,res){
     var input = req.body.input;
     var inputObj = {
@@ -171,6 +191,8 @@ app.post('/tools/eselection/inputquery',function(req,res){
         //            console.log('Mongoose connection disconnected');
         //        });
     });
+    ////upload to elasticsearch
+    updateESRow({input: inputObj}, 'eselection', 'userRecord');
 
     res.end("yes");
 });

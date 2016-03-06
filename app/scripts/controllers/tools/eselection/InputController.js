@@ -210,7 +210,9 @@ define([
                         $scope.results = data.results;
                         $scope.flags.applicationList = true;
                         $scope.applicationList = data.schoolList;
-                        console.log($scope);
+                        $http.post('/tools/eselection/inputquery', {
+                            input: rawData
+                        }).success(function(data) {console.log("mo saved")}).error(function(data){console.log("mo error");})
                         console.log("prediction success");
                     }).
                     error(function(data, status, headers, config) {
