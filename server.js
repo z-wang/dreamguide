@@ -146,7 +146,7 @@ app.post('/img/downLoad',function(req, res){
 var updateESRow = function(data, indice, type){
     var postData = JSON.stringify(data);
     var postOption = {
-        host: baseInfo.host,
+        host: baseInfo.url,
         port: baseInfo.port,
         path: '/'+ indice +'/'+ type+ '/',
         method: 'POST'
@@ -184,12 +184,12 @@ app.post('/tools/eselection/inputquery',function(req,res){
 
     //upload to monogodb
     newInput.save(function(err, data) {
-        if (err) return console.error(err);
+        if (err) console.log(err);
         console.log('EselectUser created!');
         console.log(data);
-        //mongoose.connection.close(function () {
-        //            console.log('Mongoose connection disconnected');
-        //        });
+        mongoose.connection.close(function () {
+                    console.log('Mongoose connection disconnected');
+                });
     });
     ////upload to elasticsearch
     updateESRow(inputObj, 'eselection', 'userRecord');
