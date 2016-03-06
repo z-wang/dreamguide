@@ -93,7 +93,7 @@ $(':radio').click(callback);
 //        });
 		function WeiXinShareBtn() {
 		 if (typeof WeixinJSBridge == "undefined") {
-				 alert("请先通过微信搜索线话英语并添加为好友，通过微信分享文章 :) ");
+				 alert("请先通过微信搜索中美加国际咨询公众号并关注，通过微信分享文章给好友或群组 :) ");
 		 } else {
 		 WeixinJSBridge.invoke('shareTimeline', {
 		 "title": "英语测试",
@@ -133,7 +133,7 @@ $(':radio').click(callback);
 	<!--<div class="tb_txt1"><span id="ft">已有<em>3052</em>人使用</span></div>-->
 	<div class="con">
 		
-		<p class="test_p">根据过去三年20000+的案例生成的模式匹配系统</p>
+		<p class="test_p">根据过去2万+申请案例计算出你的选校名单</p>
 		<a  id="begin_2" class="test_a"><img src="img/btn.png" alt=""/></a>
 	</div>
 </div>
@@ -179,8 +179,11 @@ $(':radio').click(callback);
 					<li>
 						<input type="radio" name="expectNum" id="" class="rad" value='12'/><span>B</span>12所
 					</li>
+					<!--<li>-->
+						<!--<input type="radio" name="expectNum" id="" class="rad" value='15'/><span>C</span>15所-->
+					<!--</li>-->
 					<li class="bn">
-						<input type="radio" name="expectNum" id="" class="rad" value='15'/><span>D</span>15所
+						<input type="radio" name="expectNum" id="" class="rad" value='15'/><span>C</span>15所
 					</li>
 				</ul>
 			</div>
@@ -313,11 +316,12 @@ $(':radio').click(callback);
 </div>
 
 
-<div class="test end" style="padding:1px 20px 1px 20px;" id='result'>
+<div class="test end" style="padding:2px 20px 2px 20px;margin:10px 1px 5px 1px" id='result'>
 <!--      <div class="score" ><img src="" alt=""/></div>
- -->	
- 	<div class="test_con" style="padding:0 0 0 0;">
-		<hr />
+ -->
+	<div class="share"><img src="img/share1.png" alt="分享"/></div>
+	<div class="test_con" style="padding:0 0 0 0;">
+		<!--<hr />-->
 		<div class="answer_con" style="font-size:12px">
 			<h3>冲刺学校</h3>
 			<ul id="list1">
@@ -336,7 +340,6 @@ $(':radio').click(callback);
 			</ul>
 		</div>
 	</div>
-	<div class="share"><img src="img/share1.png" alt="分享"/></div>
 </div>
 
 <div class="share_b"><img src="img/fx.png" alt=""/></div>
@@ -346,8 +349,8 @@ $(':radio').click(callback);
     <img src="img/ico_tc_bg.png" alt="关注"/>
     </div>-->
 
-<div class="guanzhu1" id="guanzhu">	<div class="jt"><img src="img/jiantou.png" alt=""/></div>	 <p id="gz_p"> 关注中美加国际公众号，预约选校工具专业版使用。</p>
-    <div class="guanzhu_but"><a href="http://mp.weixin.qq.com/s?__biz=MjM5ODIwMzc4MQ==&mid=401778835&idx=1&sn=cd001153139b05ff566bed8ae05988dc&scene=1">关注：中美加留学</a></div>
+<div class="guanzhu1" id="guanzhu">	<div class="jt"><img src="img/jiantou.png" alt=""/></div>	 <p id="gz_p"> 关注我们的公众号，预约使用选校工具升级版</p>
+    <div class="guanzhu_but"><a href="http://mp.weixin.qq.com/s?__biz=MjM5ODIwMzc4MQ==&mid=401778835&idx=1&sn=cd001153139b05ff566bed8ae05988dc&scene=1">关注: 中美加国际咨询</a></div>
 </div>
    <input type="hidden" name='sumScore' id='sumScore' value="0">
 </body>
