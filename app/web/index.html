@@ -36,48 +36,6 @@ $(function(){
 	   $('.topbox').css('display','none'); 
 		$('.test:first').css('display','block'); 
 	});
-	 
-// 	$('li').click(function(){
-// 		console.log("li");
-// 		$(this).addClass('on');
-// //            alert(   $(this).html());
-// 		var select=$(this).children(':radio').val();
-// 		var answer=$(this).parents('div').children(':hidden').val();
-// //           s alert($(this).children(':radio').val());
-// 		var sumScore=$('#sumScore').val();
-// 		if(select===answer){
-// 			$('#sumScore').val(parseInt(sumScore)+1);
-// 		}
-// //            alert( $(this).parents('.test').css('display'));
-// 		$(this).parents('div').css('display','none');
-// 		if( $(this).parents('div').next('div').hasClass('end')){
-// 		   var score= $('#sumScore').val();
-// 		   if(score<5){
-// 			   var src="img/score"+score*5+".png";
-// 				 $('#level1 .score img').attr('src',src);
-// 				$('#level1').css('display','block');
-// 		   }else if(score<10){
-// 				 var src="img/score"+score*5+".png";
-// 				 $('#level2 .score img').attr('src',src);
-// 				 $('#level2').css('display','block');
-// 		   }else if(score<15){
-// 				 var src="img/score"+score*5+".png";
-// 				 $('#level3 .score img').attr('src',src);
-// 				 $('#level3').css('display','block');
-// 		   }else{ 
-// 				 var src="img/score"+score*5+".png";
-// 				 $('#level4 .score img').attr('src',src);
-// 				 $('#level4').css('display','block');
-// 		   }
-// 		   document.title="我在网络英语4级考试中得到了"+score*5+"分，你能超过我吗?";
-// 		   $('.guanzhu1').css('display','block');
-// //               alert(document.title);
-		   
-// 		}else{
-// 			   $(this).parents('div').next('div').css('display','block');
-// 		}
-// //            alert( $(this).parents('div').next('div').html());
-// 	});
 	
 var student = {
 	input : {}
@@ -353,24 +311,7 @@ $(':radio').click(callback);
 	
 	</div>
 </div>
- 
-   
 
-<!--     
-<div class="test end" id='level1'>
-     <div class="score" ><img src="" alt=""/></div>
-	<div class="test_con">
-		<div class="answer_con">
-			<h1>网络英语一级，你完了</h1>
-			<p>
-			<span>详细分析：</span><br/>
-			我很遗憾的告诉你，在美国你是绝对看不懂西游记、红楼梦、水浒传和葫芦娃的，还能不能好好玩了，还能不能愉快的做题了，那么认真
-			</p>
-		</div>
-		
-	</div>
-	<div class="share"><img src="img/share.png" alt="分享"/></div>
-</div> -->
 
 <div class="test end" style="padding:1px 20px 1px 20px;" id='result'>
 <!--      <div class="score" ><img src="" alt=""/></div>
