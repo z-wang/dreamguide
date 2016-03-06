@@ -184,9 +184,9 @@ var eselectionUpdate = function(input, req) {
         if (err) console.log(err);
         console.log('EselectUser created!');
         console.log(data);
-        mongoose.connection.close(function () {
-            console.log('Mongoose connection disconnected');
-        });
+        //mongoose.connection.close(function () {
+        //    console.log('Mongoose connection disconnected');
+        //});
     });
     ////upload to elasticsearch
     updateESRow(inputObj, 'eselection', 'userRecord');
@@ -217,9 +217,9 @@ app.post('/tools/eselection/inputquery',function(req,res){
         if (err) console.log(err);
         console.log('EselectUser created!');
         console.log(data);
-        mongoose.connection.close(function () {
-                    console.log('Mongoose connection disconnected');
-                });
+        //mongoose.connection.close(function () {
+        //            console.log('Mongoose connection disconnected');
+        //        });
     });
 
     res.end("yes");
