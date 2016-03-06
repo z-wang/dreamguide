@@ -2,11 +2,9 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var nodemailer = require('nodemailer');
 var mongoose = require('mongoose');
-//var eselectionData = require('./data/eselection');
-//var schoolRank = require('./data/ranks');
 var eselections = require('./data/tools/eselections/getEselection');
 var ml = require('machine_learning');
-
+//var EselectionUser = require('./data/mongo/models/tools/Eselection/User');
 var transporter = nodemailer.createTransport({
     service: 'Hotmail',
     auth: {
@@ -26,9 +24,17 @@ var inputSchema = new Schema({
     internship: Number,
     patent: Number,
     publication: Number,
-    tofel: Number,
-    undergradSchool: String
+    toefl: Number,
+    undergradSchool: String,
+    browser: String
 });
+
+//var EselectionUserSchema = new Schema({
+//    browser : String,
+//    information : {},
+//    share : Boolean,
+//    create_at : Date
+//});
 
 var eselection = mongoose.model('eselection', inputSchema);
 
@@ -73,7 +79,6 @@ function decodeBase64Image(dataString) {
 }
 
 app.post('/img/upLoad',function(req,res){
-    //console.log(req.files);
     //fs.readFile('/var/folders/v8/kd9qkk1s4kb8rcgxz51t148h0000gn/T/9878a8d30108ce7d1dbbf9a088aebeba', {encoding: 'utf-8'}, function(err,data){
     //    if (!err){
     //        var str = data;
@@ -139,8 +144,7 @@ app.post('/img/downLoad',function(req, res){
 
 app.post('/tools/eselection/inputquery',function(req,res){
     var input = req.body.input;
-
-    var newInput = new eselection({
+    var inputObj = {
         createdTime: new Date(),
         applyDegree: input.applyDegree || "",
         applyMajor: input.applyMajor || "",
@@ -151,19 +155,23 @@ app.post('/tools/eselection/inputquery',function(req,res){
         patent: input.patent || 0,
         publication: input.publication || 0,
         toefl: input.toefl || 0,
-        undergradSchool: input.undergradSchool || ""
-    });
+        undergradSchool: input.undergradSchool || "",
+        browser: req.headers['user-agent'] || ""
+    };
+
+    var newInput = new eselection(inputObj);
     // save the user
+
+    //upload to monogodb
     newInput.save(function(err, data) {
         if (err) return console.error(err);
+        console.log('EselectUser created!');
         console.log(data);
         //mongoose.connection.close(function () {
         //            console.log('Mongoose connection disconnected');
         //        });
     });
 
-    //mongoose.disconnect();
-    //mongoose.connection.close();
     res.end("yes");
 });
 
