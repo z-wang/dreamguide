@@ -35,7 +35,7 @@ var ranks = {
                 'Georgia State University',
                 'Purdue University',
                 'Boston College',
-                'Brandeis University',
+                'University of Arizona',
                 'University of California-Los Angeles',
                 'University of Minnesota, Twin City',
                 'New York University',
