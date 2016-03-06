@@ -115,6 +115,10 @@ var callback = function(){
     			$.each(backups, function(item){
     				$("body #list3").append('<li>'+ backups[item]+'</li>');
     			});
+				$.post( "http://www.dreamguideedu.com/tools/eselection/inputquery'", student).done(
+						function(data){
+							console.log(data);
+						});
   			});
 		   
 		}else{
