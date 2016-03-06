@@ -12,7 +12,7 @@ var ranks = {
                 'Clark University',
                 'DePaul University',
                 'University of Delaware',
-                'Bentley University',
+                'Pace University',
                 'University of Pittsburgh',
                 'University of Florida',
                 'Stony Brook University',

@@ -705,6 +705,38 @@ var schools = {
             [ 1, 2, 2, 3 ],
             [ 4, 3, 2, 3 ] ],
         result : [ 1, 0, 1, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 1, 1, 1, 1, 0, 0, 1, 0 ]
+    },
+    "Pace University" : {
+        data : [ [ 5, 5, 5, 6 ],
+            [ 3, 3, 6, 6 ],
+            [ 2, 5, 6, 6 ],
+            [ 3, 5, 6, 6 ],
+            [ 3, 5, 6, 6 ],
+            [ 3, 4, 6, 6 ],
+            [ 5, 3, 6, 6 ],
+            [ 6, 5, 6, 6 ],
+            [ 2, 5, 6, 6 ],
+            [ 5, 3, 6, 4 ],
+            [ 6, 5, 6, 6 ],
+            [ 2, 5, 6, 6 ],
+            [ 2, 5, 6, 6 ],
+            [ 3, 4, 6, 4 ],
+            [ 4, 5, 6, 6 ],
+            [ 5, 6, 5, 6 ],
+            [ 5, 6, 6, 4 ],
+            [ 2, 5, 6, 6 ],
+            [ 4, 5, 6, 6 ],
+            [ 3, 4, 6, 6 ],
+            [ 4, 5, 6, 6 ],
+            [ 2, 3, 6, 4 ],
+            [ 3, 3, 6, 6 ],
+            [ 4, 5, 6, 6 ],
+            [ 2, 6, 6, 6 ],
+            [ 5, 5, 6, 6 ],
+            [ 6, 5, 6, 6 ],
+            [ 3, 4, 6, 6 ],
+            [ 2, 4, 4, 6 ] ],
+        result : [ 0, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1 ]
     }
 };
 module.exports = {
@@ -729,7 +761,8 @@ module.exports = {
         "University of Southern California",
         "Wake Forest University",
         "University of Wisconsin, Madison",
-        "Washington University in St. Louis"
+        "Washington University in St. Louis",
+        "Pace University"
     ],
     getSchoolDataAndResult : function(name) {
         return schools[name];
