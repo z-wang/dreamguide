@@ -5,15 +5,15 @@ var ranks = {
     //all schools and values are calculted by Huang Shan's Model, from easiest to hardest
     //can try to use the rank online(USNews, etc.), and compare results.
     finance : {
-        schools:
-            [ 'University at Buffalo',
-                'The University of Texas at Dallas',
+        schools: [
+                'University at Buffalo',
+                'Pace University',
+                'Drexel University',
                 'DePaul University',
                 'Clark University',
                 'Bentley University',
                 'Stony Brook University',
                 'American University',
-                'University of Delaware',
                 'University of Connecticut',
                 'University of Maryland',
                 'Rutgers University',
@@ -42,11 +42,11 @@ var ranks = {
                 "University of Chicago",
                 'Georgia Institute of Technology',
                 'Washington University in St. Louis (Olin)',
-                'Columbia University',
                 'Cornell University',
                 'Carnegie Mellon University',
                 'New York University',
                 'University of California-Berkeley',
+                'Columbia University',
                 'MIT' ],
         values :    [ 0.86,
             0.84,
